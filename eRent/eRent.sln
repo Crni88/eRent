@@ -3,9 +3,11 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.2.32630.192
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eRent", "eRent.csproj", "{4456D70B-D689-493D-B594-E1B59BCFD48D}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eRent", "eRent.csproj", "{4456D70B-D689-493D-B594-E1B59BCFD48D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eRent.Services", "..\eRent.Services\eRent.Services.csproj", "{D47893A9-61CB-405F-B81C-5AF1AA4F0304}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eRent.Services", "..\eRent.Services\eRent.Services.csproj", "{D47893A9-61CB-405F-B81C-5AF1AA4F0304}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eRent.Model", "..\eRent.Model\eRent.Model.csproj", "{0ADDF714-84C6-461E-93C2-A8B52257673B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{D47893A9-61CB-405F-B81C-5AF1AA4F0304}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{D47893A9-61CB-405F-B81C-5AF1AA4F0304}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{D47893A9-61CB-405F-B81C-5AF1AA4F0304}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0ADDF714-84C6-461E-93C2-A8B52257673B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0ADDF714-84C6-461E-93C2-A8B52257673B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0ADDF714-84C6-461E-93C2-A8B52257673B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0ADDF714-84C6-461E-93C2-A8B52257673B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
