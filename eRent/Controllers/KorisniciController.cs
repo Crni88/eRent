@@ -1,5 +1,6 @@
-﻿using eRent.Model;
+﻿using eRent.Models;
 using eRent.Services;
+using eRent.Services.DataDB;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eRent.Controllers
@@ -15,7 +16,7 @@ namespace eRent.Controllers
             _korisniciServis = korisniciServis;
         }
         [HttpGet]
-        public IEnumerable<Korisnik> Get()
+        public IEnumerable<KorisnikModel> Get()
         {
             return _korisniciServis.Get();
         }

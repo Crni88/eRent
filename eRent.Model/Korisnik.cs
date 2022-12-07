@@ -5,8 +5,6 @@ namespace eRent.Model
 {
     public class Korisnik
     {
-        public int KorisnikId { get; set; }
-
         public string KorsnikIme { get; set; }
 
         public string KorisnikPrezime { get; set; } 

@@ -20,7 +20,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\eRent.Model\eRent.Model.csproj" />
+    <ProjectReference Include="..\eRent.Models\eRent.Models.csproj" />
   </ItemGroup>
 
 </Project>
