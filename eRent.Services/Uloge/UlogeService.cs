@@ -1,4 +1,6 @@
-﻿using eRent.Services.DataDB;
+﻿using AutoMapper;
+using eRent.Models;
+using eRent.Services.DataDB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,23 +10,10 @@ using System.Threading.Tasks;
 
 namespace eRent.Services.Uloge
 {
-    public class UlogeService : IUlogeService
+    public class UlogeService:BaseService<UlogaModel,Uloga> , IUlogeService
     {
-        public ERentContext Context { get; set; }
-
-        public UlogeService(ERentContext eRentContext)
+        public UlogeService(ERentContext eRentContext,IMapper mapper):base(eRentContext,mapper)
         {
-            Context = eRentContext;
-        }
-
-        public IEnumerable<Uloga> Get()
-        {
-            return Context.Ulogas.ToList();
-        }
-
-        public IEnumerable<Uloga> Post(Uloga uloga)
-        {
-            return (IEnumerable<Uloga>)Context.Ulogas.Add(uloga);
         }
     }
 }

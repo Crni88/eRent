@@ -5,10 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eRent.Services
+namespace eRent.Services.Korisnici
 {
-    public interface IKorisnici
-    { 
-        IEnumerable<KorisnikModel> Get();
+    public interface IKorisnici : IService<KorisnikModel>
+    {
     }
 }

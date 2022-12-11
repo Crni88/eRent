@@ -1,24 +1,14 @@
 ﻿using eRent.Models;
-using eRent.Services;
 using eRent.Services.DataDB;
+using eRent.Services.Korisnici;
 using Microsoft.AspNetCore.Mvc;
 
 namespace eRent.Controllers
 {
-    [ApiController]
-    [Route("api/korisnik")]
-    public class KorisniciController : ControllerBase
+    public class KorisniciController : BaseController<KorisnikModel>
     {
-        private readonly IKorisnici _korisniciServis;
-
-        public KorisniciController(IKorisnici korisniciServis)
+        public KorisniciController(IKorisnici korisniciServis):base(korisniciServis)
         {
-            _korisniciServis = korisniciServis;
-        }
-        [HttpGet]
-        public IEnumerable<KorisnikModel> Get()
-        {
-            return _korisniciServis.Get();
         }
     }
 }

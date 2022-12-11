@@ -4,10 +4,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace eRent.Services.Testni
+namespace eRent.Services
 {
-    public interface iProizvodiService
+    public interface IService<T> where T : class
     {
-        IEnumerable<Proizvodi> Get();
+        IEnumerable<T> Get();
     }
 }
+ 

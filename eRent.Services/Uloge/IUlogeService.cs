@@ -1,4 +1,5 @@
-﻿using eRent.Services.DataDB;
+﻿using eRent.Models;
+using eRent.Services.DataDB;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,10 +8,8 @@ using System.Threading.Tasks;
 
 namespace eRent.Services.Uloge
 {
-    public interface IUlogeService
+    public interface IUlogeService : IService<UlogaModel>
     {
-        IEnumerable<Uloga> Get();
-
-        IEnumerable<Uloga> Post(Uloga uloga);
+      
     }
 }
