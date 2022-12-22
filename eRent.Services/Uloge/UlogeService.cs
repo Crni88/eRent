@@ -1,18 +1,13 @@
 ﻿using AutoMapper;
 using eRent.Models;
+using eRent.Models.Search_Objects;
 using eRent.Services.DataDB;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Reflection.Metadata.Ecma335;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace eRent.Services.Uloge
 {
-    public class UlogeService:BaseService<UlogaModel,Uloga> , IUlogeService
+    public class UlogeService : BaseService<UlogaModel, Uloga, BaseSearchObject>, IUlogeService
     {
-        public UlogeService(ERentContext eRentContext,IMapper mapper):base(eRentContext,mapper)
+        public UlogeService(ERentContext eRentContext, IMapper mapper) : base(eRentContext, mapper)
         {
         }
     }

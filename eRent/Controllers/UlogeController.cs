@@ -1,15 +1,13 @@
 ﻿using eRent.Models;
-using eRent.Services.DataDB;
+using eRent.Models.Search_Objects;
 using eRent.Services.Uloge;
-using Microsoft.AspNetCore.Mvc;
-using System;
 
 namespace eRent.Controllers
 {
-    public class UlogeController : BaseController<UlogaModel>
+    public class UlogeController : BaseController<UlogaModel, BaseSearchObject>
     {
 
-        public UlogeController(IUlogeService ulogeService):base(ulogeService)
+        public UlogeController(IUlogeService ulogeService) : base(ulogeService)
         {
         }
     }

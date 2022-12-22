@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Text;
 
-namespace eRent.Models
+namespace eRent.Models.Requests
 {
-    public partial class KorisnikModel
+    public class KorisnikInsertRequest
     {
-        public int Id { get; set; }
         public string KorsnikIme { get; set; }
 
         public string KorisnikPrezime { get; set; }

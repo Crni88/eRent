@@ -1,30 +1,35 @@
 ﻿using AutoMapper;
+using eRent.Models.Search_Objects;
 using eRent.Services.DataDB;
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace eRent.Services
 {
-    public class BaseService<T,TDb> : IService<T> where T : class where TDb : class
+    public class BaseService<T, TDb, TSearch> : IService<T, TSearch> 
+        where T : class where TDb : class where TSearch : BaseSearchObject
     {
-        public ERentContext Context { get; set; }  
+        public ERentContext Context { get; set; }
         public IMapper Mapper { get; set; }
 
         public BaseService(ERentContext context, IMapper mapper)
         {
-            Context = context; 
-            Mapper = mapper;    
+            Context = context;
+            Mapper = mapper;
         }
-        public IEnumerable<T> Get()
+        public virtual IEnumerable<T> Get(TSearch search = null)
         {
-            var entity = Context.Set<TDb>();
-            var list  = entity.ToList();
-            return Mapper.Map<IEnumerable<T>>(list);    
-        }
+            var entity = Context.Set<TDb>().AsQueryable();
+            entity = AddFilter(entity, search);
+            if (search?.Page.HasValue == true && search?.PageSize.HasValue == true)
+            {
+                entity = entity.Take(search.PageSize.Value).Skip(search.Page.Value);
+            }
+            var list = entity.ToList();
 
+            return Mapper.Map<IEnumerable<T>>(list);
+        }
+        public virtual IQueryable<TDb> AddFilter(IQueryable<TDb> dbs, TSearch search = null)
+        {
+            return dbs;
+        }
     }
 }

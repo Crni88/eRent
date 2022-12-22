@@ -1,13 +1,15 @@
 ﻿using eRent.Models;
-using eRent.Services.DataDB;
+using eRent.Models.Requests;
+using eRent.Models.Search_Objects;
 using eRent.Services.Korisnici;
-using Microsoft.AspNetCore.Mvc;
 
 namespace eRent.Controllers
 {
-    public class KorisniciController : BaseController<KorisnikModel>
+    //[ApiController]
+    //[Route("[controller]")]
+    public class KorisniciController : BaseCRUDController<KorisnikModel, KorisnikSearchObject, KorisnikInsertRequest, KorisnikInsertRequest>
     {
-        public KorisniciController(IKorisnici korisniciServis):base(korisniciServis)
+        public KorisniciController(IKorisniciService korisniciServis) : base(korisniciServis)
         {
         }
     }

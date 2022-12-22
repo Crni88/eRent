@@ -17,9 +17,9 @@ internal class Program
         builder.Services.AddSwaggerGen();
 
         builder.Services.AddTransient<IUlogeService, UlogeService>();
-        builder.Services.AddTransient<IKorisnici, KorisniciService>();
+        builder.Services.AddTransient<IKorisniciService, KorisniciService>();
 
-        builder.Services.AddAutoMapper(typeof(IKorisnici));
+        builder.Services.AddAutoMapper(typeof(IKorisniciService));
 
 
         builder.Services.AddDbContext<ERentContext>(options =>

@@ -5,19 +5,21 @@ namespace eRent.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class BaseController<T> : ControllerBase where T : class
+    public class BaseController<T, TSearch> : ControllerBase where T : class where TSearch : class
     {
-        public IService<T> Service { get; set; }
+        public IService<T, TSearch> Service { get; set; }
 
-        public BaseController(IService<T> service)
+        public BaseController(IService<T, TSearch> service)
         {
             Service = service;
         }
 
+        //Add GetById 
+
         [HttpGet]
-        public IEnumerable<T> Get()
+        public IEnumerable<T> Get([FromQuery] TSearch search = null)
         {
-            return Service.Get();
+            return Service.Get(search);
         }
     }
 }
