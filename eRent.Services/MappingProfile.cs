@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using eRent.Models;
+using eRent.Models.Requests;
 
 namespace eRent.Services
 {
@@ -9,6 +10,8 @@ namespace eRent.Services
         {
             CreateMap<DataDB.Korisnik, KorisnikModel>();
             CreateMap<DataDB.Uloga, UlogaModel>();
+            CreateMap<KorisnikInsertRequest, DataDB.Korisnik>();
+            CreateMap<KorisnikUpdateRequest, DataDB.Korisnik>();
         }
     }
 }

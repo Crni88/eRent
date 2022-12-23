@@ -7,7 +7,7 @@ using eRent.Services.DataDB;
 namespace eRent.Services.Korisnici
 {
     public class KorisniciService
-        : BaseCRUDService<KorisnikModel, Korisnik, KorisnikSearchObject, KorisnikInsertRequest, KorisnikInsertRequest>, IKorisniciService
+        : BaseCRUDService<KorisnikModel, Korisnik, KorisnikSearchObject, KorisnikInsertRequest, KorisnikUpdateRequest>, IKorisniciService
     {
         public KorisniciService(ERentContext eRentContext, IMapper mapper) : base(eRentContext, mapper)
         {

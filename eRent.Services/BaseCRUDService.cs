@@ -4,13 +4,12 @@ using eRent.Services.DataDB;
 
 namespace eRent.Services
 {
-    public class BaseCRUDService<T, TDb, TSearch,TInsert,TUpdate> : BaseService<T, TDb, TSearch> , ICRUDService<T, TSearch, TInsert, TUpdate>
-        where T : class where TDb : class where TSearch  : BaseSearchObject where TInsert : class where TUpdate : class
+    public class BaseCRUDService<T, TDb, TSearch, TInsert, TUpdate> : BaseService<T, TDb, TSearch>, ICRUDService<T, TSearch, TInsert, TUpdate>
+        where T : class where TDb : class where TSearch : BaseSearchObject where TInsert : class where TUpdate : class
     {
-        public BaseCRUDService(ERentContext eRentContext,IMapper mapper):base(eRentContext,mapper)
+        public BaseCRUDService(ERentContext eRentContext, IMapper mapper) : base(eRentContext, mapper)
         {
         }
-
 
         public T Insert(TInsert insert)
         {
@@ -23,7 +22,18 @@ namespace eRent.Services
 
         public T Update(int id, TUpdate update)
         {
-            throw new NotImplementedException();
+            var set = Context.Set<TDb>();
+            var entity = set.Find(id);
+            if (entity != null)
+            {
+                Mapper.Map(update, entity);
+            }
+            else
+            {
+                return null;
+            }
+            Context.SaveChanges();
+            return Mapper.Map<T>(entity);
         }
     }
 }

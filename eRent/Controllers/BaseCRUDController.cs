@@ -11,6 +11,7 @@ namespace eRent.Controllers
         {
 
         }
+
         [HttpPost]
         public T Insert([FromBody] TInsert insert)
         {

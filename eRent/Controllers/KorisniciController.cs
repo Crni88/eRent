@@ -7,7 +7,7 @@ namespace eRent.Controllers
 {
     //[ApiController]
     //[Route("[controller]")]
-    public class KorisniciController : BaseCRUDController<KorisnikModel, KorisnikSearchObject, KorisnikInsertRequest, KorisnikInsertRequest>
+    public class KorisniciController : BaseCRUDController<KorisnikModel, KorisnikSearchObject, KorisnikInsertRequest, KorisnikUpdateRequest>
     {
         public KorisniciController(IKorisniciService korisniciServis) : base(korisniciServis)
         {
