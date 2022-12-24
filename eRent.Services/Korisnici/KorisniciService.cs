@@ -12,10 +12,7 @@ namespace eRent.Services.Korisnici
         public KorisniciService(ERentContext eRentContext, IMapper mapper) : base(eRentContext, mapper)
         {
         }
-        //public override IEnumerable<KorisnikModel> Get(KorisnikSearchObject korisnikSearchObject = null)
-        //{
-        //    return base.Get(korisnikSearchObject);
-        //}
+    
         public override IQueryable<Korisnik> AddFilter(IQueryable<Korisnik> query, KorisnikSearchObject search = null)
         {
             var filteredQuery = base.AddFilter(query, search);

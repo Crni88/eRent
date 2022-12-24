@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace eRent.Models
+﻿namespace eRent.Models
 {
     public partial class KorisnikModel
     {

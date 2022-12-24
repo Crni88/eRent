@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace eRent.Models.Requests
+﻿namespace eRent.Models.Requests
 {
     public class KorisnikInsertRequest
     {
@@ -18,6 +14,6 @@ namespace eRent.Models.Requests
 
         public string LozinkaHash { get; set; }
 
-        public string LozinkaSalt { get; set; } 
+        public string LozinkaSalt { get; set; }
     }
 }

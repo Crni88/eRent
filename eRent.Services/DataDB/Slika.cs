@@ -11,5 +11,7 @@ public partial class Slika
 
     public byte[]? Slika1 { get; set; }
 
+    public virtual ICollection<NekretninaKorisnik> NekretninaKorisniks { get; } = new List<NekretninaKorisnik>();
+
     public virtual ICollection<NekretninaSlika> NekretninaSlikas { get; } = new List<NekretninaSlika>();
 }

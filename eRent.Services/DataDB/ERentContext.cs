@@ -25,6 +25,8 @@ public partial class ERentContext : DbContext
 
     public virtual DbSet<Nekretnina> Nekretninas { get; set; }
 
+    public virtual DbSet<NekretninaKorisnik> NekretninaKorisniks { get; set; }
+
     public virtual DbSet<NekretninaRezervacija> NekretninaRezervacijas { get; set; }
 
     public virtual DbSet<NekretninaSlika> NekretninaSlikas { get; set; }
@@ -53,7 +55,7 @@ public partial class ERentContext : DbContext
 
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 #warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-        => optionsBuilder.UseSqlServer("Server=localhost; Database=eRent; Trusted_Connection=True; TrustServerCertificate=True");
+        => optionsBuilder.UseSqlServer("Server=.;Database=eRent;Trusted_Connection=True;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -174,6 +176,7 @@ public partial class ERentContext : DbContext
             entity.Property(e => e.Opis)
                 .HasMaxLength(500)
                 .HasColumnName("opis");
+            entity.Property(e => e.Popunjena).HasColumnName("popunjena");
 
             entity.HasOne(d => d.KorisnikNekretninaNavigation).WithMany(p => p.Nekretninas)
                 .HasForeignKey(d => d.KorisnikNekretnina)
@@ -184,6 +187,42 @@ public partial class ERentContext : DbContext
                 .HasForeignKey(d => d.LokacijaId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_lokacijaID");
+        });
+
+        modelBuilder.Entity<NekretninaKorisnik>(entity =>
+        {
+            entity.HasKey(e => e.NekretninaKorisnikId).HasName("PK_nekretninaKorisnikID");
+
+            entity.ToTable("nekretninaKorisnik");
+
+            entity.Property(e => e.NekretninaKorisnikId).HasColumnName("nekretninaKorisnikID");
+            entity.Property(e => e.BrojTelefona)
+                .HasMaxLength(50)
+                .HasColumnName("brojTelefona");
+            entity.Property(e => e.DatumIseljenja)
+                .HasColumnType("datetime")
+                .HasColumnName("datumIseljenja");
+            entity.Property(e => e.DatumUseljenja)
+                .HasColumnType("datetime")
+                .HasColumnName("datumUseljenja");
+            entity.Property(e => e.ImeKorisnika)
+                .HasMaxLength(50)
+                .HasColumnName("imeKorisnika");
+            entity.Property(e => e.Nekretnina).HasColumnName("nekretnina");
+            entity.Property(e => e.NekretninaKorisnikSlika).HasColumnName("nekretninaKorisnikSlika");
+            entity.Property(e => e.PrezimeKorisnika)
+                .HasMaxLength(50)
+                .HasColumnName("prezimeKorisnika");
+
+            entity.HasOne(d => d.NekretninaNavigation).WithMany(p => p.NekretninaKorisniks)
+                .HasForeignKey(d => d.Nekretnina)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_nekretninaKorisnik");
+
+            entity.HasOne(d => d.NekretninaKorisnikSlikaNavigation).WithMany(p => p.NekretninaKorisniks)
+                .HasForeignKey(d => d.NekretninaKorisnikSlika)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_nekretninaKorisnikSlika");
         });
 
         modelBuilder.Entity<NekretninaRezervacija>(entity =>

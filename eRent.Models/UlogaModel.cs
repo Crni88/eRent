@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace eRent.Models
+﻿namespace eRent.Models
 {
     public partial class UlogaModel
     {

@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace eRent.Models.Requests
+﻿namespace eRent.Models.Requests
 {
     public class KorisnikUpdateRequest
     {
