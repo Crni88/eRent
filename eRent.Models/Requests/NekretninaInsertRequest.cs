@@ -1,8 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace eRent.Models.Requests
 {
-    public class NekretninaUpsertRequest
+    public class NekretninaInsertRequest
     {
         public int KorisnikNekretnina { get; set; }
 
@@ -23,5 +24,6 @@ namespace eRent.Models.Requests
 
         public string Opis { get; set; }
 
+        public List<int> TagIdList { get; set; } = new List<int> { };
     }
 }

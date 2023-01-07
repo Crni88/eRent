@@ -12,8 +12,7 @@
 
         public double? Rejting { get; set; }
 
-        public string LozinkaHash { get; set; }
+        public string Password { get; set; }
 
-        public string LozinkaSalt { get; set; }
     }
 }

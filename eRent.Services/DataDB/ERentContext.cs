@@ -267,11 +267,11 @@ public partial class ERentContext : DbContext
 
         modelBuilder.Entity<NekretninaTagovi>(entity =>
         {
-            entity.HasKey(e => e.TaggingsId).HasName("PK_taggingsID");
+            entity.HasKey(e => e.NtId).HasName("ntID");
 
             entity.ToTable("nekretninaTagovi");
 
-            entity.Property(e => e.TaggingsId).HasColumnName("taggingsID");
+            entity.Property(e => e.NtId).HasColumnName("ntID");
             entity.Property(e => e.NekretninaId).HasColumnName("nekretninaID");
             entity.Property(e => e.TagId).HasColumnName("tagID");
 
@@ -417,11 +417,11 @@ public partial class ERentContext : DbContext
 
         modelBuilder.Entity<Tag>(entity =>
         {
-            entity.HasKey(e => e.TagsId).HasName("PK_tagsID");
+            entity.HasKey(e => e.TagId).HasName("PK_tagsID");
 
             entity.ToTable("tags");
 
-            entity.Property(e => e.TagsId).HasColumnName("tagsID");
+            entity.Property(e => e.TagId).HasColumnName("tagID");
             entity.Property(e => e.TagName)
                 .HasMaxLength(50)
                 .HasColumnName("tagName");

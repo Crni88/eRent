@@ -6,7 +6,7 @@ using eRent.Services.Nekretnina;
 namespace eRent.Controllers
 {
     public class NekretnineController :
-        BaseCRUDController<NekretninaModel, NekretninaSearchObject, NekretninaUpsertRequest, NekretninaUpsertRequest>
+        BaseCRUDController<NekretninaModel, NekretninaSearchObject, NekretninaInsertRequest, NekretninaUpdateRequest>
     {
         public NekretnineController(INekretnineService service) : base(service)
         {

@@ -25,6 +25,7 @@ internal class Program
         builder.Services.AddTransient<INekretnineService, NekretnineService>();
         builder.Services.AddTransient<ITagsService, TagsService>();
 
+
         builder.Services.AddAutoMapper(typeof(IKorisniciService));
 
 

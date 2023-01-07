@@ -5,7 +5,7 @@ namespace eRent.Services.DataDB;
 
 public partial class Tag
 {
-    public int TagsId { get; set; }
+    public int TagId { get; set; }
 
     public string TagName { get; set; } = null!;
 

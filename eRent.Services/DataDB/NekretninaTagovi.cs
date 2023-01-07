@@ -5,7 +5,7 @@ namespace eRent.Services.DataDB;
 
 public partial class NekretninaTagovi
 {
-    public int TaggingsId { get; set; }
+    public int NtId { get; set; }
 
     public int NekretninaId { get; set; }
 

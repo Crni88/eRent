@@ -7,10 +7,23 @@ using eRent.Services.DataDB;
 namespace eRent.Services.Nekretnina
 {
     public class NekretnineService
-        : BaseCRUDService<NekretninaModel, DataDB.Nekretnina, NekretninaSearchObject, NekretninaUpsertRequest, NekretninaUpsertRequest>, INekretnineService
+        : BaseCRUDService<NekretninaModel, DataDB.Nekretnina, NekretninaSearchObject, NekretninaInsertRequest, NekretninaUpdateRequest>, INekretnineService
     {
         public NekretnineService(ERentContext eRentContext, IMapper mapper) : base(eRentContext, mapper)
+        { }
+
+        public override NekretninaModel Insert(NekretninaInsertRequest insert)
         {
+            var entity = base.Insert(insert);
+            foreach (var tagId in insert.TagIdList)
+            {
+                DataDB.NekretninaTagovi nekretninaTagovi = new DataDB.NekretninaTagovi();
+                nekretninaTagovi.NekretninaId = entity.NekretninaId;
+                nekretninaTagovi.TagId = tagId;
+                Context.NekretninaTagovis.Add(nekretninaTagovi);
+            }
+            Context.SaveChanges();
+            return entity;
         }
 
         public override IQueryable<DataDB.Nekretnina> AddFilter(IQueryable<DataDB.Nekretnina> query, NekretninaSearchObject search = null)
