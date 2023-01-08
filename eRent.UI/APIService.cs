@@ -27,7 +27,7 @@ namespace eRent.UI
             var result = await $"{_endpoint}{_resource}".PostJsonAsync(request).ReceiveJson<T>();
             return result;
         }
-        public async Task<T> Put<T>(object request, object id)
+        public async Task<T> Put<T>(object id, object request)
         {
             var result = await $"{_endpoint}{_resource}/{id}".PutJsonAsync(request).ReceiveJson<T>();
             return result;

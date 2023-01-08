@@ -21,5 +21,11 @@ namespace eRent.Controllers
         {
             return Service.Get(search);
         }
+
+        [HttpGet("{id}")]
+        public T GetById(int id)
+        {
+            return Service.GetById(id); 
+        }
     }
 }

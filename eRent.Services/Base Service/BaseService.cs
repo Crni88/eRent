@@ -4,7 +4,7 @@ using eRent.Services.DataDB;
 
 namespace eRent.Services
 {
-    public class BaseService<T, TDb, TSearch> : IService<T, TSearch> 
+    public class BaseService<T, TDb, TSearch> : IService<T, TSearch>
         where T : class where TDb : class where TSearch : BaseSearchObject
     {
         public ERentContext Context { get; set; }
@@ -27,6 +27,15 @@ namespace eRent.Services
 
             return Mapper.Map<IEnumerable<T>>(list);
         }
+
+        public T GetById(int id)
+        {
+            var set = Context.Set<TDb>();
+            var entity = set.Find(id);
+            return Mapper.Map<T>(entity);
+        }
+
+
         public virtual IQueryable<TDb> AddFilter(IQueryable<TDb> dbs, TSearch search = null)
         {
             return dbs;

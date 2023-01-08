@@ -1,5 +1,4 @@
 ﻿using eRent.Models;
-using Flurl.Http;
 
 namespace eRent.UI
 {
@@ -22,7 +21,9 @@ namespace eRent.UI
             //Get Json Async Returns a TASK 
             var list = await NekretnineService.Get<List<NekretninaModel>>();
             //TODO Test Out The Update Method When Get By Id is Fixed
-           // var update = await NekretnineService.Put(4,)
+            var entity = await NekretnineService.GetById<NekretninaModel>(4);
+            entity.Opis = "Testni Opis Sa Formi Dolazi";
+            var update = await NekretnineService.Put<NekretninaModel>(entity.NekretninaId, entity);
         }
 
         private void frmNekretninaList_Load(object sender, EventArgs e)

@@ -33,10 +33,6 @@ namespace eRent.Services.Nekretnina
             var filteredQuery = base.AddFilter(query, search);
 
             //TODO Add Get Nekretnina By ID
-            if (!string.IsNullOrEmpty(search?.NekretninaId.ToString()))
-            {
-                filteredQuery = filteredQuery.Where(x => x.NekretninaId == search.NekretninaId);
-            }
             if (!string.IsNullOrWhiteSpace(search?.NazivNekretnine))
             {
                 filteredQuery = filteredQuery.Where(x => x.NazivNekretnine.StartsWith(search.NazivNekretnine));
