@@ -12,6 +12,7 @@ namespace eRent.Services.Korisnici
         : BaseCRUDService<KorisnikModel, Korisnik, KorisnikSearchObject, KorisnikInsertRequest, KorisnikUpdateRequest>, IKorisniciService
     {
 
+        //TODO Add NekretninaKorisnik Service and APIs
         public KorisniciService(ERentContext eRentContext, IMapper mapper) : base(eRentContext, mapper)
         {
         }
@@ -49,10 +50,14 @@ namespace eRent.Services.Korisnici
         public override IQueryable<Korisnik> AddFilter(IQueryable<Korisnik> query, KorisnikSearchObject search = null)
         {
             var filteredQuery = base.AddFilter(query, search);
-            if (!string.IsNullOrEmpty(search?.KorisnikId.ToString()))
-            {
-                filteredQuery = filteredQuery.Where(x => x.KorisnikId.ToString() == search.KorisnikId.ToString());
-            }
+
+            //TODO Add Get Korisnik By ID
+
+
+            //if (!string.IsNullOrEmpty(search?.KorisnikId.ToString()))
+            //{
+            //    filteredQuery = filteredQuery.Where(x => x.KorisnikId.ToString() == search.KorisnikId.ToString());
+            //}
             if (!string.IsNullOrEmpty(search?.Email))
             {
                 filteredQuery = filteredQuery.Where(x => x.Email == search.Email);

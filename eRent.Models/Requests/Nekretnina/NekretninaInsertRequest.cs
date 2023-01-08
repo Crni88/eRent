@@ -3,6 +3,7 @@ using System.Collections.Generic;
 
 namespace eRent.Models.Requests
 {
+    //TODO Add Nekretnina Image Property
     public class NekretninaInsertRequest
     {
         public int KorisnikNekretnina { get; set; }
@@ -25,5 +26,8 @@ namespace eRent.Models.Requests
         public string Opis { get; set; }
 
         public List<int> TagIdList { get; set; } = new List<int> { };
+
+        //TODO Add Property that will be public List<int> Nekretnina slike
+        //Possible List<Slika>
     }
 }

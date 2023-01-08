@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eRent", "eRent.csproj", "{4
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eRent.Services", "..\eRent.Services\eRent.Services.csproj", "{D47893A9-61CB-405F-B81C-5AF1AA4F0304}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eRent.Models", "..\eRent.Models\eRent.Models.csproj", "{916D919F-BC2D-45EA-B486-4C8EA0948188}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "eRent.Models", "..\eRent.Models\eRent.Models.csproj", "{916D919F-BC2D-45EA-B486-4C8EA0948188}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "eRent.UI", "..\eRent.UI\eRent.UI.csproj", "{CA33C08E-9411-4E19-AF0B-094A0C8B7C4F}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{916D919F-BC2D-45EA-B486-4C8EA0948188}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{916D919F-BC2D-45EA-B486-4C8EA0948188}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{916D919F-BC2D-45EA-B486-4C8EA0948188}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CA33C08E-9411-4E19-AF0B-094A0C8B7C4F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CA33C08E-9411-4E19-AF0B-094A0C8B7C4F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CA33C08E-9411-4E19-AF0B-094A0C8B7C4F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CA33C08E-9411-4E19-AF0B-094A0C8B7C4F}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

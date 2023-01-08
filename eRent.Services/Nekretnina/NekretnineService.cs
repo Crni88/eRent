@@ -12,6 +12,8 @@ namespace eRent.Services.Nekretnina
         public NekretnineService(ERentContext eRentContext, IMapper mapper) : base(eRentContext, mapper)
         { }
 
+        //TODO Add Nekretnina Image Upload
+
         public override NekretninaModel Insert(NekretninaInsertRequest insert)
         {
             var entity = base.Insert(insert);
@@ -30,6 +32,11 @@ namespace eRent.Services.Nekretnina
         {
             var filteredQuery = base.AddFilter(query, search);
 
+            //TODO Add Get Nekretnina By ID
+            if (!string.IsNullOrEmpty(search?.NekretninaId.ToString()))
+            {
+                filteredQuery = filteredQuery.Where(x => x.NekretninaId == search.NekretninaId);
+            }
             if (!string.IsNullOrWhiteSpace(search?.NazivNekretnine))
             {
                 filteredQuery = filteredQuery.Where(x => x.NazivNekretnine.StartsWith(search.NazivNekretnine));
