@@ -2,7 +2,8 @@
 {
     public partial class KorisnikModel
     {
-        public int Id { get; set; }
+        public int KorisnikId { get; set; }
+        
         public string KorsnikIme { get; set; }
 
         public string KorisnikPrezime { get; set; }

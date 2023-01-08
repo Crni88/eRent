@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace eRent.Services.DataDB;
+﻿namespace eRent.Services.DataDB;
 
 public partial class Nekretnina
 {
@@ -26,6 +23,8 @@ public partial class Nekretnina
     public bool? Izdvojena { get; set; }
 
     public bool? Popunjena { get; set; }
+
+    //public string StateMachine { get; set; }
 
     public virtual Korisnik KorisnikNekretninaNavigation { get; set; } = null!;
 

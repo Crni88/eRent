@@ -8,7 +8,7 @@ namespace eRent.Services.NekretninaStateMachine
 
         public string CurrentState { get; set; }
 
-        public virtual void Insert(NekretninaInsertRequest insert)
+        public virtual DataDB.Nekretnina Insert(NekretninaInsertRequest insert)
         {
             throw new Exception("Not Allowed!");
         }
@@ -44,19 +44,19 @@ namespace eRent.Services.NekretninaStateMachine
         {
             throw new Exception("Not Allowed");
         }
-         
-        public BaseState CreateState(string stateName)
+
+        public static BaseState CreateState(string stateName)
         {
             switch (stateName)
             {
                 case "initial":
                     return new InitialNekretninaState();
                 case "draft":
-                    return new InitialNekretninaState();
-                case "active":
-                    return new InitialNekretninaState();
+                    return new DraftNekretninaState();
+                //case "active":
+                //    return new ();
                 default:
-                    break;
+                    return new DraftNekretninaState();
             }
         }
     }
