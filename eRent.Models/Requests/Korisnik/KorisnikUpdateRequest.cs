@@ -1,4 +1,4 @@
-﻿namespace eRent.Models.Requests
+﻿namespace eRent.Models.Requests.Korisnik
 {
     public class KorisnikUpdateRequest
     {

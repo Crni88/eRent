@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using eRent.Models;
 using eRent.Models.Requests;
+using eRent.Models.Requests.Korisnik;
 
 namespace eRent.Services
 {
