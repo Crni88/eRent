@@ -30,6 +30,7 @@ namespace eRent.Services.Korisnici
             var salt = GenerateSalt();
             entity.LozinkaSalt = salt;
             entity.LozinkaHash = GenerateHash(salt, insert.Password);
+            entity.Username = insert.KorsnikIme + " "+insert.KorisnikPrezime;
             base.BeforeInsert(insert, entity);
         }
 
@@ -51,26 +52,29 @@ namespace eRent.Services.Korisnici
         {
             var filteredQuery = base.AddFilter(query, search);
 
-            //TODO Add Get Korisnik By ID
 
+            if (!string.IsNullOrEmpty(search?.NameFTS))
+            {
+                filteredQuery = filteredQuery.Where(x => x.KorsnikIme.Contains(search.NameFTS)|| 
+                x.KorisnikPrezime.Contains(search.NameFTS)|| x.Username.Contains(search.NameFTS));
 
-            //if (!string.IsNullOrEmpty(search?.KorisnikId.ToString()))
-            //{
-            //    filteredQuery = filteredQuery.Where(x => x.KorisnikId.ToString() == search.KorisnikId.ToString());
-            //}
+            }
             if (!string.IsNullOrEmpty(search?.Email))
             {
                 filteredQuery = filteredQuery.Where(x => x.Email == search.Email);
             }
-            if (!string.IsNullOrEmpty(search?.KorsnikIme))
+            if (!string.IsNullOrEmpty(search?.Username))
             {
-                filteredQuery = filteredQuery.Where(x => x.KorsnikIme == search.KorsnikIme);
+                filteredQuery = filteredQuery.Where(x => x.Username == search.Username);
             }
-
-            if (!string.IsNullOrEmpty(search?.KorsnikPrezime))
-            {
-                filteredQuery = filteredQuery.Where(x => x.KorisnikPrezime == search.KorsnikPrezime);
-            }
+            //if (!string.IsNullOrEmpty(search?.KorsnikIme))
+            //{
+            //    filteredQuery = filteredQuery.Where(x => x.KorsnikIme == search.KorsnikIme);
+            //}
+            //if (!string.IsNullOrEmpty(search?.KorsnikPrezime))
+            //{
+            //    filteredQuery = filteredQuery.Where(x => x.KorisnikPrezime == search.KorsnikPrezime);
+            //}
 
             //if (search.Page.HasValue)
             //{

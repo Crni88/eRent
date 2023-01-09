@@ -107,6 +107,9 @@ public partial class ERentContext : DbContext
                 .HasColumnName("lozinkaSalt");
             entity.Property(e => e.Rejting).HasColumnName("rejting");
             entity.Property(e => e.UlogaId).HasColumnName("ulogaId");
+            entity.Property(e => e.Username)
+                .HasMaxLength(50)
+                .HasColumnName("username");
 
             entity.HasOne(d => d.Uloga).WithMany(p => p.Korisniks)
                 .HasForeignKey(d => d.UlogaId)

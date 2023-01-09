@@ -21,6 +21,8 @@ public partial class Korisnik
 
     public double? Rejting { get; set; }
 
+    public string? Username { get; set; }
+
     public virtual ICollection<Izvjestaj> Izvjestajs { get; } = new List<Izvjestaj>();
 
     public virtual ICollection<KorisnikRezervacija> KorisnikRezervacijas { get; } = new List<KorisnikRezervacija>();

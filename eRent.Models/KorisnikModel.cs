@@ -13,5 +13,7 @@
         public int? UlogaId { get; set; }
 
         public double? Rejting { get; set; }
+
+        public string Username { get; set; }
     }
 }

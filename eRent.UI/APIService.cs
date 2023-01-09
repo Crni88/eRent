@@ -1,4 +1,5 @@
-﻿using Flurl.Http;
+﻿using eRent.Models;
+using Flurl.Http;
 
 namespace eRent.UI
 {
@@ -10,9 +11,14 @@ namespace eRent.UI
         {
             _resource = resource;
         }
-        public async Task<T> Get<T>()
+        public async Task<T> Get<T>(object search = null)
         {
-            var list = await $"{_endpoint}{_resource}".GetJsonAsync<T>();
+            var query = "";
+            if (search != null)
+            {
+                query = await search.ToQueryString();
+            }
+            var list = await $"{_endpoint}{_resource}?{query}".GetJsonAsync<T>();
             return list;
         }
 
