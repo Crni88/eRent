@@ -9,7 +9,6 @@
         public int UlogaId { get; set; }
         public int Rejting { get; set; }
         public string Username { get; set; }
-
         public string NameFTS { get; set; }
     }
 }

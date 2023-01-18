@@ -4,7 +4,9 @@ using eRent.Services.Lokacija;
 using eRent.Services.Nekretnina;
 using eRent.Services.Tags;
 using eRent.Services.Uloge;
+using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models;
 
 internal class Program
 {
@@ -17,7 +19,25 @@ internal class Program
         builder.Services.AddControllers();
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
-        builder.Services.AddSwaggerGen();
+        builder.Services.AddSwaggerGen(c =>
+        {
+            c.AddSecurityDefinition("basicAuth", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+            {
+                Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
+                Scheme = "basic"
+            });
+
+            c.AddSecurityRequirement(new OpenApiSecurityRequirement
+    {
+        {
+            new OpenApiSecurityScheme
+            {
+                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "basicAuth" }
+            },
+            new string[]{}
+        }
+    });
+        });
 
         builder.Services.AddTransient<IUlogeService, UlogeService>();
         builder.Services.AddTransient<IKorisniciService, KorisniciService>();
@@ -26,6 +46,9 @@ internal class Program
         builder.Services.AddTransient<ITagsService, TagsService>();
 
         builder.Services.AddAutoMapper(typeof(IKorisniciService));
+
+        builder.Services.AddAuthentication("BasicAuthentication")
+            .AddScheme<AuthenticationSchemeOptions, BasicAuthHandler>("BasicAuthentication", null);
 
 
         builder.Services.AddDbContext<ERentContext>(options =>
@@ -43,6 +66,7 @@ internal class Program
 
         app.UseHttpsRedirection();
 
+        app.UseAuthentication();
         app.UseAuthorization();
 
         app.MapControllers();

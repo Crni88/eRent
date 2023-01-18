@@ -17,6 +17,24 @@ namespace eRent.Services.Korisnici
         {
         }
 
+        public Models.KorisnikModel Login(string username, string password)
+        {
+            var entity = Context.Korisniks.FirstOrDefault(x => x.Username == username);
+            if (entity == null)
+            {
+                return null;
+            }
+
+            var hash = GenerateHash(entity.LozinkaSalt, password);
+
+            if (hash != entity.LozinkaHash)
+            {
+                return null;
+            }
+            return Mapper.Map<Models.KorisnikModel>(entity);    
+        }
+
+
         public static string GenerateSalt()
         {
             RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider();
@@ -25,12 +43,13 @@ namespace eRent.Services.Korisnici
             return Convert.ToBase64String(byteArray);
         }
 
+
         public override void BeforeInsert(KorisnikInsertRequest insert, Korisnik entity)
         {
             var salt = GenerateSalt();
             entity.LozinkaSalt = salt;
             entity.LozinkaHash = GenerateHash(salt, insert.Password);
-            entity.Username = insert.KorsnikIme + " "+insert.KorisnikPrezime;
+            entity.Username = insert.Username;
             base.BeforeInsert(insert, entity);
         }
 
@@ -55,8 +74,8 @@ namespace eRent.Services.Korisnici
 
             if (!string.IsNullOrEmpty(search?.NameFTS))
             {
-                filteredQuery = filteredQuery.Where(x => x.KorsnikIme.Contains(search.NameFTS)|| 
-                x.KorisnikPrezime.Contains(search.NameFTS)|| x.Username.Contains(search.NameFTS));
+                filteredQuery = filteredQuery.Where(x => x.KorsnikIme.Contains(search.NameFTS) ||
+                x.KorisnikPrezime.Contains(search.NameFTS) || x.Username.Contains(search.NameFTS));
 
             }
             if (!string.IsNullOrEmpty(search?.Email))

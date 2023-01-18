@@ -28,7 +28,7 @@ namespace eRent.UI
 
         private async void btnShow_Click(object sender, EventArgs e)
         {
-            var searchObject = new KorisnikSearchObject();
+            var searchObject = new KorisnikSearchObject(); 
             searchObject.NameFTS = txtUsername.Text;
             var list = await KorisniciService.Get<List<KorisnikModel>>(searchObject);
             dgvKorisnici.DataSource = list; 

@@ -4,6 +4,8 @@ using eRent.Models.Search_Objects;
 
 namespace eRent.Services.Korisnici
 {
-    public interface IKorisniciService : ICRUDService<KorisnikModel,KorisnikSearchObject, KorisnikInsertRequest, KorisnikUpdateRequest>
-    { }
+    public interface IKorisniciService : ICRUDService<KorisnikModel, KorisnikSearchObject, KorisnikInsertRequest, KorisnikUpdateRequest>
+    {
+        Models.KorisnikModel Login(string username, string password);
+    }
 }

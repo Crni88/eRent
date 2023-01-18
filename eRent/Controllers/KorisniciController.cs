@@ -12,5 +12,13 @@ namespace eRent.Controllers
         public KorisniciController(IKorisniciService korisniciServis) : base(korisniciServis)
         {
         }
+
+
+        //Dodavanje sa authorizacijom
+        //[Authorize("Admin")]
+        //public override KorisnikModel Insert([FromBody] KorisnikInsertRequest korisnikInsertRequest)
+        //{
+        //    return base.Insert(korisnikInsertRequest);
+        //}
     }
 }
