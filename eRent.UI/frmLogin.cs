@@ -2,22 +2,12 @@
 {
     public partial class frmLogin : Form
     {
-
-        private readonly APIService _ApiService = new APIService("Korisnici");
+        private readonly APIService _ApiService = new APIService("Nekretnine");
+        private readonly APIService korisnikService = new APIService("Korisnici");
 
         public frmLogin()
         {
             InitializeComponent();
-        }
-
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void frmLogin_Load(object sender, EventArgs e)
-        {
-
         }
 
         private async void btnLogin_Click(object sender, EventArgs e)
@@ -28,14 +18,15 @@
             try
             {
                 var result = await _ApiService.Get<dynamic>();
-                frmKorisnici frmKorisnici = new frmKorisnici();
-                frmKorisnici.Show();
+                // var korisnik = await korisnikService.Get<KorisnikModel>(APIService.username);
+                // APIService.korisnik = korisnik;
+                frmNekretninaList frmNekretnina = new frmNekretninaList();
+                frmNekretnina.Show();
             }
-
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
-        } 
+        }
     }
 }

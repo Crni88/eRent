@@ -13,5 +13,8 @@
         public string Drzava { get; set; }
 
         public int? PostanskiBroj { get; set; }
+
+        public virtual NekretninaModel Nekretninas { get; set; }
+
     }
 }

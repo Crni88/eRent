@@ -27,9 +27,13 @@ public partial class Nekretnina
 
     public bool? Popunjena { get; set; }
 
+    public string? Username { get; set; }
+    public string? Grad { get; set; }
+
     public virtual Korisnik KorisnikNekretninaNavigation { get; set; } = null!;
 
     public virtual Lokacija Lokacija { get; set; } = null!;
+
 
     public virtual ICollection<NekretninaKorisnik> NekretninaKorisniks { get; } = new List<NekretninaKorisnik>();
 

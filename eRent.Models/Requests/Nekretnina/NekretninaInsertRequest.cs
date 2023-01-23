@@ -7,6 +7,7 @@ namespace eRent.Models.Requests
     public class NekretninaInsertRequest
     {
         public int KorisnikNekretnina { get; set; }
+        public string Username { get; set; }
 
         public string NazivNekretnine { get; set; }
 
@@ -21,9 +22,11 @@ namespace eRent.Models.Requests
         public int LokacijaId { get; set; }
 
         public bool? Izdvojena { get; set; }
+
         public bool? Popunjena { get; set; }
 
         public string Opis { get; set; }
+        public string Grad { get; set; }
 
         public List<int> TagIdList { get; set; } = new List<int> { };
 

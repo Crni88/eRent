@@ -16,7 +16,7 @@ namespace eRent.Models
 
         public int BrojSoba { get; set; }
 
-        public bool? Namještena { get; set; }
+        public bool Namještena { get; set; }
 
         public string Opis { get; set; }
 
@@ -26,8 +26,10 @@ namespace eRent.Models
 
         public bool? Popunjena { get; set; }
 
-        public virtual KorisnikModel KorisnikNekretninaNavigation { get; set; }
+        public string Username { get; set; }
 
         public virtual LokacijaModel Lokacija { get; set; }
+
+        public string Grad { get; set; }    
     }
 }

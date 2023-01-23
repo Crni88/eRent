@@ -6,6 +6,8 @@ namespace eRent.Models.Search_Objects
     {
         public int NekretninaId { get; set; }
 
+        public string Username { get; set; }
+
         public int KorisnikNekretnina { get; set; }
 
         public string NazivNekretnine { get; set; }
@@ -19,6 +21,8 @@ namespace eRent.Models.Search_Objects
         public bool? Namještena { get; set; }
 
         public int LokacijaId { get; set; }
+
+        public string NameFTS { get; set; }
 
         //public bool? Izdvojena { get; set; }
     }

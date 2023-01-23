@@ -6,7 +6,7 @@ using eRent.Services.DataDB;
 
 namespace eRent.Services.Lokacija
 {
-    public class LokacijaService : 
+    public class LokacijaService :
         BaseCRUDService<LokacijaModel, DataDB.Lokacija, LokacijaSearchObject, LokacijaUpsertRequest, LokacijaUpsertRequest>,
         ILokacijaService
     {
@@ -18,6 +18,11 @@ namespace eRent.Services.Lokacija
         public override IQueryable<DataDB.Lokacija> AddFilter(IQueryable<DataDB.Lokacija> query, LokacijaSearchObject search = null)
         {
             var filteredQuery = base.AddFilter(query, search);
+
+            if (search.LokacijaId != 0)
+            {
+                filteredQuery = filteredQuery.Where(x => x.LokacijaId == search.LokacijaId);
+            }
 
             if (!string.IsNullOrWhiteSpace(search?.Adresa))
             {

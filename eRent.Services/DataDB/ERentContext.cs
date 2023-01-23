@@ -180,6 +180,9 @@ public partial class ERentContext : DbContext
                 .HasMaxLength(500)
                 .HasColumnName("opis");
             entity.Property(e => e.Popunjena).HasColumnName("popunjena");
+            entity.Property(e => e.Username)
+                .HasMaxLength(50)
+                .HasColumnName("username");
 
             entity.HasOne(d => d.KorisnikNekretninaNavigation).WithMany(p => p.Nekretninas)
                 .HasForeignKey(d => d.KorisnikNekretnina)

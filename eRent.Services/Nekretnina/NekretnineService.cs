@@ -37,6 +37,14 @@ namespace eRent.Services.Nekretnina
             {
                 filteredQuery = filteredQuery.Where(x => x.NazivNekretnine.StartsWith(search.NazivNekretnine));
             }
+            if (!string.IsNullOrEmpty(search?.NameFTS))
+            {
+                filteredQuery = filteredQuery.Where(x=>x.NazivNekretnine.Contains(search.NameFTS));
+            }
+            if (!string.IsNullOrWhiteSpace(search?.Username))
+            {
+                filteredQuery = filteredQuery.Where(x => x.Username == search.Username);
+            }
             return filteredQuery;
         }
     }

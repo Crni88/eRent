@@ -30,10 +30,15 @@ public class BasicAuthHandler : AuthenticationHandler<AuthenticationSchemeOption
 
         var user = KorisniciService.Login(username, password);
 
+        if (user == null)
+        {
+            return AuthenticateResult.Fail("Incorrect Username or Password");
+        }
+
         var claims = new List<Claim>
         {
             new Claim(ClaimTypes.Name, username),
-            new Claim(ClaimTypes.Name, user.KorsnikIme),
+            //new Claim(ClaimTypes.Name, user.KorsnikIme),
         };
 
         var identity = new ClaimsIdentity(claims, Scheme.Name);

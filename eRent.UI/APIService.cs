@@ -11,6 +11,7 @@ namespace eRent.UI
         public static string username = null;
         public static string password = null;
 
+        public static KorisnikModel korisnik = null;
 
         public APIService(string resource)
         {

@@ -51,7 +51,6 @@
             this.txtUsername.Name = "txtUsername";
             this.txtUsername.Size = new System.Drawing.Size(110, 23);
             this.txtUsername.TabIndex = 1;
-            this.txtUsername.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
             // 
             // txtPassword
             // 
@@ -95,7 +94,6 @@
             this.Name = "frmLogin";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmLogin";
-            this.Load += new System.EventHandler(this.frmLogin_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
