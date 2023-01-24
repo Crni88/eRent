@@ -22,14 +22,16 @@ namespace eRent.Models
 
         public int LokacijaId { get; set; }
 
-        public bool? Izdvojena { get; set; }
+        public bool Izdvojena { get; set; }
 
-        public bool? Popunjena { get; set; }
+        public bool Popunjena { get; set; }
 
         public string Username { get; set; }
 
         public virtual LokacijaModel Lokacija { get; set; }
 
-        public string Grad { get; set; }    
+        public string Grad { get; set; }
+
+        public string Drzava { get; set; }
     }
 }

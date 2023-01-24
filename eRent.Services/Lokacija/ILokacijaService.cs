@@ -6,7 +6,5 @@ namespace eRent.Services.Lokacija
 {
     public interface ILokacijaService : ICRUDService<LokacijaModel, LokacijaSearchObject, LokacijaUpsertRequest, LokacijaUpsertRequest>
     {
-
-
     }
 }

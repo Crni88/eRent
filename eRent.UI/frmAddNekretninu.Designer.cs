@@ -75,7 +75,7 @@
             // 
             // btnDodajSliku
             // 
-            this.btnDodajSliku.Location = new System.Drawing.Point(99, 500);
+            this.btnDodajSliku.Location = new System.Drawing.Point(109, 500);
             this.btnDodajSliku.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDodajSliku.Name = "btnDodajSliku";
             this.btnDodajSliku.Size = new System.Drawing.Size(86, 31);

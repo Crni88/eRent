@@ -48,7 +48,15 @@ namespace eRent.UI
 
         private void dgvNekretnineList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-
+            if (e.ColumnIndex == 6)
+            {
+                var nekretnina = dgvNekretnineList.SelectedRows[0].DataBoundItem as NekretninaModel;
+                if (nekretnina != null)
+                {
+                    frmAddNekretninu addNekretninu = new frmAddNekretninu(nekretnina);
+                    addNekretninu.Show();
+                }
+            }
         }
     }
 }

@@ -9,9 +9,9 @@ namespace eRent.Services.Nekretnina
     public class NekretnineService
         : BaseCRUDService<NekretninaModel, DataDB.Nekretnina, NekretninaSearchObject, NekretninaInsertRequest, NekretninaUpdateRequest>, INekretnineService
     {
+
         public NekretnineService(ERentContext eRentContext, IMapper mapper) : base(eRentContext, mapper)
         { }
-
         //TODO Add Nekretnina Image Upload
 
         public override NekretninaModel Insert(NekretninaInsertRequest insert)
@@ -24,7 +24,8 @@ namespace eRent.Services.Nekretnina
                 nekretninaTagovi.TagId = tagId;
                 Context.NekretninaTagovis.Add(nekretninaTagovi);
             }
-            Context.SaveChanges();
+            entity.Drzava = Context.Lokacijas.Where(x => x.LokacijaId == insert.LokacijaId).Select(x => x.Drzava).FirstOrDefault();
+                Context.SaveChanges();
             return entity;
         }
 
@@ -39,7 +40,7 @@ namespace eRent.Services.Nekretnina
             }
             if (!string.IsNullOrEmpty(search?.NameFTS))
             {
-                filteredQuery = filteredQuery.Where(x=>x.NazivNekretnine.Contains(search.NameFTS));
+                filteredQuery = filteredQuery.Where(x => x.NazivNekretnine.Contains(search.NameFTS));
             }
             if (!string.IsNullOrWhiteSpace(search?.Username))
             {

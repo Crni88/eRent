@@ -6,7 +6,7 @@ namespace eRent.Models.Requests
     {
         //public int KorisnikNekretnina { get; set; }
 
-        //public string NazivNekretnine { get; set; }
+        public string NazivNekretnine { get; set; }
 
         public int Cijena { get; set; }
 
@@ -22,6 +22,7 @@ namespace eRent.Models.Requests
         public bool? Popunjena { get; set; }
 
         public string Opis { get; set; }
+        public string Grad { get; set; }
 
     }
 }
