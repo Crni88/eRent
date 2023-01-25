@@ -2,6 +2,7 @@
 using eRent.Models;
 using eRent.Models.Requests;
 using eRent.Models.Requests.Korisnik;
+using eRent.Models.Requests.NekretninaKorisnik;
 
 namespace eRent.Services
 {
@@ -24,6 +25,9 @@ namespace eRent.Services
             //Tag 
             CreateMap<DataDB.Tag, TagModel>();
             CreateMap<TagUpsertRequest, DataDB.Tag>();
+            //NekretninaKorisnik
+            CreateMap<DataDB.NekretninaKorisnik, NekretninaKorisnikModel>();
+            CreateMap<NekretninaKorisnikUpsertRequest, DataDB.NekretninaKorisnik>();
         }
     }
 }

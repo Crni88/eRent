@@ -47,7 +47,6 @@
             this.cbNamjestena = new System.Windows.Forms.CheckBox();
             this.cbMiran = new System.Windows.Forms.CheckBox();
             this.cbNoSmoking = new System.Windows.Forms.CheckBox();
-            this.btnKorisnici = new System.Windows.Forms.Button();
             this.btnSpasi = new System.Windows.Forms.Button();
             this.cbPopunjena = new System.Windows.Forms.CheckBox();
             this.cbIzdvojena = new System.Windows.Forms.CheckBox();
@@ -230,17 +229,6 @@
             this.cbNoSmoking.Text = "No smoking";
             this.cbNoSmoking.UseVisualStyleBackColor = true;
             // 
-            // btnKorisnici
-            // 
-            this.btnKorisnici.Location = new System.Drawing.Point(815, 500);
-            this.btnKorisnici.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnKorisnici.Name = "btnKorisnici";
-            this.btnKorisnici.Size = new System.Drawing.Size(86, 31);
-            this.btnKorisnici.TabIndex = 20;
-            this.btnKorisnici.Text = "Korisnici";
-            this.btnKorisnici.UseVisualStyleBackColor = true;
-            this.btnKorisnici.Click += new System.EventHandler(this.btnKorisnici_Click);
-            // 
             // btnSpasi
             // 
             this.btnSpasi.Location = new System.Drawing.Point(815, 553);
@@ -294,7 +282,6 @@
             this.Controls.Add(this.cbIzdvojena);
             this.Controls.Add(this.cbPopunjena);
             this.Controls.Add(this.btnSpasi);
-            this.Controls.Add(this.btnKorisnici);
             this.Controls.Add(this.cbNoSmoking);
             this.Controls.Add(this.cbMiran);
             this.Controls.Add(this.cbNamjestena);
@@ -346,7 +333,6 @@
         private CheckBox cbNamjestena;
         private CheckBox cbMiran;
         private CheckBox cbNoSmoking;
-        private Button btnKorisnici;
         private Button btnSpasi;
         private CheckBox cbPopunjena;
         private CheckBox cbIzdvojena;

@@ -29,8 +29,8 @@
         private void InitializeComponent()
         {
             this.label1 = new System.Windows.Forms.Label();
-            this.btnDodajNovogKorisnika = new System.Windows.Forms.Button();
             this.dgvKorisniciNekretnina = new System.Windows.Forms.DataGridView();
+            this.btnUcitajKorisnike = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKorisniciNekretnina)).BeginInit();
             this.SuspendLayout();
             // 
@@ -43,17 +43,6 @@
             this.label1.TabIndex = 0;
             this.label1.Text = "Pregled korisnika";
             // 
-            // btnDodajNovogKorisnika
-            // 
-            this.btnDodajNovogKorisnika.Location = new System.Drawing.Point(747, 12);
-            this.btnDodajNovogKorisnika.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnDodajNovogKorisnika.Name = "btnDodajNovogKorisnika";
-            this.btnDodajNovogKorisnika.Size = new System.Drawing.Size(153, 31);
-            this.btnDodajNovogKorisnika.TabIndex = 1;
-            this.btnDodajNovogKorisnika.Text = "Dodaj novog korisnika";
-            this.btnDodajNovogKorisnika.UseVisualStyleBackColor = true;
-            this.btnDodajNovogKorisnika.Click += new System.EventHandler(this.btnDodajNovogKorisnika_Click);
-            // 
             // dgvKorisniciNekretnina
             // 
             this.dgvKorisniciNekretnina.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
@@ -65,13 +54,23 @@
             this.dgvKorisniciNekretnina.Size = new System.Drawing.Size(887, 533);
             this.dgvKorisniciNekretnina.TabIndex = 2;
             // 
+            // btnUcitajKorisnike
+            // 
+            this.btnUcitajKorisnike.Location = new System.Drawing.Point(142, 12);
+            this.btnUcitajKorisnike.Name = "btnUcitajKorisnike";
+            this.btnUcitajKorisnike.Size = new System.Drawing.Size(94, 29);
+            this.btnUcitajKorisnike.TabIndex = 3;
+            this.btnUcitajKorisnike.Text = "Ucitaj";
+            this.btnUcitajKorisnike.UseVisualStyleBackColor = true;
+            this.btnUcitajKorisnike.Click += new System.EventHandler(this.btnUcitajKorisnike_Click);
+            // 
             // frmKorisniciNekretnina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(914, 600);
+            this.Controls.Add(this.btnUcitajKorisnike);
             this.Controls.Add(this.dgvKorisniciNekretnina);
-            this.Controls.Add(this.btnDodajNovogKorisnika);
             this.Controls.Add(this.label1);
             this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmKorisniciNekretnina";
@@ -87,7 +86,7 @@
         #endregion
 
         private Label label1;
-        private Button btnDodajNovogKorisnika;
         private DataGridView dgvKorisniciNekretnina;
+        private Button btnUcitajKorisnike;
     }
 }

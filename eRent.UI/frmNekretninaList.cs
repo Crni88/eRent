@@ -57,6 +57,15 @@ namespace eRent.UI
                     addNekretninu.Show();
                 }
             }
+            if (e.ColumnIndex == 7)
+            {
+                var nekretnina = dgvNekretnineList.SelectedRows[0].DataBoundItem as NekretninaModel;
+                if (nekretnina != null)
+                {
+                    frmKorisniciNekretnina frmKorisniciNekretnina = new frmKorisniciNekretnina(nekretnina);
+                    frmKorisniciNekretnina.ShowDialog();
+                }
+            }
         }
     }
 }

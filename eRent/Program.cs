@@ -2,6 +2,7 @@ using eRent.Services.DataDB;
 using eRent.Services.Korisnici;
 using eRent.Services.Lokacija;
 using eRent.Services.Nekretnina;
+using eRent.Services.NekretninaKorisnik;
 using eRent.Services.Tags;
 using eRent.Services.Uloge;
 using Microsoft.AspNetCore.Authentication;
@@ -44,7 +45,7 @@ internal class Program
         builder.Services.AddTransient<ILokacijaService, LokacijaService>();
         builder.Services.AddTransient<INekretnineService, NekretnineService>();
         builder.Services.AddTransient<ITagsService, TagsService>();
-
+        builder.Services.AddTransient<INekretninaKorisnikService, NekretninaKorisnikService>();
         builder.Services.AddAutoMapper(typeof(IKorisniciService));
 
         builder.Services.AddAuthentication("BasicAuthentication")

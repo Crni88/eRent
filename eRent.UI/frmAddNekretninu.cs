@@ -36,8 +36,7 @@ namespace eRent.UI
         //TODO add error handling
         private void btnKorisnici_Click(object sender, EventArgs e)
         {
-            frmKorisniciNekretnina frmKorisniciNekretnina = new frmKorisniciNekretnina();
-            frmKorisniciNekretnina.ShowDialog();
+           
         }
 
         private async void btnSpasi_Click(object sender, EventArgs e)

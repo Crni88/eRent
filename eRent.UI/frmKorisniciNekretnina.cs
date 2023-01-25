@@ -1,30 +1,30 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+﻿using eRent.Models;
+using eRent.Models.Search_Objects;
 
 namespace eRent.UI
 {
     public partial class frmKorisniciNekretnina : Form
     {
-        public frmKorisniciNekretnina()
+        public APIService NekretninaKorisnikService { get; set; } = new APIService("NekretninaKorisnik");
+        
+        private NekretninaModel _nekretnina;
+
+        public frmKorisniciNekretnina(NekretninaModel nekretnina)
         {
+            this._nekretnina = nekretnina;
             InitializeComponent();
         }
-
-        private void btnDodajNovogKorisnika_Click(object sender, EventArgs e)
-        {
-
-        }
-
+         
         private void frmKorisniciNekretnina_Load(object sender, EventArgs e)
         {
+        }
 
+        private async void btnUcitajKorisnike_Click(object sender, EventArgs e)
+        {
+            NekretninaKorisnikSearchObject nekretninaKorisnik = new NekretninaKorisnikSearchObject();
+            nekretninaKorisnik.NekretninaId = _nekretnina.NekretninaId;
+            var list = await NekretninaKorisnikService.Get<NekretninaKorisnikModel>();
+            dgvKorisniciNekretnina.DataSource = list;
         }
     }
 }
