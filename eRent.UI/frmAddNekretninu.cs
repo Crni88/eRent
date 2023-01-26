@@ -5,8 +5,6 @@ namespace eRent.UI
 {
     public partial class frmAddNekretninu : Form
     {
-        private int nekretninaId;
-        private NekretninaModel nekretnina;
 
         public APIService NekretnineService { get; set; } = new APIService("Nekretnine");
         NekretninaModel _nekretninaModel { get; set; }
@@ -14,7 +12,6 @@ namespace eRent.UI
         public frmAddNekretninu(NekretninaModel nekretnina = null)
         {
             InitializeComponent();
-            Console.WriteLine(nekretnina);
             if (nekretnina != null)
             {
                 _nekretninaModel = nekretnina;
@@ -34,39 +31,41 @@ namespace eRent.UI
         }
 
         //TODO add error handling
-        private void btnKorisnici_Click(object sender, EventArgs e)
-        {
-           
-        }
 
         private async void btnSpasi_Click(object sender, EventArgs e)
         {
             if (_nekretninaModel == null)
             {
                 NekretninaInsertRequest nekretninaInsertRequest = new NekretninaInsertRequest();
-                populateFields(nekretninaInsertRequest);
+                CreateInsertObject(nekretninaInsertRequest);
                 var postNekretnina = await NekretnineService.Post<NekretninaInsertRequest>(nekretninaInsertRequest);
                 this.Close();
             }
             else
             {
                 //TODO EXTRACT TO SEPARATE FUNCTION
-                NekretninaUpdateRequest nekretninaUpdateRequest = new NekretninaUpdateRequest();
-                nekretninaUpdateRequest.BrojSoba = int.Parse(txtBrojSoba.Text);
-                nekretninaUpdateRequest.NazivNekretnine = txtNaziv.Text;
-                nekretninaUpdateRequest.Grad = txtGrad.Text;
-                nekretninaUpdateRequest.DatumObjave = DateTime.Now;
-                nekretninaUpdateRequest.Namještena = cbNamjestena.Checked;
-                nekretninaUpdateRequest.Cijena = int.Parse(txtBrojSoba.Text);
-                nekretninaUpdateRequest.Popunjena = cbPopunjena.Checked;
-                nekretninaUpdateRequest.Izdvojena = cbIzdvojena.Checked;
-                var updateNekretnina = 
+                NekretninaUpdateRequest nekretninaUpdateRequest = CreateUpdateObject();
+                var updateNekretnina =
                     await NekretnineService.Put<NekretninaUpdateRequest>(_nekretninaModel.NekretninaId, nekretninaUpdateRequest);
                 this.Close();
             }
         }
 
-        private NekretninaInsertRequest populateFields(NekretninaInsertRequest nekretninaInsertRequest)
+        private NekretninaUpdateRequest CreateUpdateObject()
+        {
+            NekretninaUpdateRequest nekretninaUpdateRequest = new NekretninaUpdateRequest();
+            nekretninaUpdateRequest.BrojSoba = int.Parse(txtBrojSoba.Text);
+            nekretninaUpdateRequest.NazivNekretnine = txtNaziv.Text;
+            nekretninaUpdateRequest.Grad = txtGrad.Text;
+            nekretninaUpdateRequest.DatumObjave = DateTime.Now;
+            nekretninaUpdateRequest.Namještena = cbNamjestena.Checked;
+            nekretninaUpdateRequest.Cijena = int.Parse(txtBrojSoba.Text);
+            nekretninaUpdateRequest.Popunjena = cbPopunjena.Checked;
+            nekretninaUpdateRequest.Izdvojena = cbIzdvojena.Checked;
+            return nekretninaUpdateRequest;
+        }
+
+        private NekretninaInsertRequest CreateInsertObject(NekretninaInsertRequest nekretninaInsertRequest)
         {
             nekretninaInsertRequest.KorisnikNekretnina = 1;
             nekretninaInsertRequest.LokacijaId = 1;
@@ -107,11 +106,6 @@ namespace eRent.UI
             //    tagList.Add(4);
             //}
             return tagList;
-        }
-
-        private async void frmAddNekretninu_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

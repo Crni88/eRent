@@ -7,7 +7,7 @@ using eRent.Services.DataDB;
 namespace eRent.Services.NekretninaKorisnik
 {
     public class NekretninaKorisnikService
-        : BaseCRUDService<NekretninaKorisnikModel, DataDB.NekretninaKorisnik, NekretninaKorisnikSearchObject, NekretninaKorisnikUpsertRequest, NekretninaKorisnikUpsertRequest>, INekretninaKorisnikService
+        : BaseCRUDService<NekretninaKorisnikModel, DataDB.NekretninaKorisnik, NekretninaKorisnikSearchObject, NekretninaKorisnikInsertRequest, NekretninaKorisnikUpdateRequest>, INekretninaKorisnikService
     {
         public NekretninaKorisnikService(ERentContext eRentContext, IMapper mapper) : base(eRentContext, mapper)
         {

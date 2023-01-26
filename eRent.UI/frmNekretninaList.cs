@@ -12,6 +12,7 @@ namespace eRent.UI
         public frmNekretninaList()
         {
             InitializeComponent();
+            dgvNekretnineList.AutoGenerateColumns= false;
         }
 
         private async void btnShowNekretnine_Click(object sender, EventArgs e)

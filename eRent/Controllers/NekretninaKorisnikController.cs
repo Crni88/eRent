@@ -7,7 +7,7 @@ using eRent.Services.NekretninaKorisnik;
 
 namespace eRent.Controllers
 {
-    public class NekretninaKorisnikController : BaseCRUDController<NekretninaKorisnikModel, NekretninaKorisnikSearchObject, NekretninaKorisnikUpsertRequest, NekretninaKorisnikUpsertRequest>
+    public class NekretninaKorisnikController : BaseCRUDController<NekretninaKorisnikModel, NekretninaKorisnikSearchObject, NekretninaKorisnikInsertRequest, NekretninaKorisnikUpdateRequest>
     {
         public NekretninaKorisnikController(INekretninaKorisnikService nekretninaKorisnikService) : base(nekretninaKorisnikService)
         {

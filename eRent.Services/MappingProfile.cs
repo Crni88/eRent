@@ -27,7 +27,8 @@ namespace eRent.Services
             CreateMap<TagUpsertRequest, DataDB.Tag>();
             //NekretninaKorisnik
             CreateMap<DataDB.NekretninaKorisnik, NekretninaKorisnikModel>();
-            CreateMap<NekretninaKorisnikUpsertRequest, DataDB.NekretninaKorisnik>();
+            CreateMap<NekretninaKorisnikInsertRequest, DataDB.NekretninaKorisnik>();
+            CreateMap<NekretninaKorisnikUpdateRequest, DataDB.NekretninaKorisnik>();
         }
     }
 }

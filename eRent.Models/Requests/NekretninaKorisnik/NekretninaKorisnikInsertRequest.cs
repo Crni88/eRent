@@ -2,8 +2,10 @@
 
 namespace eRent.Models.Requests.NekretninaKorisnik
 {
-    public class NekretninaKorisnikUpsertRequest
+    public class NekretninaKorisnikInsertRequest
     {
+        //public int NekretninaKorisnikId { get; set; }
+
         public int Nekretnina { get; set; }
 
         public int NekretninaKorisnikSlika { get; set; }

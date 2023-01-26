@@ -305,7 +305,6 @@
             this.Name = "frmAddNekretninu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dodaj novu nekretninu";
-            this.Load += new System.EventHandler(this.frmAddNekretninu_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbSlikaNekretnine)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

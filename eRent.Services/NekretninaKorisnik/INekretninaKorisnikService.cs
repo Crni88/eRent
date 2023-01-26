@@ -5,7 +5,7 @@ using eRent.Models.Search_Objects;
 namespace eRent.Services.NekretninaKorisnik
 {
     public interface INekretninaKorisnikService : ICRUDService<NekretninaKorisnikModel, 
-        NekretninaKorisnikSearchObject, NekretninaKorisnikUpsertRequest, NekretninaKorisnikUpsertRequest>
+        NekretninaKorisnikSearchObject, NekretninaKorisnikInsertRequest, NekretninaKorisnikUpdateRequest>
     {
 
     }
