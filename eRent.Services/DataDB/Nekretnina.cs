@@ -28,12 +28,12 @@ public partial class Nekretnina
     public bool? Popunjena { get; set; }
 
     public string? Username { get; set; }
+
     public string? Grad { get; set; }
 
     public virtual Korisnik KorisnikNekretninaNavigation { get; set; } = null!;
 
     public virtual Lokacija Lokacija { get; set; } = null!;
-
 
     public virtual ICollection<NekretninaKorisnik> NekretninaKorisniks { get; } = new List<NekretninaKorisnik>();
 
@@ -46,6 +46,8 @@ public partial class Nekretnina
     public virtual ICollection<Ogla> Oglas { get; } = new List<Ogla>();
 
     public virtual ICollection<Posjetum> Posjeta { get; } = new List<Posjetum>();
+
+    public virtual ICollection<Rezervacija> Rezervacijas { get; } = new List<Rezervacija>();
 
     public virtual ICollection<Ugovor> Ugovors { get; } = new List<Ugovor>();
 }

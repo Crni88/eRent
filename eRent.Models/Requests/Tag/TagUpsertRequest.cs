@@ -1,4 +1,4 @@
-﻿namespace eRent.Models.Requests
+﻿namespace eRent.Models.Requests.Tag
 {
     public class TagUpsertRequest
     {

@@ -169,6 +169,7 @@ public partial class ERentContext : DbContext
             entity.Property(e => e.DatumObjave)
                 .HasColumnType("datetime")
                 .HasColumnName("datumObjave");
+            entity.Property(e => e.Grad).HasMaxLength(50);
             entity.Property(e => e.Izdvojena).HasColumnName("izdvojena");
             entity.Property(e => e.KorisnikNekretnina).HasColumnName("korisnikNekretnina");
             entity.Property(e => e.LokacijaId).HasColumnName("lokacijaID");
@@ -398,13 +399,28 @@ public partial class ERentContext : DbContext
             entity.ToTable("rezervacija");
 
             entity.Property(e => e.RezervacijaId).HasColumnName("rezervacijaID");
+            entity.Property(e => e.BrojTelefona)
+                .HasMaxLength(50)
+                .HasColumnName("broj_telefona");
             entity.Property(e => e.DatumKraja)
                 .HasColumnType("date")
                 .HasColumnName("datumKraja");
             entity.Property(e => e.DatumPocetka)
                 .HasColumnType("date")
                 .HasColumnName("datumPocetka");
+            entity.Property(e => e.ImePrezime)
+                .HasMaxLength(50)
+                .HasColumnName("ime_prezime");
             entity.Property(e => e.MjesecnaRezervacija).HasColumnName("mjesecnaRezervacija");
+            entity.Property(e => e.Nazivnekretnine)
+                .HasMaxLength(50)
+                .HasColumnName("nazivnekretnine");
+            entity.Property(e => e.NekretninaId).HasColumnName("nekretninaId");
+
+            entity.HasOne(d => d.Nekretnina).WithMany(p => p.Rezervacijas)
+                .HasForeignKey(d => d.NekretninaId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_nekretninaId");
         });
 
         modelBuilder.Entity<Slika>(entity =>

@@ -8,6 +8,8 @@
         public frmLogin()
         {
             InitializeComponent();
+            txtPassword.Text = "test";
+            txtUsername.Text = "admin";
         }
 
         private async void btnLogin_Click(object sender, EventArgs e)
@@ -28,5 +30,6 @@
                 MessageBox.Show(ex.Message);
             }
         }
+
     }
 }

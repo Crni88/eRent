@@ -12,7 +12,7 @@ namespace eRent.UI
         public frmNekretninaList()
         {
             InitializeComponent();
-            dgvNekretnineList.AutoGenerateColumns= false;
+            dgvNekretnineList.AutoGenerateColumns = false;
         }
 
         private async void btnShowNekretnine_Click(object sender, EventArgs e)
@@ -29,17 +29,13 @@ namespace eRent.UI
             }
             else
             {
-                NekretninaSearchObject  nekretnina = new NekretninaSearchObject();
+                NekretninaSearchObject nekretnina = new NekretninaSearchObject();
                 nekretnina.NameFTS = txtSearch.Text;
                 var list = await NekretnineService.Get<List<NekretninaModel>>(nekretnina);
                 dgvNekretnineList.DataSource = list;
             }
         }
 
-        private void frmNekretninaList_Load(object sender, EventArgs e)
-        {
-            dgvNekretnineList.AutoGenerateColumns = false;
-        }
 
         private void btnDodajNovu_Click(object sender, EventArgs e)
         {
@@ -49,6 +45,15 @@ namespace eRent.UI
 
         private void dgvNekretnineList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            if (e.ColumnIndex == 3)
+            {
+                var nekretnina = dgvNekretnineList.SelectedRows[0].DataBoundItem as NekretninaModel;
+                if (nekretnina != null)
+                {
+                   frmRezervacije frmRezervacije = new frmRezervacije(nekretnina);    
+                   frmRezervacije.Show();
+                }
+            }
             if (e.ColumnIndex == 6)
             {
                 var nekretnina = dgvNekretnineList.SelectedRows[0].DataBoundItem as NekretninaModel;

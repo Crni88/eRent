@@ -13,7 +13,8 @@ namespace eRent.Services.NekretninaKorisnik
         {
         }
 
-        public override IQueryable<DataDB.NekretninaKorisnik> AddFilter(IQueryable<DataDB.NekretninaKorisnik> query, NekretninaKorisnikSearchObject search = null)
+        public override IQueryable<DataDB.NekretninaKorisnik> 
+            AddFilter(IQueryable<DataDB.NekretninaKorisnik> query, NekretninaKorisnikSearchObject search = null)
         {
             var filteredQuery = base.AddFilter(query, search);
             if (search != null)

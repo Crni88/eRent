@@ -1,5 +1,5 @@
 ﻿using eRent.Models;
-using eRent.Models.Requests;
+using eRent.Models.Requests.Tag;
 using eRent.Models.Search_Objects;
 using eRent.Services.Tags;
 

@@ -17,9 +17,6 @@ namespace eRent.UI
             dgvKorisniciNekretnina.AutoGenerateColumns = false;
         }
 
-
-      
-
         private async void btnUcitajKorisnike_Click(object sender, EventArgs e)
         {
             NekretninaKorisnikSearchObject nekretninaKorisnik = new NekretninaKorisnikSearchObject();
