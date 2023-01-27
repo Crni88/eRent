@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.pbSlikaNekretnine = new System.Windows.Forms.PictureBox();
             this.btnDodajSliku = new System.Windows.Forms.Button();
@@ -51,33 +52,33 @@
             this.cbPopunjena = new System.Windows.Forms.CheckBox();
             this.cbIzdvojena = new System.Windows.Forms.CheckBox();
             this.cbOsvjetljen = new System.Windows.Forms.CheckBox();
+            this.err = new System.Windows.Forms.ErrorProvider(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.pbSlikaNekretnine)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.err)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(14, 12);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(159, 20);
+            this.label1.Size = new System.Drawing.Size(128, 15);
             this.label1.TabIndex = 0;
             this.label1.Text = "Dodaj novu nekretninu";
             // 
             // pbSlikaNekretnine
             // 
-            this.pbSlikaNekretnine.Location = new System.Drawing.Point(14, 36);
-            this.pbSlikaNekretnine.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pbSlikaNekretnine.Location = new System.Drawing.Point(12, 27);
             this.pbSlikaNekretnine.Name = "pbSlikaNekretnine";
-            this.pbSlikaNekretnine.Size = new System.Drawing.Size(286, 456);
+            this.pbSlikaNekretnine.Size = new System.Drawing.Size(250, 342);
             this.pbSlikaNekretnine.TabIndex = 1;
             this.pbSlikaNekretnine.TabStop = false;
             // 
             // btnDodajSliku
             // 
-            this.btnDodajSliku.Location = new System.Drawing.Point(109, 500);
-            this.btnDodajSliku.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnDodajSliku.Location = new System.Drawing.Point(95, 375);
             this.btnDodajSliku.Name = "btnDodajSliku";
-            this.btnDodajSliku.Size = new System.Drawing.Size(86, 31);
+            this.btnDodajSliku.Size = new System.Drawing.Size(75, 23);
             this.btnDodajSliku.TabIndex = 2;
             this.btnDodajSliku.Text = "Dodaj Sliku";
             this.btnDodajSliku.UseVisualStyleBackColor = true;
@@ -85,113 +86,109 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(345, 36);
+            this.label2.Location = new System.Drawing.Point(302, 27);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(86, 20);
+            this.label2.Size = new System.Drawing.Size(73, 15);
             this.label2.TabIndex = 4;
-            this.label2.Text = "Unesi Naziv";
+            this.label2.Text = "Unesi Naziv*";
             // 
             // txtNaziv
             // 
-            this.txtNaziv.Location = new System.Drawing.Point(345, 60);
-            this.txtNaziv.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtNaziv.Location = new System.Drawing.Point(302, 45);
             this.txtNaziv.Name = "txtNaziv";
-            this.txtNaziv.Size = new System.Drawing.Size(236, 27);
+            this.txtNaziv.Size = new System.Drawing.Size(207, 23);
             this.txtNaziv.TabIndex = 5;
+            this.txtNaziv.Validating += new System.ComponentModel.CancelEventHandler(this.txtNaziv_Validating);
             // 
             // txtCijena
             // 
-            this.txtCijena.Location = new System.Drawing.Point(677, 60);
-            this.txtCijena.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtCijena.Location = new System.Drawing.Point(592, 45);
             this.txtCijena.Name = "txtCijena";
-            this.txtCijena.Size = new System.Drawing.Size(223, 27);
+            this.txtCijena.Size = new System.Drawing.Size(196, 23);
             this.txtCijena.TabIndex = 6;
+            this.txtCijena.Validating += new System.ComponentModel.CancelEventHandler(this.txtCijena_Validating);
             // 
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(345, 120);
+            this.label3.Location = new System.Drawing.Point(302, 90);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(41, 20);
+            this.label3.Size = new System.Drawing.Size(32, 15);
             this.label3.TabIndex = 7;
             this.label3.Text = "Grad";
             // 
             // txtGrad
             // 
-            this.txtGrad.Location = new System.Drawing.Point(345, 144);
-            this.txtGrad.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtGrad.Location = new System.Drawing.Point(302, 108);
             this.txtGrad.Name = "txtGrad";
-            this.txtGrad.Size = new System.Drawing.Size(236, 27);
+            this.txtGrad.Size = new System.Drawing.Size(207, 23);
             this.txtGrad.TabIndex = 8;
             // 
             // txtBrojKvadrata
             // 
-            this.txtBrojKvadrata.Location = new System.Drawing.Point(345, 222);
-            this.txtBrojKvadrata.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtBrojKvadrata.Location = new System.Drawing.Point(302, 166);
             this.txtBrojKvadrata.Name = "txtBrojKvadrata";
-            this.txtBrojKvadrata.Size = new System.Drawing.Size(236, 27);
+            this.txtBrojKvadrata.Size = new System.Drawing.Size(207, 23);
             this.txtBrojKvadrata.TabIndex = 9;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(345, 198);
+            this.label4.Location = new System.Drawing.Point(302, 148);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(97, 20);
+            this.label4.Size = new System.Drawing.Size(76, 15);
             this.label4.TabIndex = 10;
             this.label4.Text = "Broj kvadrata";
             // 
             // txtBrojSoba
             // 
-            this.txtBrojSoba.Location = new System.Drawing.Point(345, 316);
-            this.txtBrojSoba.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtBrojSoba.Location = new System.Drawing.Point(302, 237);
             this.txtBrojSoba.Name = "txtBrojSoba";
-            this.txtBrojSoba.Size = new System.Drawing.Size(236, 27);
+            this.txtBrojSoba.Size = new System.Drawing.Size(207, 23);
             this.txtBrojSoba.TabIndex = 11;
+            this.txtBrojSoba.Validating += new System.ComponentModel.CancelEventHandler(this.txtBrojSoba_Validating);
             // 
             // label5
             // 
             this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(345, 276);
+            this.label5.Location = new System.Drawing.Point(302, 219);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(72, 20);
+            this.label5.Size = new System.Drawing.Size(61, 15);
             this.label5.TabIndex = 12;
-            this.label5.Text = "Broj soba";
+            this.label5.Text = "Broj soba*";
             // 
             // Cijena
             // 
             this.Cijena.AutoSize = true;
-            this.Cijena.Location = new System.Drawing.Point(677, 36);
+            this.Cijena.Location = new System.Drawing.Point(592, 27);
             this.Cijena.Name = "Cijena";
-            this.Cijena.Size = new System.Drawing.Size(50, 20);
+            this.Cijena.Size = new System.Drawing.Size(45, 15);
             this.Cijena.TabIndex = 13;
-            this.Cijena.Text = "Cijena";
+            this.Cijena.Text = "Cijena*";
             // 
             // richTextBox1
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(624, 316);
-            this.richTextBox1.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.richTextBox1.Location = new System.Drawing.Point(546, 237);
             this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(276, 175);
+            this.richTextBox1.Size = new System.Drawing.Size(242, 132);
             this.richTextBox1.TabIndex = 14;
             this.richTextBox1.Text = "";
             // 
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(624, 292);
+            this.label6.Location = new System.Drawing.Point(546, 219);
             this.label6.Name = "label6";
-            this.label6.Size = new System.Drawing.Size(97, 20);
+            this.label6.Size = new System.Drawing.Size(75, 15);
             this.label6.TabIndex = 15;
             this.label6.Text = "Detaljan opis";
             // 
             // cbPetFriendly
             // 
             this.cbPetFriendly.AutoSize = true;
-            this.cbPetFriendly.Location = new System.Drawing.Point(677, 147);
-            this.cbPetFriendly.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbPetFriendly.Location = new System.Drawing.Point(592, 110);
             this.cbPetFriendly.Name = "cbPetFriendly";
-            this.cbPetFriendly.Size = new System.Drawing.Size(107, 24);
+            this.cbPetFriendly.Size = new System.Drawing.Size(88, 19);
             this.cbPetFriendly.TabIndex = 16;
             this.cbPetFriendly.Text = "Pet Friendly";
             this.cbPetFriendly.UseVisualStyleBackColor = true;
@@ -199,10 +196,9 @@
             // cbNamjestena
             // 
             this.cbNamjestena.AutoSize = true;
-            this.cbNamjestena.Location = new System.Drawing.Point(345, 369);
-            this.cbNamjestena.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbNamjestena.Location = new System.Drawing.Point(302, 277);
             this.cbNamjestena.Name = "cbNamjestena";
-            this.cbNamjestena.Size = new System.Drawing.Size(110, 24);
+            this.cbNamjestena.Size = new System.Drawing.Size(89, 19);
             this.cbNamjestena.TabIndex = 17;
             this.cbNamjestena.Text = "Namještena";
             this.cbNamjestena.UseVisualStyleBackColor = true;
@@ -210,10 +206,9 @@
             // cbMiran
             // 
             this.cbMiran.AutoSize = true;
-            this.cbMiran.Location = new System.Drawing.Point(800, 147);
-            this.cbMiran.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbMiran.Location = new System.Drawing.Point(700, 110);
             this.cbMiran.Name = "cbMiran";
-            this.cbMiran.Size = new System.Drawing.Size(69, 24);
+            this.cbMiran.Size = new System.Drawing.Size(57, 19);
             this.cbMiran.TabIndex = 18;
             this.cbMiran.Text = "Miran";
             this.cbMiran.UseVisualStyleBackColor = true;
@@ -221,20 +216,18 @@
             // cbNoSmoking
             // 
             this.cbNoSmoking.AutoSize = true;
-            this.cbNoSmoking.Location = new System.Drawing.Point(800, 204);
-            this.cbNoSmoking.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbNoSmoking.Location = new System.Drawing.Point(700, 153);
             this.cbNoSmoking.Name = "cbNoSmoking";
-            this.cbNoSmoking.Size = new System.Drawing.Size(111, 24);
+            this.cbNoSmoking.Size = new System.Drawing.Size(91, 19);
             this.cbNoSmoking.TabIndex = 19;
             this.cbNoSmoking.Text = "No smoking";
             this.cbNoSmoking.UseVisualStyleBackColor = true;
             // 
             // btnSpasi
             // 
-            this.btnSpasi.Location = new System.Drawing.Point(815, 553);
-            this.btnSpasi.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnSpasi.Location = new System.Drawing.Point(713, 415);
             this.btnSpasi.Name = "btnSpasi";
-            this.btnSpasi.Size = new System.Drawing.Size(86, 31);
+            this.btnSpasi.Size = new System.Drawing.Size(75, 23);
             this.btnSpasi.TabIndex = 21;
             this.btnSpasi.Text = "Spasi";
             this.btnSpasi.UseVisualStyleBackColor = true;
@@ -243,10 +236,9 @@
             // cbPopunjena
             // 
             this.cbPopunjena.AutoSize = true;
-            this.cbPopunjena.Location = new System.Drawing.Point(345, 401);
-            this.cbPopunjena.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbPopunjena.Location = new System.Drawing.Point(302, 301);
             this.cbPopunjena.Name = "cbPopunjena";
-            this.cbPopunjena.Size = new System.Drawing.Size(100, 24);
+            this.cbPopunjena.Size = new System.Drawing.Size(83, 19);
             this.cbPopunjena.TabIndex = 22;
             this.cbPopunjena.Text = "Popunjena";
             this.cbPopunjena.UseVisualStyleBackColor = true;
@@ -254,10 +246,9 @@
             // cbIzdvojena
             // 
             this.cbIzdvojena.AutoSize = true;
-            this.cbIzdvojena.Location = new System.Drawing.Point(345, 433);
-            this.cbIzdvojena.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbIzdvojena.Location = new System.Drawing.Point(302, 325);
             this.cbIzdvojena.Name = "cbIzdvojena";
-            this.cbIzdvojena.Size = new System.Drawing.Size(95, 24);
+            this.cbIzdvojena.Size = new System.Drawing.Size(76, 19);
             this.cbIzdvojena.TabIndex = 23;
             this.cbIzdvojena.Text = "Izdvojena";
             this.cbIzdvojena.UseVisualStyleBackColor = true;
@@ -265,19 +256,22 @@
             // cbOsvjetljen
             // 
             this.cbOsvjetljen.AutoSize = true;
-            this.cbOsvjetljen.Location = new System.Drawing.Point(677, 204);
-            this.cbOsvjetljen.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.cbOsvjetljen.Location = new System.Drawing.Point(592, 153);
             this.cbOsvjetljen.Name = "cbOsvjetljen";
-            this.cbOsvjetljen.Size = new System.Drawing.Size(96, 24);
+            this.cbOsvjetljen.Size = new System.Drawing.Size(78, 19);
             this.cbOsvjetljen.TabIndex = 24;
             this.cbOsvjetljen.Text = "Osvjetljen";
             this.cbOsvjetljen.UseVisualStyleBackColor = true;
             // 
+            // err
+            // 
+            this.err.ContainerControl = this;
+            // 
             // frmAddNekretninu
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(914, 600);
+            this.ClientSize = new System.Drawing.Size(800, 450);
             this.Controls.Add(this.cbOsvjetljen);
             this.Controls.Add(this.cbIzdvojena);
             this.Controls.Add(this.cbPopunjena);
@@ -301,11 +295,11 @@
             this.Controls.Add(this.btnDodajSliku);
             this.Controls.Add(this.pbSlikaNekretnine);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmAddNekretninu";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dodaj novu nekretninu";
             ((System.ComponentModel.ISupportInitialize)(this.pbSlikaNekretnine)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.err)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -336,5 +330,6 @@
         private CheckBox cbPopunjena;
         private CheckBox cbIzdvojena;
         private CheckBox cbOsvjetljen;
+        private ErrorProvider err;
     }
 }

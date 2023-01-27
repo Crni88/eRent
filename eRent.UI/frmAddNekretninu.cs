@@ -1,5 +1,6 @@
 ﻿using eRent.Models;
 using eRent.Models.Requests;
+using System.Text.RegularExpressions;
 
 namespace eRent.UI
 {
@@ -31,26 +32,27 @@ namespace eRent.UI
         }
 
         //TODO add error handling
-
         private async void btnSpasi_Click(object sender, EventArgs e)
         {
-            if (_nekretninaModel == null)
+            if (ValidateChildren())
             {
-                NekretninaInsertRequest nekretninaInsertRequest = new NekretninaInsertRequest();
-                CreateInsertObject(nekretninaInsertRequest);
-                var postNekretnina = await NekretnineService.Post<NekretninaInsertRequest>(nekretninaInsertRequest);
-                this.Close();
-            }
-            else
-            {
-                //TODO EXTRACT TO SEPARATE FUNCTION
-                NekretninaUpdateRequest nekretninaUpdateRequest = CreateUpdateObject();
-                var updateNekretnina =
-                    await NekretnineService.Put<NekretninaUpdateRequest>(_nekretninaModel.NekretninaId, nekretninaUpdateRequest);
-                this.Close();
+                if (_nekretninaModel == null)
+                {
+                    NekretninaInsertRequest nekretninaInsertRequest = new NekretninaInsertRequest();
+                    CreateInsertObject(nekretninaInsertRequest);
+                    var postNekretnina = await NekretnineService.Post<NekretninaInsertRequest>(nekretninaInsertRequest);
+                    this.Close();
+                }
+                else
+                {
+                    //TODO EXTRACT TO SEPARATE FUNCTION
+                    NekretninaUpdateRequest nekretninaUpdateRequest = CreateUpdateObject();
+                    var updateNekretnina =
+                        await NekretnineService.Put<NekretninaUpdateRequest>(_nekretninaModel.NekretninaId, nekretninaUpdateRequest);
+                    this.Close();
+                }
             }
         }
-
         private NekretninaUpdateRequest CreateUpdateObject()
         {
             NekretninaUpdateRequest nekretninaUpdateRequest = new NekretninaUpdateRequest();
@@ -106,6 +108,71 @@ namespace eRent.UI
             //    tagList.Add(4);
             //}
             return tagList;
+        }
+
+        //Validation
+        private void txtNaziv_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtNaziv.Text))
+            {
+                e.Cancel = true;
+                txtNaziv.Focus();
+                err.SetError(txtNaziv, "Name of the property should not be left blank!");
+            }
+            else
+            {
+                e.Cancel = false;
+                err.SetError(txtNaziv, "");
+            }
+        }
+
+        private void txtBrojSoba_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+
+            if (string.IsNullOrWhiteSpace(txtBrojSoba.Text))
+            {
+                e.Cancel = true;
+                txtBrojSoba.Focus();
+                err.SetError(txtBrojSoba, "Number of rooms should not be left blank!");
+            }
+            else if (!IsNumber(txtBrojSoba.Text))
+            {
+                e.Cancel = true;
+                txtBrojSoba.Focus();
+                err.SetError(txtBrojSoba, "Number of rooms should be a number.");
+            }
+            else
+            {
+                e.Cancel = false;
+                err.SetError(txtBrojSoba, "");
+            }
+        }
+
+        private void txtCijena_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtCijena.Text))
+            {
+                e.Cancel = true;
+                txtCijena.Focus();
+                err.SetError(txtCijena, "Price should not be left blank!");
+            }
+            else if (!IsNumber(txtCijena.Text))
+            {
+                e.Cancel = true;
+                txtCijena.Focus();
+                err.SetError(txtCijena, "Price should be a number.");
+            }
+            else
+            {
+                e.Cancel = false;
+                err.SetError(txtCijena, "");
+            }
+        }
+
+        bool IsNumber(string text)
+        {
+            Regex regex = new Regex(@"^[-+]?[0-9]*\.?[0-9]+$");
+            return regex.IsMatch(text);
         }
     }
 }

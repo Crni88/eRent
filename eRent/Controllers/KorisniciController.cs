@@ -2,11 +2,14 @@
 using eRent.Models.Requests.Korisnik;
 using eRent.Models.Search_Objects;
 using eRent.Services.Korisnici;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace eRent.Controllers
 {
-    //[ApiController]
-    //[Route("[controller]")]
+    [ApiController]
+    [Route("[controller]")]
+    [Authorize]
     public class KorisniciController : BaseCRUDController<KorisnikModel, KorisnikSearchObject, KorisnikInsertRequest, KorisnikUpdateRequest>
     {
         public KorisniciController(IKorisniciService korisniciServis) : base(korisniciServis)

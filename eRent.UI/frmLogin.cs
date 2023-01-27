@@ -7,9 +7,10 @@
 
         public frmLogin()
         {
+            //TODO Fix Login API call 
             InitializeComponent();
-            txtPassword.Text = "test";
             txtUsername.Text = "admin";
+            txtPassword.Text = "test";
         }
 
         private async void btnLogin_Click(object sender, EventArgs e)
@@ -27,9 +28,9 @@
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.Message);
+                //MessageBox.Show(ex.Message);
+                MessageBox.Show("Email or password is incorrect.");
             }
         }
-
     }
 }

@@ -16,6 +16,10 @@ namespace eRent.Services.Nekretnina
 
         public override NekretninaModel Insert(NekretninaInsertRequest insert)
         {
+            //if (insert.NazivNekretnine == "string")
+            //{
+            //    throw new UserException("Error occured.");
+            //}
             var entity = base.Insert(insert);
             foreach (var tagId in insert.TagIdList)
             {

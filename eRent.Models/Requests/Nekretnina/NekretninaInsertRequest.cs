@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace eRent.Models.Requests
 {
@@ -9,12 +10,14 @@ namespace eRent.Models.Requests
         public int KorisnikNekretnina { get; set; }
         public string Username { get; set; }
 
+        [Required(AllowEmptyStrings = false)]
         public string NazivNekretnine { get; set; }
-
+        [Required(AllowEmptyStrings = false)]
         public int Cijena { get; set; }
 
         public DateTime DatumObjave { get; set; }
 
+        [Required(AllowEmptyStrings = false)]
         public int BrojSoba { get; set; }
 
         public bool? Namještena { get; set; }

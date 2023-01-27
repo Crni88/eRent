@@ -1,3 +1,4 @@
+using eRent.Filters;
 using eRent.Services.DataDB;
 using eRent.Services.Korisnici;
 using eRent.Services.Lokacija;
@@ -18,12 +19,12 @@ internal class Program
 
         // Add services to the container.
 
-        builder.Services.AddControllers();
+        builder.Services.AddControllers(x => x.Filters.Add<ErrorFilter>());
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen(c =>
         {
-            c.AddSecurityDefinition("basicAuth", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
+            c.AddSecurityDefinition("BasicAuthentication", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
             {
                 Type = Microsoft.OpenApi.Models.SecuritySchemeType.Http,
                 Scheme = "basic"
@@ -34,7 +35,7 @@ internal class Program
         {
             new OpenApiSecurityScheme
             {
-                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "basicAuth" }
+                Reference = new OpenApiReference { Type = ReferenceType.SecurityScheme, Id = "BasicAuthentication" }
             },
             new string[]{}
         }
