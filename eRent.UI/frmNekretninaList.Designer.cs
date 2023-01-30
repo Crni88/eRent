@@ -30,16 +30,16 @@
         {
             System.Windows.Forms.Button btnShowNekretnine;
             this.dgvNekretnineList = new System.Windows.Forms.DataGridView();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtSearch = new System.Windows.Forms.TextBox();
-            this.btnDodajNovu = new System.Windows.Forms.Button();
-            this.btnIzvjestaj = new System.Windows.Forms.Button();
             this.Naziv = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Lokacija = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Popunjena = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.Rezervacije = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Detaljno = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Korisnici = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.label1 = new System.Windows.Forms.Label();
+            this.txtSearch = new System.Windows.Forms.TextBox();
+            this.btnDodajNovu = new System.Windows.Forms.Button();
+            this.btnIzvjestaj = new System.Windows.Forms.Button();
             btnShowNekretnine = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNekretnineList)).BeginInit();
             this.SuspendLayout();
@@ -74,42 +74,6 @@
             this.dgvNekretnineList.Size = new System.Drawing.Size(1013, 444);
             this.dgvNekretnineList.TabIndex = 0;
             this.dgvNekretnineList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNekretnineList_CellContentClick);
-            // 
-            // label1
-            // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 14);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 15);
-            this.label1.TabIndex = 2;
-            this.label1.Text = "Pretrga svih nekretnina";
-            // 
-            // txtSearch
-            // 
-            this.txtSearch.Location = new System.Drawing.Point(144, 11);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(325, 23);
-            this.txtSearch.TabIndex = 3;
-            // 
-            // btnDodajNovu
-            // 
-            this.btnDodajNovu.Location = new System.Drawing.Point(947, 10);
-            this.btnDodajNovu.Name = "btnDodajNovu";
-            this.btnDodajNovu.Size = new System.Drawing.Size(75, 23);
-            this.btnDodajNovu.TabIndex = 4;
-            this.btnDodajNovu.Text = "Dodaj Novu";
-            this.btnDodajNovu.UseVisualStyleBackColor = true;
-            this.btnDodajNovu.Click += new System.EventHandler(this.btnDodajNovu_Click);
-            // 
-            // btnIzvjestaj
-            // 
-            this.btnIzvjestaj.Location = new System.Drawing.Point(948, 495);
-            this.btnIzvjestaj.Name = "btnIzvjestaj";
-            this.btnIzvjestaj.Size = new System.Drawing.Size(75, 23);
-            this.btnIzvjestaj.TabIndex = 5;
-            this.btnIzvjestaj.Text = "Izvjestaj";
-            this.btnIzvjestaj.UseVisualStyleBackColor = true;
             // 
             // Naziv
             // 
@@ -155,6 +119,43 @@
             this.Korisnici.Name = "Korisnici";
             this.Korisnici.Text = "Korisnici";
             this.Korisnici.UseColumnTextForButtonValue = true;
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(10, 14);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(128, 15);
+            this.label1.TabIndex = 2;
+            this.label1.Text = "Pretrga svih nekretnina";
+            // 
+            // txtSearch
+            // 
+            this.txtSearch.Location = new System.Drawing.Point(144, 11);
+            this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtSearch.Name = "txtSearch";
+            this.txtSearch.Size = new System.Drawing.Size(325, 23);
+            this.txtSearch.TabIndex = 3;
+            // 
+            // btnDodajNovu
+            // 
+            this.btnDodajNovu.Location = new System.Drawing.Point(947, 10);
+            this.btnDodajNovu.Name = "btnDodajNovu";
+            this.btnDodajNovu.Size = new System.Drawing.Size(75, 23);
+            this.btnDodajNovu.TabIndex = 4;
+            this.btnDodajNovu.Text = "Dodaj Novu";
+            this.btnDodajNovu.UseVisualStyleBackColor = true;
+            this.btnDodajNovu.Click += new System.EventHandler(this.btnDodajNovu_Click);
+            // 
+            // btnIzvjestaj
+            // 
+            this.btnIzvjestaj.Location = new System.Drawing.Point(948, 495);
+            this.btnIzvjestaj.Name = "btnIzvjestaj";
+            this.btnIzvjestaj.Size = new System.Drawing.Size(75, 23);
+            this.btnIzvjestaj.TabIndex = 5;
+            this.btnIzvjestaj.Text = "Izvjestaj";
+            this.btnIzvjestaj.UseVisualStyleBackColor = true;
+            this.btnIzvjestaj.Click += new System.EventHandler(this.btnIzvjestaj_Click);
             // 
             // frmNekretninaList
             // 

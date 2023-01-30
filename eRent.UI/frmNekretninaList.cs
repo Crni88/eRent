@@ -73,5 +73,11 @@ namespace eRent.UI
                 }
             }
         }
+
+        private void btnIzvjestaj_Click(object sender, EventArgs e)
+        {
+            frmOpcijeIzvjestaja frmIzvjestaj = new frmOpcijeIzvjestaja(); 
+            frmIzvjestaj.Show();    
+        }
     }
 }
