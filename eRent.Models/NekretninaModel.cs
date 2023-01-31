@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Drawing;
 
 namespace eRent.Models
 {
@@ -33,5 +34,10 @@ namespace eRent.Models
         public string Grad { get; set; }
 
         public string Drzava { get; set; }
+
+        public byte[] Slika { get; set; }
+
+        public int? Brojkvadrata { get; set; }
+
     }
 }

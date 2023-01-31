@@ -1,6 +1,7 @@
 ﻿using eRent.Models;
 using eRent.Models.Requests;
 using System.Text.RegularExpressions;
+using static eRent.UI.Helpers.ImageConverter;
 
 namespace eRent.UI
 {
@@ -29,6 +30,7 @@ namespace eRent.UI
             cbNamjestena.Checked = _nekretninaModel.Namještena;
             cbIzdvojena.Checked = _nekretninaModel.Izdvojena;
             cbPopunjena.Checked = _nekretninaModel.Popunjena;
+            pbSlikaNekretnine.Image = FromByteToImage(_nekretninaModel.Slika);
         }
 
         //TODO add error handling
@@ -57,6 +59,7 @@ namespace eRent.UI
         {
             NekretninaUpdateRequest nekretninaUpdateRequest = new NekretninaUpdateRequest();
             nekretninaUpdateRequest.BrojSoba = int.Parse(txtBrojSoba.Text);
+            nekretninaUpdateRequest.Brojkvadrata = int.Parse(txtBrojKvadrata.Text);
             nekretninaUpdateRequest.NazivNekretnine = txtNaziv.Text;
             nekretninaUpdateRequest.Grad = txtGrad.Text;
             nekretninaUpdateRequest.DatumObjave = DateTime.Now;
@@ -72,6 +75,7 @@ namespace eRent.UI
             nekretninaInsertRequest.KorisnikNekretnina = 1;
             nekretninaInsertRequest.LokacijaId = 1;
             nekretninaInsertRequest.Username = APIService.username;
+            nekretninaInsertRequest.Brojkvadrata = int.Parse(txtBrojKvadrata.Text);
             nekretninaInsertRequest.BrojSoba = int.Parse(txtBrojSoba.Text);
             nekretninaInsertRequest.NazivNekretnine = txtNaziv.Text;
             nekretninaInsertRequest.Grad = txtGrad.Text;
@@ -81,6 +85,7 @@ namespace eRent.UI
             nekretninaInsertRequest.Popunjena = cbPopunjena.Checked;
             nekretninaInsertRequest.Izdvojena = cbIzdvojena.Checked;
             nekretninaInsertRequest.TagIdList = addTags();
+            nekretninaInsertRequest.Slika = FromImageToByte(pbSlikaNekretnine.Image);
             return nekretninaInsertRequest;
         }
 
@@ -94,15 +99,11 @@ namespace eRent.UI
             if (cbNoSmoking.Checked)
             {
                 tagList.Add(2);
-
             }
-
             if (cbMiran.Checked)
             {
                 tagList.Add(3);
-
             }
-
             //if (cbPetFriendly.Checked)
             //{
             //    tagList.Add(4);
@@ -173,6 +174,14 @@ namespace eRent.UI
         {
             Regex regex = new Regex(@"^[-+]?[0-9]*\.?[0-9]+$");
             return regex.IsMatch(text);
+        }
+
+        private void btnDodajSliku_Click(object sender, EventArgs e)
+        {
+            if (ofdSlikaNekretnine.ShowDialog() == DialogResult.OK)
+            {
+                pbSlikaNekretnine.Image = Image.FromFile(ofdSlikaNekretnine.FileName);
+            }
         }
     }
 }

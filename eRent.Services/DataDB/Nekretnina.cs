@@ -31,6 +31,10 @@ public partial class Nekretnina
 
     public string? Grad { get; set; }
 
+    public byte[]? Slika { get; set; }
+
+    public int? Brojkvadrata { get; set; }
+
     public virtual Korisnik KorisnikNekretninaNavigation { get; set; } = null!;
 
     public virtual Lokacija Lokacija { get; set; } = null!;

@@ -17,5 +17,8 @@ namespace eRent.Models.Requests.NekretninaKorisnik
         public DateTime? DatumUseljenja { get; set; }
 
         public DateTime? DatumIseljenja { get; set; }
+
+        public byte[] Slika { get; set; }
+
     }
 }

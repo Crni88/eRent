@@ -59,8 +59,6 @@ public partial class ERentContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.UseCollation("Bosnian_Latin_100_BIN");
-
         modelBuilder.Entity<Izvjestaj>(entity =>
         {
             entity.HasKey(e => e.IzvjestajId).HasName("PK_izvjestajID");
@@ -165,6 +163,7 @@ public partial class ERentContext : DbContext
 
             entity.Property(e => e.NekretninaId).HasColumnName("nekretninaID");
             entity.Property(e => e.BrojSoba).HasColumnName("brojSoba");
+            entity.Property(e => e.Brojkvadrata).HasColumnName("brojkvadrata");
             entity.Property(e => e.Cijena).HasColumnName("cijena");
             entity.Property(e => e.DatumObjave)
                 .HasColumnType("datetime")
@@ -181,6 +180,9 @@ public partial class ERentContext : DbContext
                 .HasMaxLength(500)
                 .HasColumnName("opis");
             entity.Property(e => e.Popunjena).HasColumnName("popunjena");
+            entity.Property(e => e.Slika)
+                .HasColumnType("image")
+                .HasColumnName("slika");
             entity.Property(e => e.Username)
                 .HasMaxLength(50)
                 .HasColumnName("username");
@@ -220,6 +222,9 @@ public partial class ERentContext : DbContext
             entity.Property(e => e.PrezimeKorisnika)
                 .HasMaxLength(50)
                 .HasColumnName("prezimeKorisnika");
+            entity.Property(e => e.Slika)
+                .HasColumnType("image")
+                .HasColumnName("slika");
 
             entity.HasOne(d => d.NekretninaNavigation).WithMany(p => p.NekretninaKorisniks)
                 .HasForeignKey(d => d.Nekretnina)

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.Drawing;
 
 namespace eRent.Models.Requests
 {
@@ -32,6 +33,12 @@ namespace eRent.Models.Requests
         public string Grad { get; set; }
 
         public List<int> TagIdList { get; set; } = new List<int> { };
+
+        public byte[] Slika { get; set; }
+
+        public int? Brojkvadrata { get; set; }
+
+
 
         //TODO Add Property that will be public List<int> Nekretnina slike
         //Possible List<Slika>

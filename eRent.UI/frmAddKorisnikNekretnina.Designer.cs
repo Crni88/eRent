@@ -42,6 +42,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.dtpDatumIseljenja = new System.Windows.Forms.DateTimePicker();
             this.btnDodajKorisnika = new System.Windows.Forms.Button();
+            this.ofdKorisnikNekretnina = new System.Windows.Forms.OpenFileDialog();
             ((System.ComponentModel.ISupportInitialize)(this.pbKorisnikSlika)).BeginInit();
             this.SuspendLayout();
             // 
@@ -60,6 +61,7 @@
             this.pbKorisnikSlika.Location = new System.Drawing.Point(12, 46);
             this.pbKorisnikSlika.Name = "pbKorisnikSlika";
             this.pbKorisnikSlika.Size = new System.Drawing.Size(206, 330);
+            this.pbKorisnikSlika.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbKorisnikSlika.TabIndex = 1;
             this.pbKorisnikSlika.TabStop = false;
             // 
@@ -71,6 +73,7 @@
             this.btnKorisnikSlika.TabIndex = 2;
             this.btnKorisnikSlika.Text = "Dodaj sliku";
             this.btnKorisnikSlika.UseVisualStyleBackColor = true;
+            this.btnKorisnikSlika.Click += new System.EventHandler(this.btnKorisnikSlika_Click);
             // 
             // Ime
             // 
@@ -167,6 +170,10 @@
             this.btnDodajKorisnika.UseVisualStyleBackColor = true;
             this.btnDodajKorisnika.Click += new System.EventHandler(this.btnDodajKorisnika_Click);
             // 
+            // ofdKorisnikNekretnina
+            // 
+            this.ofdKorisnikNekretnina.FileName = "openFileDialog1";
+            // 
             // frmAddKorisnikNekretnina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -187,8 +194,8 @@
             this.Controls.Add(this.pbKorisnikSlika);
             this.Controls.Add(this.label1);
             this.Name = "frmAddKorisnikNekretnina";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dodaj novog korisnika";
-            this.Load += new System.EventHandler(this.frmAddKorisnikNekretnina_Load);
             ((System.ComponentModel.ISupportInitialize)(this.pbKorisnikSlika)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
@@ -211,5 +218,6 @@
         private Label label5;
         private DateTimePicker dtpDatumIseljenja;
         private Button btnDodajKorisnika;
+        private OpenFileDialog ofdKorisnikNekretnina;
     }
 }

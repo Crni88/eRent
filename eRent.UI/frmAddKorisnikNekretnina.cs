@@ -1,5 +1,6 @@
 ﻿using eRent.Models;
 using eRent.Models.Requests.NekretninaKorisnik;
+using static eRent.UI.Helpers.ImageConverter;
 
 namespace eRent.UI
 {
@@ -32,24 +33,20 @@ namespace eRent.UI
             txtPrezime.Text = _nekretninaKorisnik.PrezimeKorisnika;
             dtpDatumIseljenja.Value = Convert.ToDateTime(_nekretninaKorisnik.DatumIseljenja);
             dtpDatumUseljenja.Value = Convert.ToDateTime(_nekretninaKorisnik.DatumUseljenja);
+            pbKorisnikSlika.Image = FromByteToImage(_nekretninaKorisnik.Slika);
         }
 
-        private void populateFields(NekretninaKorisnikInsertRequest nekretninaKorisnikUpsert)
+        private void populateFields(NekretninaKorisnikInsertRequest nekretninaKorisnikInsertRequest)
         {
-            nekretninaKorisnikUpsert.PrezimeKorisnika = txtPrezime.Text;
-            nekretninaKorisnikUpsert.ImeKorisnika = txtIme.Text;
-            nekretninaKorisnikUpsert.BrojTelefona = txtBrojTelefona.Text;
-            nekretninaKorisnikUpsert.DatumIseljenja = dtpDatumIseljenja.Value;
-            nekretninaKorisnikUpsert.DatumUseljenja = dtpDatumUseljenja.Value;
-            nekretninaKorisnikUpsert.NekretninaKorisnikSlika = 1;
+            nekretninaKorisnikInsertRequest.PrezimeKorisnika = txtPrezime.Text;
+            nekretninaKorisnikInsertRequest.ImeKorisnika = txtIme.Text;
+            nekretninaKorisnikInsertRequest.BrojTelefona = txtBrojTelefona.Text;
+            nekretninaKorisnikInsertRequest.DatumIseljenja = dtpDatumIseljenja.Value;
+            nekretninaKorisnikInsertRequest.DatumUseljenja = dtpDatumUseljenja.Value;
+            nekretninaKorisnikInsertRequest.NekretninaKorisnikSlika = 1;
+            nekretninaKorisnikInsertRequest.Slika = FromImageToByte(pbKorisnikSlika.Image);
             //TODO Add image
         }
-
-        private void frmAddKorisnikNekretnina_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private async void btnDodajKorisnika_Click(object sender, EventArgs e)
         {
             if (_nekretninaKorisnik == null)
@@ -76,7 +73,16 @@ namespace eRent.UI
             nekretninaKorisnikUpdateRequest.BrojTelefona = txtBrojTelefona.Text;
             nekretninaKorisnikUpdateRequest.ImeKorisnika = txtIme.Text;
             nekretninaKorisnikUpdateRequest.PrezimeKorisnika = txtPrezime.Text;
+            nekretninaKorisnikUpdateRequest.Slika = FromImageToByte(pbKorisnikSlika.Image);
             return nekretninaKorisnikUpdateRequest;
+        }
+
+        private void btnKorisnikSlika_Click(object sender, EventArgs e)
+        {
+            if (ofdKorisnikNekretnina.ShowDialog() == DialogResult.OK)
+            {
+                pbKorisnikSlika.Image = Image.FromFile(ofdKorisnikNekretnina.FileName);
+            }
         }
     }
 }

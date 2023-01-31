@@ -54,7 +54,7 @@ namespace eRent.UI
                    frmRezervacije.Show();
                 }
             }
-            if (e.ColumnIndex == 6)
+            if (e.ColumnIndex == 4)
             {
                 var nekretnina = dgvNekretnineList.SelectedRows[0].DataBoundItem as NekretninaModel;
                 if (nekretnina != null)
@@ -63,7 +63,7 @@ namespace eRent.UI
                     addNekretninu.Show();
                 }
             }
-            if (e.ColumnIndex == 7)
+            if (e.ColumnIndex == 5)
             {
                 var nekretnina = dgvNekretnineList.SelectedRows[0].DataBoundItem as NekretninaModel;
                 if (nekretnina != null)
