@@ -7,7 +7,6 @@
 
         public frmLogin()
         {
-            //TODO Fix Login API call 
             InitializeComponent();
             txtUsername.Text = "admin";
             txtPassword.Text = "test";

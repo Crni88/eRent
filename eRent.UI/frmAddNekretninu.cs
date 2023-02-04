@@ -33,7 +33,6 @@ namespace eRent.UI
             pbSlikaNekretnine.Image = FromByteToImage(_nekretninaModel.Slika);
         }
 
-        //TODO add error handling
         private async void btnSpasi_Click(object sender, EventArgs e)
         {
             if (ValidateChildren())

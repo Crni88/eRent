@@ -1,5 +1,6 @@
 ﻿using eRent.Models;
 using eRent.Models.Requests.NekretninaKorisnik;
+using System.Text.RegularExpressions;
 using static eRent.UI.Helpers.ImageConverter;
 
 namespace eRent.UI
@@ -45,7 +46,6 @@ namespace eRent.UI
             nekretninaKorisnikInsertRequest.DatumUseljenja = dtpDatumUseljenja.Value;
             nekretninaKorisnikInsertRequest.NekretninaKorisnikSlika = 1;
             nekretninaKorisnikInsertRequest.Slika = FromImageToByte(pbKorisnikSlika.Image);
-            //TODO Add image
         }
         private async void btnDodajKorisnika_Click(object sender, EventArgs e)
         {
@@ -75,6 +75,12 @@ namespace eRent.UI
             nekretninaKorisnikUpdateRequest.PrezimeKorisnika = txtPrezime.Text;
             nekretninaKorisnikUpdateRequest.Slika = FromImageToByte(pbKorisnikSlika.Image);
             return nekretninaKorisnikUpdateRequest;
+        }
+
+        private bool isPhoneNumber(string text)
+        {
+            Regex regex = new Regex(@"^(\+\d{1,2}\s)?\(?\d{3}\)?[\s.-]\d{3}[\s.-]\d{3}$");
+            return regex.IsMatch(text);
         }
 
         private void btnKorisnikSlika_Click(object sender, EventArgs e)

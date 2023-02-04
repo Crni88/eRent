@@ -96,6 +96,7 @@
             // 
             this.txtBrojTelefona.Location = new System.Drawing.Point(338, 219);
             this.txtBrojTelefona.Name = "txtBrojTelefona";
+            this.txtBrojTelefona.PlaceholderText = "123-456-789";
             this.txtBrojTelefona.Size = new System.Drawing.Size(164, 23);
             this.txtBrojTelefona.TabIndex = 6;
             // 

@@ -12,7 +12,6 @@ namespace eRent.Services.Korisnici
         : BaseCRUDService<KorisnikModel, Korisnik, KorisnikSearchObject, KorisnikInsertRequest, KorisnikUpdateRequest>, IKorisniciService
     {
 
-        //TODO Add NekretninaKorisnik Service and APIs
         public KorisniciService(ERentContext eRentContext, IMapper mapper) : base(eRentContext, mapper)
         {
         }

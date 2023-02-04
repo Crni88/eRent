@@ -5,7 +5,6 @@ using System.Drawing;
 
 namespace eRent.Models.Requests
 {
-    //TODO Add Nekretnina Image Property
     public class NekretninaInsertRequest
     {
         public int KorisnikNekretnina { get; set; }
@@ -37,10 +36,5 @@ namespace eRent.Models.Requests
         public byte[] Slika { get; set; }
 
         public int? Brojkvadrata { get; set; }
-
-
-
-        //TODO Add Property that will be public List<int> Nekretnina slike
-        //Possible List<Slika>
     }
 }

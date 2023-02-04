@@ -37,7 +37,7 @@
             this.ClientSize = new System.Drawing.Size(653, 682);
             this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmIzvjestaj";
-            this.Text = "frmIzvjestaj";
+            this.Text = "Izvjestaj";
             this.Load += new System.EventHandler(this.frmIzvjestaj_Load);
             this.ResumeLayout(false);
 
