@@ -1,3 +1,5 @@
+import 'dart:ffi';
+
 import 'package:flutter/material.dart';
 
 void main() {
@@ -13,15 +15,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
         primarySwatch: Colors.blue,
       ),
       home: const MyHomePage(title: 'Test Hot Reload-a'),
@@ -31,76 +24,75 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(widget.title),
-        ),
-        body: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  color: Colors.amber,
-                  padding: EdgeInsets.all(22),
-                  child: Text("Test Tarik"),
-                ),
-                Container(
-                  color: Colors.redAccent,
-                  padding: EdgeInsets.all(12),
-                  child: Text("Test 2"),
-                )
-              ],
+        body: Container(
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5), color: Colors.blueAccent),
+      child: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Container(
+            margin: const EdgeInsets.only(top: 100),
+            width: 400,
+            child: const Center(
+              child: Text(
+                "Login",
+                style: TextStyle(
+                    color: Colors.white,
+                    fontSize: 32,
+                    fontWeight: FontWeight.bold),
+              ),
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  color: Colors.amber,
-                  padding: EdgeInsets.all(22),
-                  child: Text("Test Tarik"),
-                ),
-                Container(
-                  color: Colors.redAccent,
-                  padding: EdgeInsets.all(12),
-                  child: Text("Test 2"),
-                )
-              ],
-            ),
-            Container(
-              margin: EdgeInsets.only(top: 20),
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(3), color: Colors.amber),
-              child: Text("Border radius"),
-            )
-          ],
-        ));
+          ),
+          Container(
+            margin: const EdgeInsets.all(20),
+            padding: const EdgeInsets.all(50),
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(5), color: Colors.white),
+            height: 350,
+            child: Column(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: const [
+                  TextField(
+                    decoration: InputDecoration(
+                      hintText: "Username",
+                      hintStyle:
+                          TextStyle(fontSize: 20.0, color: Colors.blueAccent),
+                    ),
+                  ),
+                  TextField(
+                    decoration: InputDecoration(
+                      hintText: "Password",
+                      hintStyle:
+                          TextStyle(fontSize: 20.0, color: Colors.blueAccent),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 50),
+                    child: OutlinedButton(
+                      onPressed: null,
+                      child: Text(
+                        "Login",
+                        style: TextStyle(
+                            color: Colors.blueAccent,
+                            fontSize: 22,
+                            fontWeight: FontWeight.w500),
+                      ),
+                    ),
+                  )
+                ]),
+          ),
+        ],
+      ),
+    ));
   }
 }
