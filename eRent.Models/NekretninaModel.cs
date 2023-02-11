@@ -29,13 +29,9 @@ namespace eRent.Models
 
         public string Username { get; set; }
 
-        public virtual LokacijaModel Lokacija { get; set; }
-
         public string Grad { get; set; }
 
-        public string Drzava { get; set; }
-
-        public byte[] Slika { get; set; }
+        public string Slika { get; set; }
 
         public int? Brojkvadrata { get; set; }
 

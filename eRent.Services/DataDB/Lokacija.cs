@@ -16,6 +16,4 @@ public partial class Lokacija
     public string Drzava { get; set; } = null!;
 
     public int? PostanskiBroj { get; set; }
-
-    public virtual ICollection<Nekretnina> Nekretninas { get; } = new List<Nekretnina>();
 }

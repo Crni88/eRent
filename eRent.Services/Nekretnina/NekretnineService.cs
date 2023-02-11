@@ -27,7 +27,7 @@ namespace eRent.Services.Nekretnina
                 nekretninaTagovi.TagId = tagId;
                 Context.NekretninaTagovis.Add(nekretninaTagovi);
             }
-            entity.Drzava = Context.Lokacijas.Where(x => x.LokacijaId == insert.LokacijaId).Select(x => x.Drzava).FirstOrDefault();
+            //entity.Drzava = Context.Lokacijas.Where(x => x.LokacijaId == insert.LokacijaId).Select(x => x.Drzava).FirstOrDefault();
             Context.SaveChanges();
             return entity;
         }

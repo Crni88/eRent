@@ -1,9 +1,12 @@
-import 'dart:ffi';
-
 import 'package:flutter/material.dart';
+import 'package:myapp/providers/nekretnine_provider.dart';
+import 'package:myapp/screens/nekretnine/nekretnine_screen.dart';
+import 'package:provider/provider.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MultiProvider(
+      providers: [ChangeNotifierProvider(create: (_) => NekretnineProvider())],
+      child: const MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -14,6 +17,12 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
+      onGenerateRoute: ((settings) {
+        if (settings.name == NekretnineListScreen.routeName) {
+          return MaterialPageRoute(
+              builder: ((context) => const NekretnineListScreen()));
+        }
+      }),
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
@@ -61,15 +70,15 @@ class _MyHomePageState extends State<MyHomePage> {
             height: 350,
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: const [
-                  TextField(
+                children: [
+                  const TextField(
                     decoration: InputDecoration(
                       hintText: "Username",
                       hintStyle:
                           TextStyle(fontSize: 20.0, color: Colors.blueAccent),
                     ),
                   ),
-                  TextField(
+                  const TextField(
                     decoration: InputDecoration(
                       hintText: "Password",
                       hintStyle:
@@ -77,10 +86,13 @@ class _MyHomePageState extends State<MyHomePage> {
                     ),
                   ),
                   Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 50),
+                    padding: const EdgeInsets.symmetric(horizontal: 50),
                     child: OutlinedButton(
-                      onPressed: null,
-                      child: Text(
+                      onPressed: () => {
+                        Navigator.pushNamed(
+                            context, NekretnineListScreen.routeName)
+                      },
+                      child: const Text(
                         "Login",
                         style: TextStyle(
                             color: Colors.blueAccent,

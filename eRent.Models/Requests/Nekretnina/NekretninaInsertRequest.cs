@@ -22,8 +22,6 @@ namespace eRent.Models.Requests
 
         public bool? Namještena { get; set; }
 
-        public int LokacijaId { get; set; }
-
         public bool? Izdvojena { get; set; }
 
         public bool? Popunjena { get; set; }
@@ -33,7 +31,7 @@ namespace eRent.Models.Requests
 
         public List<int> TagIdList { get; set; } = new List<int> { };
 
-        public byte[] Slika { get; set; }
+        public string Slika { get; set; }
 
         public int? Brojkvadrata { get; set; }
     }

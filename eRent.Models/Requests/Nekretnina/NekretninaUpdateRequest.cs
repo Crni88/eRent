@@ -16,8 +16,6 @@ namespace eRent.Models.Requests
 
         public bool? Namještena { get; set; }
 
-        //public int LokacijaId { get; set; }
-
         public bool? Izdvojena { get; set; }
         public bool? Popunjena { get; set; }
 

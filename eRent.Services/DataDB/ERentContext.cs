@@ -171,7 +171,6 @@ public partial class ERentContext : DbContext
             entity.Property(e => e.Grad).HasMaxLength(50);
             entity.Property(e => e.Izdvojena).HasColumnName("izdvojena");
             entity.Property(e => e.KorisnikNekretnina).HasColumnName("korisnikNekretnina");
-            entity.Property(e => e.LokacijaId).HasColumnName("lokacijaID");
             entity.Property(e => e.Namještena).HasColumnName("namještena");
             entity.Property(e => e.NazivNekretnine)
                 .HasMaxLength(50)
@@ -181,7 +180,7 @@ public partial class ERentContext : DbContext
                 .HasColumnName("opis");
             entity.Property(e => e.Popunjena).HasColumnName("popunjena");
             entity.Property(e => e.Slika)
-                .HasColumnType("image")
+                .IsUnicode(false)
                 .HasColumnName("slika");
             entity.Property(e => e.Username)
                 .HasMaxLength(50)
@@ -191,11 +190,6 @@ public partial class ERentContext : DbContext
                 .HasForeignKey(d => d.KorisnikNekretnina)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_korisnikNekretnina");
-
-            entity.HasOne(d => d.Lokacija).WithMany(p => p.Nekretninas)
-                .HasForeignKey(d => d.LokacijaId)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_lokacijaID");
         });
 
         modelBuilder.Entity<NekretninaKorisnik>(entity =>
