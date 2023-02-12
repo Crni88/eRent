@@ -8,8 +8,6 @@ namespace eRent.Models.Requests.NekretninaKorisnik
 
         public int Nekretnina { get; set; }
 
-        public int NekretninaKorisnikSlika { get; set; }
-
         public string ImeKorisnika { get; set; }
 
         public string PrezimeKorisnika { get; set; }
@@ -20,8 +18,6 @@ namespace eRent.Models.Requests.NekretninaKorisnik
 
         public DateTime? DatumIseljenja { get; set; }
 
-        public byte[] Slika { get; set; }
-
-
+        public string Slika { get; set; }
     }
 }

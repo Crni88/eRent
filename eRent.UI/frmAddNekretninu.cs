@@ -30,7 +30,7 @@ namespace eRent.UI
             cbNamjestena.Checked = _nekretninaModel.Namještena;
             cbIzdvojena.Checked = _nekretninaModel.Izdvojena;
             cbPopunjena.Checked = _nekretninaModel.Popunjena;
-           // pbSlikaNekretnine.Image = FromByteToImage(_nekretninaModel.Slika);
+            pbSlikaNekretnine.Image = FromByteToImage(_nekretninaModel.Slika);
         }
 
         private async void btnSpasi_Click(object sender, EventArgs e)
@@ -79,24 +79,12 @@ namespace eRent.UI
             nekretninaInsertRequest.Grad = txtGrad.Text;
             nekretninaInsertRequest.DatumObjave = DateTime.Now;
             nekretninaInsertRequest.Namještena = cbNamjestena.Checked;
-            nekretninaInsertRequest.Cijena = int.Parse(txtBrojSoba.Text);
+            nekretninaInsertRequest.Cijena = int.Parse(txtCijena.Text);
             nekretninaInsertRequest.Popunjena = cbPopunjena.Checked;
             nekretninaInsertRequest.Izdvojena = cbIzdvojena.Checked;
             nekretninaInsertRequest.TagIdList = addTags();
-            nekretninaInsertRequest.Slika = ImageToBase64(pbSlikaNekretnine.Image);
+            nekretninaInsertRequest.Slika = FromImageToBase64(pbSlikaNekretnine.Image);
             return nekretninaInsertRequest;
-        }
-
-        private string ImageToBase64(Image image)
-        {
-            string? base64String = null;
-            using (MemoryStream m = new MemoryStream())
-            {
-                image.Save(m, image.RawFormat);
-                byte[] imageBytes = m.ToArray();
-                base64String = Convert.ToBase64String(imageBytes);
-                return base64String;
-            }
         }
 
         private List<int> addTags()

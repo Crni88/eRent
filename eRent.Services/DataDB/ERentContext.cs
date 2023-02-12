@@ -212,23 +212,17 @@ public partial class ERentContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("imeKorisnika");
             entity.Property(e => e.Nekretnina).HasColumnName("nekretnina");
-            entity.Property(e => e.NekretninaKorisnikSlika).HasColumnName("nekretninaKorisnikSlika");
             entity.Property(e => e.PrezimeKorisnika)
                 .HasMaxLength(50)
                 .HasColumnName("prezimeKorisnika");
             entity.Property(e => e.Slika)
-                .HasColumnType("image")
+                .IsUnicode(false)
                 .HasColumnName("slika");
 
             entity.HasOne(d => d.NekretninaNavigation).WithMany(p => p.NekretninaKorisniks)
                 .HasForeignKey(d => d.Nekretnina)
                 .OnDelete(DeleteBehavior.ClientSetNull)
                 .HasConstraintName("FK_nekretninaKorisnik");
-
-            entity.HasOne(d => d.NekretninaKorisnikSlikaNavigation).WithMany(p => p.NekretninaKorisniks)
-                .HasForeignKey(d => d.NekretninaKorisnikSlika)
-                .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_nekretninaKorisnikSlika");
         });
 
         modelBuilder.Entity<NekretninaRezervacija>(entity =>

@@ -40,8 +40,7 @@ class _NekretnineListScreenState extends State<NekretnineListScreen> {
       child: Column(
         children: [
           Row(
-              mainAxisAlignment:
-                  MainAxisAlignment.spaceBetween, // set your alignment
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: const [Text("data"), Text("data")]),
           _buildHeader(),
           const TextField(
@@ -50,19 +49,19 @@ class _NekretnineListScreenState extends State<NekretnineListScreen> {
               hintStyle: TextStyle(fontSize: 20.0, color: Colors.blueAccent),
             ),
           ),
+          const SizedBox(height: 10),
           SizedBox(
-            height: 200,
+            height: 650,
             child: GridView(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 1,
-                childAspectRatio: 4 / 3,
-                crossAxisSpacing: 20,
-                mainAxisSpacing: 30,
+                childAspectRatio: 4 / 2,
+                mainAxisSpacing: 5,
               ),
-              scrollDirection: Axis.horizontal,
+              scrollDirection: Axis.vertical,
               children: _buildNekretnineCardList(),
             ),
-          )
+          ),
         ],
       ),
     )));
@@ -83,25 +82,57 @@ class _NekretnineListScreenState extends State<NekretnineListScreen> {
 
   List<Widget> _buildNekretnineCardList() {
     if (data.isEmpty) {
-      return [const Text("Loading...")];
+      return [
+        Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: const <Widget>[
+            CircularProgressIndicator(),
+            Text("Loading"),
+          ],
+        )
+      ];
     }
     List<Widget> list = data
-        .map((x) => SizedBox(
-              height: 200,
-              width: 200,
+        .map((x) => Container(
+              height: 250,
+              color: x.izdvojena
+                  ? const Color(0xAAF4D06F)
+                  : const Color(0xAA9DD9D2),
+              padding: const EdgeInsets.symmetric(horizontal: 10),
               child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
-                  imageFromBase64String(x.slika!),
-                  Column(
+                  SizedBox(
+                      height: 200,
+                      width: 200,
+                      child: imageFromBase64String(x.slika!)),
+                  Row(
                     children: [
-                      Text(x.nazivNekretnine ?? "Wrong property name"),
-                      Text(x.grad ?? ""),
-                      Row(
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text("Broj soba ${x.brojSoba.toString()}"),
-                          Text(x.cijena.toString())
+                          Text(x.nazivNekretnine ?? "",
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold)),
+                          Text(x.grad ?? "",
+                              style: const TextStyle(
+                                  color: Colors.black, fontSize: 16)),
+                          SizedBox(
+                            width: 150,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text("Broj soba ${x.brojSoba.toString()}"),
+                                Text("${x.cijena.toString()}KM")
+                              ],
+                            ),
+                          )
                         ],
-                      )
+                      ),
                     ],
                   ),
                 ],

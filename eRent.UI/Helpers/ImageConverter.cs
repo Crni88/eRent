@@ -4,21 +4,7 @@ namespace eRent.UI.Helpers
 {
     public class ImageConverter
     {
-        public static byte[] FromImageToByte(Image image)
-        {
-            var ms = new MemoryStream();
-            image.Save(ms, ImageFormat.Jpeg);
-            byte[] imageBytes = ms.ToArray();
-            return imageBytes;
-        }
-
-        public static Image FromByteToImage(byte[] image)
-        {
-            var ms = new MemoryStream(image);
-            return Image.FromStream(ms);
-        }
-
-        public string ImageToBase64(Image image)
+        public static string FromImageToBase64(Image image)
         {
             string? base64String = null;
             using (MemoryStream m = new MemoryStream())
@@ -29,5 +15,17 @@ namespace eRent.UI.Helpers
                 return base64String;
             }
         }
+
+        public static Image FromByteToImage(string base64String)
+        {
+            byte[] imageBytes = Convert.FromBase64String(base64String);
+            using (var ms = new MemoryStream(imageBytes, 0, imageBytes.Length))
+            {
+                Image image = Image.FromStream(ms, true);
+                image.Save("image.jpg", ImageFormat.Jpeg);
+                return image;
+            }
+        }
+
     }
 }

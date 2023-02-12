@@ -13,6 +13,8 @@ class Nekretnina {
   late int? brojSoba;
   late String? grad;
   late String? slika;
+  late bool izdvojena;
+  late String? opis;
 
   Nekretnina();
 
