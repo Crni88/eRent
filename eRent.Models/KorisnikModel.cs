@@ -2,6 +2,8 @@
 {
     public partial class KorisnikModel
     {
+
+        //Apstraktni tip podatka zajedno sa njegovom implementacijom i reprezentacijom
         public int KorisnikId { get; set; }
         
         public string KorsnikIme { get; set; }

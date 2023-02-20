@@ -42,7 +42,7 @@
             this.txtBrojSoba = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
             this.Cijena = new System.Windows.Forms.Label();
-            this.richTextBox1 = new System.Windows.Forms.RichTextBox();
+            this.txtOpis = new System.Windows.Forms.RichTextBox();
             this.label6 = new System.Windows.Forms.Label();
             this.cbPetFriendly = new System.Windows.Forms.CheckBox();
             this.cbNamjestena = new System.Windows.Forms.CheckBox();
@@ -169,13 +169,13 @@
             this.Cijena.TabIndex = 13;
             this.Cijena.Text = "Cijena rente*";
             // 
-            // richTextBox1
+            // txtOpis
             // 
-            this.richTextBox1.Location = new System.Drawing.Point(546, 237);
-            this.richTextBox1.Name = "richTextBox1";
-            this.richTextBox1.Size = new System.Drawing.Size(242, 132);
-            this.richTextBox1.TabIndex = 14;
-            this.richTextBox1.Text = "";
+            this.txtOpis.Location = new System.Drawing.Point(546, 237);
+            this.txtOpis.Name = "txtOpis";
+            this.txtOpis.Size = new System.Drawing.Size(242, 132);
+            this.txtOpis.TabIndex = 14;
+            this.txtOpis.Text = "";
             // 
             // label6
             // 
@@ -288,7 +288,7 @@
             this.Controls.Add(this.cbNamjestena);
             this.Controls.Add(this.cbPetFriendly);
             this.Controls.Add(this.label6);
-            this.Controls.Add(this.richTextBox1);
+            this.Controls.Add(this.txtOpis);
             this.Controls.Add(this.Cijena);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.txtBrojSoba);
@@ -327,7 +327,7 @@
         private TextBox txtBrojSoba;
         private Label label5;
         private Label Cijena;
-        private RichTextBox richTextBox1;
+        private RichTextBox txtOpis;
         private Label label6;
         private CheckBox cbPetFriendly;
         private CheckBox cbNamjestena;

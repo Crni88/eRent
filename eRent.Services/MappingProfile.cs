@@ -4,6 +4,7 @@ using eRent.Models.Requests;
 using eRent.Models.Requests.Korisnik;
 using eRent.Models.Requests.Lokacija;
 using eRent.Models.Requests.NekretninaKorisnik;
+using eRent.Models.Requests.NekretninaTag;
 using eRent.Models.Requests.Rezervacija;
 using eRent.Models.Requests.Tag;
 
@@ -36,6 +37,9 @@ namespace eRent.Services
             CreateMap<DataDB.Rezervacija, RezervacijaModel>();
             CreateMap<RezervacijaInsertRequest, DataDB.Rezervacija>();
             CreateMap<RezervacijaUpdateRequest, DataDB.Rezervacija>();
+            //NekretninaTagovi
+            CreateMap<DataDB.NekretninaTagovi, NekretninaTagoviModel>();
+            CreateMap<NekretninaTagoviUpsertRequest, DataDB.NekretninaTagovi>();
         }
     }
 }

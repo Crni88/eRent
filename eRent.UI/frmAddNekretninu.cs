@@ -28,8 +28,9 @@ namespace eRent.UI
             txtCijena.Text = _nekretninaModel.Cijena.ToString();
             txtBrojSoba.Text = _nekretninaModel.BrojSoba.ToString();
             cbNamjestena.Checked = _nekretninaModel.Namještena;
-            cbIzdvojena.Checked = _nekretninaModel.Izdvojena;
-            cbPopunjena.Checked = _nekretninaModel.Popunjena;
+            cbIzdvojena.Checked = (bool)_nekretninaModel.Izdvojena;
+            cbPopunjena.Checked = (bool)_nekretninaModel.Popunjena;
+            txtBrojKvadrata.Text = _nekretninaModel.Brojkvadrata.ToString();
             pbSlikaNekretnine.Image = FromByteToImage(_nekretninaModel.Slika);
         }
 
@@ -66,6 +67,7 @@ namespace eRent.UI
             nekretninaUpdateRequest.Cijena = int.Parse(txtBrojSoba.Text);
             nekretninaUpdateRequest.Popunjena = cbPopunjena.Checked;
             nekretninaUpdateRequest.Izdvojena = cbIzdvojena.Checked;
+            nekretninaUpdateRequest.Opis = txtOpis.Text;
             return nekretninaUpdateRequest;
         }
 
@@ -84,6 +86,7 @@ namespace eRent.UI
             nekretninaInsertRequest.Izdvojena = cbIzdvojena.Checked;
             nekretninaInsertRequest.TagIdList = addTags();
             nekretninaInsertRequest.Slika = FromImageToBase64(pbSlikaNekretnine.Image);
+            nekretninaInsertRequest.Opis = txtOpis.Text;
             return nekretninaInsertRequest;
         }
 
@@ -92,20 +95,21 @@ namespace eRent.UI
             var tagList = new List<int>() { };
             if (cbOsvjetljen.Checked)
             {
-                tagList.Add(1);
+                tagList.Add(1007);
             }
             if (cbNoSmoking.Checked)
             {
-                tagList.Add(2);
+                tagList.Add(1006);
             }
             if (cbMiran.Checked)
             {
-                tagList.Add(3);
+                tagList.Add(1005);
             }
-            //if (cbPetFriendly.Checked)
-            //{
-            //    tagList.Add(4);
-            //}
+            if (cbPetFriendly.Checked)
+            {
+                tagList.Add(1008);
+            }
+          
             return tagList;
         }
 

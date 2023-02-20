@@ -31,7 +31,6 @@ namespace eRent.Services.Nekretnina
             Context.SaveChanges();
             return entity;
         }
-
         public override IQueryable<DataDB.Nekretnina> AddFilter(IQueryable<DataDB.Nekretnina> query, NekretninaSearchObject search = null)
         {
             var filteredQuery = base.AddFilter(query, search);
@@ -51,6 +50,18 @@ namespace eRent.Services.Nekretnina
             if (!string.IsNullOrWhiteSpace(search?.Username))
             {
                 filteredQuery = filteredQuery.Where(x => x.Username == search.Username);
+            }
+            if (search?.BrojSoba != 0)
+            {
+                filteredQuery = filteredQuery.Where(x => x.BrojSoba >= search.BrojSoba);
+            }
+            if (search?.CijenaMin != 0)
+            {
+                filteredQuery = filteredQuery.Where(x => x.Cijena >= search.CijenaMin);
+            }
+            if (search.CijenaMax != 0)
+            {
+                filteredQuery = filteredQuery.Where(x => x.Cijena <= search.CijenaMax);
             }
             return filteredQuery;
         }

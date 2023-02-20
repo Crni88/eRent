@@ -4,6 +4,7 @@ using eRent.Services.Korisnici;
 using eRent.Services.Lokacija;
 using eRent.Services.Nekretnina;
 using eRent.Services.NekretninaKorisnik;
+using eRent.Services.NekretninaTagovi;
 using eRent.Services.Rezervacija;
 using eRent.Services.Tags;
 using eRent.Services.Uloge;
@@ -42,6 +43,8 @@ internal class Program
     });
         });
 
+        //TODO FIX THE NEKRETNINA TAG API! 
+
         builder.Services.AddTransient<IUlogeService, UlogeService>();
         builder.Services.AddTransient<IKorisniciService, KorisniciService>();
         builder.Services.AddTransient<ILokacijaService, LokacijaService>();
@@ -49,6 +52,7 @@ internal class Program
         builder.Services.AddTransient<ITagsService, TagsService>();
         builder.Services.AddTransient<INekretninaKorisnikService, NekretninaKorisnikService>();
         builder.Services.AddTransient<IRezervacijaService, RezervacijaService>();
+        builder.Services.AddTransient<INekretninaTagovi, NekretninaTagoviService>();
         builder.Services.AddAutoMapper(typeof(IKorisniciService));
 
         builder.Services.AddAuthentication("BasicAuthentication")

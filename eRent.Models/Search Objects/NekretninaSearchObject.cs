@@ -14,6 +14,9 @@ namespace eRent.Models.Search_Objects
 
         public int Cijena { get; set; }
 
+        public int CijenaMin { get; set; }
+        public int CijenaMax { get; set; }
+
         public DateTime DatumObjave { get; set; }
 
         public int BrojSoba { get; set; }

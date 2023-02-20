@@ -17,7 +17,6 @@ namespace eRent.Controllers
         }
 
         //Add GetById 
-
         [HttpGet]
         public IEnumerable<T> Get([FromQuery] TSearch search = null)
         {

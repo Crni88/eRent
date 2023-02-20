@@ -13,6 +13,8 @@ namespace eRent.Models
 
         public int Cijena { get; set; }
 
+      
+
         public DateTime DatumObjave { get; set; }
 
         public int BrojSoba { get; set; }
@@ -21,11 +23,9 @@ namespace eRent.Models
 
         public string Opis { get; set; }
 
-        public int LokacijaId { get; set; }
+        public bool? Izdvojena { get; set; }
 
-        public bool Izdvojena { get; set; }
-
-        public bool Popunjena { get; set; }
+        public bool? Popunjena { get; set; }
 
         public string Username { get; set; }
 

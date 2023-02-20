@@ -4,5 +4,7 @@
     {
         IEnumerable<T> Get(TSearch search = null);
         T GetById(int id);
+
+        T Test(int id);
     }
 }

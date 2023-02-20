@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using eRent.Models.Search_Objects;
 using eRent.Services.DataDB;
+using System.Configuration;
 
 namespace eRent.Services
 {
@@ -39,6 +40,13 @@ namespace eRent.Services
         public virtual IQueryable<TDb> AddFilter(IQueryable<TDb> dbs, TSearch search = null)
         {
             return dbs;
+        }
+
+        public virtual T Test(int id)
+        {
+            Random random = new Random();
+            int number = random.Next(1, 4);
+            return (T)Convert.ChangeType(number, typeof(T));
         }
     }
 }
