@@ -22,7 +22,7 @@
                 var result = await _ApiService.Get<dynamic>();
                 // var korisnik = await korisnikService.Get<KorisnikModel>(APIService.username);
                 // APIService.korisnik = korisnik;
-                frmNekretninaList frmNekretnina = new frmNekretninaList();
+                frmNekretninaList frmNekretnina = new frmNekretninaList(result);
                 frmNekretnina.Show();
             }
             catch (Exception ex)

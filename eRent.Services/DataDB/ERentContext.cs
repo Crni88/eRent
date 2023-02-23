@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace eRent.Services.DataDB;
 
@@ -38,6 +40,8 @@ public partial class ERentContext : DbContext
     public virtual DbSet<Poruka> Porukas { get; set; }
 
     public virtual DbSet<Posjetum> Posjeta { get; set; }
+
+    public virtual DbSet<Rejting> Rejtings { get; set; }
 
     public virtual DbSet<Rezervacija> Rezervacijas { get; set; }
 
@@ -86,6 +90,7 @@ public partial class ERentContext : DbContext
             entity.ToTable("korisnik");
 
             entity.Property(e => e.KorisnikId).HasColumnName("korisnikID");
+            entity.Property(e => e.BrojOcjena).HasColumnName("brojOcjena");
             entity.Property(e => e.Email)
                 .HasMaxLength(100)
                 .HasColumnName("email");
@@ -368,11 +373,19 @@ public partial class ERentContext : DbContext
 
             entity.Property(e => e.PosjetaId).HasColumnName("posjetaID");
             entity.Property(e => e.DatumPosjete)
-                .HasColumnType("date")
+                .HasColumnType("datetime")
                 .HasColumnName("datumPosjete");
             entity.Property(e => e.KorisnikId).HasColumnName("korisnikID");
+            entity.Property(e => e.KorisnikImePrezime)
+                .HasMaxLength(50)
+                .HasColumnName("korisnikImePrezime");
+            entity.Property(e => e.NazivNekretnine)
+                .HasMaxLength(50)
+                .HasColumnName("nazivNekretnine");
             entity.Property(e => e.NekretninaId).HasColumnName("nekretninaID");
-            entity.Property(e => e.VrijemePosjete).HasColumnName("vrijemePosjete");
+            entity.Property(e => e.VrijemePosjete)
+                .HasMaxLength(20)
+                .HasColumnName("vrijemePosjete");
 
             entity.HasOne(d => d.Korisnik).WithMany(p => p.Posjeta)
                 .HasForeignKey(d => d.KorisnikId)
@@ -381,6 +394,43 @@ public partial class ERentContext : DbContext
             entity.HasOne(d => d.Nekretnina).WithMany(p => p.Posjeta)
                 .HasForeignKey(d => d.NekretninaId)
                 .HasConstraintName("FK_nekretninaPosjeta");
+        });
+
+        modelBuilder.Entity<Rejting>(entity =>
+        {
+            entity.HasKey(e => e.RejtingId).HasName("PK_rejtingId");
+
+            entity.ToTable("rejting");
+
+            entity.Property(e => e.RejtingId).HasColumnName("rejtingId");
+            entity.Property(e => e.ImePrezime)
+                .HasMaxLength(50)
+                .HasColumnName("imePrezime");
+            entity.Property(e => e.Komentar)
+                .HasMaxLength(500)
+                .HasColumnName("komentar");
+            entity.Property(e => e.KorisnikPrim).HasColumnName("korisnikPrim");
+            entity.Property(e => e.KorisnikSec).HasColumnName("korisnikSec");
+            entity.Property(e => e.Nekretnina)
+                .HasMaxLength(100)
+                .HasColumnName("nekretnina");
+            entity.Property(e => e.NekretninaRejting).HasColumnName("nekretninaRejting");
+            entity.Property(e => e.Rejting1).HasColumnName("rejting");
+
+            entity.HasOne(d => d.KorisnikPrimNavigation).WithMany(p => p.RejtingKorisnikPrimNavigations)
+                .HasForeignKey(d => d.KorisnikPrim)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_korisnikPrim");
+
+            entity.HasOne(d => d.KorisnikSecNavigation).WithMany(p => p.RejtingKorisnikSecNavigations)
+                .HasForeignKey(d => d.KorisnikSec)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_korisnikSec");
+
+            entity.HasOne(d => d.NekretninaRejtingNavigation).WithMany(p => p.Rejtings)
+                .HasForeignKey(d => d.NekretninaRejting)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_nekretninaRejting");
         });
 
         modelBuilder.Entity<Rezervacija>(entity =>

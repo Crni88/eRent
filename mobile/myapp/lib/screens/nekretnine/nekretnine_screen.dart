@@ -29,6 +29,13 @@ class _NekretnineListScreenState extends State<NekretnineListScreen> {
   List<Nekretnina> data = [];
 
   @override
+  void setState(fn) {
+    if (mounted) {
+      super.setState(fn);
+    }
+  }
+
+  @override
   void initState() {
     super.initState();
     _nekretnineProvider = context.read<NekretnineProvider>();
@@ -39,6 +46,22 @@ class _NekretnineListScreenState extends State<NekretnineListScreen> {
     var tempData = await _nekretnineProvider?.get();
     setState(() {
       data = tempData!;
+    });
+    filterResults();
+  }
+
+  void filterResults() {
+    List<Nekretnina> data2 = [];
+    for (var element in data) {
+      if (element.izdvojena == true) {
+        data2.insert(0, element);
+        //data.remove(element);
+      }
+    }
+    data.removeWhere((element) => data2.contains(element));
+    data2.addAll(data.reversed);
+    setState(() {
+      data = data2;
     });
   }
 

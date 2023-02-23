@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/model/korisnik.dart';
 import 'package:myapp/providers/nekretnina_provider.dart';
 import 'package:myapp/providers/nekretnine_provider.dart';
 import 'package:myapp/providers/user_provider.dart';
 import 'package:myapp/screens/nekretnine/nekretnine_screen.dart';
 import 'package:myapp/utils/util.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 void main() {
   runApp(MultiProvider(providers: [
@@ -56,7 +58,6 @@ class _MyHomePageState extends State<MyHomePage> {
   TextEditingController passwordController = TextEditingController();
 
   late UserProvider userProvider;
-
   @override
   Widget build(BuildContext context) {
     userProvider = Provider.of<UserProvider>(context);
@@ -100,10 +101,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   TextField(
                     controller: passwordController,
+                    obscureText: true,
+                    enableSuggestions: false,
+                    autocorrect: false,
                     decoration: const InputDecoration(
                       hintText: "Password",
-                      hintStyle:
-                          TextStyle(fontSize: 20.0, color: Colors.blueAccent),
+                      hintStyle: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.blueAccent,
+                      ),
                     ),
                   ),
                   Container(
@@ -122,11 +128,18 @@ class _MyHomePageState extends State<MyHomePage> {
                           Authorization.username = usernameController.text;
                           Authorization.password = passwordController.text;
 
-                          await userProvider.get();
+                          List<Korisnik> list = await userProvider.get();
+                          Korisnik korisnik = list.firstWhere((element) =>
+                              element.username == usernameController.text);
+                          SharedPreferences prefs =
+                              await SharedPreferences.getInstance();
+                          await prefs.setString(
+                              'korisnikId', korisnik.korisnikId!.toString());
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => NekretnineListScreen()),
+                                builder: (context) =>
+                                    const NekretnineListScreen()),
                           );
                         } catch (e) {
                           showDialog(

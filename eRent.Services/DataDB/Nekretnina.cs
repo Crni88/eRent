@@ -47,6 +47,8 @@ public partial class Nekretnina
 
     public virtual ICollection<Posjetum> Posjeta { get; } = new List<Posjetum>();
 
+    public virtual ICollection<Rejting> Rejtings { get; } = new List<Rejting>();
+
     public virtual ICollection<Rezervacija> Rezervacijas { get; } = new List<Rezervacija>();
 
     public virtual ICollection<Ugovor> Ugovors { get; } = new List<Ugovor>();
