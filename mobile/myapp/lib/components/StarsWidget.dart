@@ -30,7 +30,7 @@ class _StarRatingState extends State<StarRating> {
 
   Widget _buildStar(int index) {
     IconData iconData = Icons.star;
-    Color color = widget.color ?? Theme.of(context).primaryColor;
+    Color color = widget.color;
 
     if (index >= _currentRating) {
       iconData = Icons.star_border;

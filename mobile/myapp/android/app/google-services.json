@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "467666186963",
+    "project_id": "erent-8244f",
+    "storage_bucket": "erent-8244f.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:467666186963:android:0a0bd34ba9eb97e432da26",
+        "android_client_info": {
+          "package_name": "com.example.myapp"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "467666186963-a87nseqp2hocposrvmoep1qph3ptbriu.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDkJ7jX1jrqcwDT9XcDf7sfTAZptjWg29Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "467666186963-a87nseqp2hocposrvmoep1qph3ptbriu.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

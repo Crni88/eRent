@@ -1,3 +1,4 @@
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:myapp/model/korisnik.dart';
 import 'package:myapp/providers/nekretnina_provider.dart';
@@ -8,7 +9,17 @@ import 'package:myapp/utils/util.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  //Firebase.initializeApp();
+  await Firebase.initializeApp(
+      options: const FirebaseOptions(
+    apiKey: "AIzaSyAMAqdDG8mNPDEDlK5yPCquBJhkZJ-B814",
+    appId: "1:467666186963:web:bb8bc6014f2ea34432da26",
+    messagingSenderId: "467666186963",
+    projectId: "erent-8244f",
+  ));
+
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (_) => NekretnineProvider()),
     ChangeNotifierProvider(
@@ -135,6 +146,8 @@ class _MyHomePageState extends State<MyHomePage> {
                               await SharedPreferences.getInstance();
                           await prefs.setString(
                               'korisnikId', korisnik.korisnikId!.toString());
+                          await prefs.setString(
+                              'korisnikEmail', korisnik.email!.toString());
                           Navigator.push(
                             context,
                             MaterialPageRoute(

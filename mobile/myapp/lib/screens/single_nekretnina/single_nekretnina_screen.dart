@@ -35,6 +35,7 @@ class SingleNekretninaScreen extends StatefulWidget {
 class _SingleNekretninaScreenState extends State<SingleNekretninaScreen> {
   Nekretnina nekretnina = Nekretnina();
   Korisnik? korisnik = Korisnik();
+  Korisnik korisnikNekretnina = Korisnik();
   NekretninaTagovi nekretninaTagovi = NekretninaTagovi();
   NekretninaProvider? nekretninaProvider = NekretninaProvider();
   NekretninaTagoviProvider? nekretninaTagoviProvider =
@@ -61,25 +62,25 @@ class _SingleNekretninaScreenState extends State<SingleNekretninaScreen> {
   Future loadData() async {
     var temp = await nekretninaProvider?.getById(arguments!);
     var temp2 = await nekretninaTagoviProvider?.getById(arguments!);
-    setState(() {
-      nekretnina = temp!;
-      nekretninaTagovi = temp2!;
-    });
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? id = prefs.getString('korisnikId');
     var temp3 = await korisnikProvider?.getById(int.parse(id!));
     setState(() {
+      nekretnina = temp!;
+      nekretninaTagovi = temp2!;
       korisnik = temp3!;
     });
     var avg = await getAvgRejting(nekretnina.korisnikNekretnina);
-    if (korisnik?.korisnikId == nekretnina.korisnikNekretnina) {
+    var temp4 = await korisnikProvider?.getById(nekretnina.korisnikNekretnina!);
+    setState(() {
+      korisnikNekretnina = temp4!;
+      averageAge = avg;
+    });
+    if (korisnik?.korisnikId == korisnikNekretnina.korisnikId) {
       setState(() {
         isVisible = true;
       });
     }
-    setState(() {
-      averageAge = avg;
-    });
   }
 
   Future<String> getAvgRejting(int? id) async {
@@ -105,24 +106,31 @@ class _SingleNekretninaScreenState extends State<SingleNekretninaScreen> {
             TopBar(
               context: context,
             ),
-            _buildSingleNekretnina(nekretnina, nekretninaTagovi, korisnik,
-                averageAge, rejtingProvider, isVisible, context),
+            _buildSingleNekretnina(
+                korisnikNekretnina,
+                nekretnina,
+                nekretninaTagovi,
+                korisnik,
+                averageAge,
+                rejtingProvider,
+                isVisible,
+                context),
             Container(
               width: 500,
-              height: isVisible ? 130 : 300,
+              height: isVisible ? 130 : 400,
               padding: const EdgeInsets.all(20),
               color: const Color.fromRGBO(220, 220, 220, 0.5),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
-                  _buildRecenzijaBlock(averageAge, korisnik!, context),
+                  _buildRecenzijaBlock(averageAge, korisnikNekretnina, context),
                   Visibility(
                       visible:
                           !isVisible, // if true, show the button, if false, hide
                       child: Column(
                         children: [
-                          MySpacer(),
+                          const MySpacer(),
                           StarRating(
                             starCount: 5,
                             color: Colors.yellow,
@@ -151,7 +159,7 @@ class _SingleNekretninaScreenState extends State<SingleNekretninaScreen> {
                               ),
                             ),
                           ),
-                          MySpacer(),
+                          const MySpacer(),
                           Container(
                             height: 50,
                             margin: const EdgeInsets.fromLTRB(40, 0, 40, 0),
@@ -227,6 +235,7 @@ class _SingleNekretninaScreenState extends State<SingleNekretninaScreen> {
 }
 
 Widget _buildSingleNekretnina(
+  Korisnik? korisnikNekretnina,
   Nekretnina nekretnina,
   NekretninaTagovi nekretninaTagovi,
   Korisnik? korisnik,
@@ -283,7 +292,7 @@ Widget _buildSingleNekretnina(
             MyButton("Rezerviraj", RezervacijaScreen(nekretnina, korisnik)),
             const MySpacer(),
             const MyTitle("Informacije o vlasniku nekretnine:"),
-            _korisnikDetails(korisnik, averageAge),
+            _korisnikDetails(korisnikNekretnina!, korisnik, averageAge),
             const MySpacer(),
             MyTitle(isVisible ? "Vaši podaci" : "Ostavi recenziju"),
           ]),
@@ -291,8 +300,9 @@ Widget _buildSingleNekretnina(
   ]);
 }
 
-Widget _korisnikDetails(Korisnik korisnik, String averageAge) {
-  if (korisnik.korisnikId == null) {
+Widget _korisnikDetails(
+    Korisnik? korisnikNekretnina, Korisnik korisnik, String averageAge) {
+  if (korisnikNekretnina?.korisnikId == null) {
     return const CircularProgressIndicator();
   } else {
     return Container(
@@ -306,11 +316,16 @@ Widget _korisnikDetails(Korisnik korisnik, String averageAge) {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               MyText(
-                  "${korisnik?.korsnikIme} ${korisnik?.korisnikPrezime}", true),
-              MyText("${korisnik?.email} ", false),
+                  "${korisnikNekretnina?.korsnikIme} ${korisnikNekretnina?.korisnikPrezime}",
+                  true),
+              MyText("${korisnikNekretnina?.email} ", false),
               MyText("Rejting $averageAge/5", true),
               const MySpacer(),
-              MyButton("Posalji poruku", PorukeScreen(korisnik))
+              MyButton(
+                  "Posalji poruku",
+                  chatpage(
+                    email: '${korisnik.email}',
+                  ))
             ]));
   }
 }
