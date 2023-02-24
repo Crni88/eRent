@@ -37,6 +37,8 @@ public partial class ERentContext : DbContext
 
     public virtual DbSet<OglasKorisnik> OglasKorisniks { get; set; }
 
+    public virtual DbSet<PaymentRequest> PaymentRequests { get; set; }
+
     public virtual DbSet<Poruka> Porukas { get; set; }
 
     public virtual DbSet<Posjetum> Posjeta { get; set; }
@@ -338,6 +340,29 @@ public partial class ERentContext : DbContext
                 .HasConstraintName("FK_oglasKorisnikId");
         });
 
+        modelBuilder.Entity<PaymentRequest>(entity =>
+        {
+            entity.HasKey(e => e.PaymentRequestId).HasName("PK_paymentRequestId");
+
+            entity.ToTable("paymentRequest");
+
+            entity.Property(e => e.PaymentRequestId).HasColumnName("paymentRequestId");
+            entity.Property(e => e.Iznos).HasColumnName("iznos");
+            entity.Property(e => e.Komentar)
+                .HasMaxLength(500)
+                .HasColumnName("komentar");
+            entity.Property(e => e.Mjesecno).HasColumnName("mjesecno");
+            entity.Property(e => e.Nekretnina)
+                .HasMaxLength(100)
+                .HasColumnName("nekretnina");
+            entity.Property(e => e.NekretninaPayment).HasColumnName("nekretninaPayment");
+
+            entity.HasOne(d => d.NekretninaPaymentNavigation).WithMany(p => p.PaymentRequests)
+                .HasForeignKey(d => d.NekretninaPayment)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_nekretninaPayment");
+        });
+
         modelBuilder.Entity<Poruka>(entity =>
         {
             entity.HasKey(e => e.PorukaId).HasName("PK_porukaID");
@@ -415,6 +440,7 @@ public partial class ERentContext : DbContext
                 .HasMaxLength(100)
                 .HasColumnName("nekretnina");
             entity.Property(e => e.NekretninaRejting).HasColumnName("nekretninaRejting");
+            entity.Property(e => e.OverallRejting).HasColumnName("overallRejting");
             entity.Property(e => e.Rejting1).HasColumnName("rejting");
 
             entity.HasOne(d => d.KorisnikPrimNavigation).WithMany(p => p.RejtingKorisnikPrimNavigations)

@@ -1,0 +1,18 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Text;
+
+namespace eRent.Models.Requests.Payment
+{
+    public class PaymentUpsertRequest
+    {
+        public int NekretninaPayment { get; set; }
+
+        public string Komentar { get; set; }
+
+        public double Iznos { get; set; }
+
+        public bool? Mjesecno { get; set; }
+
+    }
+}

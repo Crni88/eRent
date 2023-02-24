@@ -45,6 +45,8 @@ public partial class Nekretnina
 
     public virtual ICollection<Ogla> Oglas { get; } = new List<Ogla>();
 
+    public virtual ICollection<PaymentRequest> PaymentRequests { get; } = new List<PaymentRequest>();
+
     public virtual ICollection<Posjetum> Posjeta { get; } = new List<Posjetum>();
 
     public virtual ICollection<Rejting> Rejtings { get; } = new List<Rejting>();

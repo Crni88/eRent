@@ -19,9 +19,9 @@ public partial class Rejting
 
     public string? ImePrezime { get; set; }
 
-    public double Rejting1 { get; set; }
+    public double? Rejting1 { get; set; }
 
-    //public double? OverallRejting { get; set; }
+    public double? OverallRejting { get; set; }
 
     public virtual Korisnik KorisnikPrimNavigation { get; set; } = null!;
 

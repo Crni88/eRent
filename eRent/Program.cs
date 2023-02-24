@@ -5,6 +5,7 @@ using eRent.Services.Lokacija;
 using eRent.Services.Nekretnina;
 using eRent.Services.NekretninaKorisnik;
 using eRent.Services.NekretninaTagovi;
+using eRent.Services.Payment;
 using eRent.Services.Posjeta;
 using eRent.Services.Rejting;
 using eRent.Services.Rezervacija;
@@ -57,6 +58,7 @@ internal class Program
         builder.Services.AddTransient<INekretninaTagovi, NekretninaTagoviService>();
         builder.Services.AddTransient<IPosjetaService, PosjetaService>();
         builder.Services.AddTransient<IRejtingService, RejtingService>();
+        builder.Services.AddTransient<IPaymentRequestService, PaymentRequestService>();
         builder.Services.AddAutoMapper(typeof(IKorisniciService));
 
         builder.Services.AddAuthentication("BasicAuthentication")
