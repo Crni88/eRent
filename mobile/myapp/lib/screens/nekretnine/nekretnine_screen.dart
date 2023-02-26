@@ -3,7 +3,6 @@ import 'package:flutter/services.dart';
 import 'package:myapp/components/mytext.dart';
 import 'package:myapp/components/spacer.dart';
 import 'package:myapp/model/nekretnina.dart';
-import 'package:myapp/model/searchobjects/nekretnine_search/nekretnina_search_object.dart';
 import 'package:myapp/providers/nekretnine_provider.dart';
 import 'package:provider/provider.dart';
 import '../../components/top_bar.dart';
@@ -20,7 +19,6 @@ class NekretnineListScreen extends StatefulWidget {
 
 class _NekretnineListScreenState extends State<NekretnineListScreen> {
   NekretnineProvider? _nekretnineProvider;
-  Nekretnina_search_object searchObject = Nekretnina_search_object();
   final TextEditingController _brojSobaController = TextEditingController();
   final TextEditingController _nameFTSController = TextEditingController();
   final TextEditingController _cijenaMinController = TextEditingController();

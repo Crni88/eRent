@@ -27,7 +27,7 @@ namespace eRent.UI
         {
             float iznosPoKorisniku = float.Parse(txtIznos.Text) / BrojKorisnika;
             string komentar = txtKomentar.Text;
-            string naslov = txtNaslov.Text + " - " + iznosPoKorisniku.ToString();
+            string naslov = txtNaslov.Text + " - " + iznosPoKorisniku.ToString()+ " KM";
             await posaljiNotifikacijuAsync(komentar, naslov);
             await savePaymentRequestToDatabase();
         }

@@ -1,3 +1,4 @@
+using eRent;
 using eRent.Filters;
 using eRent.Services.DataDB;
 using eRent.Services.Korisnici;
@@ -59,6 +60,7 @@ internal class Program
         builder.Services.AddTransient<IPosjetaService, PosjetaService>();
         builder.Services.AddTransient<IRejtingService, RejtingService>();
         builder.Services.AddTransient<IPaymentRequestService, PaymentRequestService>();
+        builder.Services.AddStripeInfrastructure(builder.Configuration);
         builder.Services.AddAutoMapper(typeof(IKorisniciService));
 
         builder.Services.AddAuthentication("BasicAuthentication")
