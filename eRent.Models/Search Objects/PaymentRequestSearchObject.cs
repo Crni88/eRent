@@ -6,5 +6,8 @@ namespace eRent.Models.Search_Objects
 {
     public class PaymentRequestSearchObject:BaseSearchObject
     {
+        public int? KorisnikPaymentId { get; set; }
+
+       // public bool? IsProcessed { get; set; }
     }
 }

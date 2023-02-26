@@ -2,6 +2,11 @@
 {
     public class PaymentRequestModel
     {
+        public string Naslov { get; set; }
+
+        public int? KorisnikPaymentId { get; set; }
+
+        public bool? IsProcessed { get; set; }
         public int NekretninaPayment { get; set; }
 
         public string Komentar { get; set; }

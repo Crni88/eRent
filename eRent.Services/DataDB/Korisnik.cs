@@ -33,6 +33,8 @@ public partial class Korisnik
 
     public virtual ICollection<OglasKorisnik> OglasKorisniks { get; } = new List<OglasKorisnik>();
 
+    public virtual ICollection<PaymentRequest> PaymentRequests { get; } = new List<PaymentRequest>();
+
     public virtual ICollection<Poruka> PorukaPosiljalacPorukes { get; } = new List<Poruka>();
 
     public virtual ICollection<Poruka> PorukaPrimaalacPorukes { get; } = new List<Poruka>();

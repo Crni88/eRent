@@ -347,15 +347,24 @@ public partial class ERentContext : DbContext
             entity.ToTable("paymentRequest");
 
             entity.Property(e => e.PaymentRequestId).HasColumnName("paymentRequestId");
+            entity.Property(e => e.IsProcessed).HasColumnName("isProcessed");
             entity.Property(e => e.Iznos).HasColumnName("iznos");
             entity.Property(e => e.Komentar)
                 .HasMaxLength(500)
                 .HasColumnName("komentar");
+            entity.Property(e => e.KorisnikPaymentId).HasColumnName("korisnikPaymentId");
             entity.Property(e => e.Mjesecno).HasColumnName("mjesecno");
+            entity.Property(e => e.Naslov)
+                .HasMaxLength(60)
+                .HasColumnName("naslov");
             entity.Property(e => e.Nekretnina)
                 .HasMaxLength(100)
                 .HasColumnName("nekretnina");
             entity.Property(e => e.NekretninaPayment).HasColumnName("nekretninaPayment");
+
+            entity.HasOne(d => d.KorisnikPayment).WithMany(p => p.PaymentRequests)
+                .HasForeignKey(d => d.KorisnikPaymentId)
+                .HasConstraintName("FK_korisnikPaymentId");
 
             entity.HasOne(d => d.NekretninaPaymentNavigation).WithMany(p => p.PaymentRequests)
                 .HasForeignKey(d => d.NekretninaPayment)

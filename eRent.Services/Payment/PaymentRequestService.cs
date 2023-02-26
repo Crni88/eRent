@@ -20,5 +20,17 @@ namespace eRent.Services.Payment
 
             base.BeforeInsert(insert, entity);
         }
+
+        public override IQueryable<DataDB.PaymentRequest> AddFilter(IQueryable<DataDB.PaymentRequest> query, PaymentRequestSearchObject search = null)
+        {
+            var filteredQuery = base.AddFilter(query, search);
+            if (search != null)
+            {
+                filteredQuery = filteredQuery.Where(x => x.KorisnikPaymentId == search.KorisnikPaymentId);
+                filteredQuery = filteredQuery.Where(x => x.IsProcessed == false);
+            }
+           
+            return filteredQuery;
+        }
     }
 }

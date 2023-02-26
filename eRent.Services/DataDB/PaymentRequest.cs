@@ -17,5 +17,13 @@ public partial class PaymentRequest
 
     public string Nekretnina { get; set; } = null!;
 
+    public int? KorisnikPaymentId { get; set; }
+
+    public bool? IsProcessed { get; set; }
+
+    public string? Naslov { get; set; }
+
+    public virtual Korisnik? KorisnikPayment { get; set; }
+
     public virtual Nekretnina NekretninaPaymentNavigation { get; set; } = null!;
 }

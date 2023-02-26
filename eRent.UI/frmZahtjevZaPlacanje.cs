@@ -34,8 +34,13 @@ namespace eRent.UI
 
         private async Task savePaymentRequestToDatabase()
         {
+            //TODO add for each customer to send separate payment request
             PaymentUpsertRequest paymentUpsertRequest = new PaymentUpsertRequest();
             paymentUpsertRequest.NekretninaPayment = Nekretnina.NekretninaId;
+            paymentUpsertRequest.Komentar = txtKomentar.Text;
+            paymentUpsertRequest.Iznos = int.Parse(txtIznos.Text);
+            paymentUpsertRequest.Mjesecno = cbMjesecno.Checked;
+            paymentUpsertRequest.Naslov = txtNaslov.Text;
             var postPaymentRequest = await PaymentRequestService.Post<PaymentUpsertRequest>(paymentUpsertRequest);
             this.Close();
         }
