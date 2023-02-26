@@ -1,12 +1,69 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:myapp/model/korisnik.dart';
 import 'package:myapp/providers/nekretnina_provider.dart';
 import 'package:myapp/providers/nekretnine_provider.dart';
 import 'package:myapp/providers/user_provider.dart';
 import 'package:myapp/screens/nekretnine/nekretnine_screen.dart';
 import 'package:myapp/utils/util.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
-void main() {
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  //Firebase.initializeApp();
+  await Firebase.initializeApp(
+      options: const FirebaseOptions(
+    apiKey: "AIzaSyAMAqdDG8mNPDEDlK5yPCquBJhkZJ-B814",
+    appId: "1:467666186963:web:bb8bc6014f2ea34432da26",
+    messagingSenderId: "467666186963",
+    projectId: "erent-8244f",
+  ));
+  FirebaseMessaging messaging = FirebaseMessaging.instance;
+
+  NotificationSettings settings = await messaging.requestPermission(
+    alert: true,
+    announcement: false,
+    badge: true,
+    carPlay: false,
+    criticalAlert: false,
+    provisional: false,
+    sound: true,
+  );
+
+  print('User granted permission: ${settings.authorizationStatus}');
+
+  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+    print('Got a message whilst in the foreground!');
+    print('Message data: ${message.data}');
+
+    if (message.notification != null) {
+      print('Message also contained a notification: ${message.notification}');
+    }
+  });
+
+  Future<void> _firebaseMessagingBackgroundHandler(
+      RemoteMessage message) async {
+    // If you're going to use other Firebase services in the background, such as Firestore,
+    // make sure you call `initializeApp` before using other Firebase services.
+    await Firebase.initializeApp();
+
+    print("Handling a background message: ${message.messageId}");
+  }
+
+  void main() {
+    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+    runApp(MyApp());
+  }
+
+  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+  // Request permission to receive notifications (required on iOS)
+  await _firebaseMessaging.requestPermission();
+  // Get the token for this device
+  String? token = await _firebaseMessaging.getToken();
+  print('FCM Device Token: $token');
+
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (_) => NekretnineProvider()),
     ChangeNotifierProvider(
@@ -56,7 +113,6 @@ class _MyHomePageState extends State<MyHomePage> {
   TextEditingController passwordController = TextEditingController();
 
   late UserProvider userProvider;
-
   @override
   Widget build(BuildContext context) {
     userProvider = Provider.of<UserProvider>(context);
@@ -100,10 +156,15 @@ class _MyHomePageState extends State<MyHomePage> {
                   ),
                   TextField(
                     controller: passwordController,
+                    obscureText: true,
+                    enableSuggestions: false,
+                    autocorrect: false,
                     decoration: const InputDecoration(
                       hintText: "Password",
-                      hintStyle:
-                          TextStyle(fontSize: 20.0, color: Colors.blueAccent),
+                      hintStyle: TextStyle(
+                        fontSize: 20.0,
+                        color: Colors.blueAccent,
+                      ),
                     ),
                   ),
                   Container(
@@ -122,11 +183,20 @@ class _MyHomePageState extends State<MyHomePage> {
                           Authorization.username = usernameController.text;
                           Authorization.password = passwordController.text;
 
-                          await userProvider.get();
+                          List<Korisnik> list = await userProvider.get();
+                          Korisnik korisnik = list.firstWhere((element) =>
+                              element.username == usernameController.text);
+                          SharedPreferences prefs =
+                              await SharedPreferences.getInstance();
+                          await prefs.setString(
+                              'korisnikId', korisnik.korisnikId!.toString());
+                          await prefs.setString(
+                              'korisnikEmail', korisnik.email!.toString());
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => NekretnineListScreen()),
+                                builder: (context) =>
+                                    const NekretnineListScreen()),
                           );
                         } catch (e) {
                           showDialog(

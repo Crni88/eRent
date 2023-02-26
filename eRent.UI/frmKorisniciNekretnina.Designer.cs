@@ -38,6 +38,7 @@
             this.Uredi = new System.Windows.Forms.DataGridViewButtonColumn();
             this.btnUcitajKorisnike = new System.Windows.Forms.Button();
             this.btnDodajNovogKorisnika = new System.Windows.Forms.Button();
+            this.btnZahtjevZaPlacanje = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKorisniciNekretnina)).BeginInit();
             this.SuspendLayout();
             // 
@@ -69,7 +70,7 @@
             this.dgvKorisniciNekretnina.RowHeadersWidth = 51;
             this.dgvKorisniciNekretnina.RowTemplate.Height = 25;
             this.dgvKorisniciNekretnina.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvKorisniciNekretnina.Size = new System.Drawing.Size(776, 400);
+            this.dgvKorisniciNekretnina.Size = new System.Drawing.Size(776, 377);
             this.dgvKorisniciNekretnina.TabIndex = 2;
             this.dgvKorisniciNekretnina.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKorisniciNekretnina_CellContentClick);
             // 
@@ -140,11 +141,22 @@
             this.btnDodajNovogKorisnika.UseVisualStyleBackColor = true;
             this.btnDodajNovogKorisnika.Click += new System.EventHandler(this.btnDodajNovogKorisnika_Click);
             // 
+            // btnZahtjevZaPlacanje
+            // 
+            this.btnZahtjevZaPlacanje.Location = new System.Drawing.Point(649, 421);
+            this.btnZahtjevZaPlacanje.Name = "btnZahtjevZaPlacanje";
+            this.btnZahtjevZaPlacanje.Size = new System.Drawing.Size(139, 23);
+            this.btnZahtjevZaPlacanje.TabIndex = 5;
+            this.btnZahtjevZaPlacanje.Text = "Zahtjev za placanje";
+            this.btnZahtjevZaPlacanje.UseVisualStyleBackColor = true;
+            this.btnZahtjevZaPlacanje.Click += new System.EventHandler(this.btnZahtjevZaPlacanje_Click);
+            // 
             // frmKorisniciNekretnina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnZahtjevZaPlacanje);
             this.Controls.Add(this.btnDodajNovogKorisnika);
             this.Controls.Add(this.btnUcitajKorisnike);
             this.Controls.Add(this.dgvKorisniciNekretnina);
@@ -170,5 +182,6 @@
         private DataGridViewTextBoxColumn Datum_Useljenja;
         private DataGridViewTextBoxColumn Datum_Iseljenja;
         private DataGridViewButtonColumn Uredi;
+        private Button btnZahtjevZaPlacanje;
     }
 }

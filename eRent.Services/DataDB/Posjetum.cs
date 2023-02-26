@@ -11,9 +11,13 @@ public partial class Posjetum
 
     public int? NekretninaId { get; set; }
 
+    public string? NazivNekretnine { get; set; }
+
     public DateTime? DatumPosjete { get; set; }
 
-    public TimeSpan? VrijemePosjete { get; set; }
+    public string? VrijemePosjete { get; set; }
+
+    public string? KorisnikImePrezime { get; set; }
 
     public virtual Korisnik? Korisnik { get; set; }
 

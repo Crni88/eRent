@@ -23,6 +23,8 @@ public partial class Korisnik
 
     public string? Username { get; set; }
 
+    public int? BrojOcjena { get; set; }
+
     public virtual ICollection<Izvjestaj> Izvjestajs { get; } = new List<Izvjestaj>();
 
     public virtual ICollection<KorisnikRezervacija> KorisnikRezervacijas { get; } = new List<KorisnikRezervacija>();
@@ -36,6 +38,10 @@ public partial class Korisnik
     public virtual ICollection<Poruka> PorukaPrimaalacPorukes { get; } = new List<Poruka>();
 
     public virtual ICollection<Posjetum> Posjeta { get; } = new List<Posjetum>();
+
+    public virtual ICollection<Rejting> RejtingKorisnikPrimNavigations { get; } = new List<Rejting>();
+
+    public virtual ICollection<Rejting> RejtingKorisnikSecNavigations { get; } = new List<Rejting>();
 
     public virtual ICollection<Ugovor> UgovorPodnosiocUgovoras { get; } = new List<Ugovor>();
 
