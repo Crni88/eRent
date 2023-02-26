@@ -71,7 +71,6 @@ namespace eRent.Services.Korisnici
             var filteredQuery = base.AddFilter(query, search);
 
 
-
             if (!string.IsNullOrEmpty(search?.NameFTS))
             {
                 filteredQuery = filteredQuery.Where(x => x.KorsnikIme.Contains(search.NameFTS) ||

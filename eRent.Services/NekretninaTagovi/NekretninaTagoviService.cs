@@ -6,7 +6,7 @@ using eRent.Services.DataDB;
 namespace eRent.Services.NekretninaTagovi
 {
     public class NekretninaTagoviService :
-                BaseCRUDService<NekretninaTagoviModel, DataDB.NekretninaTagovi, NekretninaTagoviSearchObject, NekretninaTagoviUpsertRequest, NekretninaTagoviUpsertRequest>, INekretninaTagovi
+                BaseCRUDService<NekretninaTagoviModel,DataDB.NekretninaTagovi,NekretninaTagoviSearchObject,NekretninaTagoviUpsertRequest, NekretninaTagoviUpsertRequest>,INekretninaTagovi
     {
         public ERentContext Context { get; set; }
 
@@ -33,5 +33,5 @@ namespace eRent.Services.NekretninaTagovi
 
             return nekretninaTagoviModel;
         }
-    }
+            }
 }

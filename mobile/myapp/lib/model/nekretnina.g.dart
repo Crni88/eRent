@@ -8,7 +8,6 @@ part of 'nekretnina.dart';
 
 Nekretnina _$NekretninaFromJson(Map<String, dynamic> json) => Nekretnina()
   ..nekretninaId = json['nekretninaId'] as int?
-  ..korisnikNekretnina = json['korisnikNekretnina'] as int?
   ..nazivNekretnine = json['nazivNekretnine'] as String?
   ..cijena = json['cijena'] as int?
   ..brojSoba = json['brojSoba'] as int?
@@ -21,7 +20,6 @@ Nekretnina _$NekretninaFromJson(Map<String, dynamic> json) => Nekretnina()
 Map<String, dynamic> _$NekretninaToJson(Nekretnina instance) =>
     <String, dynamic>{
       'nekretninaId': instance.nekretninaId,
-      'korisnikNekretnina': instance.korisnikNekretnina,
       'nazivNekretnine': instance.nazivNekretnine,
       'cijena': instance.cijena,
       'brojSoba': instance.brojSoba,

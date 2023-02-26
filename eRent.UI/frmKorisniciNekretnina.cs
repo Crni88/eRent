@@ -10,8 +10,6 @@ namespace eRent.UI
 
         private NekretninaModel _nekretnina;
 
-        List<NekretninaKorisnikModel> list = new List<NekretninaKorisnikModel>();
-
         public frmKorisniciNekretnina(NekretninaModel nekretnina)
         {
             this._nekretnina = nekretnina;
@@ -23,7 +21,7 @@ namespace eRent.UI
         {
             NekretninaKorisnikSearchObject nekretninaKorisnik = new NekretninaKorisnikSearchObject();
             nekretninaKorisnik.NekretninaId = _nekretnina.NekretninaId;
-            list = await NekretninaKorisnikService.Get<List<NekretninaKorisnikModel>>(nekretninaKorisnik);
+            var list = await NekretninaKorisnikService.Get<List<NekretninaKorisnikModel>>(nekretninaKorisnik);
             dgvKorisniciNekretnina.DataSource = list;
         }
 
@@ -44,13 +42,6 @@ namespace eRent.UI
                     frmAddKorisniciNekretnina.ShowDialog();
                 }
             }
-        }
-
-        private void btnZahtjevZaPlacanje_Click(object sender, EventArgs e)
-        {
-            int brojKorisnika = list.Count();
-            frmZahtjevZaPlacanje frmZahtjevZaPlacanje = new frmZahtjevZaPlacanje(brojKorisnika,_nekretnina);
-            frmZahtjevZaPlacanje.ShowDialog();      
         }
     }
 }

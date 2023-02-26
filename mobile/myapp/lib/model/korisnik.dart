@@ -4,13 +4,13 @@ part 'korisnik.g.dart';
 
 @JsonSerializable()
 class Korisnik {
-  int? korisnikId;
-  String? korsnikIme;
-  String? username;
-  String? korisnikPrezime;
-  String? email;
-  int? ulogaId;
-  int? rejting;
+  late int? korisnikId;
+  late String? korisnikIme;
+  late String? username;
+  late String? korisnikPrezime;
+  late String? email;
+  late int? ulogaId;
+  late int? rejting;
 
   Korisnik();
 

@@ -8,19 +8,11 @@ namespace eRent.UI
 
         public APIService NekretnineService { get; set; } = new APIService("Nekretnine");
         public APIService LokacijaService { get; set; } = new APIService("Lokacija");
-        public dynamic Result { get; }
 
         public frmNekretninaList()
         {
             InitializeComponent();
             dgvNekretnineList.AutoGenerateColumns = false;
-        }
-
-        public frmNekretninaList(dynamic result)
-        {
-            InitializeComponent();
-            dgvNekretnineList.AutoGenerateColumns = false;
-            Result = result;
         }
 
         private async void btnShowNekretnine_Click(object sender, EventArgs e)
@@ -80,27 +72,12 @@ namespace eRent.UI
                     frmKorisniciNekretnina.ShowDialog();
                 }
             }
-            if (e.ColumnIndex == 6)
-            {
-                var nekretnina = dgvNekretnineList.SelectedRows[0].DataBoundItem as NekretninaModel;
-                if (nekretnina != null)
-                {
-                    frmPosjete frmPosjete = new frmPosjete(nekretnina);
-                    frmPosjete.ShowDialog();
-                }
-            }
         }
 
         private void btnIzvjestaj_Click(object sender, EventArgs e)
         {
             frmOpcijeIzvjestaja frmIzvjestaj = new frmOpcijeIzvjestaja(); 
             frmIzvjestaj.Show();    
-        }
-
-        private void btnRejting_Click(object sender, EventArgs e)
-        {
-            frmRejting frmRejting = new frmRejting(Result);
-            frmRejting.Show();      
         }
     }
 }

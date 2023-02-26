@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/screens/nekretnine/nekretnine_screen.dart';
-import 'package:myapp/screens/poruke.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class TopBar extends StatelessWidget {
   const TopBar({
@@ -53,9 +51,9 @@ class TopBar extends StatelessWidget {
       required BuildContext context,
       bool messages = false}) {
     return GestureDetector(
-      onTap: () async => {
+      onTap: () => {
         if (messages)
-          {}
+          {Navigator.pushNamed(context, '/messages')}
         else
           {
             Navigator.push(

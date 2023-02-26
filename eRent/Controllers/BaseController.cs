@@ -7,11 +7,11 @@ namespace eRent.Controllers
     [ApiController]
     [Route("[controller]")]
     [Authorize]
-    public class BaseCRUDController<T, TSearch> : ControllerBase where T : class where TSearch : class
+    public class BaseController<T, TSearch> : ControllerBase where T : class where TSearch : class
     {
         public IService<T, TSearch> Service { get; set; }
 
-        public BaseCRUDController(IService<T, TSearch> service)
+        public BaseController(IService<T, TSearch> service)
         {
             Service = service;
         }

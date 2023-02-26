@@ -28,6 +28,5 @@ namespace eRent.Services.Rezervacija
                 Context.Nekretninas.Where(x => x.NekretninaId == insert.NekretninaId).Select(x => x.NazivNekretnine).FirstOrDefault();
             base.BeforeInsert(insert, entity);
         }
-
-        }
+    }
 }

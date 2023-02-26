@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:myapp/components/mytext.dart';
 import 'package:myapp/components/spacer.dart';
 import 'package:myapp/model/nekretnina.dart';
+import 'package:myapp/model/searchobjects/nekretnine_search/nekretnina_search_object.dart';
 import 'package:myapp/providers/nekretnine_provider.dart';
 import 'package:provider/provider.dart';
 import '../../components/top_bar.dart';
@@ -19,19 +20,13 @@ class NekretnineListScreen extends StatefulWidget {
 
 class _NekretnineListScreenState extends State<NekretnineListScreen> {
   NekretnineProvider? _nekretnineProvider;
+  Nekretnina_search_object searchObject = Nekretnina_search_object();
   final TextEditingController _brojSobaController = TextEditingController();
   final TextEditingController _nameFTSController = TextEditingController();
   final TextEditingController _cijenaMinController = TextEditingController();
   final TextEditingController _cijenaMaxController = TextEditingController();
 
   List<Nekretnina> data = [];
-
-  @override
-  void setState(fn) {
-    if (mounted) {
-      super.setState(fn);
-    }
-  }
 
   @override
   void initState() {
@@ -44,22 +39,6 @@ class _NekretnineListScreenState extends State<NekretnineListScreen> {
     var tempData = await _nekretnineProvider?.get();
     setState(() {
       data = tempData!;
-    });
-    filterResults();
-  }
-
-  void filterResults() {
-    List<Nekretnina> data2 = [];
-    for (var element in data) {
-      if (element.izdvojena == true) {
-        data2.insert(0, element);
-        //data.remove(element);
-      }
-    }
-    data.removeWhere((element) => data2.contains(element));
-    data2.addAll(data.reversed);
-    setState(() {
-      data = data2;
     });
   }
 

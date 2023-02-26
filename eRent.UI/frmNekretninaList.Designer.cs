@@ -36,12 +36,10 @@
             this.Rezervacije = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Detaljno = new System.Windows.Forms.DataGridViewButtonColumn();
             this.Korisnici = new System.Windows.Forms.DataGridViewButtonColumn();
-            this.Posjete = new System.Windows.Forms.DataGridViewButtonColumn();
             this.label1 = new System.Windows.Forms.Label();
             this.txtSearch = new System.Windows.Forms.TextBox();
             this.btnDodajNovu = new System.Windows.Forms.Button();
             this.btnIzvjestaj = new System.Windows.Forms.Button();
-            this.btnRejting = new System.Windows.Forms.Button();
             btnShowNekretnine = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvNekretnineList)).BeginInit();
             this.SuspendLayout();
@@ -66,8 +64,7 @@
             this.Popunjena,
             this.Rezervacije,
             this.Detaljno,
-            this.Korisnici,
-            this.Posjete});
+            this.Korisnici});
             this.dgvNekretnineList.Location = new System.Drawing.Point(10, 39);
             this.dgvNekretnineList.MultiSelect = false;
             this.dgvNekretnineList.Name = "dgvNekretnineList";
@@ -123,14 +120,6 @@
             this.Korisnici.Text = "Korisnici";
             this.Korisnici.UseColumnTextForButtonValue = true;
             // 
-            // Posjete
-            // 
-            this.Posjete.HeaderText = "Posjete";
-            this.Posjete.Name = "Posjete";
-            this.Posjete.Text = "Posjete";
-            this.Posjete.ToolTipText = "Posjete";
-            this.Posjete.UseColumnTextForButtonValue = true;
-            // 
             // label1
             // 
             this.label1.AutoSize = true;
@@ -168,22 +157,11 @@
             this.btnIzvjestaj.UseVisualStyleBackColor = true;
             this.btnIzvjestaj.Click += new System.EventHandler(this.btnIzvjestaj_Click);
             // 
-            // btnRejting
-            // 
-            this.btnRejting.Location = new System.Drawing.Point(12, 495);
-            this.btnRejting.Name = "btnRejting";
-            this.btnRejting.Size = new System.Drawing.Size(75, 23);
-            this.btnRejting.TabIndex = 6;
-            this.btnRejting.Text = "Rejting";
-            this.btnRejting.UseVisualStyleBackColor = true;
-            this.btnRejting.Click += new System.EventHandler(this.btnRejting_Click);
-            // 
             // frmNekretninaList
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1034, 530);
-            this.Controls.Add(this.btnRejting);
             this.Controls.Add(this.btnIzvjestaj);
             this.Controls.Add(this.btnDodajNovu);
             this.Controls.Add(this.txtSearch);
@@ -213,7 +191,5 @@
         private DataGridViewButtonColumn Rezervacije;
         private DataGridViewButtonColumn Detaljno;
         private DataGridViewButtonColumn Korisnici;
-        private DataGridViewButtonColumn Posjete;
-        private Button btnRejting;
     }
 }

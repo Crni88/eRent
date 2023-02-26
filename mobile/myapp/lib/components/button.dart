@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/components/mytext.dart';
 
+import '../screens/nekretnine/nekretnine_screen.dart';
+
 class MyButton extends StatelessWidget {
   final String text;
-  final Widget screen;
-  const MyButton(this.text, this.screen, {super.key});
+  const MyButton(this.text, {super.key, required onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -23,7 +24,8 @@ class MyButton extends StatelessWidget {
           try {
             Navigator.push(
               context,
-              MaterialPageRoute(builder: (context) => screen),
+              MaterialPageRoute(
+                  builder: (context) => const NekretnineListScreen()),
             );
           } catch (e) {
             showDialog(

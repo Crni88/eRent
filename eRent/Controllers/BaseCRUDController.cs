@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eRent.Controllers
 {
-    public class BaseCRUDController<T, TSearch, TInsert, TUpdate> : BaseCRUDController<T, TSearch>
+    public class BaseCRUDController<T, TSearch, TInsert, TUpdate> : BaseController<T, TSearch>
         where T : class where TSearch : class where TInsert : class where TUpdate : class
     {
         public BaseCRUDController(ICRUDService<T, TSearch, TInsert, TUpdate> service) : base(service)

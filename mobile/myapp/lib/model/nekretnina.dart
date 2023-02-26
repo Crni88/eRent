@@ -5,7 +5,6 @@ part 'nekretnina.g.dart';
 @JsonSerializable()
 class Nekretnina {
   int? nekretninaId;
-  int? korisnikNekretnina;
   String? nazivNekretnine;
   int? cijena;
   int? brojSoba;
