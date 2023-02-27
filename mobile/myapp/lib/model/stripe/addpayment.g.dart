@@ -8,6 +8,7 @@ part of 'addpayment.dart';
 
 AddPayment _$AddPaymentFromJson(Map<String, dynamic> json) => AddPayment()
   ..customerId = json['customerId'] as String?
+  ..paymentId = json['paymentId'] as String?
   ..receiptEmail = json['receiptEmail'] as String?
   ..description = json['description'] as String?
   ..currency = json['currency'] as String?
@@ -16,6 +17,7 @@ AddPayment _$AddPaymentFromJson(Map<String, dynamic> json) => AddPayment()
 Map<String, dynamic> _$AddPaymentToJson(AddPayment instance) =>
     <String, dynamic>{
       'customerId': instance.customerId,
+      'paymentId': instance.paymentId,
       'receiptEmail': instance.receiptEmail,
       'description': instance.description,
       'currency': instance.currency,

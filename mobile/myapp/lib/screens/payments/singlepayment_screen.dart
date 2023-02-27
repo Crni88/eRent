@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:myapp/components/mytext.dart';
 import 'package:myapp/components/spacer.dart';
 import 'package:myapp/components/title.dart';
 import 'package:myapp/components/top_bar.dart';
 import 'package:myapp/model/payment/payment.dart';
-import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:myapp/providers/addpayment_provider.dart';
+import 'package:myapp/providers/allpayments_provider.dart';
+
+import '../nekretnine/nekretnine_screen.dart';
 
 class SinglePaymentScreen extends StatefulWidget {
   late Payment payment;
@@ -17,22 +18,18 @@ class SinglePaymentScreen extends StatefulWidget {
       _SinglePaymentScreenState(payment);
 }
 
+class Card {}
+
 class _SinglePaymentScreenState extends State<SinglePaymentScreen> {
   _SinglePaymentScreenState(Payment payment);
-  bool isShown = false;
-  Payment payment = Payment();
 
+  Payment payment = Payment();
+  AddPaymentProvider addPaymentProvider = AddPaymentProvider();
+  AllPaymentsProvider allPaymentsProvider = AllPaymentsProvider();
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     payment = widget.payment;
-  }
-
-  void showCreditCard() {
-    setState(() {
-      isShown = true;
-    });
   }
 
   @override
@@ -59,10 +56,46 @@ class _SinglePaymentScreenState extends State<SinglePaymentScreen> {
               child: InkWell(
                 onTap: () async {
                   try {
-                    showCreditCard();
-                    // await Stripe.instance.confirmPayment(
-                    //     paymentIntentClientSecret: payment.naslov!,
-                    //     paymentMethodId: payment.komentar!);
+                    var stripePayment = {
+                      "customerId": "cus_NQhvmjuzOBux4k",
+                      "receiptEmail": "yoourmail@gmail.com",
+                      "description": payment.naslov,
+                      "currency": "usd",
+                      "amount": (payment.iznos! * 100).toInt(),
+                    };
+                    var temp = await addPaymentProvider.insert(stripePayment);
+                    if (temp?.paymentId != null) {
+                      var update = {
+                        "paymentId": temp?.paymentId,
+                        "isProcessed": true,
+                        "nekretninaPayment": payment.nekretninaPayment,
+                        "komentar": payment.komentar,
+                        "iznos": payment.iznos,
+                        "mjesecno": payment.mjesecno,
+                        "nekretnina": payment.nekretnina,
+                        "korisnikPaymentId": payment.korisnikPaymentId,
+                      };
+                      var temp2 = AllPaymentsProvider()
+                          .update(payment.paymentRequestId!, update);
+                      if (temp2 != null) {
+                        showDialog(
+                            context: context,
+                            builder: (context) {
+                              Future.delayed(Duration(seconds: 5), () {
+                                Navigator.of(context).pop(true);
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                          const NekretnineListScreen()),
+                                );
+                              });
+                              return AlertDialog(
+                                title: Text('Placanje uspješno!'),
+                              );
+                            });
+                      }
+                    }
                   } catch (e) {
                     showDialog(
                         context: context,

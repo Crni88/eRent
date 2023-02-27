@@ -23,6 +23,8 @@ public partial class PaymentRequest
 
     public string? Naslov { get; set; }
 
+    public string? PaymentId { get; set; }
+
     public virtual Korisnik? KorisnikPayment { get; set; }
 
     public virtual Nekretnina NekretninaPaymentNavigation { get; set; } = null!;

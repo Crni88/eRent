@@ -7,6 +7,7 @@ part of 'payment.dart';
 // **************************************************************************
 
 Payment _$PaymentFromJson(Map<String, dynamic> json) => Payment()
+  ..paymentRequestId = json['paymentRequestId'] as int?
   ..naslov = json['naslov'] as String?
   ..korisnikPaymentId = json['korisnikPaymentId'] as int?
   ..isProcessed = json['isProcessed'] as bool?
@@ -17,6 +18,7 @@ Payment _$PaymentFromJson(Map<String, dynamic> json) => Payment()
   ..nekretnina = json['nekretnina'] as String?;
 
 Map<String, dynamic> _$PaymentToJson(Payment instance) => <String, dynamic>{
+      'paymentRequestId': instance.paymentRequestId,
       'naslov': instance.naslov,
       'korisnikPaymentId': instance.korisnikPaymentId,
       'isProcessed': instance.isProcessed,

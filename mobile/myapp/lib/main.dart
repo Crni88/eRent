@@ -21,7 +21,6 @@ Future<void> main() async {
     projectId: "erent-8244f",
   ));
   FirebaseMessaging messaging = FirebaseMessaging.instance;
-
   NotificationSettings settings = await messaging.requestPermission(
     alert: true,
     announcement: false,
@@ -33,7 +32,6 @@ Future<void> main() async {
   );
 
   print('User granted permission: ${settings.authorizationStatus}');
-
   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
     print('Got a message whilst in the foreground!');
     print('Message data: ${message.data}');
@@ -42,7 +40,6 @@ Future<void> main() async {
       print('Message also contained a notification: ${message.notification}');
     }
   });
-
   Future<void> _firebaseMessagingBackgroundHandler(
       RemoteMessage message) async {
     // If you're going to use other Firebase services in the background, such as Firestore,
@@ -54,6 +51,7 @@ Future<void> main() async {
 
   void main() {
     FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
+
     runApp(MyApp());
   }
 

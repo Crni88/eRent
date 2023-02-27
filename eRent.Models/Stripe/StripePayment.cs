@@ -16,6 +16,7 @@
             Description = description;
             Currency = currency;
             Amount = amount;
+            PaymentId = id;
         }
     }
 }

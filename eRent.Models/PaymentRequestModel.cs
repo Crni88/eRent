@@ -2,6 +2,8 @@
 {
     public class PaymentRequestModel
     {
+        public int PaymentRequestId { get; set; }
+
         public string Naslov { get; set; }
 
         public int? KorisnikPaymentId { get; set; }

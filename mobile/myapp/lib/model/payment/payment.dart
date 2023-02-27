@@ -4,19 +4,14 @@ part 'payment.g.dart';
 
 @JsonSerializable()
 class Payment {
+  int? paymentRequestId;
   String? naslov;
-
   int? korisnikPaymentId;
-
   bool? isProcessed;
   int? nekretninaPayment;
-
   String? komentar;
-
   double? iznos;
-
   bool? mjesecno;
-
   String? nekretnina;
 
   Payment();

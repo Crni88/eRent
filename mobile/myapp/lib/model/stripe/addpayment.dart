@@ -5,6 +5,7 @@ part 'addpayment.g.dart';
 @JsonSerializable()
 class AddPayment {
   String? customerId;
+  String? paymentId;
   String? receiptEmail;
   String? description;
   String? currency;
