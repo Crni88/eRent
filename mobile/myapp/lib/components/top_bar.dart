@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/screens/nekretnine/nekretnine_screen.dart';
+import 'package:myapp/screens/payments/allpayments_screen.dart';
 import 'package:myapp/screens/poruke.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -46,7 +47,7 @@ class TopBar extends StatelessWidget {
               //Add payment provider
               //Add payment screen
               //Add single payment screen
-              path: 'assets/images/conversation.png',
+              path: 'assets/images/cashless-payment.png',
               context: context,
               messages: true),
         ]),
@@ -61,7 +62,13 @@ class TopBar extends StatelessWidget {
     return GestureDetector(
       onTap: () async => {
         if (messages)
-          {}
+          {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const AllPaymentsScreen()),
+            )
+          }
         else
           {
             Navigator.push(

@@ -41,6 +41,8 @@ namespace eRent.UI
             paymentUpsertRequest.Iznos = int.Parse(txtIznos.Text);
             paymentUpsertRequest.Mjesecno = cbMjesecno.Checked;
             paymentUpsertRequest.Naslov = txtNaslov.Text;
+            paymentUpsertRequest.IsProcessed = false;
+            paymentUpsertRequest.KorisnikPaymentId = 2016;
             var postPaymentRequest = await PaymentRequestService.Post<PaymentUpsertRequest>(paymentUpsertRequest);
             this.Close();
         }
