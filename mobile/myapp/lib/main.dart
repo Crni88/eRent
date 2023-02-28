@@ -190,6 +190,8 @@ class _MyHomePageState extends State<MyHomePage> {
                               'korisnikId', korisnik.korisnikId!.toString());
                           await prefs.setString(
                               'korisnikEmail', korisnik.email!.toString());
+                          await prefs.setString('korisnikImePrezime',
+                              "${korisnik.korsnikIme!} ${korisnik.korisnikPrezime!}");
                           Navigator.push(
                             context,
                             MaterialPageRoute(

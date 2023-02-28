@@ -41,12 +41,6 @@ class TopBar extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   fontSize: 30)),
           _TopBarIcons(
-              //TODO Replace this with the payment icon
-              //Add a function to the icon that will open the payment screen
-              //Add payment model
-              //Add payment provider
-              //Add payment screen
-              //Add single payment screen
               path: 'assets/images/cashless-payment.png',
               context: context,
               messages: true),

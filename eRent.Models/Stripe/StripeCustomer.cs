@@ -6,6 +6,7 @@
         {
             Name = name;
             Email = email;
+            CustomerId = id;
         }
 
         public string CustomerId { get; set; }
