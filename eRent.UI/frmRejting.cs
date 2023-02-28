@@ -1,14 +1,5 @@
 ﻿using eRent.Models;
 using eRent.Models.Search_Objects;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
 
 namespace eRent.UI
 {
@@ -36,7 +27,7 @@ namespace eRent.UI
 
         private void frmRejting_Load(object sender, EventArgs e)
         {
-
+            // .LocalReport.ReportEmbeddedResource = "eRent.UI/ReportDefinitions/TestReport.rdlc";
         }
     }
 }
