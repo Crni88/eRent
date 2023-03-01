@@ -33,6 +33,9 @@ class _SinglePaymentScreenState extends State<SinglePaymentScreen> {
   AddPaymentProvider addPaymentProvider = AddPaymentProvider();
   AllPaymentsProvider allPaymentsProvider = AllPaymentsProvider();
   String? _email;
+
+  Map<String, dynamic>? paymentIntentData;
+
   @override
   void initState() {
     super.initState();

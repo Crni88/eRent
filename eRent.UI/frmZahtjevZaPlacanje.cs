@@ -1,5 +1,6 @@
 ﻿using eRent.Models;
 using eRent.Models.Requests.Payment;
+using eRent.Models.Search_Objects;
 using eRent.UI.Helpers;
 using Newtonsoft.Json;
 namespace eRent.UI
@@ -10,6 +11,8 @@ namespace eRent.UI
         public NekretninaModel Nekretnina { get; }
 
         public APIService PaymentRequestService { get; set; } = new APIService("PaymentRequest");
+        public APIService _korisnikService { get; set; } = new APIService("Korisnici");
+
 
         public frmZahtjevZaPlacanje(int brojKorisnika, NekretninaModel nekretnina)
         {
@@ -28,8 +31,16 @@ namespace eRent.UI
             float iznosPoKorisniku = float.Parse(txtIznos.Text) / BrojKorisnika;
             string komentar = txtKomentar.Text;
             string naslov = txtNaslov.Text + " - " + iznosPoKorisniku.ToString()+ " KM";
-            await posaljiNotifikacijuAsync(komentar, naslov);
+            KorisnikSearchObject korisnikObj = new KorisnikSearchObject();
+            korisnikObj.KorisnikId = 2016;
+            List<KorisnikModel> korisnik = await _korisnikService.Get<List<KorisnikModel>>(korisnikObj);
+            await posaljiNotifikacijuAsync(komentar, naslov, korisnik[0].FcmDeviceToken);
             await savePaymentRequestToDatabase();
+        }
+
+        private void showMessage()
+        {
+            AutoClosingMessageBox.Show("Zahtjev za plaćanje je uspješno poslan.", "Zahtjev poslan!", 3000);
         }
 
         private async Task savePaymentRequestToDatabase()
@@ -44,10 +55,11 @@ namespace eRent.UI
             paymentUpsertRequest.IsProcessed = false;
             paymentUpsertRequest.KorisnikPaymentId = 2016;
             var postPaymentRequest = await PaymentRequestService.Post<PaymentUpsertRequest>(paymentUpsertRequest);
+            showMessage();
             this.Close();
         }
 
-        private async Task posaljiNotifikacijuAsync(string komentar = "", string naslov = "")
+        private async Task posaljiNotifikacijuAsync(string komentar = "", string naslov = "",string fcmToken = "")
         {
             string fcmServerKey = "AAAAbOMTstM:APA91bFkF0lQHgpECturTYijOzuGRsduCjtvIGnCRH1AiSDuorCxNAuUmvdxhyJJ-MAXyatpfpsZrX8XQykh0ql_3i2-p9vVObo4gbdibGmsC9ah8qS2v9KQbaCQ0fdE1YlY4An9iV72";
             string fcmEndpoint = "https://fcm.googleapis.com/fcm/send";
@@ -55,7 +67,7 @@ namespace eRent.UI
             var httpClient = new HttpClient();
             var fcmNotification = new FCMNotification
             {
-                to = "fuGeT558TbuDxLBxBrdj9V:APA91bFesLcGV5TWw7Vy43Yhlg8VqN01nvebfqqtFreVvEZR_Iw0_4BouTqyMC09OGooTb8oPTfx5X889K8jfVoMtVG6NLfkFmdT9wT7Mu9BcQQ6XEoTRklXCanyAf257QiiZ-2mvVnV",
+                to = fcmToken,
                 notification = new notification
                 {
                     title = naslov,

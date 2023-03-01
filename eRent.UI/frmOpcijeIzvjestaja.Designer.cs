@@ -41,7 +41,8 @@
             // 
             // btnListaRezervacija
             // 
-            this.btnListaRezervacija.Location = new System.Drawing.Point(203, 74);
+            this.btnListaRezervacija.Location = new System.Drawing.Point(50, 254);
+            this.btnListaRezervacija.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnListaRezervacija.Name = "btnListaRezervacija";
             this.btnListaRezervacija.Size = new System.Drawing.Size(89, 23);
             this.btnListaRezervacija.TabIndex = 0;
@@ -52,7 +53,7 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(50, 9);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 30);
             this.label1.TabIndex = 1;
@@ -62,7 +63,7 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(12, 54);
+            this.label2.Location = new System.Drawing.Point(11, 72);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(160, 17);
             this.label2.TabIndex = 2;
@@ -91,7 +92,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(192, 54);
+            this.label4.Location = new System.Drawing.Point(39, 227);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(100, 17);
             this.label4.TabIndex = 6;
@@ -130,9 +131,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(327, 198);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.btnPrihodiZaNekretninu);
+            this.ClientSize = new System.Drawing.Size(231, 323);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.btnListaKorisnika);
             this.Controls.Add(this.label3);

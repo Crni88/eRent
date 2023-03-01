@@ -61,6 +61,8 @@ Future<void> main() async {
   // Get the token for this device
   String? token = await _firebaseMessaging.getToken();
   print('FCM Device Token: $token');
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  await prefs.setString('fcmToken', token!);
 
   runApp(MultiProvider(providers: [
     ChangeNotifierProvider(create: (_) => NekretnineProvider()),
@@ -192,6 +194,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               'korisnikEmail', korisnik.email!.toString());
                           await prefs.setString('korisnikImePrezime',
                               "${korisnik.korsnikIme!} ${korisnik.korisnikPrezime!}");
+
                           Navigator.push(
                             context,
                             MaterialPageRoute(

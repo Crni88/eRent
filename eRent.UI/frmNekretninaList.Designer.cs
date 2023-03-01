@@ -48,9 +48,10 @@
             // 
             // btnShowNekretnine
             // 
-            btnShowNekretnine.Location = new System.Drawing.Point(475, 11);
+            btnShowNekretnine.Location = new System.Drawing.Point(553, 14);
+            btnShowNekretnine.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             btnShowNekretnine.Name = "btnShowNekretnine";
-            btnShowNekretnine.Size = new System.Drawing.Size(75, 23);
+            btnShowNekretnine.Size = new System.Drawing.Size(86, 31);
             btnShowNekretnine.TabIndex = 1;
             btnShowNekretnine.Text = "Show";
             btnShowNekretnine.UseVisualStyleBackColor = true;
@@ -68,13 +69,14 @@
             this.Detaljno,
             this.Korisnici,
             this.Posjete});
-            this.dgvNekretnineList.Location = new System.Drawing.Point(10, 39);
+            this.dgvNekretnineList.Location = new System.Drawing.Point(11, 52);
+            this.dgvNekretnineList.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dgvNekretnineList.MultiSelect = false;
             this.dgvNekretnineList.Name = "dgvNekretnineList";
             this.dgvNekretnineList.RowHeadersWidth = 51;
             this.dgvNekretnineList.RowTemplate.Height = 25;
             this.dgvNekretnineList.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvNekretnineList.Size = new System.Drawing.Size(1013, 444);
+            this.dgvNekretnineList.Size = new System.Drawing.Size(1158, 592);
             this.dgvNekretnineList.TabIndex = 0;
             this.dgvNekretnineList.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvNekretnineList_CellContentClick);
             // 
@@ -126,6 +128,7 @@
             // Posjete
             // 
             this.Posjete.HeaderText = "Posjete";
+            this.Posjete.MinimumWidth = 6;
             this.Posjete.Name = "Posjete";
             this.Posjete.Text = "Posjete";
             this.Posjete.ToolTipText = "Posjete";
@@ -134,25 +137,25 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 14);
+            this.label1.Location = new System.Drawing.Point(11, 19);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(128, 15);
+            this.label1.Size = new System.Drawing.Size(159, 20);
             this.label1.TabIndex = 2;
             this.label1.Text = "Pretrga svih nekretnina";
             // 
             // txtSearch
             // 
-            this.txtSearch.Location = new System.Drawing.Point(144, 11);
-            this.txtSearch.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.txtSearch.Location = new System.Drawing.Point(176, 16);
             this.txtSearch.Name = "txtSearch";
-            this.txtSearch.Size = new System.Drawing.Size(325, 23);
+            this.txtSearch.Size = new System.Drawing.Size(371, 27);
             this.txtSearch.TabIndex = 3;
             // 
             // btnDodajNovu
             // 
-            this.btnDodajNovu.Location = new System.Drawing.Point(947, 10);
+            this.btnDodajNovu.Location = new System.Drawing.Point(1082, 13);
+            this.btnDodajNovu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDodajNovu.Name = "btnDodajNovu";
-            this.btnDodajNovu.Size = new System.Drawing.Size(75, 23);
+            this.btnDodajNovu.Size = new System.Drawing.Size(86, 31);
             this.btnDodajNovu.TabIndex = 4;
             this.btnDodajNovu.Text = "Dodaj Novu";
             this.btnDodajNovu.UseVisualStyleBackColor = true;
@@ -160,9 +163,10 @@
             // 
             // btnIzvjestaj
             // 
-            this.btnIzvjestaj.Location = new System.Drawing.Point(948, 495);
+            this.btnIzvjestaj.Location = new System.Drawing.Point(1083, 660);
+            this.btnIzvjestaj.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnIzvjestaj.Name = "btnIzvjestaj";
-            this.btnIzvjestaj.Size = new System.Drawing.Size(75, 23);
+            this.btnIzvjestaj.Size = new System.Drawing.Size(86, 31);
             this.btnIzvjestaj.TabIndex = 5;
             this.btnIzvjestaj.Text = "Izvjestaj";
             this.btnIzvjestaj.UseVisualStyleBackColor = true;
@@ -170,9 +174,10 @@
             // 
             // btnRejting
             // 
-            this.btnRejting.Location = new System.Drawing.Point(12, 495);
+            this.btnRejting.Location = new System.Drawing.Point(14, 660);
+            this.btnRejting.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnRejting.Name = "btnRejting";
-            this.btnRejting.Size = new System.Drawing.Size(75, 23);
+            this.btnRejting.Size = new System.Drawing.Size(86, 31);
             this.btnRejting.TabIndex = 6;
             this.btnRejting.Text = "Rejting";
             this.btnRejting.UseVisualStyleBackColor = true;
@@ -180,9 +185,9 @@
             // 
             // frmNekretninaList
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1034, 530);
+            this.ClientSize = new System.Drawing.Size(1182, 707);
             this.Controls.Add(this.btnRejting);
             this.Controls.Add(this.btnIzvjestaj);
             this.Controls.Add(this.btnDodajNovu);
@@ -190,6 +195,7 @@
             this.Controls.Add(this.label1);
             this.Controls.Add(btnShowNekretnine);
             this.Controls.Add(this.dgvNekretnineList);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmNekretninaList";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "frmNekretninaList";

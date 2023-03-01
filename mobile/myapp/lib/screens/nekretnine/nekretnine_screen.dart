@@ -5,7 +5,9 @@ import 'package:myapp/components/spacer.dart';
 import 'package:myapp/model/nekretnina.dart';
 import 'package:myapp/providers/nekretnine_provider.dart';
 import 'package:provider/provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../components/top_bar.dart';
+import '../../providers/user_provider.dart';
 import '../../utils/util.dart';
 import '../single_nekretnina/single_nekretnina_screen.dart';
 
@@ -19,6 +21,7 @@ class NekretnineListScreen extends StatefulWidget {
 
 class _NekretnineListScreenState extends State<NekretnineListScreen> {
   NekretnineProvider? _nekretnineProvider;
+  UserProvider? _userProvider = UserProvider();
   final TextEditingController _brojSobaController = TextEditingController();
   final TextEditingController _nameFTSController = TextEditingController();
   final TextEditingController _cijenaMinController = TextEditingController();
@@ -37,6 +40,7 @@ class _NekretnineListScreenState extends State<NekretnineListScreen> {
   void initState() {
     super.initState();
     _nekretnineProvider = context.read<NekretnineProvider>();
+    registerUserToken();
     loadData();
   }
 
@@ -46,6 +50,16 @@ class _NekretnineListScreenState extends State<NekretnineListScreen> {
       data = tempData!;
     });
     filterResults();
+  }
+
+  Future<void> registerUserToken() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? id = prefs.getString('korisnikId');
+    String? token = prefs.getString('fcmToken');
+    var userUpdate = {
+      'fcmDeviceToken': token,
+    };
+    _userProvider?.update(int.parse(id!), userUpdate);
   }
 
   void filterResults() {

@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
 
 namespace eRent.Services.DataDB;
 
@@ -96,6 +94,9 @@ public partial class ERentContext : DbContext
             entity.Property(e => e.Email)
                 .HasMaxLength(100)
                 .HasColumnName("email");
+            entity.Property(e => e.FcmDeviceToken)
+                .HasMaxLength(200)
+                .HasColumnName("fcmDeviceToken");
             entity.Property(e => e.KorisnikPrezime)
                 .HasMaxLength(25)
                 .HasColumnName("korisnikPrezime");
@@ -364,6 +365,9 @@ public partial class ERentContext : DbContext
             entity.Property(e => e.PaymentId)
                 .HasMaxLength(60)
                 .HasColumnName("paymentId");
+            entity.Property(e => e.PaymentMethodId)
+                .HasMaxLength(50)
+                .HasColumnName("paymentMethodId");
 
             entity.HasOne(d => d.KorisnikPayment).WithMany(p => p.PaymentRequests)
                 .HasForeignKey(d => d.KorisnikPaymentId)

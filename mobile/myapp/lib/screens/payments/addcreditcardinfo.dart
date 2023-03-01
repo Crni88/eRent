@@ -3,7 +3,6 @@ import 'package:myapp/components/spacer.dart';
 import 'package:myapp/model/stripe/stripecustomer.dart';
 import 'package:myapp/providers/stripecustomer_provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../model/payment/payment.dart';
 import '../../providers/addpayment_provider.dart';
 import '../../providers/allpayments_provider.dart';

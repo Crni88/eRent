@@ -70,7 +70,10 @@ namespace eRent.Services.Korisnici
         {
             var filteredQuery = base.AddFilter(query, search);
 
-
+            if (search.KorisnikId != 0 || search.KorisnikId != null)
+            {
+                filteredQuery = filteredQuery.Where(x => x.KorisnikId == search.KorisnikId);            
+            }
 
             if (!string.IsNullOrEmpty(search?.NameFTS))
             {

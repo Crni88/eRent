@@ -50,26 +50,28 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 9);
+            this.label1.Location = new System.Drawing.Point(14, 12);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(236, 30);
+            this.label1.Size = new System.Drawing.Size(307, 37);
             this.label1.TabIndex = 0;
             this.label1.Text = "Dodaj novog korisnika";
             // 
             // pbKorisnikSlika
             // 
-            this.pbKorisnikSlika.Location = new System.Drawing.Point(12, 46);
+            this.pbKorisnikSlika.Location = new System.Drawing.Point(14, 61);
+            this.pbKorisnikSlika.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pbKorisnikSlika.Name = "pbKorisnikSlika";
-            this.pbKorisnikSlika.Size = new System.Drawing.Size(206, 330);
+            this.pbKorisnikSlika.Size = new System.Drawing.Size(366, 440);
             this.pbKorisnikSlika.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.pbKorisnikSlika.TabIndex = 1;
             this.pbKorisnikSlika.TabStop = false;
             // 
             // btnKorisnikSlika
             // 
-            this.btnKorisnikSlika.Location = new System.Drawing.Point(62, 392);
+            this.btnKorisnikSlika.Location = new System.Drawing.Point(139, 509);
+            this.btnKorisnikSlika.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnKorisnikSlika.Name = "btnKorisnikSlika";
-            this.btnKorisnikSlika.Size = new System.Drawing.Size(75, 23);
+            this.btnKorisnikSlika.Size = new System.Drawing.Size(86, 31);
             this.btnKorisnikSlika.TabIndex = 2;
             this.btnKorisnikSlika.Text = "Dodaj sliku";
             this.btnKorisnikSlika.UseVisualStyleBackColor = true;
@@ -79,68 +81,72 @@
             // 
             this.Ime.AutoSize = true;
             this.Ime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Ime.Location = new System.Drawing.Point(338, 46);
+            this.Ime.Location = new System.Drawing.Point(386, 61);
             this.Ime.Name = "Ime";
-            this.Ime.Size = new System.Drawing.Size(36, 21);
+            this.Ime.Size = new System.Drawing.Size(44, 28);
             this.Ime.TabIndex = 3;
             this.Ime.Text = "Ime";
             // 
             // txtIme
             // 
-            this.txtIme.Location = new System.Drawing.Point(338, 73);
+            this.txtIme.Location = new System.Drawing.Point(386, 97);
+            this.txtIme.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtIme.Name = "txtIme";
-            this.txtIme.Size = new System.Drawing.Size(164, 23);
+            this.txtIme.Size = new System.Drawing.Size(187, 27);
             this.txtIme.TabIndex = 4;
             // 
             // txtBrojTelefona
             // 
-            this.txtBrojTelefona.Location = new System.Drawing.Point(338, 219);
+            this.txtBrojTelefona.Location = new System.Drawing.Point(386, 292);
+            this.txtBrojTelefona.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtBrojTelefona.Name = "txtBrojTelefona";
             this.txtBrojTelefona.PlaceholderText = "123-456-789";
-            this.txtBrojTelefona.Size = new System.Drawing.Size(164, 23);
+            this.txtBrojTelefona.Size = new System.Drawing.Size(187, 27);
             this.txtBrojTelefona.TabIndex = 6;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(338, 195);
+            this.label2.Location = new System.Drawing.Point(386, 260);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(98, 21);
+            this.label2.Size = new System.Drawing.Size(123, 28);
             this.label2.TabIndex = 5;
             this.label2.Text = "Broj telefona";
             // 
             // txtPrezime
             // 
-            this.txtPrezime.Location = new System.Drawing.Point(338, 141);
+            this.txtPrezime.Location = new System.Drawing.Point(386, 188);
+            this.txtPrezime.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txtPrezime.Name = "txtPrezime";
-            this.txtPrezime.Size = new System.Drawing.Size(164, 23);
+            this.txtPrezime.Size = new System.Drawing.Size(187, 27);
             this.txtPrezime.TabIndex = 8;
             // 
             // label3
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(338, 117);
+            this.label3.Location = new System.Drawing.Point(386, 156);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(66, 21);
+            this.label3.Size = new System.Drawing.Size(81, 28);
             this.label3.TabIndex = 7;
             this.label3.Text = "Prezime";
             // 
             // dtpDatumUseljenja
             // 
-            this.dtpDatumUseljenja.Location = new System.Drawing.Point(588, 73);
+            this.dtpDatumUseljenja.Location = new System.Drawing.Point(672, 97);
+            this.dtpDatumUseljenja.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dtpDatumUseljenja.Name = "dtpDatumUseljenja";
-            this.dtpDatumUseljenja.Size = new System.Drawing.Size(200, 23);
+            this.dtpDatumUseljenja.Size = new System.Drawing.Size(228, 27);
             this.dtpDatumUseljenja.TabIndex = 9;
             // 
             // label4
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(588, 46);
+            this.label4.Location = new System.Drawing.Point(672, 61);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(122, 21);
+            this.label4.Size = new System.Drawing.Size(151, 28);
             this.label4.TabIndex = 10;
             this.label4.Text = "Datum useljenja";
             // 
@@ -148,24 +154,26 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(588, 114);
+            this.label5.Location = new System.Drawing.Point(672, 152);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(117, 21);
+            this.label5.Size = new System.Drawing.Size(145, 28);
             this.label5.TabIndex = 12;
             this.label5.Text = "Datum iseljenja";
             // 
             // dtpDatumIseljenja
             // 
-            this.dtpDatumIseljenja.Location = new System.Drawing.Point(588, 141);
+            this.dtpDatumIseljenja.Location = new System.Drawing.Point(672, 188);
+            this.dtpDatumIseljenja.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.dtpDatumIseljenja.Name = "dtpDatumIseljenja";
-            this.dtpDatumIseljenja.Size = new System.Drawing.Size(200, 23);
+            this.dtpDatumIseljenja.Size = new System.Drawing.Size(228, 27);
             this.dtpDatumIseljenja.TabIndex = 11;
             // 
             // btnDodajKorisnika
             // 
-            this.btnDodajKorisnika.Location = new System.Drawing.Point(713, 219);
+            this.btnDodajKorisnika.Location = new System.Drawing.Point(815, 292);
+            this.btnDodajKorisnika.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnDodajKorisnika.Name = "btnDodajKorisnika";
-            this.btnDodajKorisnika.Size = new System.Drawing.Size(75, 23);
+            this.btnDodajKorisnika.Size = new System.Drawing.Size(86, 31);
             this.btnDodajKorisnika.TabIndex = 13;
             this.btnDodajKorisnika.Text = "Dodaj";
             this.btnDodajKorisnika.UseVisualStyleBackColor = true;
@@ -177,9 +185,9 @@
             // 
             // frmAddKorisnikNekretnina
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(914, 600);
             this.Controls.Add(this.btnDodajKorisnika);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dtpDatumIseljenja);
@@ -194,6 +202,7 @@
             this.Controls.Add(this.btnKorisnikSlika);
             this.Controls.Add(this.pbKorisnikSlika);
             this.Controls.Add(this.label1);
+            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmAddKorisnikNekretnina";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dodaj novog korisnika";
