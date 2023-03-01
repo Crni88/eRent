@@ -8,7 +8,7 @@ namespace eRent.Models
     {
         public int NekretninaId { get; set; }
 
-        public bool MjesecnaRezervacija { get; set; }
+        public bool? MjesecnaRezervacija { get; set; }
 
         public DateTime? DatumPocetka { get; set; }
 

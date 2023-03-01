@@ -15,7 +15,7 @@ namespace eRent.Services.Rezervacija
         public override IQueryable<DataDB.Rezervacija> AddFilter(IQueryable<DataDB.Rezervacija> query, RezervacijaSearchObject search = null)
         {
             var filteredQuery = base.AddFilter(query, search);
-            if (search.NekretninaId != 0)
+            if (search != null)
             {
                 filteredQuery = filteredQuery.Where(x => x.NekretninaId == search.NekretninaId);
             }
@@ -28,5 +28,6 @@ namespace eRent.Services.Rezervacija
                 Context.Nekretninas.Where(x => x.NekretninaId == insert.NekretninaId).Select(x => x.NazivNekretnine).FirstOrDefault();
             base.BeforeInsert(insert, entity);
         }
-    }
+
+        }
 }

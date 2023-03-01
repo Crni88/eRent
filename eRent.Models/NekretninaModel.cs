@@ -25,7 +25,7 @@ namespace eRent.Models
 
         public bool? Izdvojena { get; set; }
 
-        public bool Popunjena { get; set; }
+        public bool? Popunjena { get; set; }
 
         public string Username { get; set; }
 
