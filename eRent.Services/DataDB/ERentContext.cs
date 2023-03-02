@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace eRent.Services.DataDB;
 
@@ -18,6 +20,8 @@ public partial class ERentContext : DbContext
     public virtual DbSet<Korisnik> Korisniks { get; set; }
 
     public virtual DbSet<KorisnikRezervacija> KorisnikRezervacijas { get; set; }
+
+    public virtual DbSet<KorisnikTagovi> KorisnikTagovis { get; set; }
 
     public virtual DbSet<Lokacija> Lokacijas { get; set; }
 
@@ -137,6 +141,27 @@ public partial class ERentContext : DbContext
             entity.HasOne(d => d.Rezervacija).WithMany(p => p.KorisnikRezervacijas)
                 .HasForeignKey(d => d.RezervacijaId)
                 .HasConstraintName("FK_korisnikrezervacijaID");
+        });
+
+        modelBuilder.Entity<KorisnikTagovi>(entity =>
+        {
+            entity.HasKey(e => e.KtId).HasName("PK_taggingsID");
+
+            entity.ToTable("korisnikTagovi");
+
+            entity.Property(e => e.KtId).HasColumnName("ktID");
+            entity.Property(e => e.KorisnikId).HasColumnName("korisnikID");
+            entity.Property(e => e.TagId).HasColumnName("tagID");
+
+            entity.HasOne(d => d.Korisnik).WithMany(p => p.KorisnikTagovis)
+                .HasForeignKey(d => d.KorisnikId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_korisnikId");
+
+            entity.HasOne(d => d.Tag).WithMany(p => p.KorisnikTagovis)
+                .HasForeignKey(d => d.TagId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_korisnikTagID");
         });
 
         modelBuilder.Entity<Lokacija>(entity =>
@@ -284,7 +309,7 @@ public partial class ERentContext : DbContext
             entity.HasOne(d => d.Nekretnina).WithMany(p => p.NekretninaTagovis)
                 .HasForeignKey(d => d.NekretninaId)
                 .OnDelete(DeleteBehavior.ClientSetNull)
-                .HasConstraintName("FK_nekretninaID");
+                .HasConstraintName("FK__nekretnin__nekre__00AA174D");
 
             entity.HasOne(d => d.Tag).WithMany(p => p.NekretninaTagovis)
                 .HasForeignKey(d => d.TagId)

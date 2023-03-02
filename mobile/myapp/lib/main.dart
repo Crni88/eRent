@@ -1,6 +1,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:myapp/model/korisnik.dart';
 import 'package:myapp/providers/nekretnina_provider.dart';
 import 'package:myapp/providers/nekretnine_provider.dart';
@@ -13,6 +14,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //Firebase.initializeApp();
+
+  Stripe.publishableKey =
+      "pk_test_51MfMV0A130sxcWVF8rZBaB85dV1BvbwZhVlANLruMz9lfgjHLgsXqomjHXYNTrbleUy9e7r164FUSG7kf4BWDcOW00QmRhmBiH";
+  Stripe.merchantIdentifier = 'eRent';
+  await Stripe.instance.applySettings();
+
   await Firebase.initializeApp(
       options: const FirebaseOptions(
     apiKey: "AIzaSyAMAqdDG8mNPDEDlK5yPCquBJhkZJ-B814",

@@ -37,11 +37,17 @@
             this.btnListaKorisnika = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
             this.btnPrihodiZaNekretninu = new System.Windows.Forms.Button();
+            this.button1 = new System.Windows.Forms.Button();
+            this.label6 = new System.Windows.Forms.Label();
+            this.label7 = new System.Windows.Forms.Label();
+            this.button2 = new System.Windows.Forms.Button();
+            this.label8 = new System.Windows.Forms.Label();
+            this.button3 = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnListaRezervacija
             // 
-            this.btnListaRezervacija.Location = new System.Drawing.Point(50, 254);
+            this.btnListaRezervacija.Location = new System.Drawing.Point(29, 185);
             this.btnListaRezervacija.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnListaRezervacija.Name = "btnListaRezervacija";
             this.btnListaRezervacija.Size = new System.Drawing.Size(89, 23);
@@ -51,97 +57,130 @@
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(50, 9);
+            this.label1.Location = new System.Drawing.Point(0, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(92, 30);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Izvjestaj";
+            this.label1.Size = new System.Drawing.Size(100, 23);
+            this.label1.TabIndex = 0;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(11, 72);
+            this.label2.Location = new System.Drawing.Point(0, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(160, 17);
-            this.label2.TabIndex = 2;
-            this.label2.Text = "Mjesecni prihodi (ukupno)";
+            this.label2.Size = new System.Drawing.Size(100, 23);
+            this.label2.TabIndex = 0;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(12, 111);
+            this.label3.Location = new System.Drawing.Point(0, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(91, 17);
-            this.label3.TabIndex = 4;
-            this.label3.Text = "Lista Korisnika";
+            this.label3.Size = new System.Drawing.Size(100, 23);
+            this.label3.TabIndex = 0;
             // 
             // btnMjesecniPrihodiUkupno
             // 
-            this.btnMjesecniPrihodiUkupno.Location = new System.Drawing.Point(29, 74);
+            this.btnMjesecniPrihodiUkupno.Location = new System.Drawing.Point(0, 0);
             this.btnMjesecniPrihodiUkupno.Name = "btnMjesecniPrihodiUkupno";
-            this.btnMjesecniPrihodiUkupno.Size = new System.Drawing.Size(89, 23);
-            this.btnMjesecniPrihodiUkupno.TabIndex = 3;
-            this.btnMjesecniPrihodiUkupno.Text = "Izvještaj";
-            this.btnMjesecniPrihodiUkupno.UseVisualStyleBackColor = true;
+            this.btnMjesecniPrihodiUkupno.Size = new System.Drawing.Size(75, 23);
+            this.btnMjesecniPrihodiUkupno.TabIndex = 0;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(39, 227);
+            this.label4.Location = new System.Drawing.Point(0, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(100, 17);
-            this.label4.TabIndex = 6;
-            this.label4.Text = "Lista rezervacija";
+            this.label4.Size = new System.Drawing.Size(100, 23);
+            this.label4.TabIndex = 0;
             // 
             // btnListaKorisnika
             // 
-            this.btnListaKorisnika.Location = new System.Drawing.Point(29, 131);
+            this.btnListaKorisnika.Location = new System.Drawing.Point(0, 0);
             this.btnListaKorisnika.Name = "btnListaKorisnika";
-            this.btnListaKorisnika.Size = new System.Drawing.Size(89, 23);
-            this.btnListaKorisnika.TabIndex = 5;
-            this.btnListaKorisnika.Text = "Izvještaj";
-            this.btnListaKorisnika.UseVisualStyleBackColor = true;
+            this.btnListaKorisnika.Size = new System.Drawing.Size(75, 23);
+            this.btnListaKorisnika.TabIndex = 0;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(192, 111);
+            this.label5.Location = new System.Drawing.Point(0, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(130, 17);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Prihodi za nekretninu";
+            this.label5.Size = new System.Drawing.Size(100, 23);
+            this.label5.TabIndex = 0;
             // 
             // btnPrihodiZaNekretninu
             // 
-            this.btnPrihodiZaNekretninu.Location = new System.Drawing.Point(203, 131);
+            this.btnPrihodiZaNekretninu.Location = new System.Drawing.Point(0, 0);
             this.btnPrihodiZaNekretninu.Name = "btnPrihodiZaNekretninu";
-            this.btnPrihodiZaNekretninu.Size = new System.Drawing.Size(89, 23);
-            this.btnPrihodiZaNekretninu.TabIndex = 7;
-            this.btnPrihodiZaNekretninu.Text = "Izvještaj";
-            this.btnPrihodiZaNekretninu.UseVisualStyleBackColor = true;
-            this.btnPrihodiZaNekretninu.Click += new System.EventHandler(this.button2_Click);
+            this.btnPrihodiZaNekretninu.Size = new System.Drawing.Size(75, 23);
+            this.btnPrihodiZaNekretninu.TabIndex = 0;
             // 
-            // frmIzvjestaj
+            // button1
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(231, 323);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.btnListaKorisnika);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.btnMjesecniPrihodiUkupno);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnListaRezervacija);
-            this.Name = "frmIzvjestaj";
+            this.button1.Location = new System.Drawing.Point(104, 27);
+            this.button1.Name = "button1";
+            this.button1.Size = new System.Drawing.Size(75, 23);
+            this.button1.TabIndex = 0;
+            this.button1.Text = "Izvjestaj";
+            this.button1.UseVisualStyleBackColor = true;
+            this.button1.Click += new System.EventHandler(this.btnMjesecniPrihodiUkupno_Click);
+            // 
+            // label6
+            // 
+            this.label6.AutoSize = true;
+            this.label6.Location = new System.Drawing.Point(75, 9);
+            this.label6.Name = "label6";
+            this.label6.Size = new System.Drawing.Size(140, 15);
+            this.label6.TabIndex = 1;
+            this.label6.Text = "Mjesecni Prihodi Ukupno";
+            // 
+            // label7
+            // 
+            this.label7.AutoSize = true;
+            this.label7.Location = new System.Drawing.Point(103, 117);
+            this.label7.Name = "label7";
+            this.label7.Size = new System.Drawing.Size(90, 15);
+            this.label7.TabIndex = 3;
+            this.label7.Text = "Lista nekretnina";
+            // 
+            // button2
+            // 
+            this.button2.Location = new System.Drawing.Point(104, 135);
+            this.button2.Name = "button2";
+            this.button2.Size = new System.Drawing.Size(75, 23);
+            this.button2.TabIndex = 2;
+            this.button2.Text = "Izvjestaj";
+            this.button2.UseVisualStyleBackColor = true;
+            this.button2.Click += new System.EventHandler(this.btnListaNekretninaReportGenerate);
+            // 
+            // label8
+            // 
+            this.label8.AutoSize = true;
+            this.label8.Location = new System.Drawing.Point(104, 65);
+            this.label8.Name = "label8";
+            this.label8.Size = new System.Drawing.Size(89, 15);
+            this.label8.TabIndex = 5;
+            this.label8.Text = "Lista rezervacija";
+            // 
+            // button3
+            // 
+            this.button3.Location = new System.Drawing.Point(104, 83);
+            this.button3.Name = "button3";
+            this.button3.Size = new System.Drawing.Size(75, 23);
+            this.button3.TabIndex = 4;
+            this.button3.Text = "Izvjestaj";
+            this.button3.UseVisualStyleBackColor = true;
+            this.button3.Click += new System.EventHandler(this.btnListaRezervacija_Click);
+            // 
+            // frmOpcijeIzvjestaja
+            // 
+            this.ClientSize = new System.Drawing.Size(277, 188);
+            this.Controls.Add(this.label8);
+            this.Controls.Add(this.button3);
+            this.Controls.Add(this.label7);
+            this.Controls.Add(this.button2);
+            this.Controls.Add(this.label6);
+            this.Controls.Add(this.button1);
+            this.Name = "frmOpcijeIzvjestaja";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Izvjestaj";
+            this.Text = "Reporti";
+            this.Load += new System.EventHandler(this.frmOpcijeIzvjestaja_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -158,5 +197,11 @@
         private Button btnListaKorisnika;
         private Label label5;
         private Button btnPrihodiZaNekretninu;
+        private Button button1;
+        private Label label6;
+        private Label label7;
+        private Button button2;
+        private Label label8;
+        private Button button3;
     }
 }

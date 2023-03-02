@@ -51,7 +51,7 @@ class _AllPaymentsScreenState extends State<AllPaymentsScreen> {
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                                SinglePaymentScreen(payments[index])),
+                                SinglePaymentScreen_Copy(payments[index])),
                       );
                     },
                     child: ListTile(

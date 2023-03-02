@@ -26,6 +26,7 @@ class _NekretnineListScreenState extends State<NekretnineListScreen> {
   final TextEditingController _nameFTSController = TextEditingController();
   final TextEditingController _cijenaMinController = TextEditingController();
   final TextEditingController _cijenaMaxController = TextEditingController();
+  bool _expanded = false;
 
   List<Nekretnina> data = [];
 
@@ -85,133 +86,154 @@ class _NekretnineListScreenState extends State<NekretnineListScreen> {
                 child: Column(
       children: [
         TopBar(context: context),
-        Container(
-          color: const Color.fromRGBO(220, 220, 220,
-              0.5), // set the background color to semi-transparent red
-          padding: const EdgeInsets.all(20),
-          child: Column(children: [
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-              Expanded(
-                child: TextField(
-                  controller: _nameFTSController,
-                  decoration: const InputDecoration(
-                      labelText: "Name",
-                      hintStyle: TextStyle(
-                          fontSize: 20.0, fontWeight: FontWeight.bold)),
-                ),
-              ),
-              const SizedBox(
-                width: 50,
-              ),
-              Expanded(
-                child: TextField(
-                  controller: _brojSobaController,
-                  decoration: const InputDecoration(
-                      labelText: "No. of rooms",
-                      hintStyle: TextStyle(
-                          fontSize: 20.0, fontWeight: FontWeight.bold)),
-                  keyboardType: TextInputType.number,
-                  inputFormatters: <TextInputFormatter>[
-                    FilteringTextInputFormatter.digitsOnly
-                  ],
-                ),
-              ),
-            ]),
-            Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-              Expanded(
-                child: TextField(
-                  controller: _cijenaMinController,
-                  decoration: const InputDecoration(
-                      labelText: "Min. price",
-                      hintStyle: TextStyle(
-                          fontSize: 20.0, fontWeight: FontWeight.bold)),
-                  keyboardType: TextInputType.number,
-                  inputFormatters: <TextInputFormatter>[
-                    FilteringTextInputFormatter.digitsOnly
-                  ], // Only numbers can be entered
-                ),
-              ),
-              const SizedBox(
-                width: 50,
-              ),
-              Expanded(
-                child: TextField(
-                  controller: _cijenaMaxController,
-                  decoration: const InputDecoration(
-                      labelText: "Max price",
-                      hintStyle: TextStyle(
-                          fontSize: 20.0, fontWeight: FontWeight.bold)),
-                  keyboardType: TextInputType.number,
-                  inputFormatters: <TextInputFormatter>[
-                    FilteringTextInputFormatter.digitsOnly
-                  ],
-                ),
-              ),
-            ]),
-            const MySpacer(),
-            Container(
-              height: 50,
-              margin: const EdgeInsets.fromLTRB(40, 0, 40, 0),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(10),
-                gradient: const LinearGradient(colors: [
-                  Color.fromRGBO(143, 148, 251, 1),
-                  Color.fromRGBO(143, 148, 251, .6)
-                ]),
-              ),
-              child: InkWell(
-                onTap: () async {
-                  try {
-                    var search = {
-                      "NameFTS": _nameFTSController.text,
-                      "CijenaMax": 0,
-                      "CijenaMin": 0,
-                      "BrojSoba": 0,
-                    };
-                    if (_cijenaMaxController.text != "") {
-                      search["CijenaMax"] =
-                          int.parse(_cijenaMaxController.text);
-                    }
-                    if (_cijenaMinController.text != "") {
-                      search["CijenaMin"] =
-                          int.parse(_cijenaMinController.text);
-                    }
-                    if (_brojSobaController.text != "") {
-                      search["BrojSoba"] = int.parse(_brojSobaController.text);
-                    }
-                    if (search != {}) {
-                      data = [];
-                      var tempData = await _nekretnineProvider?.get(search);
-                      setState(() {
-                        data = tempData!;
-                      });
-                    } else {
-                      loadData();
-                    }
-                  } catch (e) {
-                    showDialog(
-                        context: context,
-                        builder: (BuildContext context) => AlertDialog(
-                              title: const Text("Error"),
-                              content: Text(e.toString()),
-                              actions: [
-                                TextButton(
-                                  child: const Text("Ok"),
-                                  onPressed: () => Navigator.pop(context),
-                                )
-                              ],
-                            ));
-                  }
-                },
-                child: const Center(child: MyText("Search", true)),
-              ),
-            ),
-          ]),
-        ),
+        Column(children: [
+          _expanded
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                      Expanded(
+                        child: TextField(
+                          controller: _nameFTSController,
+                          decoration: const InputDecoration(
+                              labelText: "Name",
+                              hintStyle: TextStyle(
+                                  fontSize: 20.0, fontWeight: FontWeight.bold)),
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 50,
+                      ),
+                      Expanded(
+                        child: TextField(
+                          controller: _brojSobaController,
+                          decoration: const InputDecoration(
+                              labelText: "No. of rooms",
+                              hintStyle: TextStyle(
+                                  fontSize: 20.0, fontWeight: FontWeight.bold)),
+                          keyboardType: TextInputType.number,
+                          inputFormatters: <TextInputFormatter>[
+                            FilteringTextInputFormatter.digitsOnly
+                          ],
+                        ),
+                      ),
+                    ])
+              : Container(),
+          _expanded
+              ? Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                      Expanded(
+                        child: TextField(
+                          controller: _cijenaMinController,
+                          decoration: const InputDecoration(
+                              labelText: "Min. price",
+                              hintStyle: TextStyle(
+                                  fontSize: 20.0, fontWeight: FontWeight.bold)),
+                          keyboardType: TextInputType.number,
+                          inputFormatters: <TextInputFormatter>[
+                            FilteringTextInputFormatter.digitsOnly
+                          ], // Only numbers can be entered
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 50,
+                      ),
+                      Expanded(
+                        child: TextField(
+                          controller: _cijenaMaxController,
+                          decoration: const InputDecoration(
+                              labelText: "Max price",
+                              hintStyle: TextStyle(
+                                  fontSize: 20.0, fontWeight: FontWeight.bold)),
+                          keyboardType: TextInputType.number,
+                          inputFormatters: <TextInputFormatter>[
+                            FilteringTextInputFormatter.digitsOnly
+                          ],
+                        ),
+                      ),
+                    ])
+              : Container(),
+          _expanded ? const MySpacer() : Container(),
+          _expanded
+              ? Container(
+                  height: 50,
+                  margin: const EdgeInsets.fromLTRB(40, 0, 40, 0),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(10),
+                    gradient: const LinearGradient(colors: [
+                      Color.fromRGBO(143, 148, 251, 1),
+                      Color.fromRGBO(143, 148, 251, .6)
+                    ]),
+                  ),
+                  child: InkWell(
+                    onTap: () async {
+                      try {
+                        var search = {
+                          "NameFTS": _nameFTSController.text,
+                          "CijenaMax": 0,
+                          "CijenaMin": 0,
+                          "BrojSoba": 0,
+                        };
+                        if (_cijenaMaxController.text != "") {
+                          search["CijenaMax"] =
+                              int.parse(_cijenaMaxController.text);
+                        }
+                        if (_cijenaMinController.text != "") {
+                          search["CijenaMin"] =
+                              int.parse(_cijenaMinController.text);
+                        }
+                        if (_brojSobaController.text != "") {
+                          search["BrojSoba"] =
+                              int.parse(_brojSobaController.text);
+                        }
+                        if (search != {}) {
+                          data = [];
+                          var tempData = await _nekretnineProvider?.get(search);
+                          setState(() {
+                            data = tempData!;
+                          });
+                        } else {
+                          loadData();
+                        }
+                      } catch (e) {
+                        showDialog(
+                            context: context,
+                            builder: (BuildContext context) => AlertDialog(
+                                  title: const Text("Error"),
+                                  content: Text(e.toString()),
+                                  actions: [
+                                    TextButton(
+                                      child: const Text("Ok"),
+                                      onPressed: () => Navigator.pop(context),
+                                    )
+                                  ],
+                                ));
+                      }
+                    },
+                    child: const Center(child: MyText("Search", true)),
+                  ),
+                )
+              : Container()
+        ]),
         //Button Search
+        _expanded
+            ? IconButton(
+                icon: const Icon(Icons.arrow_drop_up),
+                onPressed: () {
+                  setState(() {
+                    _expanded = false;
+                  });
+                })
+            : IconButton(
+                icon: const Icon(Icons.arrow_drop_down),
+                onPressed: () {
+                  setState(() {
+                    _expanded = true;
+                  });
+                }),
         SizedBox(
           height: MediaQuery.of(context).size.height -
-              350, // adjust the height as needed
+              165, // adjust the height as needed
           child: GridView(
             gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
               crossAxisCount: 1,

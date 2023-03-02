@@ -45,9 +45,9 @@
             // 
             this.label1.AutoSize = true;
             this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(14, 12);
+            this.label1.Location = new System.Drawing.Point(12, 9);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(413, 37);
+            this.label1.Size = new System.Drawing.Size(315, 30);
             this.label1.TabIndex = 4;
             this.label1.Text = "Pošalji novi zahtjev za plaćanje";
             // 
@@ -55,9 +55,9 @@
             // 
             this.label2.AutoSize = true;
             this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(14, 65);
+            this.label2.Location = new System.Drawing.Point(12, 49);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(84, 28);
+            this.label2.Size = new System.Drawing.Size(68, 21);
             this.label2.TabIndex = 5;
             this.label2.Text = "Naslov:*";
             // 
@@ -65,9 +65,9 @@
             // 
             this.label3.AutoSize = true;
             this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(14, 207);
+            this.label3.Location = new System.Drawing.Point(12, 155);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(69, 28);
+            this.label3.Size = new System.Drawing.Size(56, 21);
             this.label3.TabIndex = 6;
             this.label3.Text = "Iznos:*";
             // 
@@ -75,9 +75,9 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(274, 65);
+            this.label4.Location = new System.Drawing.Point(240, 49);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(108, 28);
+            this.label4.Size = new System.Drawing.Size(87, 21);
             this.label4.TabIndex = 7;
             this.label4.Text = "Nekretnina";
             // 
@@ -85,52 +85,47 @@
             // 
             this.label5.AutoSize = true;
             this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(281, 207);
+            this.label5.Location = new System.Drawing.Point(246, 155);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(102, 28);
+            this.label5.Size = new System.Drawing.Size(81, 21);
             this.label5.TabIndex = 8;
             this.label5.Text = "Komentar:";
             // 
             // txtKomentar
             // 
-            this.txtKomentar.Location = new System.Drawing.Point(281, 239);
-            this.txtKomentar.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtKomentar.Location = new System.Drawing.Point(246, 179);
             this.txtKomentar.Name = "txtKomentar";
-            this.txtKomentar.Size = new System.Drawing.Size(271, 151);
+            this.txtKomentar.Size = new System.Drawing.Size(238, 114);
             this.txtKomentar.TabIndex = 9;
             this.txtKomentar.Text = "";
             // 
             // txtNekretnina
             // 
-            this.txtNekretnina.Location = new System.Drawing.Point(274, 97);
-            this.txtNekretnina.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtNekretnina.Location = new System.Drawing.Point(240, 73);
             this.txtNekretnina.Name = "txtNekretnina";
             this.txtNekretnina.ReadOnly = true;
-            this.txtNekretnina.Size = new System.Drawing.Size(271, 27);
+            this.txtNekretnina.Size = new System.Drawing.Size(238, 23);
             this.txtNekretnina.TabIndex = 10;
             // 
             // txtNaslov
             // 
-            this.txtNaslov.Location = new System.Drawing.Point(14, 97);
-            this.txtNaslov.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtNaslov.Location = new System.Drawing.Point(12, 73);
             this.txtNaslov.Name = "txtNaslov";
-            this.txtNaslov.Size = new System.Drawing.Size(253, 27);
+            this.txtNaslov.Size = new System.Drawing.Size(222, 23);
             this.txtNaslov.TabIndex = 11;
             // 
             // txtIznos
             // 
-            this.txtIznos.Location = new System.Drawing.Point(14, 239);
-            this.txtIznos.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txtIznos.Location = new System.Drawing.Point(12, 179);
             this.txtIznos.Name = "txtIznos";
-            this.txtIznos.Size = new System.Drawing.Size(260, 27);
+            this.txtIznos.Size = new System.Drawing.Size(228, 23);
             this.txtIznos.TabIndex = 12;
             // 
             // btnPosalji
             // 
-            this.btnPosalji.Location = new System.Drawing.Point(454, 399);
-            this.btnPosalji.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.btnPosalji.Location = new System.Drawing.Point(397, 299);
             this.btnPosalji.Name = "btnPosalji";
-            this.btnPosalji.Size = new System.Drawing.Size(93, 52);
+            this.btnPosalji.Size = new System.Drawing.Size(81, 39);
             this.btnPosalji.TabIndex = 13;
             this.btnPosalji.Text = "Posalji";
             this.btnPosalji.UseVisualStyleBackColor = true;
@@ -139,18 +134,19 @@
             // cbMjesecno
             // 
             this.cbMjesecno.AutoSize = true;
-            this.cbMjesecno.Location = new System.Drawing.Point(14, 366);
+            this.cbMjesecno.Location = new System.Drawing.Point(12, 274);
+            this.cbMjesecno.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.cbMjesecno.Name = "cbMjesecno";
-            this.cbMjesecno.Size = new System.Drawing.Size(101, 24);
+            this.cbMjesecno.Size = new System.Drawing.Size(82, 19);
             this.cbMjesecno.TabIndex = 14;
             this.cbMjesecno.Text = "Mjesecno?";
             this.cbMjesecno.UseVisualStyleBackColor = true;
             // 
             // frmZahtjevZaPlacanje
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(567, 467);
+            this.ClientSize = new System.Drawing.Size(496, 350);
             this.Controls.Add(this.cbMjesecno);
             this.Controls.Add(this.btnPosalji);
             this.Controls.Add(this.txtIznos);
@@ -162,8 +158,8 @@
             this.Controls.Add(this.label3);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.Name = "frmZahtjevZaPlacanje";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Zahtjev za placanje";
             this.Load += new System.EventHandler(this.frmZahtjevZaPlacanje_Load);
             this.ResumeLayout(false);

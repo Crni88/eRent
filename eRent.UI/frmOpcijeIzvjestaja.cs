@@ -11,12 +11,17 @@ namespace eRent.UI
 {
     public partial class frmOpcijeIzvjestaja : Form
     {
+
+        APIService rezervacijeAPIService { get; set; } = new APIService("Rezervacija");
+        APIService NekretnineService { get; set; } = new APIService("Nekretnine");
+         APIService NekretninaKorisnikService { get; set; } = new APIService("NekretninaKorisnik");
+
         public frmOpcijeIzvjestaja()
         {
             InitializeComponent();
         }
 
-        private void button2_Click(object sender, EventArgs e)
+        private async void btnListaNekretninaReportGenerate(object sender, EventArgs e)
         {
 
             // Retrieve data from API
@@ -169,6 +174,11 @@ namespace eRent.UI
             doc.Close();
             showMessage();
             this.Close();
+        }
+
+        private void frmOpcijeIzvjestaja_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

@@ -28,14 +28,14 @@ namespace eRent.UI
 
         private async void btnPosalji_Click(object sender, EventArgs e)
         {
-            float iznosPoKorisniku = float.Parse(txtIznos.Text) / BrojKorisnika;
+            double iznosPoKorisniku = float.Parse(txtIznos.Text) / BrojKorisnika;
             string komentar = txtKomentar.Text;
             string naslov = txtNaslov.Text + " - " + iznosPoKorisniku.ToString()+ " KM";
             KorisnikSearchObject korisnikObj = new KorisnikSearchObject();
             korisnikObj.KorisnikId = 2016;
             List<KorisnikModel> korisnik = await _korisnikService.Get<List<KorisnikModel>>(korisnikObj);
             await posaljiNotifikacijuAsync(komentar, naslov, korisnik[0].FcmDeviceToken);
-            await savePaymentRequestToDatabase();
+            await savePaymentRequestToDatabase(iznosPoKorisniku);
         }
 
         private void showMessage()
@@ -43,13 +43,13 @@ namespace eRent.UI
             AutoClosingMessageBox.Show("Zahtjev za plaćanje je uspješno poslan.", "Zahtjev poslan!", 3000);
         }
 
-        private async Task savePaymentRequestToDatabase()
+        private async Task savePaymentRequestToDatabase(double iznosPoKorisniku)
         {
             //TODO add for each customer to send separate payment request
             PaymentUpsertRequest paymentUpsertRequest = new PaymentUpsertRequest();
             paymentUpsertRequest.NekretninaPayment = Nekretnina.NekretninaId;
             paymentUpsertRequest.Komentar = txtKomentar.Text;
-            paymentUpsertRequest.Iznos = int.Parse(txtIznos.Text);
+            paymentUpsertRequest.Iznos = Math.Round(iznosPoKorisniku, 2); //returns 1.99
             paymentUpsertRequest.Mjesecno = cbMjesecno.Checked;
             paymentUpsertRequest.Naslov = txtNaslov.Text;
             paymentUpsertRequest.IsProcessed = false;

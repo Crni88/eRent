@@ -9,5 +9,6 @@ namespace eRent.Services.Nekretnina
     //Servisi koji se nude kao metode ili operacije navedene kao prototipovi
     public interface INekretnineService : ICRUDService<NekretninaModel, NekretninaSearchObject, NekretninaInsertRequest, NekretninaUpdateRequest>
     {
+        List<NekretninaModel> Recommend(int id);
     }
 }

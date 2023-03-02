@@ -9,5 +9,7 @@ public partial class Tag
 
     public string TagName { get; set; } = null!;
 
+    public virtual ICollection<KorisnikTagovi> KorisnikTagovis { get; } = new List<KorisnikTagovi>();
+
     public virtual ICollection<NekretninaTagovi> NekretninaTagovis { get; } = new List<NekretninaTagovi>();
 }

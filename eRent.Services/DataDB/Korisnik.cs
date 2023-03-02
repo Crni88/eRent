@@ -31,6 +31,8 @@ public partial class Korisnik
 
     public virtual ICollection<KorisnikRezervacija> KorisnikRezervacijas { get; } = new List<KorisnikRezervacija>();
 
+    public virtual ICollection<KorisnikTagovi> KorisnikTagovis { get; } = new List<KorisnikTagovi>();
+
     public virtual ICollection<Nekretnina> Nekretninas { get; } = new List<Nekretnina>();
 
     public virtual ICollection<OglasKorisnik> OglasKorisniks { get; } = new List<OglasKorisnik>();
