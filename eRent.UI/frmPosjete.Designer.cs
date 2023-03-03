@@ -107,6 +107,7 @@
             this.Controls.Add(this.btnUcitaj);
             this.Controls.Add(this.dataGridView1);
             this.Name = "frmPosjete";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Posjete";
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);

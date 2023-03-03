@@ -3,6 +3,8 @@ using eRent.Models.Requests.Payment;
 using eRent.Models.Search_Objects;
 using eRent.UI.Helpers;
 using Newtonsoft.Json;
+using System.Text.RegularExpressions;
+
 namespace eRent.UI
 {
     public partial class frmZahtjevZaPlacanje : Form
@@ -28,14 +30,17 @@ namespace eRent.UI
 
         private async void btnPosalji_Click(object sender, EventArgs e)
         {
-            double iznosPoKorisniku = float.Parse(txtIznos.Text) / BrojKorisnika;
-            string komentar = txtKomentar.Text;
-            string naslov = txtNaslov.Text + " - " + iznosPoKorisniku.ToString()+ " KM";
-            KorisnikSearchObject korisnikObj = new KorisnikSearchObject();
-            korisnikObj.KorisnikId = 2016;
-            List<KorisnikModel> korisnik = await _korisnikService.Get<List<KorisnikModel>>(korisnikObj);
-            await posaljiNotifikacijuAsync(komentar, naslov, korisnik[0].FcmDeviceToken);
-            await savePaymentRequestToDatabase(iznosPoKorisniku);
+            if (ValidateChildren())
+            {
+                double iznosPoKorisniku = double.Parse(txtIznos.Text) / BrojKorisnika;
+                string komentar = txtKomentar.Text;
+                string naslov = txtNaslov.Text + " - " + iznosPoKorisniku.ToString() + " KM";
+                KorisnikSearchObject korisnikObj = new KorisnikSearchObject();
+                korisnikObj.KorisnikId = 2016;
+                List<KorisnikModel> korisnik = await _korisnikService.Get<List<KorisnikModel>>(korisnikObj);
+                await posaljiNotifikacijuAsync(komentar, naslov, korisnik[0].FcmDeviceToken);
+                await savePaymentRequestToDatabase(iznosPoKorisniku);
+            }
         }
 
         private void showMessage()
@@ -84,6 +89,48 @@ namespace eRent.UI
             var responseContent = await response.Content.ReadAsStringAsync();
 
             Console.WriteLine($"FCM Notification Response: {response.StatusCode} - {responseContent}");
+        }
+
+        private void txtNaslov_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtNaslov.Text))
+            {
+                e.Cancel = true;
+                txtNaslov.Focus();
+                err.SetError(txtNaslov, "Obavezno polje");
+            }
+            else
+            {
+                e.Cancel = false;
+                err.SetError(txtNaslov, "");
+            }
+        }
+
+        bool IsNumber(string text)
+        {
+            Regex regex = new Regex(@"^[-+]?[0-9]*\.?[0-9]+$");
+            return regex.IsMatch(text);
+        }
+
+        private void txtIznos_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtIznos.Text))
+            {
+                e.Cancel = true;
+                txtIznos.Focus();
+                err.SetError(txtIznos, "Obavezno polje!");
+            }
+            else if (!IsNumber(txtIznos.Text))
+            {
+                e.Cancel = true;
+                txtIznos.Focus();
+                err.SetError(txtIznos, "Iznos treba da bude broj.");
+            }
+            else
+            {
+                e.Cancel = false;
+                err.SetError(txtIznos, "");
+            }
         }
     }
 }

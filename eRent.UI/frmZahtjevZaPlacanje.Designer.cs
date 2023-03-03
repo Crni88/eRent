@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
@@ -39,6 +40,8 @@
             this.txtIznos = new System.Windows.Forms.TextBox();
             this.btnPosalji = new System.Windows.Forms.Button();
             this.cbMjesecno = new System.Windows.Forms.CheckBox();
+            this.err = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.err)).BeginInit();
             this.SuspendLayout();
             // 
             // label1
@@ -113,6 +116,7 @@
             this.txtNaslov.Name = "txtNaslov";
             this.txtNaslov.Size = new System.Drawing.Size(222, 23);
             this.txtNaslov.TabIndex = 11;
+            this.txtNaslov.Validating += new System.ComponentModel.CancelEventHandler(this.txtNaslov_Validating);
             // 
             // txtIznos
             // 
@@ -120,6 +124,7 @@
             this.txtIznos.Name = "txtIznos";
             this.txtIznos.Size = new System.Drawing.Size(228, 23);
             this.txtIznos.TabIndex = 12;
+            this.txtIznos.Validating += new System.ComponentModel.CancelEventHandler(this.txtIznos_Validating);
             // 
             // btnPosalji
             // 
@@ -142,6 +147,10 @@
             this.cbMjesecno.Text = "Mjesecno?";
             this.cbMjesecno.UseVisualStyleBackColor = true;
             // 
+            // err
+            // 
+            this.err.ContainerControl = this;
+            // 
             // frmZahtjevZaPlacanje
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
@@ -162,6 +171,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Zahtjev za placanje";
             this.Load += new System.EventHandler(this.frmZahtjevZaPlacanje_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.err)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -180,5 +190,6 @@
         private TextBox txtIznos;
         private Button btnPosalji;
         private CheckBox cbMjesecno;
+        private ErrorProvider err;
     }
 }

@@ -46,11 +46,23 @@ namespace eRent.UI
             }
         }
 
-        private void btnZahtjevZaPlacanje_Click(object sender, EventArgs e)
+        private async void btnZahtjevZaPlacanje_Click(object sender, EventArgs e)
         {
             int brojKorisnika = list.Count();
-            frmZahtjevZaPlacanje frmZahtjevZaPlacanje = new frmZahtjevZaPlacanje(brojKorisnika,_nekretnina);
-            frmZahtjevZaPlacanje.ShowDialog();      
+            if (brojKorisnika == 0)
+            {
+                NekretninaKorisnikSearchObject nekretninaKorisnik = new NekretninaKorisnikSearchObject();
+                nekretninaKorisnik.NekretninaId = _nekretnina.NekretninaId;
+                list = await NekretninaKorisnikService.Get<List<NekretninaKorisnikModel>>(nekretninaKorisnik);
+                brojKorisnika = list.Count();
+                frmZahtjevZaPlacanje frmZahtjevZaPlacanje = new frmZahtjevZaPlacanje(brojKorisnika, _nekretnina);
+                frmZahtjevZaPlacanje.ShowDialog();
+            }
+            else
+            {
+                frmZahtjevZaPlacanje frmZahtjevZaPlacanje = new frmZahtjevZaPlacanje(brojKorisnika, _nekretnina);
+                frmZahtjevZaPlacanje.ShowDialog();
+            }
         }
     }
 }

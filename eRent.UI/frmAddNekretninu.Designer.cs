@@ -54,6 +54,7 @@
             this.cbOsvjetljen = new System.Windows.Forms.CheckBox();
             this.err = new System.Windows.Forms.ErrorProvider(this.components);
             this.ofdSlikaNekretnine = new System.Windows.Forms.OpenFileDialog();
+            this.cbTihoNaselje = new System.Windows.Forms.CheckBox();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlikaNekretnine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.err)).BeginInit();
             this.SuspendLayout();
@@ -274,11 +275,22 @@
             // 
             this.ofdSlikaNekretnine.FileName = "openFileDialog1";
             // 
+            // cbTihoNaselje
+            // 
+            this.cbTihoNaselje.AutoSize = true;
+            this.cbTihoNaselje.Location = new System.Drawing.Point(592, 178);
+            this.cbTihoNaselje.Name = "cbTihoNaselje";
+            this.cbTihoNaselje.Size = new System.Drawing.Size(90, 19);
+            this.cbTihoNaselje.TabIndex = 25;
+            this.cbTihoNaselje.Text = "Tiho Naselje";
+            this.cbTihoNaselje.UseVisualStyleBackColor = true;
+            // 
             // frmAddNekretninu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.cbTihoNaselje);
             this.Controls.Add(this.cbOsvjetljen);
             this.Controls.Add(this.cbIzdvojena);
             this.Controls.Add(this.cbPopunjena);
@@ -339,5 +351,6 @@
         private CheckBox cbOsvjetljen;
         private ErrorProvider err;
         private OpenFileDialog ofdSlikaNekretnine;
+        private CheckBox cbTihoNaselje;
     }
 }

@@ -110,6 +110,7 @@
             this.Controls.Add(this.btnLoad);
             this.Controls.Add(this.dgvRejting);
             this.Name = "frmRejting";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Rejting";
             this.Load += new System.EventHandler(this.frmRejting_Load);
             ((System.ComponentModel.ISupportInitialize)(this.dgvRejting)).EndInit();

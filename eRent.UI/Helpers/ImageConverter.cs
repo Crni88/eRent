@@ -26,6 +26,5 @@ namespace eRent.UI.Helpers
                 return image;
             }
         }
-
     }
 }

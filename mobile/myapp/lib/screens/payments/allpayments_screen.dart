@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:myapp/model/payment/payment.dart';
 import 'package:myapp/providers/allpayments_provider.dart';
-import 'package:myapp/screens/payments/singlepayment_screen.dart';
 import 'package:myapp/screens/singlepayment_screen_copy.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 

@@ -11,12 +11,13 @@ import 'package:myapp/utils/util.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '.env';
+
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //Firebase.initializeApp();
 
-  Stripe.publishableKey =
-      "pk_test_51MfMV0A130sxcWVF8rZBaB85dV1BvbwZhVlANLruMz9lfgjHLgsXqomjHXYNTrbleUy9e7r164FUSG7kf4BWDcOW00QmRhmBiH";
+  Stripe.publishableKey = stripePublishableKey;
   Stripe.merchantIdentifier = 'eRent';
   await Stripe.instance.applySettings();
 

@@ -93,23 +93,26 @@ namespace eRent.UI
         private List<int> addTags()
         {
             var tagList = new List<int>() { };
-            if (cbOsvjetljen.Checked)
+            if (cbTihoNaselje.Checked)
             {
-                tagList.Add(1007);
-            }
-            if (cbNoSmoking.Checked)
-            {
-                tagList.Add(1006);
+                tagList.Add(1004);
             }
             if (cbMiran.Checked)
             {
                 tagList.Add(1005);
             }
+            if (cbNoSmoking.Checked)
+            {
+                tagList.Add(1006);
+            }
+            if (cbOsvjetljen.Checked)
+            {
+                tagList.Add(1007);
+            }
             if (cbPetFriendly.Checked)
             {
                 tagList.Add(1008);
             }
-          
             return tagList;
         }
 

@@ -5,7 +5,6 @@ import 'package:myapp/components/spacer.dart';
 import 'package:myapp/components/title.dart';
 import 'package:myapp/components/top_bar.dart';
 import 'package:myapp/model/payment/payment.dart';
-import 'package:myapp/providers/addpayment_provider.dart';
 import 'package:myapp/providers/allpayments_provider.dart';
 
 import 'dart:convert';
@@ -28,7 +27,7 @@ class _SinglePaymentScreenState extends State<SinglePaymentScreen_Copy> {
   _SinglePaymentScreenState(Payment payment);
 
   Payment payment = Payment();
-  AddPaymentProvider addPaymentProvider = AddPaymentProvider();
+  //AddPaymentProvider addPaymentProvider = AddPaymentProvider();
   AllPaymentsProvider allPaymentsProvider = AllPaymentsProvider();
   String? _email;
 
@@ -47,7 +46,7 @@ class _SinglePaymentScreenState extends State<SinglePaymentScreen_Copy> {
         child: Column(
           children: [
             TopBar(context: context),
-            MyTitle("${payment.naslov!}KOPIJA"),
+            MyTitle(payment.naslov!),
             MyText(payment.komentar!, false),
             MyText(payment.iznos.toString(), true),
             const MySpacer(),

@@ -22,9 +22,7 @@ namespace eRent.Services
             CreateMap<DataDB.Korisnik, KorisnikModel>();
             CreateMap<KorisnikInsertRequest, DataDB.Korisnik>();
             CreateMap<KorisnikUpdateRequest, DataDB.Korisnik>();
-            //Lokacija
-            CreateMap<DataDB.Lokacija, LokacijaModel>();
-            CreateMap<LokacijaUpsertRequest, DataDB.Lokacija>();
+            
             //Nekretnina
             CreateMap<DataDB.Nekretnina, NekretninaModel>();
             CreateMap<NekretninaUpdateRequest, DataDB.Nekretnina>();

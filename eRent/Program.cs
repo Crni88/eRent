@@ -2,7 +2,6 @@ using eRent;
 using eRent.Filters;
 using eRent.Services.DataDB;
 using eRent.Services.Korisnici;
-using eRent.Services.Lokacija;
 using eRent.Services.Nekretnina;
 using eRent.Services.NekretninaKorisnik;
 using eRent.Services.NekretninaTagovi;
@@ -51,7 +50,6 @@ internal class Program
 
         builder.Services.AddTransient<IUlogeService, UlogeService>();
         builder.Services.AddTransient<IKorisniciService, KorisniciService>();
-        builder.Services.AddTransient<ILokacijaService, LokacijaService>();
         builder.Services.AddTransient<INekretnineService, NekretnineService>();
         builder.Services.AddTransient<ITagsService, TagsService>();
         builder.Services.AddTransient<INekretninaKorisnikService, NekretninaKorisnikService>();
