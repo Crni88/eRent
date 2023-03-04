@@ -18,6 +18,7 @@ import '../../components/StarsWidget.dart';
 import '../../components/single_nekretnina_row.dart';
 import '../../components/spacer.dart';
 import '../../components/top_bar.dart';
+import '../../providers/nekretnine_provider.dart';
 import '../nekretnine/nekretnine_screen.dart';
 
 class SingleNekretninaScreen extends StatefulWidget {
@@ -47,6 +48,8 @@ class _SingleNekretninaScreenState extends State<SingleNekretninaScreen> {
   double _rating = 0;
   bool isVisible = false;
   final TextEditingController _komentarController = TextEditingController();
+  NekretnineProvider? _nekretnineProvider = NekretnineProvider();
+  List<Nekretnina> data = [];
 
   _SingleNekretninaScreenState(this.arguments);
 
@@ -56,7 +59,9 @@ class _SingleNekretninaScreenState extends State<SingleNekretninaScreen> {
     arguments = widget.arguments;
     nekretnina = Nekretnina();
     korisnik = Korisnik();
+    _nekretnineProvider = NekretnineProvider();
     loadData();
+    loadNekretnine();
   }
 
   Future loadData() async {
@@ -81,6 +86,13 @@ class _SingleNekretninaScreenState extends State<SingleNekretninaScreen> {
         isVisible = true;
       });
     }
+  }
+
+  void loadNekretnine() async {
+    var tempData = await _nekretnineProvider?.getRecommend(arguments!);
+    setState(() {
+      data = tempData!;
+    });
   }
 
   Future<String> getAvgRejting(int? id) async {
@@ -114,6 +126,7 @@ class _SingleNekretninaScreenState extends State<SingleNekretninaScreen> {
                 averageAge,
                 rejtingProvider,
                 isVisible,
+                data,
                 context),
             Container(
               width: 500,
@@ -242,6 +255,7 @@ Widget _buildSingleNekretnina(
   String averageAge,
   RejtingProvider rejtingProvider,
   bool isVisible,
+  List<Nekretnina> data,
   BuildContext context,
 ) {
   if (nekretnina.nazivNekretnine == null) {
@@ -293,6 +307,20 @@ Widget _buildSingleNekretnina(
             const MySpacer(),
             const MyTitle("Informacije o vlasniku nekretnine:"),
             _korisnikDetails(korisnikNekretnina!, korisnik, averageAge),
+            const MySpacer(),
+            const MyTitle("Također Vas možda zanima:"),
+            SizedBox(
+              height: 300, // adjust the height as needed
+              child: GridView(
+                gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 1,
+                  childAspectRatio: 5 / 6,
+                  mainAxisSpacing: 5,
+                ),
+                scrollDirection: Axis.horizontal,
+                children: _buildNekretnineCardList(data, context),
+              ),
+            ),
             const MySpacer(),
             MyTitle(isVisible ? "Vaši podaci" : "Ostavi recenziju"),
           ]),
@@ -367,4 +395,84 @@ Widget _buildRecenzijaBlock(
           ])
     ],
   );
+}
+
+List<Widget> _buildNekretnineCardList(data, context) {
+  if (data.isEmpty) {
+    return [
+      Column(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: const <Widget>[
+          CircularProgressIndicator(),
+          Text("Loading..."),
+        ],
+      )
+    ];
+  }
+
+  List<Widget> list = data
+      .map(
+        (x) => GestureDetector(
+            onTap: () => {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) =>
+                            SingleNekretninaScreen(arguments: x.nekretninaId)),
+                  )
+                },
+            child: Container(
+              height: 250,
+              color: x.izdvojena!
+                  ? const Color(0xAAF4D06F)
+                  : const Color(0xAA9DD9D2),
+              padding: const EdgeInsets.all(20),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                      height: 125,
+                      width: 125,
+                      child: imageFromBase64String(x.slika!)),
+                  Row(
+                    children: [
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(x.nazivNekretnine ?? "",
+                              style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 22,
+                                  fontWeight: FontWeight.bold)),
+                          Text(x.grad ?? "",
+                              style: const TextStyle(
+                                  color: Colors.black, fontSize: 16)),
+                          SizedBox(
+                            width: 150,
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Text("Broj soba ${x.brojSoba.toString()}"),
+                                Text("${x.cijena.toString()}KM",
+                                    style: const TextStyle(
+                                        color: Colors.redAccent,
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold))
+                              ],
+                            ),
+                          )
+                        ],
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            )),
+      )
+      .cast<Widget>()
+      .toList();
+  return list;
 }

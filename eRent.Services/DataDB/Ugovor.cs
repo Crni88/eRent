@@ -9,17 +9,19 @@ public partial class Ugovor
 
     public int PodnosiocUgovoraId { get; set; }
 
-    public int UgovornaStrankaId { get; set; }
-
     public int NekretninaId { get; set; }
 
     public DateTime? DatumSklapanjaUgovora { get; set; }
 
-    public DateTime? VremenskoTrajanjeUgovora { get; set; }
+    public DateTime? DatumIstekaUgovora { get; set; }
 
-    public virtual Nekretnina Nekretnina { get; set; } = null!;
+    public string? PodnosiocUgovora { get; set; }
 
-    public virtual Korisnik PodnosiocUgovora { get; set; } = null!;
+    public string? UgovornaStranka { get; set; }
 
-    public virtual Korisnik UgovornaStranka { get; set; } = null!;
+    public string? Nekretnina { get; set; }
+
+    public virtual Nekretnina NekretninaNavigation { get; set; } = null!;
+
+    public virtual Korisnik PodnosiocUgovoraNavigation { get; set; } = null!;
 }

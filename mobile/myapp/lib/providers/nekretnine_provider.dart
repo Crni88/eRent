@@ -1,3 +1,6 @@
+import 'dart:convert';
+
+import 'package:flutter/foundation.dart';
 import 'package:myapp/model/nekretnina.dart';
 import 'package:myapp/providers/base_provider.dart';
 

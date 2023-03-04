@@ -21,7 +21,7 @@ public partial class Rezervacija
 
     public string? Nazivnekretnine { get; set; }
 
-    public virtual ICollection<KorisnikRezervacija> KorisnikRezervacijas { get; } = new List<KorisnikRezervacija>();
+    public bool? Odobrena { get; set; }
 
     public virtual Nekretnina Nekretnina { get; set; } = null!;
 

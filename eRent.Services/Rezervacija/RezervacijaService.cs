@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using eRent.Models;
-using eRent.Models.Requests;
 using eRent.Models.Requests.Rezervacija;
 using eRent.Models.Search_Objects;
 using eRent.Services.DataDB;
@@ -26,8 +25,8 @@ namespace eRent.Services.Rezervacija
         {
             entity.Nazivnekretnine =
                 Context.Nekretninas.Where(x => x.NekretninaId == insert.NekretninaId).Select(x => x.NazivNekretnine).FirstOrDefault();
+            entity.Odobrena = false;
             base.BeforeInsert(insert, entity);
         }
-
-        }
+    }
 }

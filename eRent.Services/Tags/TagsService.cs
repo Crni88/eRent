@@ -13,15 +13,5 @@ namespace eRent.Services.Tags
         public TagsService(ERentContext eRentContext, IMapper mapper) : base(eRentContext, mapper)
         {
         }
-        //public override IQueryable<DataDB.Tag> AddFilter(IQueryable<DataDB.Tag> query, TagsSearchObject search = null)
-        //{
-        //    var filteredQuery = base.AddFilter(query, search);
-
-        //    if (!string.IsNullOrWhiteSpace(search?.TagName))
-        //    {
-        //        filteredQuery = filteredQuery.Where(x => x.TagName.StartsWith(search.TagName));
-        //    }
-        //    return filteredQuery;
-        //}
     }
 }

@@ -30,12 +30,13 @@
         {
             this.label1 = new System.Windows.Forms.Label();
             this.dgvRezervacije = new System.Windows.Forms.DataGridView();
-            this.btnLoadRezervacije = new System.Windows.Forms.Button();
             this.Ime_Prezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Broj_Telefona = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.NazivNekretnine = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Datum_Pocetka = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Datum_Kraja = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Odobrena = new System.Windows.Forms.DataGridViewCheckBoxColumn();
+            this.Odobri = new System.Windows.Forms.DataGridViewButtonColumn();
+            this.btnLoadRezervacije = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dgvRezervacije)).BeginInit();
             this.SuspendLayout();
             // 
@@ -56,25 +57,18 @@
             this.dgvRezervacije.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.Ime_Prezime,
             this.Broj_Telefona,
-            this.NazivNekretnine,
             this.Datum_Pocetka,
-            this.Datum_Kraja});
+            this.Datum_Kraja,
+            this.Odobrena,
+            this.Odobri});
             this.dgvRezervacije.Location = new System.Drawing.Point(12, 42);
             this.dgvRezervacije.Name = "dgvRezervacije";
             this.dgvRezervacije.ReadOnly = true;
             this.dgvRezervacije.RowTemplate.Height = 25;
+            this.dgvRezervacije.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dgvRezervacije.Size = new System.Drawing.Size(776, 396);
             this.dgvRezervacije.TabIndex = 1;
-            // 
-            // btnLoadRezervacije
-            // 
-            this.btnLoadRezervacije.Location = new System.Drawing.Point(713, 9);
-            this.btnLoadRezervacije.Name = "btnLoadRezervacije";
-            this.btnLoadRezervacije.Size = new System.Drawing.Size(75, 23);
-            this.btnLoadRezervacije.TabIndex = 2;
-            this.btnLoadRezervacije.Text = "Ucitaj";
-            this.btnLoadRezervacije.UseVisualStyleBackColor = true;
-            this.btnLoadRezervacije.Click += new System.EventHandler(this.btnLoadRezervacije_Click);
+            this.dgvRezervacije.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvRezervacije_CellContentClick);
             // 
             // Ime_Prezime
             // 
@@ -92,14 +86,6 @@
             this.Broj_Telefona.Name = "Broj_Telefona";
             this.Broj_Telefona.ReadOnly = true;
             // 
-            // NazivNekretnine
-            // 
-            this.NazivNekretnine.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.NazivNekretnine.DataPropertyName = "Nazivnekretnine";
-            this.NazivNekretnine.HeaderText = "Naziv Nekretnine";
-            this.NazivNekretnine.Name = "NazivNekretnine";
-            this.NazivNekretnine.ReadOnly = true;
-            // 
             // Datum_Pocetka
             // 
             this.Datum_Pocetka.DataPropertyName = "DatumPocetka";
@@ -113,6 +99,31 @@
             this.Datum_Kraja.HeaderText = "Datum Kraja";
             this.Datum_Kraja.Name = "Datum_Kraja";
             this.Datum_Kraja.ReadOnly = true;
+            // 
+            // Odobrena
+            // 
+            this.Odobrena.DataPropertyName = "Odobrena";
+            this.Odobrena.HeaderText = "Odobrena";
+            this.Odobrena.Name = "Odobrena";
+            this.Odobrena.ReadOnly = true;
+            // 
+            // Odobri
+            // 
+            this.Odobri.HeaderText = "Odobri";
+            this.Odobri.Name = "Odobri";
+            this.Odobri.ReadOnly = true;
+            this.Odobri.Text = "Odobri";
+            this.Odobri.UseColumnTextForButtonValue = true;
+            // 
+            // btnLoadRezervacije
+            // 
+            this.btnLoadRezervacije.Location = new System.Drawing.Point(713, 9);
+            this.btnLoadRezervacije.Name = "btnLoadRezervacije";
+            this.btnLoadRezervacije.Size = new System.Drawing.Size(75, 23);
+            this.btnLoadRezervacije.TabIndex = 2;
+            this.btnLoadRezervacije.Text = "Ucitaj";
+            this.btnLoadRezervacije.UseVisualStyleBackColor = true;
+            this.btnLoadRezervacije.Click += new System.EventHandler(this.btnLoadRezervacije_Click);
             // 
             // frmRezervacije
             // 
@@ -139,8 +150,9 @@
         private Button btnLoadRezervacije;
         private DataGridViewTextBoxColumn Ime_Prezime;
         private DataGridViewTextBoxColumn Broj_Telefona;
-        private DataGridViewTextBoxColumn NazivNekretnine;
         private DataGridViewTextBoxColumn Datum_Pocetka;
         private DataGridViewTextBoxColumn Datum_Kraja;
+        private DataGridViewCheckBoxColumn Odobrena;
+        private DataGridViewButtonColumn Odobri;
     }
 }

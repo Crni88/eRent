@@ -32,6 +32,7 @@ namespace eRent.UI
             cbPopunjena.Checked = (bool)_nekretninaModel.Popunjena;
             txtBrojKvadrata.Text = _nekretninaModel.Brojkvadrata.ToString();
             pbSlikaNekretnine.Image = FromByteToImage(_nekretninaModel.Slika);
+            txtOpis.Text = _nekretninaModel.Opis;
         }
 
         private async void btnSpasi_Click(object sender, EventArgs e)
@@ -188,5 +189,6 @@ namespace eRent.UI
                 pbSlikaNekretnine.Image = Image.FromFile(ofdSlikaNekretnine.FileName);
             }
         }
+               
     }
 }

@@ -39,11 +39,7 @@ public partial class Nekretnina
 
     public virtual ICollection<NekretninaRezervacija> NekretninaRezervacijas { get; } = new List<NekretninaRezervacija>();
 
-    public virtual ICollection<NekretninaSlika> NekretninaSlikas { get; } = new List<NekretninaSlika>();
-
     public virtual ICollection<NekretninaTagovi> NekretninaTagovis { get; } = new List<NekretninaTagovi>();
-
-    public virtual ICollection<Ogla> Oglas { get; } = new List<Ogla>();
 
     public virtual ICollection<PaymentRequest> PaymentRequests { get; } = new List<PaymentRequest>();
 

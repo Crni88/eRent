@@ -5,6 +5,7 @@ import 'package:http/http.dart';
 import 'package:http/io_client.dart';
 import 'package:flutter/foundation.dart';
 
+import '../model/nekretnina.dart';
 import '../utils/util.dart';
 
 abstract class BaseProvider<T> with ChangeNotifier {
@@ -173,6 +174,25 @@ abstract class BaseProvider<T> with ChangeNotifier {
       throw Exception("Not found");
     } else if (response.statusCode == 500) {
       throw Exception("Internal server error");
+    } else {
+      throw Exception("Exception... handle this gracefully");
+    }
+  }
+
+  Future<List<T>> getRecommend(int id) async {
+    var url = "https://10.0.2.2:7007/Nekretnine/$id/Recommend/";
+    var uri = Uri.parse(url);
+    Map<String, String> headers = createHeaders();
+    if (kDebugMode) {
+      print("get me");
+    }
+    var response = await http!.get(uri, headers: headers);
+    if (kDebugMode) {
+      print("done $response");
+    }
+    if (isValidResponseCode(response)) {
+      var data = jsonDecode(response.body);
+      return data.map((x) => fromJson(x)).cast<T>().toList();
     } else {
       throw Exception("Exception... handle this gracefully");
     }

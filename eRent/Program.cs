@@ -2,6 +2,7 @@ using eRent;
 using eRent.Filters;
 using eRent.Services.DataDB;
 using eRent.Services.Korisnici;
+using eRent.Services.KorisnikTagovi;
 using eRent.Services.Nekretnina;
 using eRent.Services.NekretninaKorisnik;
 using eRent.Services.NekretninaTagovi;
@@ -10,6 +11,7 @@ using eRent.Services.Posjeta;
 using eRent.Services.Rejting;
 using eRent.Services.Rezervacija;
 using eRent.Services.Tags;
+using eRent.Services.Ugovor;
 using eRent.Services.Uloge;
 using Microsoft.AspNetCore.Authentication;
 using Microsoft.EntityFrameworkCore;
@@ -58,6 +60,8 @@ internal class Program
         builder.Services.AddTransient<IPosjetaService, PosjetaService>();
         builder.Services.AddTransient<IRejtingService, RejtingService>();
         builder.Services.AddTransient<IPaymentRequestService, PaymentRequestService>();
+        builder.Services.AddTransient<IUgovorService, UgovorService>();
+        builder.Services.AddTransient<IKorisnikTagoviService, KorisnikTagoviService>();
         builder.Services.AddStripeInfrastructure(builder.Configuration);
         builder.Services.AddAutoMapper(typeof(IKorisniciService));
 

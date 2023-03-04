@@ -29,19 +29,11 @@ public partial class Korisnik
 
     public virtual ICollection<Izvjestaj> Izvjestajs { get; } = new List<Izvjestaj>();
 
-    public virtual ICollection<KorisnikRezervacija> KorisnikRezervacijas { get; } = new List<KorisnikRezervacija>();
-
     public virtual ICollection<KorisnikTagovi> KorisnikTagovis { get; } = new List<KorisnikTagovi>();
 
     public virtual ICollection<Nekretnina> Nekretninas { get; } = new List<Nekretnina>();
 
-    public virtual ICollection<OglasKorisnik> OglasKorisniks { get; } = new List<OglasKorisnik>();
-
     public virtual ICollection<PaymentRequest> PaymentRequests { get; } = new List<PaymentRequest>();
-
-    public virtual ICollection<Poruka> PorukaPosiljalacPorukes { get; } = new List<Poruka>();
-
-    public virtual ICollection<Poruka> PorukaPrimaalacPorukes { get; } = new List<Poruka>();
 
     public virtual ICollection<Posjetum> Posjeta { get; } = new List<Posjetum>();
 
@@ -49,9 +41,7 @@ public partial class Korisnik
 
     public virtual ICollection<Rejting> RejtingKorisnikSecNavigations { get; } = new List<Rejting>();
 
-    public virtual ICollection<Ugovor> UgovorPodnosiocUgovoras { get; } = new List<Ugovor>();
-
-    public virtual ICollection<Ugovor> UgovorUgovornaStrankas { get; } = new List<Ugovor>();
+    public virtual ICollection<Ugovor> Ugovors { get; } = new List<Ugovor>();
 
     public virtual Uloga? Uloga { get; set; }
 }

@@ -6,6 +6,7 @@ namespace eRent.Models
 {
     public class RezervacijaModel
     {
+        public int RezervacijaId { get; set; }
         public int NekretninaId { get; set; }
 
         public bool MjesecnaRezervacija { get; set; }
@@ -19,5 +20,7 @@ namespace eRent.Models
         public string BrojTelefona { get; set; }
 
         public string Nazivnekretnine { get; set; }
+        
+        public bool? Odobrena { get; set; }
     }
 }

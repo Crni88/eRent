@@ -2,6 +2,7 @@
 using eRent.Models;
 using eRent.Models.Requests;
 using eRent.Models.Requests.Korisnik;
+using eRent.Models.Requests.KorisnikTag;
 using eRent.Models.Requests.Lokacija;
 using eRent.Models.Requests.NekretninaKorisnik;
 using eRent.Models.Requests.NekretninaTag;
@@ -52,6 +53,12 @@ namespace eRent.Services
             //Payment Request
             CreateMap<DataDB.PaymentRequest, PaymentRequestModel>();
             CreateMap<PaymentUpsertRequest, DataDB.PaymentRequest>();
+            //Ugovor
+            CreateMap<DataDB.Ugovor, UgovorModel>();
+            CreateMap<UgovorUpsertRequest, DataDB.Ugovor>();
+            //KorisnikTagovi
+            CreateMap<DataDB.KorisnikTagovi, KorisnikTagoviModel>();
+            CreateMap<KorisnikTagUpsertRequest, DataDB.KorisnikTagovi>();
         }
     }
 }

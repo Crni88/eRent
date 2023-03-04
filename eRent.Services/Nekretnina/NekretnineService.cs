@@ -160,7 +160,7 @@ namespace eRent.Services.Nekretnina
                         predictionResult.Add(new Tuple<DataDB.Nekretnina, float>(property,prediction.Score));
                     }
                     var finalResult = predictionResult.OrderByDescending(x=>x.Item2).Select(x=>x.Item1).Take(3).ToList();
-
+                    mlContext = null;
                     return Mapper.Map<List<NekretninaModel>>(finalResult);
                 }
             }
