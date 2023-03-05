@@ -4,5 +4,6 @@
     {
         public int KorisnikId { get; set; }
         public int TagId { get; set; }
+        public bool? IsActive { get; set; }
     }
 }

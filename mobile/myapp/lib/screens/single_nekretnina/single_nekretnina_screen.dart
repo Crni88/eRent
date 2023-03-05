@@ -38,10 +38,12 @@ class _SingleNekretninaScreenState extends State<SingleNekretninaScreen> {
   Nekretnina nekretnina = Nekretnina();
   Korisnik? korisnik = Korisnik();
   Korisnik korisnikNekretnina = Korisnik();
-  NekretninaTagovi nekretninaTagovi = NekretninaTagovi();
+  List<NekretninaTagovi> nekretninaTagovi = [];
   NekretninaProvider? nekretninaProvider = NekretninaProvider();
+
   NekretninaTagoviProvider? nekretninaTagoviProvider =
       NekretninaTagoviProvider();
+
   UserProvider? korisnikProvider = UserProvider();
   RejtingProvider rejtingProvider = RejtingProvider();
   int? arguments;
@@ -53,6 +55,13 @@ class _SingleNekretninaScreenState extends State<SingleNekretninaScreen> {
   List<Nekretnina> data = [];
 
   _SingleNekretninaScreenState(this.arguments);
+
+  @override
+  void setState(fn) {
+    if (mounted) {
+      super.setState(fn);
+    }
+  }
 
   @override
   void initState() {
@@ -67,7 +76,10 @@ class _SingleNekretninaScreenState extends State<SingleNekretninaScreen> {
 
   Future loadData() async {
     var temp = await nekretninaProvider?.getById(arguments!);
-    var temp2 = await nekretninaTagoviProvider?.getById(arguments!);
+    var searchObject = {
+      "NekretninaId": arguments,
+    };
+    var temp2 = await nekretninaTagoviProvider?.get(searchObject);
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? id = prefs.getString('korisnikId');
     var temp3 = await korisnikProvider?.getById(int.parse(id!));
@@ -251,7 +263,7 @@ class _SingleNekretninaScreenState extends State<SingleNekretninaScreen> {
 Widget _buildSingleNekretnina(
   Korisnik? korisnikNekretnina,
   Nekretnina nekretnina,
-  NekretninaTagovi nekretninaTagovi,
+  List<NekretninaTagovi> nekretninaTagovi,
   Korisnik? korisnik,
   String averageAge,
   RejtingProvider rejtingProvider,
@@ -362,8 +374,8 @@ Widget _korisnikDetails(
   }
 }
 
-Widget _buildNekretnineChipList(NekretninaTagovi nekretninaTagovi) {
-  if (nekretninaTagovi.tags == null) {
+Widget _buildNekretnineChipList(List<NekretninaTagovi> nekretninaTagovi) {
+  if (nekretninaTagovi.isEmpty) {
     return const CircularProgressIndicator();
   }
   return SizedBox(
@@ -375,11 +387,27 @@ Widget _buildNekretnineChipList(NekretninaTagovi nekretninaTagovi) {
           mainAxisSpacing: 5,
         ),
         children: [
-          for (var tag in nekretninaTagovi.tags!)
-            Chip(
-              label: Text(tag['tagName']),
-              backgroundColor: Colors.grey[200],
-            )
+          for (var tag in nekretninaTagovi)
+            if (tag.tagID == 1004)
+              Chip(
+                label: const Text("Tiho naselje"),
+                backgroundColor: Colors.grey[200],
+              )
+            else if (tag.tagID == 1005)
+              Chip(
+                  label: const Text("Miran"), backgroundColor: Colors.grey[200])
+            else if (tag.tagID == 1006)
+              Chip(
+                  label: const Text("No Smoking"),
+                  backgroundColor: Colors.grey[200])
+            else if (tag.tagID == 1007)
+              Chip(
+                  label: const Text("Osvijetljen"),
+                  backgroundColor: Colors.grey[200])
+            else if (tag.tagID == 1008)
+              Chip(
+                  label: const Text("Pet Friendly"),
+                  backgroundColor: Colors.grey[200])
         ]),
   );
 }

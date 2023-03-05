@@ -33,7 +33,7 @@ namespace eRent.Services.NekretninaTagovi
         //    NekretninaTagoviModel nekretninaTagoviModel = new NekretninaTagoviModel();
         //    var result = (from tag in Context.Tags
         //                  join nt in Context.NekretninaTagovis
-        //                  on tag.TagId equals nt.TagId
+        //                  on tag.TagId equals nt.s
         //                  where nt.NekretninaId == id
         //                  select tag).ToList();
         //    nekretninaTagoviModel.NekretninaId = id;

@@ -8,11 +8,15 @@ part of 'nekretnina_tagovi.dart';
 
 NekretninaTagovi _$NekretninaTagoviFromJson(Map<String, dynamic> json) =>
     NekretninaTagovi()
+      ..ntId = json['ntId'] as int?
       ..nekretninaId = json['nekretninaId'] as int?
-      ..tags = json['tags'] as List<dynamic>?;
+      ..tagID = json['tagID'] as int?
+      ..isActive = json['isActive'] as bool?;
 
 Map<String, dynamic> _$NekretninaTagoviToJson(NekretninaTagovi instance) =>
     <String, dynamic>{
+      'ntId': instance.ntId,
       'nekretninaId': instance.nekretninaId,
-      'tags': instance.tags,
+      'tagID': instance.tagID,
+      'isActive': instance.isActive,
     };

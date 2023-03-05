@@ -4,9 +4,10 @@ part 'nekretnina_tagovi.g.dart';
 
 @JsonSerializable()
 class NekretninaTagovi {
+  int? ntId;
   int? nekretninaId;
-  List<dynamic>? tags;
-
+  int? tagID;
+  bool? isActive;
   NekretninaTagovi();
 
   factory NekretninaTagovi.fromJson(Map<String, dynamic> json) =>

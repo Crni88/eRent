@@ -17,24 +17,36 @@ namespace eRent.Services.KorisnikTagovi
         public ERentContext Context { get; set; }
 
 
-        public override KorisnikTagoviModel Test(int id)
+        public override IQueryable<DataDB.KorisnikTagovi> AddFilter(IQueryable<DataDB.KorisnikTagovi> query, KorisnikTagoviSearchObject search = null)
         {
-            KorisnikTagoviModel korisnikTagoviModel = new KorisnikTagoviModel();
-            var result = (from tag in Context.Tags
-                          join nt in Context.KorisnikTagovis
-                          on tag.TagId equals nt.TagId
-                          where nt.KorisnikId == id
-                          select tag).ToList();
-            korisnikTagoviModel.KorisnikId = id;
-            foreach (var x in result)
+            var filteredQuery = base.AddFilter(query, search);
+
+            if (search.KorisnikId != 0)
             {
-                TagModel tagModel = new TagModel();
-                tagModel.TagId = x.TagId;
-                tagModel.TagName = x.TagName;
-                korisnikTagoviModel.tags.Add(tagModel);
+                filteredQuery = filteredQuery.Where(x => x.KorisnikId == search.KorisnikId);
             }
 
-            return korisnikTagoviModel;
+            return filteredQuery;
         }
+
+        //public override KorisnikTagoviModel Test(int id)
+        //{
+        //    KorisnikTagoviModel korisnikTagoviModel = new KorisnikTagoviModel();
+        //    var result = (from tag in Context.Tags
+        //                  join nt in Context.KorisnikTagovis
+        //                  on tag.TagId equals nt.TagId
+        //                  where nt.KorisnikId == id
+        //                  select tag).ToList();
+        //    korisnikTagoviModel.KorisnikId = id;
+        //    foreach (var x in result)
+        //    {
+        //        TagModel tagModel = new TagModel();
+        //        tagModel.TagId = x.TagId;
+        //        tagModel.TagName = x.TagName;
+        //        korisnikTagoviModel.tags.Add(tagModel);
+        //    }
+
+        //    return korisnikTagoviModel;
+        //}
     }
 }

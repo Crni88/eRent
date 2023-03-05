@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/components/spacer.dart';
 import 'package:myapp/components/title.dart';
-import 'package:myapp/model/nekretnina_tagovi.dart';
-import 'package:myapp/model/tagovi/tags.dart';
-import 'package:myapp/providers/tags_provider.dart';
+import 'package:myapp/model/tagovi/Korisnik/korisnik_tagovi.dart';
+import 'package:myapp/providers/korisnik_tagovi_provider.dart';
 import '../../components/mytext.dart';
-import '../../providers/nekretnina_tagovi_provider.dart';
 import '../nekretnine/nekretnine_screen.dart';
 
 class KorisnikTagoviScreen extends StatefulWidget {
@@ -16,45 +14,20 @@ class KorisnikTagoviScreen extends StatefulWidget {
 }
 
 class _KorisnikTagoviScreenState extends State<KorisnikTagoviScreen> {
-  List<Tags> allTags = [];
-  NekretninaTagovi korisnikTags = NekretninaTagovi();
+  List<KorisnikTagovi> korisnikTags = [];
+  KorisnikTagoviProvider korisnikTagoviProvider = KorisnikTagoviProvider();
 
-  TagsProvider tagsProvider = TagsProvider();
-  NekretninaTagoviProvider nekretninaTagoviProvider =
-      NekretninaTagoviProvider();
   @override
   void initState() {
     super.initState();
     loadData();
   }
 
-  List<dynamic> tags = [];
-
   void loadData() async {
-    var temp = await tagsProvider.get();
-    var temp2 = await nekretninaTagoviProvider.getByUserId(2016);
+    var search = {"KorisnikId": 2016};
+    var temp2 = await korisnikTagoviProvider.get(search);
     setState(() {
-      allTags = temp;
       korisnikTags = temp2;
-      tags = korisnikTags.tags!;
-    });
-    if (allTags.isNotEmpty && tags.isNotEmpty) {
-      showTags();
-    }
-  }
-
-  void removeFromCustomerList(tag) {
-    setState(() {
-      tags.remove(tag);
-    });
-  }
-
-  void addToAllChipList(tag) {
-    Tags tag2 = Tags();
-    tag2.tagName = tag['tagName'];
-    tag2.tagId = tag['tagId'];
-    setState(() {
-      allTags.add(tag2);
     });
   }
 
@@ -66,19 +39,14 @@ class _KorisnikTagoviScreenState extends State<KorisnikTagoviScreen> {
               padding: const EdgeInsets.symmetric(horizontal: 15, vertical: 5),
               child: Column(
                 children: [
-                  const MyTitle("Vasi tagovi"),
+                  const MySpacer(),
+                  const MyTitle("Vaši tagovi"),
                   Expanded(
-                    child: _buildCustomerChips(
-                        korisnikTags, removeFromCustomerList, addToAllChipList),
+                    child: _buildCustomerChips(korisnikTags),
                   ),
                   const Divider(
                     height: 1,
                     color: Colors.grey,
-                  ),
-                  const MyTitle("Svi tagovi"),
-                  Expanded(
-                    child: _buildNekretnineChipList(
-                        allTags, removeNekretnineChipList, addToCustomerList),
                   ),
                   const MySpacer(),
                   Container(
@@ -94,13 +62,14 @@ class _KorisnikTagoviScreenState extends State<KorisnikTagoviScreen> {
                     child: InkWell(
                       onTap: () async {
                         try {
-                          var temp2 =
-                              await nekretninaTagoviProvider.getByUserId(2016);
-                          korisnikTags.tags?.forEach((element) async {
-                            await tagsProvider.insertCustomerTags({
-                              "korisnikId": 2016,
-                              "tagId": element['tagId']
-                            });
+                          korisnikTags.forEach((element) async {
+                            var update = {
+                              "KorisnikId": 2016,
+                              "TagId": element.tagId,
+                              "IsActive": element.isActive
+                            };
+                            await korisnikTagoviProvider.update(
+                                element.ktId!, update);
                           });
                           showDialog(
                               context: context,
@@ -141,84 +110,81 @@ class _KorisnikTagoviScreenState extends State<KorisnikTagoviScreen> {
     );
   }
 
-  void showTags() {
-    allTags.removeWhere((tag) => tags.any((t) => t['tagName'] == tag.tagName));
+  Widget _buildCustomerChips(List<KorisnikTagovi> nekretninaTagovi) {
+    // if (nekretninaTagovi.tags == null) {
+    //   return const CircularProgressIndicator();
+    // }
+    return SizedBox(
+      height: 150,
+      child: GridView(
+          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 3,
+            childAspectRatio: 4 / 2,
+            mainAxisSpacing: 5,
+          ),
+          children: [
+            for (var tag in nekretninaTagovi)
+              if (tag.tagId == 1004)
+                GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        tag.isActive = !tag.isActive!;
+                      });
+                    },
+                    child: Chip(
+                      label: const Text("Tiho naselje"),
+                      backgroundColor:
+                          tag.isActive! ? Colors.blue : Colors.grey,
+                    ))
+              else if (tag.tagId == 1005)
+                GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        tag.isActive = !tag.isActive!;
+                      });
+                    },
+                    child: Chip(
+                      label: const Text("Miran"),
+                      backgroundColor:
+                          tag.isActive! ? Colors.blue : Colors.grey,
+                    ))
+              else if (tag.tagId == 1006)
+                GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        tag.isActive = !tag.isActive!;
+                      });
+                    },
+                    child: Chip(
+                      label: const Text("No smoking"),
+                      backgroundColor:
+                          tag.isActive! ? Colors.blue : Colors.grey,
+                    ))
+              else if (tag.tagId == 1007)
+                GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        tag.isActive = !tag.isActive!;
+                      });
+                    },
+                    child: Chip(
+                      label: const Text("Osvijetljen"),
+                      backgroundColor:
+                          tag.isActive! ? Colors.blue : Colors.grey,
+                    ))
+              else if (tag.tagId == 1008)
+                GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        tag.isActive = !tag.isActive!;
+                      });
+                    },
+                    child: Chip(
+                      label: const Text("Pet Friendly"),
+                      backgroundColor:
+                          tag.isActive! ? Colors.blue : Colors.grey,
+                    ))
+          ]),
+    );
   }
-
-  void addToCustomerList(tag) {
-    Map tag1 = {
-      'tagId': tag.tagId!,
-      'tagName': tag.tagName,
-    };
-    korisnikTags.tags?.add(tag1);
-    print(korisnikTags.tags);
-  }
-
-  void removeNekretnineChipList(tag) {
-    setState(() {
-      allTags.remove(tag);
-    });
-  }
-}
-
-Widget _buildNekretnineChipList(
-    List<Tags> nekretninaTagovi,
-    void Function(dynamic tag) removeNekretnineChipList,
-    void Function(dynamic tag) addToCustomerList) {
-  if (nekretninaTagovi.isEmpty) {
-    return const CircularProgressIndicator();
-  }
-  return SizedBox(
-    height: 150,
-    child: GridView(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-          childAspectRatio: 4 / 2,
-          mainAxisSpacing: 5,
-        ),
-        children: [
-          for (var tag in nekretninaTagovi)
-            GestureDetector(
-              onTap: () {
-                addToCustomerList(tag);
-                removeNekretnineChipList(tag);
-              },
-              child: Chip(
-                label: Text(tag.tagName!),
-                backgroundColor: Colors.grey[200],
-              ),
-            )
-        ]),
-  );
-}
-
-Widget _buildCustomerChips(
-    NekretninaTagovi nekretninaTagovi,
-    void Function(dynamic tag) removeFromCustomerList,
-    void Function(dynamic tag) addToAllChipList) {
-  if (nekretninaTagovi.tags == null) {
-    return const CircularProgressIndicator();
-  }
-  return SizedBox(
-    height: 150,
-    child: GridView(
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 3,
-          childAspectRatio: 4 / 2,
-          mainAxisSpacing: 5,
-        ),
-        children: [
-          for (var tag in nekretninaTagovi.tags!)
-            GestureDetector(
-              onTap: () {
-                removeFromCustomerList(tag);
-                addToAllChipList(tag);
-              },
-              child: Chip(
-                label: Text(tag['tagName']),
-                backgroundColor: Colors.grey[200],
-              ),
-            )
-        ]),
-  );
 }

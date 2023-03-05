@@ -4,7 +4,7 @@ import 'package:myapp/model/nekretnina_tagovi.dart';
 import 'package:myapp/providers/base_provider.dart';
 
 class NekretninaTagoviProvider extends BaseProvider<NekretninaTagovi> {
-  NekretninaTagoviProvider() : super("NekretnineTagovi/TagsByProperty");
+  NekretninaTagoviProvider() : super("NekretnineTagovi");
 
   @override
   NekretninaTagovi fromJson(data) {
