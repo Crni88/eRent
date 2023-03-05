@@ -1,5 +1,7 @@
 ﻿using eRent.Models;
 using eRent.Models.Requests;
+using eRent.Models.Requests.NekretninaTag;
+using eRent.Models.Search_Objects;
 using System.Text.RegularExpressions;
 using static eRent.UI.Helpers.ImageConverter;
 
@@ -9,15 +11,48 @@ namespace eRent.UI
     {
 
         public APIService NekretnineService { get; set; } = new APIService("Nekretnine");
+        public APIService nekretninaTagoviService { get; set; } = new APIService("NekretnineTagovi");
+
         NekretninaModel _nekretninaModel { get; set; }
+        NekretninaTagSearchObject nekretninaSearchObject = new NekretninaTagSearchObject();
 
         public frmAddNekretninu(NekretninaModel nekretnina = null)
         {
             InitializeComponent();
             if (nekretnina != null)
             {
+                nekretninaSearchObject.NekretninaId = nekretnina.NekretninaId;
                 _nekretninaModel = nekretnina;
                 PopulateScreen();
+                loadTags(nekretninaSearchObject);
+            }
+        }
+
+        private async void loadTags(NekretninaTagSearchObject nekretninaSearchObject)
+        {
+            var getTags = await nekretninaTagoviService.Get<List<NekretninaTagoviModel>>(nekretninaSearchObject);
+            foreach (var tag in getTags)
+            {
+                if (tag.tagID == 1004)
+                {
+                    cbTihoNaselje.Checked = true;
+                }
+                if (tag.tagID == 1005)
+                {
+                    cbMiran.Checked = true;
+                }
+                if (tag.tagID == 1006)
+                {
+                    cbNoSmoking.Checked = true;
+                }
+                if (tag.tagID == 1007)
+                {
+                    cbOsvjetljen.Checked = true;
+                }
+                if (tag.tagID == 1008)
+                {
+                    cbPetFriendly.Checked = true;
+                }
             }
         }
 
@@ -43,19 +78,104 @@ namespace eRent.UI
                 {
                     NekretninaInsertRequest nekretninaInsertRequest = new NekretninaInsertRequest();
                     CreateInsertObject(nekretninaInsertRequest);
-                    var postNekretnina = await NekretnineService.Post<NekretninaInsertRequest>(nekretninaInsertRequest);
+                    var postNekretnina = await NekretnineService.Post<NekretninaModel>(nekretninaInsertRequest);
+                    _nekretninaModel = postNekretnina;
+                    //TODO Test this
+                    await UpdateTagsAsync();
                     this.Close();
                 }
                 else
                 {
-                    //TODO EXTRACT TO SEPARATE FUNCTION
                     NekretninaUpdateRequest nekretninaUpdateRequest = CreateUpdateObject();
                     var updateNekretnina =
                         await NekretnineService.Put<NekretninaUpdateRequest>(_nekretninaModel.NekretninaId, nekretninaUpdateRequest);
+                    await UpdateTagsAsync();
                     this.Close();
                 }
             }
         }
+
+      
+
+        private async Task UpdateTagsAsync( )
+        {
+            NekretninaTagoviUpsertRequest nekretninaTagoviUpsertRequest = new NekretninaTagoviUpsertRequest();
+            if (cbTihoNaselje.Checked)
+            {
+                nekretninaTagoviUpsertRequest.TagId = 1004;
+                nekretninaTagoviUpsertRequest.NekretninaId = _nekretninaModel.NekretninaId;
+                nekretninaTagoviUpsertRequest.IsActive = true;
+                var postNekretnina = await nekretninaTagoviService.Post<NekretninaTagoviUpsertRequest>(nekretninaTagoviUpsertRequest);
+            }
+            if (!cbTihoNaselje.Checked)
+            {
+                nekretninaTagoviUpsertRequest.TagId = 1004;
+                nekretninaTagoviUpsertRequest.NekretninaId = _nekretninaModel.NekretninaId;
+                nekretninaTagoviUpsertRequest.IsActive = false;
+                var postNekretnina = await nekretninaTagoviService.Post<NekretninaTagoviUpsertRequest>(nekretninaTagoviUpsertRequest);
+            }
+            if (cbMiran.Checked)
+            {
+                nekretninaTagoviUpsertRequest.TagId = 1005;
+                nekretninaTagoviUpsertRequest.NekretninaId = _nekretninaModel.NekretninaId;
+                nekretninaTagoviUpsertRequest.IsActive = true;
+                var postNekretnina = await nekretninaTagoviService.Post<NekretninaTagoviUpsertRequest>(nekretninaTagoviUpsertRequest);
+
+            }
+            if (!cbMiran.Checked)
+            {
+                nekretninaTagoviUpsertRequest.TagId = 1005;
+                nekretninaTagoviUpsertRequest.NekretninaId = _nekretninaModel.NekretninaId;
+                nekretninaTagoviUpsertRequest.IsActive = false;
+                var postNekretnina = await nekretninaTagoviService.Post<NekretninaTagoviUpsertRequest>(nekretninaTagoviUpsertRequest);
+            }
+            if (cbNoSmoking.Checked)
+            {
+                nekretninaTagoviUpsertRequest.TagId = 1006;
+                nekretninaTagoviUpsertRequest.NekretninaId = _nekretninaModel.NekretninaId;
+                nekretninaTagoviUpsertRequest.IsActive = true;
+                var postNekretnina = await nekretninaTagoviService.Post<NekretninaTagoviUpsertRequest>(nekretninaTagoviUpsertRequest);
+
+            }
+            if (!cbNoSmoking.Checked)
+            {
+                nekretninaTagoviUpsertRequest.TagId = 1006;
+                nekretninaTagoviUpsertRequest.NekretninaId = _nekretninaModel.NekretninaId;
+                nekretninaTagoviUpsertRequest.IsActive = false;
+                var postNekretnina = await nekretninaTagoviService.Post<NekretninaTagoviUpsertRequest>(nekretninaTagoviUpsertRequest);
+            }
+            if (cbOsvjetljen.Checked)
+            {
+                nekretninaTagoviUpsertRequest.TagId = 1007;
+                nekretninaTagoviUpsertRequest.NekretninaId = _nekretninaModel.NekretninaId;
+                nekretninaTagoviUpsertRequest.IsActive = true;
+                var postNekretnina = await nekretninaTagoviService.Post<NekretninaTagoviUpsertRequest>(nekretninaTagoviUpsertRequest);
+
+            }
+            if (!cbOsvjetljen.Checked)
+            {
+                nekretninaTagoviUpsertRequest.TagId = 1007;
+                nekretninaTagoviUpsertRequest.NekretninaId = _nekretninaModel.NekretninaId;
+                nekretninaTagoviUpsertRequest.IsActive = false;
+                var postNekretnina = await nekretninaTagoviService.Post<NekretninaTagoviUpsertRequest>(nekretninaTagoviUpsertRequest);
+            }
+            if (cbPetFriendly.Checked)
+            {
+                nekretninaTagoviUpsertRequest.TagId = 1008;
+                nekretninaTagoviUpsertRequest.NekretninaId = _nekretninaModel.NekretninaId;
+                nekretninaTagoviUpsertRequest.IsActive = true;
+                var postNekretnina = await nekretninaTagoviService.Post<NekretninaTagoviUpsertRequest>(nekretninaTagoviUpsertRequest);
+
+            }
+            if (!cbPetFriendly.Checked)
+            {
+                nekretninaTagoviUpsertRequest.TagId = 1008;
+                nekretninaTagoviUpsertRequest.NekretninaId = _nekretninaModel.NekretninaId;
+                nekretninaTagoviUpsertRequest.IsActive = false;
+                var postNekretnina = await nekretninaTagoviService.Post<NekretninaTagoviUpsertRequest>(nekretninaTagoviUpsertRequest);
+            }
+        }
+
         private NekretninaUpdateRequest CreateUpdateObject()
         {
             NekretninaUpdateRequest nekretninaUpdateRequest = new NekretninaUpdateRequest();
@@ -85,36 +205,10 @@ namespace eRent.UI
             nekretninaInsertRequest.Cijena = int.Parse(txtCijena.Text);
             nekretninaInsertRequest.Popunjena = cbPopunjena.Checked;
             nekretninaInsertRequest.Izdvojena = cbIzdvojena.Checked;
-            nekretninaInsertRequest.TagIdList = addTags();
+            //nekretninaInsertRequest.TagIdList = addTags();
             nekretninaInsertRequest.Slika = FromImageToBase64(pbSlikaNekretnine.Image);
             nekretninaInsertRequest.Opis = txtOpis.Text;
             return nekretninaInsertRequest;
-        }
-
-        private List<int> addTags()
-        {
-            var tagList = new List<int>() { };
-            if (cbTihoNaselje.Checked)
-            {
-                tagList.Add(1004);
-            }
-            if (cbMiran.Checked)
-            {
-                tagList.Add(1005);
-            }
-            if (cbNoSmoking.Checked)
-            {
-                tagList.Add(1006);
-            }
-            if (cbOsvjetljen.Checked)
-            {
-                tagList.Add(1007);
-            }
-            if (cbPetFriendly.Checked)
-            {
-                tagList.Add(1008);
-            }
-            return tagList;
         }
 
         //Validation
@@ -189,6 +283,6 @@ namespace eRent.UI
                 pbSlikaNekretnine.Image = Image.FromFile(ofdSlikaNekretnine.FileName);
             }
         }
-               
+
     }
 }

@@ -29,7 +29,7 @@ namespace eRent.Services.KorisnikTagovi
             foreach (var x in result)
             {
                 TagModel tagModel = new TagModel();
-                tagModel.TagsId = x.TagId;
+                tagModel.TagId = x.TagId;
                 tagModel.TagName = x.TagName;
                 korisnikTagoviModel.tags.Add(tagModel);
             }

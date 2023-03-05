@@ -9,7 +9,6 @@ import 'package:myapp/providers/nekretnina_provider.dart';
 import 'package:myapp/providers/nekretnina_tagovi_provider.dart';
 import 'package:myapp/providers/rejting_provider.dart';
 import 'package:myapp/providers/user_provider.dart';
-import 'package:myapp/screens/poruke.dart';
 import 'package:myapp/screens/posjeta.dart';
 import 'package:myapp/screens/rezervacija_screen.dart';
 import 'package:myapp/utils/util.dart';
@@ -19,7 +18,9 @@ import '../../components/single_nekretnina_row.dart';
 import '../../components/spacer.dart';
 import '../../components/top_bar.dart';
 import '../../providers/nekretnine_provider.dart';
+import '../messages/poruke.dart';
 import '../nekretnine/nekretnine_screen.dart';
+import 'korisnik_tagovi.dart';
 
 class SingleNekretninaScreen extends StatefulWidget {
   static const String routeName = "/nekretnina_{id}";
@@ -321,6 +322,9 @@ Widget _buildSingleNekretnina(
                 children: _buildNekretnineCardList(data, context),
               ),
             ),
+            const MySpacer(),
+            const MyTitle("Kako izgleda vasa idealna nekretnina?"),
+            const MyButton("Postavi taggove", KorisnikTagoviScreen()),
             const MySpacer(),
             MyTitle(isVisible ? "Vaši podaci" : "Ostavi recenziju"),
           ]),

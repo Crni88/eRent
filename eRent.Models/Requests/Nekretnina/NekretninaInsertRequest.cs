@@ -29,7 +29,7 @@ namespace eRent.Models.Requests
         public string Opis { get; set; }
         public string Grad { get; set; }
 
-        public List<int> TagIdList { get; set; } = new List<int> { };
+        //public List<int> TagIdList { get; set; } = new List<int> { };
 
         public string Slika { get; set; }
 

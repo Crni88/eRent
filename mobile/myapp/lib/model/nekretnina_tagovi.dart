@@ -4,8 +4,8 @@ part 'nekretnina_tagovi.g.dart';
 
 @JsonSerializable()
 class NekretninaTagovi {
-  late int? nekretninaId;
-  late List<dynamic>? tags;
+  int? nekretninaId;
+  List<dynamic>? tags;
 
   NekretninaTagovi();
 

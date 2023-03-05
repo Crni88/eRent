@@ -11,6 +11,8 @@ public partial class NekretninaTagovi
 
     public int TagId { get; set; }
 
+    public bool? IsActive { get; set; }
+
     public virtual Nekretnina Nekretnina { get; set; } = null!;
 
     public virtual Tag Tag { get; set; } = null!;

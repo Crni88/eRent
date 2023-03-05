@@ -27,4 +27,21 @@ class NekretninaTagoviProvider extends BaseProvider<NekretninaTagovi> {
       throw Exception("An error occured!");
     }
   }
+
+  @override
+  Future<NekretninaTagovi> getByUserId(int id, [dynamic additionalData]) async {
+    var url =
+        Uri.parse("https://10.0.2.2:7007/KorisnikTagovi/TagsByUser?id=$id");
+
+    Map<String, String> headers = createHeaders();
+
+    var response = await http!.get(url, headers: headers);
+
+    if (isValidResponseCode(response)) {
+      var data = jsonDecode(response.body);
+      return fromJson(data);
+    } else {
+      throw Exception("An error occured!");
+    }
+  }
 }

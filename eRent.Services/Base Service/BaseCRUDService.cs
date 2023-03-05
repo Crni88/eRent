@@ -26,6 +26,7 @@ namespace eRent.Services
 
         }
 
+
         public virtual T Update(int id, TUpdate update)
         {
             var set = Context.Set<TDb>();

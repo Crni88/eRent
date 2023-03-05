@@ -11,6 +11,8 @@ public partial class KorisnikTagovi
 
     public int TagId { get; set; }
 
+    public bool? IsActive { get; set; }
+
     public virtual Korisnik Korisnik { get; set; } = null!;
 
     public virtual Tag Tag { get; set; } = null!;

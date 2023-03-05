@@ -117,6 +117,7 @@ public partial class ERentContext : DbContext
             entity.ToTable("korisnikTagovi");
 
             entity.Property(e => e.KtId).HasColumnName("ktID");
+            entity.Property(e => e.IsActive).HasColumnName("isActive");
             entity.Property(e => e.KorisnikId).HasColumnName("korisnikID");
             entity.Property(e => e.TagId).HasColumnName("tagID");
 
@@ -227,6 +228,7 @@ public partial class ERentContext : DbContext
             entity.ToTable("nekretninaTagovi");
 
             entity.Property(e => e.NtId).HasColumnName("ntID");
+            entity.Property(e => e.IsActive).HasColumnName("isActive");
             entity.Property(e => e.NekretninaId).HasColumnName("nekretninaID");
             entity.Property(e => e.TagId).HasColumnName("tagID");
 

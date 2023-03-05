@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/screens/nekretnine/nekretnine_screen.dart';
 import 'package:myapp/screens/payments/allpayments_screen.dart';
-import 'package:myapp/screens/poruke.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class TopBar extends StatelessWidget {

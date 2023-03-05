@@ -27,13 +27,13 @@ namespace eRent.Services.Nekretnina
             //    throw new UserException("Error occured.");
             //}
             var entity = base.Insert(insert);
-            foreach (var tagId in insert.TagIdList)
-            {
-                DataDB.NekretninaTagovi nekretninaTagovi = new DataDB.NekretninaTagovi();
-                nekretninaTagovi.NekretninaId = entity.NekretninaId;
-                nekretninaTagovi.TagId = tagId;
-                Context.NekretninaTagovis.Add(nekretninaTagovi);
-            }
+            //foreach (var tagId in insert.TagIdList)
+            //{
+            //    DataDB.NekretninaTagovi nekretninaTagovi = new DataDB.NekretninaTagovi();
+            //    nekretninaTagovi.NekretninaId = entity.NekretninaId;
+            //    nekretninaTagovi.TagId = tagId;
+            //    Context.NekretninaTagovis.Add(nekretninaTagovi);
+            //}
             //entity.Drzava = Context.Lokacijas.Where(x => x.LokacijaId == insert.LokacijaId).Select(x => x.Drzava).FirstOrDefault();
             Context.SaveChanges();
             return entity;
@@ -87,12 +87,12 @@ namespace eRent.Services.Nekretnina
 
                     // Retrieve all properties with their associated tags
                     var properties = context.Nekretninas
-                        .Include(p => p.NekretninaTagovis)
+                        .Include(p => p.NekretninaTagovis.Where(x=>x.IsActive == true))
                         .ToList();
 
                     // Retrieve all customers with their associated tags
                     var customers = context.Korisniks
-                        .Include(c => c.KorisnikTagovis)
+                        .Include(c => c.KorisnikTagovis.Where(x=>x.IsActive == true))
                         .ToList();
 
                     var data = new List<PropertyEntry>();

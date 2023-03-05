@@ -2,7 +2,7 @@
 {
     public class TagModel
     {
-        public int TagsId { get; set; }
+        public int TagId { get; set; }
 
         public string TagName { get; set; }
     }
