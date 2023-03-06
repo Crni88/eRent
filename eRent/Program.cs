@@ -11,6 +11,7 @@ using eRent.Services.Posjeta;
 using eRent.Services.Rejting;
 using eRent.Services.Rezervacija;
 using eRent.Services.Tags;
+using eRent.Services.Task;
 using eRent.Services.Ugovor;
 using eRent.Services.Uloge;
 using Microsoft.AspNetCore.Authentication;
@@ -62,7 +63,7 @@ internal class Program
         builder.Services.AddTransient<IPaymentRequestService, PaymentRequestService>();
         builder.Services.AddTransient<IUgovorService, UgovorService>();
         builder.Services.AddTransient<IKorisnikTagoviService, KorisnikTagoviService>();
-        builder.Services.AddStripeInfrastructure(builder.Configuration);
+        builder.Services.AddTransient<ITaskService, TaskService>();
         builder.Services.AddAutoMapper(typeof(IKorisniciService));
 
         builder.Services.AddAuthentication("BasicAuthentication")

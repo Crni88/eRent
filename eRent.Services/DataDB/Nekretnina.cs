@@ -49,5 +49,7 @@ public partial class Nekretnina
 
     public virtual ICollection<Rezervacija> Rezervacijas { get; } = new List<Rezervacija>();
 
+    public virtual ICollection<Task> Tasks { get; } = new List<Task>();
+
     public virtual ICollection<Ugovor> Ugovors { get; } = new List<Ugovor>();
 }

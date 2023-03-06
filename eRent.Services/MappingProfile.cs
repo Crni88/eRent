@@ -11,6 +11,7 @@ using eRent.Models.Requests.Posjeta;
 using eRent.Models.Requests.Rejting;
 using eRent.Models.Requests.Rezervacija;
 using eRent.Models.Requests.Tag;
+using eRent.Models.Requests.Task;
 
 namespace eRent.Services
 {
@@ -59,6 +60,10 @@ namespace eRent.Services
             //KorisnikTagovi
             CreateMap<DataDB.KorisnikTagovi, KorisnikTagoviModel>();
             CreateMap<KorisnikTagUpsertRequest, DataDB.KorisnikTagovi>();
+            //Task
+            CreateMap<DataDB.Task, TaskModel>();
+            CreateMap<TaskInsertRequest, DataDB.Task>();
+            CreateMap<TaskUpdateRequest, DataDB.Task>();
         }
     }
 }

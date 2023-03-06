@@ -39,6 +39,8 @@ public partial class ERentContext : DbContext
 
     public virtual DbSet<Tag> Tags { get; set; }
 
+    public virtual DbSet<Task> Tasks { get; set; }
+
     public virtual DbSet<Ugovor> Ugovors { get; set; }
 
     public virtual DbSet<Uloga> Ulogas { get; set; }
@@ -392,6 +394,23 @@ public partial class ERentContext : DbContext
             entity.Property(e => e.TagName)
                 .HasMaxLength(50)
                 .HasColumnName("tagName");
+        });
+
+        modelBuilder.Entity<Task>(entity =>
+        {
+            entity.HasKey(e => e.TaskId).HasName("PK__Tasks__7C6949B1B77D3CB0");
+
+            entity.Property(e => e.Description).HasMaxLength(500);
+            entity.Property(e => e.DueDate).HasColumnType("datetime");
+            entity.Property(e => e.NekretninaTask).HasColumnName("nekretninaTask");
+            entity.Property(e => e.Priority).HasMaxLength(20);
+            entity.Property(e => e.Status).HasMaxLength(20);
+            entity.Property(e => e.Title).HasMaxLength(100);
+
+            entity.HasOne(d => d.NekretninaTaskNavigation).WithMany(p => p.Tasks)
+                .HasForeignKey(d => d.NekretninaTask)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_nekretninaTask");
         });
 
         modelBuilder.Entity<Ugovor>(entity =>

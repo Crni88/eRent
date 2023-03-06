@@ -15,7 +15,7 @@ import '.env';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
-  //Firebase.initializeApp();
+  //await Firebase.initializeApp();
 
   Stripe.publishableKey = stripePublishableKey;
   Stripe.merchantIdentifier = 'eRent';
@@ -57,11 +57,9 @@ Future<void> main() async {
     print("Handling a background message: ${message.messageId}");
   }
 
-  void main() {
-    FirebaseMessaging.onBackgroundMessage(_firebaseMessagingBackgroundHandler);
-
-    runApp(MyApp());
-  }
+  // void main() {
+  //   runApp(MyApp());
+  // }
 
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
   // Request permission to receive notifications (required on iOS)
