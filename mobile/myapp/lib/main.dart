@@ -148,7 +148,7 @@ class _MyHomePageState extends State<MyHomePage> {
             padding: const EdgeInsets.all(50),
             decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(5), color: Colors.white),
-            height: 350,
+            height: 300,
             child: Column(
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [

@@ -5,6 +5,8 @@ import 'package:myapp/providers/allpayments_provider.dart';
 import 'package:myapp/screens/payments/singlepayment_screen_copy.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
+import '../../components/bottom_menu.dart';
+
 class AllPaymentsScreen extends StatefulWidget {
   const AllPaymentsScreen({super.key});
 
@@ -34,6 +36,14 @@ class _AllPaymentsScreenState extends State<AllPaymentsScreen> {
     });
   }
 
+  int _selectedIndex = 1;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -60,6 +70,10 @@ class _AllPaymentsScreenState extends State<AllPaymentsScreen> {
                     ),
                   );
                 }),
+          ),
+          MyBottomBar(
+            currentIndex: _selectedIndex,
+            onTap: _onItemTapped,
           ),
         ],
       )),

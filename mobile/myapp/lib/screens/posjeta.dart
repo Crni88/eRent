@@ -89,7 +89,7 @@ class _PosjetaScreenState extends State<PosjetaScreen> {
                             );
                           });
                           return const AlertDialog(
-                            title: Text('Uspjesno poslano'),
+                            title: Text('Uspjesno poslano!'),
                           );
                         });
                   } catch (e) {

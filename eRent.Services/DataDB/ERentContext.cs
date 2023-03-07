@@ -269,9 +269,6 @@ public partial class ERentContext : DbContext
             entity.Property(e => e.PaymentId)
                 .HasMaxLength(60)
                 .HasColumnName("paymentId");
-            entity.Property(e => e.PaymentMethodId)
-                .HasMaxLength(50)
-                .HasColumnName("paymentMethodId");
 
             entity.HasOne(d => d.KorisnikPayment).WithMany(p => p.PaymentRequests)
                 .HasForeignKey(d => d.KorisnikPaymentId)

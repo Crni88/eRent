@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.btnSave = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.txtTitle = new System.Windows.Forms.TextBox();
@@ -39,6 +40,8 @@
             this.cbPriority = new System.Windows.Forms.ComboBox();
             this.cbStatus = new System.Windows.Forms.ComboBox();
             this.label5 = new System.Windows.Forms.Label();
+            this.err = new System.Windows.Forms.ErrorProvider(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.err)).BeginInit();
             this.SuspendLayout();
             // 
             // btnSave
@@ -66,6 +69,7 @@
             this.txtTitle.Name = "txtTitle";
             this.txtTitle.Size = new System.Drawing.Size(125, 27);
             this.txtTitle.TabIndex = 2;
+            this.txtTitle.Validating += new System.ComponentModel.CancelEventHandler(this.txtTitle_Validating);
             // 
             // txtDescription
             // 
@@ -74,6 +78,7 @@
             this.txtDescription.Size = new System.Drawing.Size(125, 120);
             this.txtDescription.TabIndex = 3;
             this.txtDescription.Text = "";
+            this.txtDescription.Validating += new System.ComponentModel.CancelEventHandler(this.txtDescription_Validating);
             // 
             // label2
             // 
@@ -116,6 +121,7 @@
             this.cbPriority.Name = "cbPriority";
             this.cbPriority.Size = new System.Drawing.Size(151, 28);
             this.cbPriority.TabIndex = 8;
+            this.cbPriority.Validating += new System.ComponentModel.CancelEventHandler(this.cbPriority_Validating);
             // 
             // cbStatus
             // 
@@ -124,6 +130,7 @@
             this.cbStatus.Name = "cbStatus";
             this.cbStatus.Size = new System.Drawing.Size(151, 28);
             this.cbStatus.TabIndex = 10;
+            this.cbStatus.Validating += new System.ComponentModel.CancelEventHandler(this.cbStatus_Validating);
             // 
             // label5
             // 
@@ -133,6 +140,10 @@
             this.label5.Size = new System.Drawing.Size(49, 20);
             this.label5.TabIndex = 9;
             this.label5.Text = "Status";
+            // 
+            // err
+            // 
+            this.err.ContainerControl = this;
             // 
             // frmAddTask
             // 
@@ -154,6 +165,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dodaj novi task";
             this.Load += new System.EventHandler(this.frmAddTask_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.err)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -172,5 +184,6 @@
         private ComboBox cbPriority;
         private ComboBox cbStatus;
         private Label label5;
+        private ErrorProvider err;
     }
 }

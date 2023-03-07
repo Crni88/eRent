@@ -224,7 +224,7 @@ class _SingleNekretninaScreenState extends State<SingleNekretninaScreen> {
                                           );
                                         });
                                         return const AlertDialog(
-                                          title: Text('Uspjesno poslano'),
+                                          title: Text('Uspjesno poslano!'),
                                         );
                                       });
                                 } catch (e) {

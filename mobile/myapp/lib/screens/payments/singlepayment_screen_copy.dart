@@ -12,6 +12,9 @@ import 'package:http/http.dart' as http;
 
 import 'package:myapp/.env';
 
+import '../../components/bottom_menu.dart';
+import '../nekretnine/nekretnine_screen.dart';
+
 class SinglePaymentScreen_Copy extends StatefulWidget {
   late Payment payment;
   SinglePaymentScreen_Copy(this.payment, {super.key});
@@ -62,7 +65,6 @@ class _SinglePaymentScreenState extends State<SinglePaymentScreen_Copy> {
               ),
               child: InkWell(
                 onTap: () async {
-                  // 7.5 hardkodirano - cijena koja se placa
                   paymentIntentData = await createPaymentIntent(
                       (payment.iznos! * 100).round().toString(), 'bam');
                   await Stripe.instance
@@ -89,6 +91,22 @@ class _SinglePaymentScreenState extends State<SinglePaymentScreen_Copy> {
 
                   // hendlat saveanje u bazu
                   _saveToDatabase(paymentIntentData!['id'], payment);
+                  showDialog(
+                      context: context,
+                      builder: (context) {
+                        Future.delayed(const Duration(seconds: 5), () {
+                          Navigator.of(context).pop(true);
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                    const NekretnineListScreen()),
+                          );
+                        });
+                        return const AlertDialog(
+                          title: Text('Uspjesno poslano!'),
+                        );
+                      });
                 },
                 child: const Center(child: MyText("Plati", true)),
               ),
@@ -122,43 +140,20 @@ class _SinglePaymentScreenState extends State<SinglePaymentScreen_Copy> {
 }
 
 void _saveToDatabase(String paymentId, Payment payment) {
-  var update = {
-    "paymentId": paymentId,
-    "isProcessed": true,
-    "nekretninaPayment": payment.nekretninaPayment,
-    "komentar": payment.komentar,
-    "iznos": payment.iznos,
-    "mjesecno": payment.mjesecno,
-    "nekretnina": payment.nekretnina,
-    "korisnikPaymentId": payment.korisnikPaymentId,
-  };
-  var temp2 = AllPaymentsProvider().update(payment.paymentRequestId!, update);
+  try {
+    var update = {
+      "paymentId": paymentId,
+      "isProcessed": true,
+      "nekretninaPayment": payment.nekretninaPayment,
+      "komentar": payment.komentar,
+      "iznos": payment.iznos,
+      "mjesecno": payment.mjesecno,
+      "nekretnina": payment.nekretnina,
+      "korisnikPaymentId": payment.korisnikPaymentId,
+      "naslov": payment.naslov,
+    };
+    var temp2 = AllPaymentsProvider().update(payment.paymentRequestId!, update);
+  } catch (err) {
+    print('err saving payment to database: ${err.toString()}');
+  }
 }
-
-// Future<dynamic> _getCurrentUser() async {
-//   SharedPreferences prefs = await SharedPreferences.getInstance();
-//   setState(() {
-//     _email = prefs.getString('korisnikEmail');
-//   });
-//   const String apiKey = stripeSecretKey;
-//   // Define the URL for the Stripe API's customers endpoint
-//   final Uri url =
-//       Uri.parse('https://api.stripe.com/v1/customers?email=$_email');
-//   // Make a GET request to the customers endpoint with the email query parameter
-//   try {
-//     final response =
-//         await http.get(url, headers: {'Authorization': 'Bearer $apiKey'});
-//     final json = jsonDecode(response.body);
-//     if (json['data'].isNotEmpty) {
-//       final customer = json['data'][0];
-//       print('Customer found with email ${customer['email']}');
-//       return customer;
-//     } else {
-//       print('No customer found with email $_email');
-//       return false;
-//     }
-//   } catch (e) {
-//     print('Error retrieving customer: $e');
-//     return false;
-//   }
-// }

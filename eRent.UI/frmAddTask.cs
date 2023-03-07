@@ -29,7 +29,6 @@ namespace eRent.UI
             cbStatus.DataSource = status;
         }
 
-
         private void showMessage()
         {
             AutoClosingMessageBox.Show("Zadatak uspjesno kreiran!", "Zadatak kreiran!", 3000);
@@ -37,16 +36,80 @@ namespace eRent.UI
 
         private async void btnSave_Click(object sender, EventArgs e)
         {
-            TaskInsertRequest taskInsertRequest = new TaskInsertRequest();
-            taskInsertRequest.NekretninaTask = Nekretnina.NekretninaId;
-            taskInsertRequest.Title = txtTitle.Text;
-            taskInsertRequest.Description = txtDescription.Text;
-            taskInsertRequest.Status = cbStatus.Text;
-            taskInsertRequest.Priority = cbPriority.Text;
-            taskInsertRequest.DueDate = dtpDueDate.Value; 
-            var taskInsert = await TaskService.Post<TaskModel>(taskInsertRequest);
-            showMessage();
-            this.Close();
+            if (ValidateChildren())
+            {
+                TaskInsertRequest taskInsertRequest = new TaskInsertRequest();
+                taskInsertRequest.NekretninaTask = Nekretnina.NekretninaId;
+                taskInsertRequest.Title = txtTitle.Text;
+                taskInsertRequest.Description = txtDescription.Text;
+                taskInsertRequest.Status = cbStatus.Text;
+                taskInsertRequest.Priority = cbPriority.Text;
+                taskInsertRequest.DueDate = dtpDueDate.Value;
+                var taskInsert = await TaskService.Post<TaskModel>(taskInsertRequest);
+                showMessage();
+                this.Close();
+            }
+        }
+
+        //Validating
+        private void txtTitle_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtTitle.Text))
+            {
+                e.Cancel = true;
+                txtTitle.Focus();
+                err.SetError(txtTitle, "Obavezno polje");
+            }
+            else
+            {
+                e.Cancel = false;
+                err.SetError(txtTitle, "");
+            }
+        }
+
+        private void txtDescription_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtDescription.Text))
+            {
+                e.Cancel = true;
+                txtDescription.Focus();
+                err.SetError(txtDescription, "Obavezno polje");
+            }
+            else
+            {
+                e.Cancel = false;
+                err.SetError(txtDescription, "");
+            }
+        }
+
+        private void cbPriority_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(cbPriority.Text))
+            {
+                e.Cancel = true;
+                cbPriority.Focus();
+                err.SetError(cbPriority, "Obavezno polje");
+            }
+            else
+            {
+                e.Cancel = false;
+                err.SetError(cbPriority, "");
+            }
+        }
+
+        private void cbStatus_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(cbStatus.Text))
+            {
+                e.Cancel = true;
+                txtDescription.Focus();
+                err.SetError(cbStatus, "Obavezno polje");
+            }
+            else
+            {
+                e.Cancel = false;
+                err.SetError(cbStatus, "");
+            }
         }
     }
 }
