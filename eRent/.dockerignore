@@ -21,5 +21,6 @@
 **/obj
 **/secrets.dev.yaml
 **/values.dev.yaml
+**/mobile/myapp/build1/flutter_local_notifications/intermediates/data_binding_layout_info_type_package
 LICENSE
 README.md

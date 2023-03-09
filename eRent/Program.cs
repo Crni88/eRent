@@ -49,8 +49,6 @@ internal class Program
     });
         });
 
-        //TODO FIX THE NEKRETNINA TAG API! 
-
         builder.Services.AddTransient<IUlogeService, UlogeService>();
         builder.Services.AddTransient<IKorisniciService, KorisniciService>();
         builder.Services.AddTransient<INekretnineService, NekretnineService>();
@@ -90,6 +88,11 @@ internal class Program
 
         app.MapControllers();
 
+        using (var scope = app.Services.CreateScope())
+{
+    var dataContext = scope.ServiceProvider.GetRequiredService<ERentContext>();
+    dataContext.Database.Migrate();
+}
         app.Run();
     }
 }
