@@ -113,10 +113,14 @@ class _SingleNekretninaScreenState extends State<SingleNekretninaScreen> {
       "KorisnikPrim": id,
     };
     var temp4 = await rejtingProvider.get(searchObject);
-    final int? totalRejting =
-        temp4.map((person) => person.rejting1).reduce((a, b) => a! + b!);
-    double averageAge = totalRejting! / temp4.length;
-    return averageAge.toStringAsFixed(2);
+    if (temp4.isEmpty) {
+      return "0";
+    } else {
+      final int? totalRejting =
+          temp4.map((person) => person.rejting1).reduce((a, b) => a! + b!);
+      double averageAge = totalRejting! / temp4.length;
+      return averageAge.toStringAsFixed(2);
+    }
   }
 
   @override
@@ -388,23 +392,23 @@ Widget _buildNekretnineChipList(List<NekretninaTagovi> nekretninaTagovi) {
         ),
         children: [
           for (var tag in nekretninaTagovi)
-            if (tag.tagID == 1004)
+            if (tag.tagID == 1)
               Chip(
                 label: const Text("Tiho naselje"),
                 backgroundColor: Colors.grey[200],
               )
-            else if (tag.tagID == 1005)
+            else if (tag.tagID == 2)
               Chip(
                   label: const Text("Miran"), backgroundColor: Colors.grey[200])
-            else if (tag.tagID == 1006)
+            else if (tag.tagID == 3)
               Chip(
                   label: const Text("No Smoking"),
                   backgroundColor: Colors.grey[200])
-            else if (tag.tagID == 1007)
+            else if (tag.tagID == 4)
               Chip(
                   label: const Text("Osvijetljen"),
                   backgroundColor: Colors.grey[200])
-            else if (tag.tagID == 1008)
+            else if (tag.tagID == 5)
               Chip(
                   label: const Text("Pet Friendly"),
                   backgroundColor: Colors.grey[200])

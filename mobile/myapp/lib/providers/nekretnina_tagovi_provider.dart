@@ -14,7 +14,7 @@ class NekretninaTagoviProvider extends BaseProvider<NekretninaTagovi> {
   @override
   Future<NekretninaTagovi> getById(int id, [dynamic additionalData]) async {
     var url = Uri.parse(
-        "https://10.0.2.2:7007/NekretnineTagovi/TagsByProperty?id=$id");
+        "https://10.0.2.2:5192/NekretnineTagovi/TagsByProperty?id=$id");
 
     Map<String, String> headers = createHeaders();
 
@@ -31,7 +31,7 @@ class NekretninaTagoviProvider extends BaseProvider<NekretninaTagovi> {
   @override
   Future<NekretninaTagovi> getByUserId(int id, [dynamic additionalData]) async {
     var url =
-        Uri.parse("https://10.0.2.2:7007/KorisnikTagovi/TagsByUser?id=$id");
+        Uri.parse("http://10.0.2.2:5192/KorisnikTagovi/TagsByUser?id=$id");
 
     Map<String, String> headers = createHeaders();
 

@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:myapp/components/mytext.dart';
@@ -12,7 +13,6 @@ import 'package:http/http.dart' as http;
 
 import 'package:myapp/.env';
 
-import '../../components/bottom_menu.dart';
 import '../nekretnine/nekretnine_screen.dart';
 
 class SinglePaymentScreen_Copy extends StatefulWidget {
@@ -32,7 +32,6 @@ class _SinglePaymentScreenState extends State<SinglePaymentScreen_Copy> {
   Payment payment = Payment();
   //AddPaymentProvider addPaymentProvider = AddPaymentProvider();
   AllPaymentsProvider allPaymentsProvider = AllPaymentsProvider();
-  String? _email;
 
   Map<String, dynamic>? paymentIntentData;
 
@@ -76,8 +75,10 @@ class _SinglePaymentScreenState extends State<SinglePaymentScreen_Copy> {
                               merchantDisplayName: 'eRent'))
                       .then((value) {})
                       .onError((error, stackTrace) {
-                    print(
-                        'Exception/DISPLAYPAYMENTSHEET==> $error $stackTrace');
+                    if (kDebugMode) {
+                      print(
+                          'Exception/DISPLAYPAYMENTSHEET==> $error $stackTrace');
+                    }
                     showDialog(
                         context: context,
                         builder: (_) => const AlertDialog(
@@ -104,7 +105,7 @@ class _SinglePaymentScreenState extends State<SinglePaymentScreen_Copy> {
                           );
                         });
                         return const AlertDialog(
-                          title: Text('Uspjesno poslano!'),
+                          title: Text('Uspjesno plaćeno!'),
                         );
                       });
                 },

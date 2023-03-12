@@ -1,6 +1,6 @@
 ﻿namespace eRent.Models.Requests.NekretninaTag
 {
-    public class NekretninaTagoviUpsertRequest
+    public class NekretninaTagoviInsertRequest
     {
         public int NekretninaId { get; set; }
 

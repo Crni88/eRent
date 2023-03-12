@@ -12,7 +12,7 @@ using eRent.Services.DataDB;
 namespace eRent.Services.Migrations
 {
     [DbContext(typeof(ERentContext))]
-    [Migration("20230307164034_Init")]
+    [Migration("20230310184901_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -24,37 +24,6 @@ namespace eRent.Services.Migrations
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("eRent.Services.DataDB.Izvjestaj", b =>
-                {
-                    b.Property<int>("IzvjestajId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("izvjestajID");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IzvjestajId"));
-
-                    b.Property<DateTime?>("DatumIzdavanja")
-                        .HasColumnType("datetime")
-                        .HasColumnName("datumIzdavanja");
-
-                    b.Property<int?>("KorisnikId")
-                        .HasColumnType("int")
-                        .HasColumnName("korisnik_ID");
-
-                    b.Property<int?>("VrstaIzvjestajaId")
-                        .HasColumnType("int")
-                        .HasColumnName("vrstaIzvjestajaID");
-
-                    b.HasKey("IzvjestajId")
-                        .HasName("PK_izvjestajID");
-
-                    b.HasIndex("KorisnikId");
-
-                    b.HasIndex("VrstaIzvjestajaId");
-
-                    b.ToTable("izvjestaj", (string)null);
-                });
 
             modelBuilder.Entity("eRent.Services.DataDB.Korisnik", b =>
                 {
@@ -122,6 +91,18 @@ namespace eRent.Services.Migrations
                     b.HasIndex("UlogaId");
 
                     b.ToTable("korisnik", (string)null);
+
+                    b.HasData(
+                        new
+                        {
+                            KorisnikId = 1,
+                            Email = "test@test.com",
+                            KorisnikPrezime = "Prezime",
+                            KorsnikIme = "Test",
+                            LozinkaHash = "123hash",
+                            LozinkaSalt = "321salt",
+                            Username = "admin"
+                        });
                 });
 
             modelBuilder.Entity("eRent.Services.DataDB.KorisnikTagovi", b =>
@@ -692,44 +673,14 @@ namespace eRent.Services.Migrations
                         .HasName("PK_ulogaID");
 
                     b.ToTable("uloga", (string)null);
-                });
 
-            modelBuilder.Entity("eRent.Services.DataDB.VrstaIzvjestaja", b =>
-                {
-                    b.Property<int>("VrstaIzvjestajaId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasColumnName("vrstaIzvjestajaID");
-
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("VrstaIzvjestajaId"));
-
-                    b.Property<string>("NazivIzvjestaja")
-                        .IsRequired()
-                        .HasMaxLength(100)
-                        .HasColumnType("nvarchar(100)")
-                        .HasColumnName("nazivIzvjestaja");
-
-                    b.HasKey("VrstaIzvjestajaId")
-                        .HasName("PK_vrstaIzvjestajaID");
-
-                    b.ToTable("vrstaIzvjestaja", (string)null);
-                });
-
-            modelBuilder.Entity("eRent.Services.DataDB.Izvjestaj", b =>
-                {
-                    b.HasOne("eRent.Services.DataDB.Korisnik", "Korisnik")
-                        .WithMany("Izvjestajs")
-                        .HasForeignKey("KorisnikId")
-                        .HasConstraintName("FK_korisnik_ID");
-
-                    b.HasOne("eRent.Services.DataDB.VrstaIzvjestaja", "VrstaIzvjestaja")
-                        .WithMany("Izvjestajs")
-                        .HasForeignKey("VrstaIzvjestajaId")
-                        .HasConstraintName("FK_vrstaIzvjestajaID");
-
-                    b.Navigation("Korisnik");
-
-                    b.Navigation("VrstaIzvjestaja");
+                    b.HasData(
+                        new
+                        {
+                            UlogaId = 1,
+                            Naziv = "Admin",
+                            Opis = "Moj Primarni Korisnik"
+                        });
                 });
 
             modelBuilder.Entity("eRent.Services.DataDB.Korisnik", b =>
@@ -924,8 +875,6 @@ namespace eRent.Services.Migrations
 
             modelBuilder.Entity("eRent.Services.DataDB.Korisnik", b =>
                 {
-                    b.Navigation("Izvjestajs");
-
                     b.Navigation("KorisnikTagovis");
 
                     b.Navigation("Nekretninas");
@@ -977,11 +926,6 @@ namespace eRent.Services.Migrations
             modelBuilder.Entity("eRent.Services.DataDB.Uloga", b =>
                 {
                     b.Navigation("Korisniks");
-                });
-
-            modelBuilder.Entity("eRent.Services.DataDB.VrstaIzvjestaja", b =>
-                {
-                    b.Navigation("Izvjestajs");
                 });
 #pragma warning restore 612, 618
         }

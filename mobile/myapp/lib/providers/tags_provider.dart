@@ -12,7 +12,7 @@ class TagsProvider extends BaseProvider<Tags> {
   }
 
   Future<Tags?> insertCustomerTags(dynamic request) async {
-    var url = "https://10.0.2.2:7007/KorisnikTagovi/";
+    var url = "http://10.0.2.2:5192/KorisnikTagovi/";
     var uri = Uri.parse(url);
 
     Map<String, String> headers = createHeaders();

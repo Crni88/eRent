@@ -7,7 +7,7 @@ namespace eRent.UI
     public class APIService
     {
         private string _resource = null;
-        public string _endpoint = "https://localhost:7007/";
+        public string _endpoint = "http://localhost:5192/";
 
         public static string username = null;
         public static string password = null;

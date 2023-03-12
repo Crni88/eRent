@@ -6,14 +6,14 @@ namespace eRent.UI
     public partial class frmNekretninaList : Form
     {
         public APIService NekretnineService { get; set; } = new APIService("Nekretnine");
-        public APIService LokacijaService { get; set; } = new APIService("Lokacija");
+       // public APIService LokacijaService { get; set; } = new APIService("Lokacija");
         public dynamic Result { get; }
 
-        public frmNekretninaList()
-        {
-            InitializeComponent();
-            dgvNekretnineList.AutoGenerateColumns = false;
-        }
+        //public frmNekretninaList()
+        //{
+        //    InitializeComponent();
+        //    dgvNekretnineList.AutoGenerateColumns = false;
+        //}
 
         public frmNekretninaList(dynamic result)
         {

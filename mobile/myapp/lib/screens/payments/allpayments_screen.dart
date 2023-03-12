@@ -6,6 +6,7 @@ import 'package:myapp/screens/payments/singlepayment_screen_copy.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../components/bottom_menu.dart';
+import '../../components/title.dart';
 
 class AllPaymentsScreen extends StatefulWidget {
   const AllPaymentsScreen({super.key});
@@ -36,7 +37,7 @@ class _AllPaymentsScreenState extends State<AllPaymentsScreen> {
     });
   }
 
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
     setState(() {
@@ -50,6 +51,7 @@ class _AllPaymentsScreenState extends State<AllPaymentsScreen> {
       body: SafeArea(
           child: Column(
         children: [
+          const MyTitle("All payments"),
           Expanded(
             child: ListView.builder(
                 itemCount: payments.length,

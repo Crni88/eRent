@@ -6,6 +6,7 @@ import 'package:myapp/components/mytext.dart';
 import 'package:myapp/components/top_bar.dart';
 import 'package:myapp/model/korisnik.dart';
 import 'package:myapp/providers/user_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import '../../components/title.dart';
 
@@ -21,15 +22,24 @@ class _CustomerProfileScreenState extends State<CustomerProfileScreen> {
   UserProvider userProvider = UserProvider();
   @override
   void initState() {
-    // TODO: implement initState
     super.initState();
     loadData();
   }
 
   loadData() async {
-    var temp = await userProvider.getById(2016);
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? id = prefs.getString('korisnikId');
+    var temp = await userProvider.getById(int.parse(id!));
     setState(() {
       korisnik = temp;
+    });
+  }
+
+  int _selectedIndex = 1;
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
     });
   }
 
@@ -40,32 +50,41 @@ class _CustomerProfileScreenState extends State<CustomerProfileScreen> {
         child: Column(children: [
           TopBar(context: context),
           const MyTitle("Profil"),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
+          Expanded(
+              child: Column(
             children: [
-              const MyText("Ime: ", true),
-              korisnik.korsnikIme != null
-                  ? Text(korisnik.korsnikIme!)
-                  : const Text("Nema podataka"),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const MyText("Ime: ", true),
+                  korisnik.korsnikIme != null
+                      ? Text(korisnik.korsnikIme!)
+                      : const Text("Nema podataka"),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const MyText("Prezime: ", true),
+                  korisnik.korisnikPrezime != null
+                      ? Text(korisnik.korisnikPrezime!)
+                      : const Text("Nema podataka"),
+                ],
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  const MyText("Email: ", true),
+                  korisnik.email != null
+                      ? Text(korisnik.email!)
+                      : const Text("Nema podataka"),
+                ],
+              )
             ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const MyText("Prezime: ", true),
-              korisnik.korisnikPrezime != null
-                  ? Text(korisnik.korisnikPrezime!)
-                  : const Text("Nema podataka"),
-            ],
-          ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const MyText("Email: ", true),
-              korisnik.email != null
-                  ? Text(korisnik.email!)
-                  : const Text("Nema podataka"),
-            ],
+          )),
+          MyBottomBar(
+            currentIndex: _selectedIndex,
+            onTap: _onItemTapped,
           ),
         ]),
       ),

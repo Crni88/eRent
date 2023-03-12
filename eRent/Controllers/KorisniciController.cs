@@ -9,7 +9,7 @@ namespace eRent.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    //[Authorize]
+    [Authorize]
     public class KorisniciController : BaseCRUDController<KorisnikModel, KorisnikSearchObject, KorisnikInsertRequest, KorisnikUpdateRequest>
     {
         public KorisniciController(IKorisniciService korisniciServis) : base(korisniciServis)

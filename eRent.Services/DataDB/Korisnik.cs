@@ -27,8 +27,6 @@ public partial class Korisnik
 
     public string? FcmDeviceToken { get; set; }
 
-    public virtual ICollection<Izvjestaj> Izvjestajs { get; } = new List<Izvjestaj>();
-
     public virtual ICollection<KorisnikTagovi> KorisnikTagovis { get; } = new List<KorisnikTagovi>();
 
     public virtual ICollection<Nekretnina> Nekretninas { get; } = new List<Nekretnina>();

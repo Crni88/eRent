@@ -1,4 +1,3 @@
-using eRent;
 using eRent.Filters;
 using eRent.Services.DataDB;
 using eRent.Services.Korisnici;
@@ -69,7 +68,7 @@ internal class Program
 
 
         builder.Services.AddDbContext<ERentContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),b=>b.MigrationsAssembly(nameof(eRent))));
 
         var app = builder.Build();
 
@@ -82,17 +81,17 @@ internal class Program
         }
 
         app.UseHttpsRedirection();
-
         app.UseAuthentication();
         app.UseAuthorization();
 
         app.MapControllers();
 
         using (var scope = app.Services.CreateScope())
-{
-    var dataContext = scope.ServiceProvider.GetRequiredService<ERentContext>();
-    dataContext.Database.Migrate();
-}
+        {
+            var dataContext = scope.ServiceProvider.GetRequiredService<ERentContext>();
+            dataContext.Database.EnsureCreated();
+            dataContext.Database.Migrate();
+        }
         app.Run();
     }
 }

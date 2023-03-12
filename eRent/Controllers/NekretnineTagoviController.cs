@@ -5,7 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace eRent.Controllers
 {
-    public class NekretnineTagoviController : BaseCRUDController<NekretninaTagoviModel, NekretninaTagoviSearchObject, NekretninaTagoviUpsertRequest, NekretninaTagoviUpsertRequest>
+    public class NekretnineTagoviController : BaseCRUDController<NekretninaTagoviModel, NekretninaTagoviSearchObject, NekretninaTagoviInsertRequest, NekretninaTagUpdateRequest>
     {
         public NekretnineTagoviController(INekretninaTagovi nekretninaTagoviService) : base(nekretninaTagoviService)
         {

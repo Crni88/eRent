@@ -92,7 +92,7 @@ namespace eRent.Services.Nekretnina
 
                     // Retrieve all customers with their associated tags
                     var customers = context.Korisniks
-                        .Include(c => c.KorisnikTagovis.Where(x=>x.IsActive == true))
+                        .Include(c => c.KorisnikTagovis.Where(x=>x.IsActive == true).Select(x=>x.KorisnikId==2))
                         .ToList();
 
                     var data = new List<PropertyEntry>();
@@ -108,7 +108,7 @@ namespace eRent.Services.Nekretnina
                                 {
                                     PropertyID = (uint)p1.NekretninaId,
                                     CoPurchasePropertyID = (uint)p2.NekretninaId,
-                                });
+                                }); 
                             }
                         }
                     }

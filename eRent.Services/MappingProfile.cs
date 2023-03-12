@@ -42,7 +42,8 @@ namespace eRent.Services
             CreateMap<RezervacijaUpdateRequest, DataDB.Rezervacija>();
             //NekretninaTagovi
             CreateMap<DataDB.NekretninaTagovi, NekretninaTagoviModel>();
-            CreateMap<NekretninaTagoviUpsertRequest, DataDB.NekretninaTagovi>();
+            CreateMap<NekretninaTagoviInsertRequest, DataDB.NekretninaTagovi>();
+            CreateMap<NekretninaTagUpdateRequest, DataDB.NekretninaTagovi>();
             //Posjeta
             CreateMap<DataDB.Posjetum, PosjetaModel>();
             CreateMap<PosjetaInsertRequest, DataDB.Posjetum>();

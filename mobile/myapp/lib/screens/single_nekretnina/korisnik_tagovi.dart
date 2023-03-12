@@ -3,6 +3,7 @@ import 'package:myapp/components/spacer.dart';
 import 'package:myapp/components/title.dart';
 import 'package:myapp/model/tagovi/Korisnik/korisnik_tagovi.dart';
 import 'package:myapp/providers/korisnik_tagovi_provider.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import '../../components/mytext.dart';
 import '../nekretnine/nekretnine_screen.dart';
 
@@ -16,7 +17,7 @@ class KorisnikTagoviScreen extends StatefulWidget {
 class _KorisnikTagoviScreenState extends State<KorisnikTagoviScreen> {
   List<KorisnikTagovi> korisnikTags = [];
   KorisnikTagoviProvider korisnikTagoviProvider = KorisnikTagoviProvider();
-
+  String id = "";
   @override
   void initState() {
     super.initState();
@@ -24,10 +25,13 @@ class _KorisnikTagoviScreenState extends State<KorisnikTagoviScreen> {
   }
 
   void loadData() async {
-    var search = {"KorisnikId": 2016};
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    String? tempId = prefs.getString('korisnikId');
+    var search = {"KorisnikId": int.parse(tempId!)};
     var temp2 = await korisnikTagoviProvider.get(search);
     setState(() {
       korisnikTags = temp2;
+      id = tempId!;
     });
   }
 
@@ -64,7 +68,7 @@ class _KorisnikTagoviScreenState extends State<KorisnikTagoviScreen> {
                         try {
                           korisnikTags.forEach((element) async {
                             var update = {
-                              "KorisnikId": 2016,
+                              "KorisnikId": id,
                               "TagId": element.tagId,
                               "IsActive": element.isActive
                             };
@@ -111,80 +115,39 @@ class _KorisnikTagoviScreenState extends State<KorisnikTagoviScreen> {
   }
 
   Widget _buildCustomerChips(List<KorisnikTagovi> nekretninaTagovi) {
-    // if (nekretninaTagovi.tags == null) {
-    //   return const CircularProgressIndicator();
-    // }
     return SizedBox(
       height: 150,
-      child: GridView(
-          gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 3,
-            childAspectRatio: 4 / 2,
-            mainAxisSpacing: 5,
-          ),
-          children: [
-            for (var tag in nekretninaTagovi)
-              if (tag.tagId == 1004)
-                GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        tag.isActive = !tag.isActive!;
-                      });
-                    },
-                    child: Chip(
-                      label: const Text("Tiho naselje"),
-                      backgroundColor:
-                          tag.isActive! ? Colors.blue : Colors.grey,
-                    ))
-              else if (tag.tagId == 1005)
-                GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        tag.isActive = !tag.isActive!;
-                      });
-                    },
-                    child: Chip(
-                      label: const Text("Miran"),
-                      backgroundColor:
-                          tag.isActive! ? Colors.blue : Colors.grey,
-                    ))
-              else if (tag.tagId == 1006)
-                GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        tag.isActive = !tag.isActive!;
-                      });
-                    },
-                    child: Chip(
-                      label: const Text("No smoking"),
-                      backgroundColor:
-                          tag.isActive! ? Colors.blue : Colors.grey,
-                    ))
-              else if (tag.tagId == 1007)
-                GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        tag.isActive = !tag.isActive!;
-                      });
-                    },
-                    child: Chip(
-                      label: const Text("Osvijetljen"),
-                      backgroundColor:
-                          tag.isActive! ? Colors.blue : Colors.grey,
-                    ))
-              else if (tag.tagId == 1008)
-                GestureDetector(
-                    onTap: () {
-                      setState(() {
-                        tag.isActive = !tag.isActive!;
-                      });
-                    },
-                    child: Chip(
-                      label: const Text("Pet Friendly"),
-                      backgroundColor:
-                          tag.isActive! ? Colors.blue : Colors.grey,
-                    ))
-          ]),
+      child: GridView.count(
+        crossAxisCount: 3,
+        childAspectRatio: 4 / 2,
+        mainAxisSpacing: 5,
+        children: [
+          for (var tag in nekretninaTagovi)
+            GestureDetector(
+              onTap: () {
+                setState(() {
+                  tag.isActive = !tag.isActive!;
+                });
+              },
+              child: Chip(
+                label: Text(
+                  tag.tagId == 1
+                      ? "Tiho naselje"
+                      : tag.tagId == 2
+                          ? "Miran"
+                          : tag.tagId == 3
+                              ? "No smoking"
+                              : tag.tagId == 4
+                                  ? "Osvijetljen"
+                                  : tag.tagId == 5
+                                      ? "Pet Friendly"
+                                      : "",
+                ),
+                backgroundColor: tag.isActive! ? Colors.blue : Colors.grey,
+              ),
+            ),
+        ],
+      ),
     );
   }
 }

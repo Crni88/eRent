@@ -15,8 +15,6 @@ public partial class ERentContext : DbContext
     {
     }
 
-    public virtual DbSet<Izvjestaj> Izvjestajs { get; set; }
-
     public virtual DbSet<Korisnik> Korisniks { get; set; }
 
     public virtual DbSet<KorisnikTagovi> KorisnikTagovis { get; set; }
@@ -45,36 +43,12 @@ public partial class ERentContext : DbContext
 
     public virtual DbSet<Uloga> Ulogas { get; set; }
 
-    public virtual DbSet<VrstaIzvjestaja> VrstaIzvjestajas { get; set; }
-
-    //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-    //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-    //    => optionsBuilder.UseSqlServer("Server=.;Database=eRent;Trusted_Connection=True;TrustServerCertificate=True");
+//    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+//#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
+//        => optionsBuilder.UseSqlServer("Server=localhost, 1434;Database=180040;Trusted_Connection=True;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        modelBuilder.Entity<Izvjestaj>(entity =>
-        {
-            entity.HasKey(e => e.IzvjestajId).HasName("PK_izvjestajID");
-
-            entity.ToTable("izvjestaj");
-
-            entity.Property(e => e.IzvjestajId).HasColumnName("izvjestajID");
-            entity.Property(e => e.DatumIzdavanja)
-                .HasColumnType("datetime")
-                .HasColumnName("datumIzdavanja");
-            entity.Property(e => e.KorisnikId).HasColumnName("korisnik_ID");
-            entity.Property(e => e.VrstaIzvjestajaId).HasColumnName("vrstaIzvjestajaID");
-
-            entity.HasOne(d => d.Korisnik).WithMany(p => p.Izvjestajs)
-                .HasForeignKey(d => d.KorisnikId)
-                .HasConstraintName("FK_korisnik_ID");
-
-            entity.HasOne(d => d.VrstaIzvjestaja).WithMany(p => p.Izvjestajs)
-                .HasForeignKey(d => d.VrstaIzvjestajaId)
-                .HasConstraintName("FK_vrstaIzvjestajaID");
-        });
-
         modelBuilder.Entity<Korisnik>(entity =>
         {
             entity.HasKey(e => e.KorisnikId).HasName("PK_korisnikID");
@@ -462,18 +436,6 @@ public partial class ERentContext : DbContext
             entity.Property(e => e.Opis)
                 .HasMaxLength(50)
                 .HasColumnName("opis");
-        });
-
-        modelBuilder.Entity<VrstaIzvjestaja>(entity =>
-        {
-            entity.HasKey(e => e.VrstaIzvjestajaId).HasName("PK_vrstaIzvjestajaID");
-
-            entity.ToTable("vrstaIzvjestaja");
-
-            entity.Property(e => e.VrstaIzvjestajaId).HasColumnName("vrstaIzvjestajaID");
-            entity.Property(e => e.NazivIzvjestaja)
-                .HasMaxLength(100)
-                .HasColumnName("nazivIzvjestaja");
         });
 
         OnModelCreatingPartial(modelBuilder);

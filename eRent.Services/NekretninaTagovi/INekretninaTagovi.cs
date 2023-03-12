@@ -4,7 +4,7 @@ using eRent.Models.Requests.NekretninaTag;
 namespace eRent.Services.NekretninaTagovi
 {
     public interface INekretninaTagovi : 
-        ICRUDService<NekretninaTagoviModel,NekretninaTagoviSearchObject,NekretninaTagoviUpsertRequest, NekretninaTagoviUpsertRequest>
+        ICRUDService<NekretninaTagoviModel,NekretninaTagoviSearchObject,NekretninaTagoviInsertRequest, NekretninaTagUpdateRequest>
     {
     }
 }

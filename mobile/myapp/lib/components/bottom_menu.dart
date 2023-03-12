@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:myapp/screens/customer/customer_profile.dart';
-import 'package:myapp/screens/nekretnine/nekretnine_screen.dart';
+import 'package:myapp/screens/payments/allpayments_screen.dart';
 
 class MyBottomBar extends StatelessWidget {
-  int currentIndex = 1;
+  int currentIndex = 0;
   final Function(int) onTap;
 
   MyBottomBar({
@@ -17,8 +17,8 @@ class MyBottomBar extends StatelessWidget {
     return BottomNavigationBar(
       items: const <BottomNavigationBarItem>[
         BottomNavigationBarItem(
-          icon: Icon(Icons.home),
-          label: 'Home',
+          icon: Icon(Icons.payment),
+          label: 'Payments',
         ),
         BottomNavigationBarItem(
           icon: Icon(Icons.person),
@@ -34,7 +34,10 @@ class MyBottomBar extends StatelessWidget {
                 builder: (context) => const CustomerProfileScreen()),
           );
         } else {
-          onTap(index);
+          Navigator.push(
+            context,
+            MaterialPageRoute(builder: (context) => const AllPaymentsScreen()),
+          );
         }
       },
     );

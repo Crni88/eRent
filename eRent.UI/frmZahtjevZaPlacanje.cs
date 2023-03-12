@@ -36,7 +36,7 @@ namespace eRent.UI
                 string komentar = txtKomentar.Text;
                 string naslov = txtNaslov.Text + " - " + iznosPoKorisniku.ToString() + " KM";
                 KorisnikSearchObject korisnikObj = new KorisnikSearchObject();
-                korisnikObj.KorisnikId = 2016;
+                korisnikObj.KorisnikId = 5;
                 List<KorisnikModel> korisnik = await _korisnikService.Get<List<KorisnikModel>>(korisnikObj);
                 await posaljiNotifikacijuAsync(komentar, naslov, korisnik[0].FcmDeviceToken);
                 await savePaymentRequestToDatabase(iznosPoKorisniku);
