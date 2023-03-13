@@ -8,17 +8,23 @@ namespace eRent.UI
     public partial class frmAddKorisnikNekretnina : Form
     {
         public APIService NekretninaKorisnikService { get; set; } = new APIService("NekretninaKorisnik");
-        public NekretninaKorisnikModel _nekretninaKorisnik { get; }
+        public NekretninaKorisnikModel _nekretninaKorisnik { get; set; }
         public NekretninaModel _nekretnina { get; }
         public frmAddKorisnikNekretnina(NekretninaKorisnikModel nekretninaKorisnik = null)
         {
             InitializeComponent();
-            this._nekretninaKorisnik = nekretninaKorisnik;
-            if (_nekretninaKorisnik != null)
+            //this._nekretninaKorisnik = nekretninaKorisnik;
+            if (nekretninaKorisnik != null)
             {
-                LoadData();
+                GetKorisnik(nekretninaKorisnik.NekretninaKorisnikId);
                 //btnKorisnikSlika.Enabled = false;
             }
+        }
+
+        private async void GetKorisnik(int nekretninaKorisnikId)
+        {
+            _nekretninaKorisnik = await NekretninaKorisnikService.GetById<NekretninaKorisnikModel>(nekretninaKorisnikId);
+            LoadData();
         }
 
         public frmAddKorisnikNekretnina(NekretninaModel nekretnina)
@@ -37,7 +43,7 @@ namespace eRent.UI
             pbKorisnikSlika.Image = FromByteToImage(_nekretninaKorisnik.Slika);
         }
 
-        private void populateFields(NekretninaKorisnikInsertRequest nekretninaKorisnikInsertRequest)
+        private void insertKorisnikNekretnina(NekretninaKorisnikInsertRequest nekretninaKorisnikInsertRequest)
         {
             nekretninaKorisnikInsertRequest.PrezimeKorisnika = txtPrezime.Text;
             nekretninaKorisnikInsertRequest.ImeKorisnika = txtIme.Text;
@@ -56,15 +62,30 @@ namespace eRent.UI
                     err.Clear();
                     if (_nekretninaKorisnik == null)
                     {
-                        NekretninaKorisnikInsertRequest nekretninaKorisnikUpsert = new NekretninaKorisnikInsertRequest();
-                        populateFields(nekretninaKorisnikUpsert);
-                        nekretninaKorisnikUpsert.Nekretnina = _nekretnina.NekretninaId;
-                        var postNekretnina = await NekretninaKorisnikService.Post<NekretninaKorisnikInsertRequest>(nekretninaKorisnikUpsert);
+                        try
+                        {
+                            NekretninaKorisnikInsertRequest nekretninaKorisnikUpsert = new NekretninaKorisnikInsertRequest();
+                            insertKorisnikNekretnina(nekretninaKorisnikUpsert);
+                            nekretninaKorisnikUpsert.Nekretnina = _nekretnina.NekretninaId;
+                            var postNekretnina = await NekretninaKorisnikService.Post<NekretninaKorisnikInsertRequest>(nekretninaKorisnikUpsert);
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
                     }
                     else
                     {
-                        NekretninaKorisnikUpdateRequest nekretninaKorisnikUpdateRequest = UpdateKorisnikNekretnina();
-                        var putNekretnina = await NekretninaKorisnikService.Put<NekretninaKorisnikUpdateRequest>(_nekretninaKorisnik.NekretninaKorisnikId, nekretninaKorisnikUpdateRequest);
+                        try
+                        {
+                            NekretninaKorisnikUpdateRequest nekretninaKorisnikUpdateRequest = UpdateKorisnikNekretnina();
+                            var putNekretnina = await NekretninaKorisnikService.Put<NekretninaKorisnikUpdateRequest>(_nekretninaKorisnik.NekretninaKorisnikId, nekretninaKorisnikUpdateRequest);
+
+                        }
+                        catch (Exception ex)
+                        {
+                            MessageBox.Show(ex.Message);
+                        }
                     }
                     this.Close();
                 }
@@ -84,7 +105,7 @@ namespace eRent.UI
             nekretninaKorisnikUpdateRequest.BrojTelefona = txtBrojTelefona.Text;
             nekretninaKorisnikUpdateRequest.ImeKorisnika = txtIme.Text;
             nekretninaKorisnikUpdateRequest.PrezimeKorisnika = txtPrezime.Text;
-            nekretninaKorisnikUpdateRequest.Slika=FromImageToBase64(pbKorisnikSlika.Image);
+            nekretninaKorisnikUpdateRequest.Slika = FromImageToBase64(pbKorisnikSlika.Image);
             return nekretninaKorisnikUpdateRequest;
         }
 
@@ -97,12 +118,18 @@ namespace eRent.UI
         private void btnKorisnikSlika_Click(object sender, EventArgs e)
         {
 
-            if (ofdKorisnikNekretnina.ShowDialog() == DialogResult.OK)
+            try
             {
-                pbKorisnikSlika.Image = Image.FromFile(ofdKorisnikNekretnina.FileName);
+                if (ofdKorisnikNekretnina.ShowDialog() == DialogResult.OK)
+                {
+                    pbKorisnikSlika.Image = Image.FromFile(ofdKorisnikNekretnina.FileName);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
-
 
         //Validation
         private void txtIme_Validating(object sender, System.ComponentModel.CancelEventArgs e)

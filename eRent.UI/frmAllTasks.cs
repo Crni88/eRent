@@ -23,10 +23,17 @@ namespace eRent.UI
 
         private async void btnLoad_Click(object sender, EventArgs e)
         {
-            TaskSearchObject nekretninaKorisnik = new TaskSearchObject();
-            nekretninaKorisnik.NekretninaTask = Nekretnina.NekretninaId;
-            var list = await TaskService.Get<List<TaskModel>>(nekretninaKorisnik);
-            dgvAllTask.DataSource = list;
+            try
+            {
+                TaskSearchObject nekretninaKorisnik = new TaskSearchObject();
+                nekretninaKorisnik.NekretninaTask = Nekretnina.NekretninaId;
+                var list = await TaskService.Get<List<TaskModel>>(nekretninaKorisnik);
+                dgvAllTask.DataSource = list;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
         }
 
         private void frmAllTasks_Load(object sender, EventArgs e)

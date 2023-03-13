@@ -20,24 +20,6 @@ namespace eRent.Services.Nekretnina
             context = eRentContext;
         }
 
-        public override NekretninaModel Insert(NekretninaInsertRequest insert)
-        {
-            //if (insert.NazivNekretnine == "string")
-            //{
-            //    throw new UserException("Error occured.");
-            //}
-            var entity = base.Insert(insert);
-            //foreach (var tagId in insert.TagIdList)
-            //{
-            //    DataDB.NekretninaTagovi nekretninaTagovi = new DataDB.NekretninaTagovi();
-            //    nekretninaTagovi.NekretninaId = entity.NekretninaId;
-            //    nekretninaTagovi.TagId = tagId;
-            //    Context.NekretninaTagovis.Add(nekretninaTagovi);
-            //}
-            //entity.Drzava = Context.Lokacijas.Where(x => x.LokacijaId == insert.LokacijaId).Select(x => x.Drzava).FirstOrDefault();
-            Context.SaveChanges();
-            return entity;
-        }
         public override IQueryable<DataDB.Nekretnina> AddFilter(IQueryable<DataDB.Nekretnina> query, NekretninaSearchObject search = null)
         {
             var filteredQuery = base.AddFilter(query, search);

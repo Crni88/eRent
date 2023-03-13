@@ -38,16 +38,23 @@ namespace eRent.UI
         {
             if (ValidateChildren())
             {
-                TaskInsertRequest taskInsertRequest = new TaskInsertRequest();
-                taskInsertRequest.NekretninaTask = Nekretnina.NekretninaId;
-                taskInsertRequest.Title = txtTitle.Text;
-                taskInsertRequest.Description = txtDescription.Text;
-                taskInsertRequest.Status = cbStatus.Text;
-                taskInsertRequest.Priority = cbPriority.Text;
-                taskInsertRequest.DueDate = dtpDueDate.Value;
-                var taskInsert = await TaskService.Post<TaskModel>(taskInsertRequest);
-                showMessage();
-                this.Close();
+                try
+                {
+                    TaskInsertRequest taskInsertRequest = new TaskInsertRequest();
+                    taskInsertRequest.NekretninaTask = Nekretnina.NekretninaId;
+                    taskInsertRequest.Title = txtTitle.Text;
+                    taskInsertRequest.Description = txtDescription.Text;
+                    taskInsertRequest.Status = cbStatus.Text;
+                    taskInsertRequest.Priority = cbPriority.Text;
+                    taskInsertRequest.DueDate = dtpDueDate.Value;
+                    var taskInsert = await TaskService.Post<TaskModel>(taskInsertRequest);
+                    showMessage();
+                    this.Close();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.Message);
+                }
             }
         }
 

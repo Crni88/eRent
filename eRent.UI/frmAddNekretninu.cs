@@ -12,22 +12,24 @@ namespace eRent.UI
 
         public APIService NekretnineService { get; set; } = new APIService("Nekretnine");
         public APIService nekretninaTagoviService { get; set; } = new APIService("NekretnineTagovi");
-
         NekretninaModel _nekretninaModel { get; set; }
         NekretninaTagSearchObject nekretninaSearchObject = new NekretninaTagSearchObject();
-
         public frmAddNekretninu(NekretninaModel nekretnina = null)
         {
             InitializeComponent();
             if (nekretnina != null)
             {
-                nekretninaSearchObject.NekretninaId = nekretnina.NekretninaId;
-                _nekretninaModel = nekretnina;
-                PopulateScreen();
-                //btnDodajSliku.Enabled = false;
+                loadNekretnina(nekretnina.NekretninaId);
                 loadTags(nekretninaSearchObject);
             }
         }
+
+        private async void loadNekretnina(int nekretninaId)
+        {
+            _nekretninaModel = await NekretnineService.GetById<NekretninaModel>(nekretninaId);
+            PopulateScreen();
+        }
+
         List<NekretninaTagoviModel> allTags = new List<NekretninaTagoviModel>();
         private async void loadTags(NekretninaTagSearchObject nekretninaSearchObject)
         {
