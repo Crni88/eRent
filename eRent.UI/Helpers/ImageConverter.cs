@@ -6,13 +6,24 @@ namespace eRent.UI.Helpers
     {
         public static string FromImageToBase64(Image image)
         {
-            string? base64String = null;
-            using (MemoryStream m = new MemoryStream())
+            try
             {
-                image.Save(m, image.RawFormat);
-                byte[] imageBytes = m.ToArray();
-                base64String = Convert.ToBase64String(imageBytes);
-                return base64String;
+                using (MemoryStream m = new MemoryStream())
+                {
+                    image.Save(m, image.RawFormat);
+                    byte[] imageBytes = m.ToArray();
+                    string base64String = Convert.ToBase64String(imageBytes);
+                    return base64String;
+                }
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Error converting image to base64 string: " + ex.Message);
+                return "";
+            }
+            finally
+            {
+                image.Dispose();
             }
         }
 

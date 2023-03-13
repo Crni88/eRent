@@ -17,7 +17,7 @@ namespace eRent.UI
             if (_nekretninaKorisnik != null)
             {
                 LoadData();
-                btnKorisnikSlika.Enabled = false;
+                //btnKorisnikSlika.Enabled = false;
             }
         }
 
@@ -84,7 +84,7 @@ namespace eRent.UI
             nekretninaKorisnikUpdateRequest.BrojTelefona = txtBrojTelefona.Text;
             nekretninaKorisnikUpdateRequest.ImeKorisnika = txtIme.Text;
             nekretninaKorisnikUpdateRequest.PrezimeKorisnika = txtPrezime.Text;
-            var slika = pbKorisnikSlika.Image;
+            nekretninaKorisnikUpdateRequest.Slika=FromImageToBase64(pbKorisnikSlika.Image);
             return nekretninaKorisnikUpdateRequest;
         }
 

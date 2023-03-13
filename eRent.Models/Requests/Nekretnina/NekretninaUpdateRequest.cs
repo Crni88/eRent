@@ -14,5 +14,6 @@ namespace eRent.Models.Requests
         public string Opis { get; set; }
         public string Grad { get; set; }
         public int Brojkvadrata { get; set; }
+        public string Slika { get; set; }
     }
 }

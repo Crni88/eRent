@@ -24,7 +24,7 @@ namespace eRent.UI
                 nekretninaSearchObject.NekretninaId = nekretnina.NekretninaId;
                 _nekretninaModel = nekretnina;
                 PopulateScreen();
-                btnDodajSliku.Enabled = false;
+                //btnDodajSliku.Enabled = false;
                 loadTags(nekretninaSearchObject);
             }
         }
@@ -140,12 +140,13 @@ namespace eRent.UI
             nekretninaUpdateRequest.Popunjena = cbPopunjena.Checked;
             nekretninaUpdateRequest.Izdvojena = cbIzdvojena.Checked;
             nekretninaUpdateRequest.Opis = txtOpis.Text;
+            nekretninaUpdateRequest.Slika = FromImageToBase64(pbSlikaNekretnine.Image);
             return nekretninaUpdateRequest;
         }
 
         private NekretninaInsertRequest CreateInsertObject(NekretninaInsertRequest nekretninaInsertRequest)
         {
-            nekretninaInsertRequest.KorisnikNekretnina = 4;
+            nekretninaInsertRequest.KorisnikNekretnina = 1;
             nekretninaInsertRequest.Username = APIService.username;
             nekretninaInsertRequest.Brojkvadrata = int.Parse(txtBrojKvadrata.Text);
             nekretninaInsertRequest.BrojSoba = int.Parse(txtBrojSoba.Text);
