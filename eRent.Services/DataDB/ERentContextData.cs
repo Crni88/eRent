@@ -91,8 +91,41 @@ namespace eRent.Services.DataDB
                     Username = "desktop",
                     Grad = "Mostar",
                     Slika = slikaNekretnine,
-                }
-                );
+                },
+                new Nekretnina
+                {
+                    NekretninaId = 4,
+                    KorisnikNekretnina = 1,
+                    NazivNekretnine = "Stan Sarajevo",
+                    Cijena = 800,
+                    DatumObjave = DateTime.Now,
+                    Brojkvadrata = 80,
+                    BrojSoba = 3,
+                    Namještena = true,
+                    Opis = "Ovo je prelijep stan u centru grada.",
+                    Izdvojena = true,
+                    Popunjena = true,
+                    Username = "desktop",
+                    Grad = "Sarajevo",
+                    Slika = slikaNekretnine,
+                },
+                new Nekretnina
+                {
+                    NekretninaId = 5,
+                    KorisnikNekretnina = 1,
+                    NazivNekretnine = "Kuća Tuzla",
+                    Cijena = 1200,
+                    DatumObjave = DateTime.Now.AddDays(-10),
+                    Brojkvadrata = 200,
+                    BrojSoba = 6,
+                    Namještena = false,
+                    Opis = "Prostrana kuća na sjeveru grada.",
+                    Izdvojena = false,
+                    Popunjena = true,
+                    Username = "desktop",
+                    Grad = "Tuzla",
+                    Slika = slikaNekretnine,
+                });
             modelBuilder.Entity<NekretninaTagovi>().HasData(
                 new NekretninaTagovi { NtId = 1, NekretninaId = 1, TagId = 1, IsActive = true },
                 new NekretninaTagovi { NtId = 2, NekretninaId = 1, TagId = 2, IsActive = false },
@@ -104,11 +137,21 @@ namespace eRent.Services.DataDB
                 new NekretninaTagovi { NtId = 8, NekretninaId = 2, TagId = 3, IsActive = true },
                 new NekretninaTagovi { NtId = 9, NekretninaId = 2, TagId = 4, IsActive = true },
                 new NekretninaTagovi { NtId = 10, NekretninaId = 2, TagId = 5, IsActive = true },
-                new NekretninaTagovi { NtId = 11, NekretninaId = 3, TagId = 1, IsActive = true },
+                new NekretninaTagovi { NtId = 11, NekretninaId = 3, TagId = 1, IsActive = false },
                 new NekretninaTagovi { NtId = 12, NekretninaId = 3, TagId = 2, IsActive = true },
                 new NekretninaTagovi { NtId = 13, NekretninaId = 3, TagId = 3, IsActive = false },
                 new NekretninaTagovi { NtId = 14, NekretninaId = 3, TagId = 4, IsActive = false },
-                new NekretninaTagovi { NtId = 15, NekretninaId = 3, TagId = 5, IsActive = true }
+                new NekretninaTagovi { NtId = 15, NekretninaId = 3, TagId = 5, IsActive = true },
+                new NekretninaTagovi { NtId = 16, NekretninaId = 4, TagId = 1, IsActive = false },
+                new NekretninaTagovi { NtId = 17, NekretninaId = 4, TagId = 2, IsActive = true },
+                new NekretninaTagovi { NtId = 18, NekretninaId = 4, TagId = 3, IsActive = false },
+                new NekretninaTagovi { NtId = 19, NekretninaId = 4, TagId = 4, IsActive = true },
+                new NekretninaTagovi { NtId = 20, NekretninaId = 4, TagId = 5, IsActive = true },
+                new NekretninaTagovi { NtId = 21, NekretninaId = 5, TagId = 1, IsActive = false },
+                new NekretninaTagovi { NtId = 22, NekretninaId = 5, TagId = 2, IsActive = true },
+                new NekretninaTagovi { NtId = 23, NekretninaId = 5, TagId = 3, IsActive = false },
+                new NekretninaTagovi { NtId = 24, NekretninaId = 5, TagId = 4, IsActive = false },
+                new NekretninaTagovi { NtId = 25, NekretninaId = 5, TagId = 5, IsActive = true }
                 );
             modelBuilder.Entity<KorisnikTagovi>().HasData(
                 new KorisnikTagovi { KtId = 1, KorisnikId = 2, TagId = 1, IsActive = true },
@@ -160,6 +203,28 @@ namespace eRent.Services.DataDB
                     BrojTelefona = "061 785 982",
                     DatumUseljenja = DateTime.Now.AddDays(1),
                     DatumIseljenja = DateTime.Now.AddDays(30),
+                    Slika = slikaUsera,
+                },
+                new NekretninaKorisnik
+                {
+                    NekretninaKorisnikId = 5,
+                    Nekretnina = 4,
+                    ImeKorisnika = "Korisnik",
+                    PrezimeKorisnika = "Korisnik",
+                    BrojTelefona = "061 785 982",
+                    DatumUseljenja = DateTime.Now.AddDays(1),
+                    DatumIseljenja = DateTime.Now.AddDays(40),
+                    Slika = slikaUsera,
+                },
+                new NekretninaKorisnik
+                {
+                    NekretninaKorisnikId = 6,
+                    Nekretnina = 5,
+                    ImeKorisnika = "Tuzla",
+                    PrezimeKorisnika = "Korisnika",
+                    BrojTelefona = "061 726 982",
+                    DatumUseljenja = DateTime.Now.AddDays(1),
+                    DatumIseljenja = DateTime.Now.AddDays(36),
                     Slika = slikaUsera,
                 }
             );
