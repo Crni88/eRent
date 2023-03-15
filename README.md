@@ -36,6 +36,6 @@ Stripe test card number:
 
     4242 4242 4242 4242
 
-Start the windows app inside visual studio IDE.
+Start the windows app inside visual studio IDE. (If not selected, set the startup project to eRent.UI)
 
 To recive FCM notifications your AVD need to have Google Play Services. (The time to recive a notification can vary.)
