@@ -27,7 +27,7 @@ Open a terminal inside the solution folder and use following commands (API+DB):
     docker-compose build
     docker-compose up
 
-Mobile app:
+To start the mobile app, from the root folder navigate to mobile -> myapp and run:
 
     flutter pub get
     flutter run
