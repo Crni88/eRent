@@ -131,6 +131,17 @@ namespace eRent.Services.DataDB
                 },
                 new NekretninaKorisnik
                 {
+                    NekretninaKorisnikId = 4,
+                    Nekretnina = 1,
+                    ImeKorisnika = "Sarajevo",
+                    PrezimeKorisnika = "Korisnik 2",
+                    BrojTelefona = "061 749 982",
+                    DatumUseljenja = DateTime.Now.AddDays(1),
+                    DatumIseljenja = DateTime.Now.AddDays(30),
+                    Slika = slikaUsera,
+                },
+                new NekretninaKorisnik
+                {
                     NekretninaKorisnikId = 2,
                     Nekretnina = 2,
                     ImeKorisnika = "Travnik",
@@ -152,22 +163,62 @@ namespace eRent.Services.DataDB
                     Slika = slikaUsera,
                 }
             );
-            modelBuilder.Entity<PaymentRequest>().HasData(new PaymentRequest { PaymentRequestId = 1, IsProcessed = false, Iznos = 100, Komentar = "Komentar", KorisnikPaymentId = 2, Mjesecno = false, Naslov = "Naslov placanja", NekretninaPayment = 2, Nekretnina = "Vikendica Travnik" });
-            modelBuilder.Entity<Posjetum>().HasData(new Posjetum { PosjetaId = 1, KorisnikId = 2, NekretninaId = 2, NazivNekretnine = "Vikendica Travnik", DatumPosjete = DateTime.Today, VrijemePosjete = DateTime.Now.TimeOfDay.ToString(), KorisnikImePrezime = "Mobile Mobile" });
-            modelBuilder.Entity<Rejting>().HasData(new Rejting { RejtingId = 1, KorisnikPrim = 1, KorisnikSec = 2, Komentar = "Komentar", NekretninaRejting = 2, Nekretnina = "Vikendica Travnik", ImePrezime = "Mobile Mobile", Rejting1 = 5 });
-            modelBuilder.Entity<Rezervacija>().HasData(new Rezervacija
-            {
+            modelBuilder.Entity<PaymentRequest>().HasData(
+                new PaymentRequest { PaymentRequestId = 1, IsProcessed = false, Iznos = 100, Komentar = "Komentar", KorisnikPaymentId = 2, Mjesecno = false, Naslov = "Naslov placanja", NekretninaPayment = 2, Nekretnina = "Vikendica Travnik" },
+                new PaymentRequest { PaymentRequestId = 2, IsProcessed = false, Iznos = 150, Komentar = "Komentar 2", KorisnikPaymentId = 2, Mjesecno = true, Naslov = "Naslov placanja 2", NekretninaPayment = 1, Nekretnina = "Vikendica Sarajevo" },
+                new PaymentRequest { PaymentRequestId = 3, IsProcessed = false, Iznos = 200, Komentar = "Komentar 3", KorisnikPaymentId = 2, Mjesecno = false, Naslov = "Naslov placanja 3", NekretninaPayment = 3, Nekretnina = "Vikendica Mostar" });
+
+            modelBuilder.Entity<Posjetum>().HasData(
+                new Posjetum { PosjetaId = 1, KorisnikId = 2, NekretninaId = 2, NazivNekretnine = "Vikendica Travnik", DatumPosjete = DateTime.Today, VrijemePosjete = DateTime.Now.TimeOfDay.ToString(), KorisnikImePrezime = "Mobile Mobile" },
+                new Posjetum { PosjetaId = 2, KorisnikId = 2, NekretninaId = 1, NazivNekretnine = "Vikendica Sarajevo", DatumPosjete = DateTime.Today, VrijemePosjete = DateTime.Now.TimeOfDay.ToString(), KorisnikImePrezime = "Mobile Mobile" },
+                new Posjetum { PosjetaId = 3, KorisnikId = 2, NekretninaId = 3, NazivNekretnine = "Vikendica Mostar", DatumPosjete = DateTime.Today, VrijemePosjete = DateTime.Now.TimeOfDay.ToString(), KorisnikImePrezime = "Mobile Mobile" }
+                );
+
+            modelBuilder.Entity<Rejting>().HasData(
+                new Rejting { RejtingId = 1, KorisnikPrim = 1, KorisnikSec = 2, Komentar = "Komentar 1", NekretninaRejting = 2, Nekretnina = "Vikendica Travnik", ImePrezime = "Mobile Mobile", Rejting1 = 5 },
+                new Rejting { RejtingId = 2, KorisnikPrim = 1, KorisnikSec = 2, Komentar = "Komentar 2", NekretninaRejting = 1, Nekretnina = "Vikendica Sarajevo", ImePrezime = "Mobile Mobile", Rejting1 = 5 },
+                new Rejting { RejtingId = 3, KorisnikPrim = 1, KorisnikSec = 2, Komentar = "Komentar 3", NekretninaRejting = 3, Nekretnina = "Vikendica Mostar", ImePrezime = "Mobile Mobile", Rejting1 = 4 }
+                );
+            modelBuilder.Entity<Rezervacija>().HasData(
+                new Rezervacija {
                 RezervacijaId = 1,
                 MjesecnaRezervacija = false,
                 DatumPocetka = DateTime.Now,
                 DatumKraja = DateTime.Now.AddDays(30),
                 ImePrezime = "Mobile Mobile",
-                BrojTelefona = "062 498 456",
+                BrojTelefona = "062 424 416",
                 NekretninaId = 2,
                 Nazivnekretnine = "Vikendica Travnik",
                 Odobrena = false,
-            });
-            modelBuilder.Entity<Task>().HasData(new Task { TaskId = 1, NekretninaTask = 2, Title = "Popravak", Description = "Opis", DueDate = DateTime.Now.AddDays(3), Status = "TO DO", Priority = "Medium" });
+            },
+            new Rezervacija {
+                RezervacijaId = 2,
+                MjesecnaRezervacija = false,
+                DatumPocetka = DateTime.Now,
+                DatumKraja = DateTime.Now.AddDays(30),
+                ImePrezime = "Mobile Mobile",
+                BrojTelefona = "062 748 456",
+                NekretninaId = 3,
+                Nazivnekretnine = "Vikendica Mostar",
+                Odobrena = false,
+            },
+            new Rezervacija {
+                RezervacijaId = 3,
+                MjesecnaRezervacija = false,
+                DatumPocetka = DateTime.Now,
+                DatumKraja = DateTime.Now.AddDays(30),
+                ImePrezime = "Mobile Mobile",
+                BrojTelefona = "062 498 653",
+                NekretninaId = 1,
+                Nazivnekretnine = "Vikendica Sarajevo",
+                Odobrena = false,
+            }
+            );
+            modelBuilder.Entity<Task>().HasData(
+                new Task { TaskId = 1, NekretninaTask = 2, Title = "Popravak", Description = "Opis", DueDate = DateTime.Now.AddDays(3), Status = "TO DO", Priority = "Medium" },
+                new Task { TaskId = 2, NekretninaTask = 1, Title = "Popravak 2", Description = "Opis 2", DueDate = DateTime.Now.AddDays(3), Status = "TO DO", Priority = "Medium" },
+                new Task { TaskId = 3, NekretninaTask = 3, Title = "Popravak 3", Description = "Opis 3", DueDate = DateTime.Now.AddDays(3), Status = "TO DO", Priority = "Medium" }
+                );
         }
     }
 }

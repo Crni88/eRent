@@ -262,7 +262,7 @@ namespace eRent.Services.Migrations
                             BrojSoba = 3,
                             Brojkvadrata = 45,
                             Cijena = 150,
-                            DatumObjave = new DateTime(2023, 3, 13, 21, 36, 42, 369, DateTimeKind.Local).AddTicks(4704),
+                            DatumObjave = new DateTime(2023, 3, 15, 14, 31, 11, 591, DateTimeKind.Local).AddTicks(4946),
                             Grad = "Sarajevo",
                             Izdvojena = true,
                             KorisnikNekretnina = 1,
@@ -279,7 +279,7 @@ namespace eRent.Services.Migrations
                             BrojSoba = 4,
                             Brojkvadrata = 55,
                             Cijena = 250,
-                            DatumObjave = new DateTime(2023, 3, 13, 21, 36, 42, 369, DateTimeKind.Local).AddTicks(4738),
+                            DatumObjave = new DateTime(2023, 3, 15, 14, 31, 11, 591, DateTimeKind.Local).AddTicks(4990),
                             Grad = "Travnik",
                             Izdvojena = false,
                             KorisnikNekretnina = 1,
@@ -296,7 +296,7 @@ namespace eRent.Services.Migrations
                             BrojSoba = 6,
                             Brojkvadrata = 155,
                             Cijena = 600,
-                            DatumObjave = new DateTime(2023, 3, 13, 21, 36, 42, 369, DateTimeKind.Local).AddTicks(4742),
+                            DatumObjave = new DateTime(2023, 3, 15, 14, 31, 11, 591, DateTimeKind.Local).AddTicks(4994),
                             Grad = "Mostar",
                             Izdvojena = true,
                             KorisnikNekretnina = 1,
@@ -365,8 +365,8 @@ namespace eRent.Services.Migrations
                         {
                             NekretninaKorisnikId = 1,
                             BrojTelefona = "061 785 982",
-                            DatumIseljenja = new DateTime(2023, 4, 12, 21, 36, 42, 369, DateTimeKind.Local).AddTicks(4803),
-                            DatumUseljenja = new DateTime(2023, 3, 14, 21, 36, 42, 369, DateTimeKind.Local).AddTicks(4799),
+                            DatumIseljenja = new DateTime(2023, 4, 14, 14, 31, 11, 591, DateTimeKind.Local).AddTicks(5051),
+                            DatumUseljenja = new DateTime(2023, 3, 16, 14, 31, 11, 591, DateTimeKind.Local).AddTicks(5048),
                             ImeKorisnika = "Sarajevo",
                             Nekretnina = 1,
                             PrezimeKorisnika = "Korisnika",
@@ -376,8 +376,8 @@ namespace eRent.Services.Migrations
                         {
                             NekretninaKorisnikId = 2,
                             BrojTelefona = "061 785 982",
-                            DatumIseljenja = new DateTime(2023, 4, 12, 21, 36, 42, 369, DateTimeKind.Local).AddTicks(4807),
-                            DatumUseljenja = new DateTime(2023, 3, 14, 21, 36, 42, 369, DateTimeKind.Local).AddTicks(4806),
+                            DatumIseljenja = new DateTime(2023, 4, 14, 14, 31, 11, 591, DateTimeKind.Local).AddTicks(5056),
+                            DatumUseljenja = new DateTime(2023, 3, 16, 14, 31, 11, 591, DateTimeKind.Local).AddTicks(5054),
                             ImeKorisnika = "Travnik",
                             Nekretnina = 2,
                             PrezimeKorisnika = "Korisnik",
@@ -387,8 +387,8 @@ namespace eRent.Services.Migrations
                         {
                             NekretninaKorisnikId = 3,
                             BrojTelefona = "061 785 982",
-                            DatumIseljenja = new DateTime(2023, 4, 12, 21, 36, 42, 369, DateTimeKind.Local).AddTicks(4811),
-                            DatumUseljenja = new DateTime(2023, 3, 14, 21, 36, 42, 369, DateTimeKind.Local).AddTicks(4810),
+                            DatumIseljenja = new DateTime(2023, 4, 14, 14, 31, 11, 591, DateTimeKind.Local).AddTicks(5059),
+                            DatumUseljenja = new DateTime(2023, 3, 16, 14, 31, 11, 591, DateTimeKind.Local).AddTicks(5058),
                             ImeKorisnika = "Mostar",
                             Nekretnina = 3,
                             PrezimeKorisnika = "Korisnika",
@@ -684,12 +684,12 @@ namespace eRent.Services.Migrations
                         new
                         {
                             PosjetaId = 1,
-                            DatumPosjete = new DateTime(2023, 3, 13, 0, 0, 0, 0, DateTimeKind.Local),
+                            DatumPosjete = new DateTime(2023, 3, 15, 0, 0, 0, 0, DateTimeKind.Local),
                             KorisnikId = 2,
                             KorisnikImePrezime = "Mobile Mobile",
                             NazivNekretnine = "Vikendica Travnik",
                             NekretninaId = 2,
-                            VrijemePosjete = "21:36:42.3694850"
+                            VrijemePosjete = "14:31:11.5915089"
                         });
                 });
 
@@ -819,8 +819,8 @@ namespace eRent.Services.Migrations
                         {
                             RezervacijaId = 1,
                             BrojTelefona = "062 498 456",
-                            DatumKraja = new DateTime(2023, 4, 12, 21, 36, 42, 369, DateTimeKind.Local).AddTicks(4902),
-                            DatumPocetka = new DateTime(2023, 3, 13, 21, 36, 42, 369, DateTimeKind.Local).AddTicks(4900),
+                            DatumKraja = new DateTime(2023, 4, 14, 14, 31, 11, 591, DateTimeKind.Local).AddTicks(5145),
+                            DatumPocetka = new DateTime(2023, 3, 15, 14, 31, 11, 591, DateTimeKind.Local).AddTicks(5143),
                             ImePrezime = "Mobile Mobile",
                             MjesecnaRezervacija = false,
                             Nazivnekretnine = "Vikendica Travnik",
@@ -921,7 +921,7 @@ namespace eRent.Services.Migrations
                         {
                             TaskId = 1,
                             Description = "Opis",
-                            DueDate = new DateTime(2023, 3, 16, 21, 36, 42, 369, DateTimeKind.Local).AddTicks(4915),
+                            DueDate = new DateTime(2023, 3, 18, 14, 31, 11, 591, DateTimeKind.Local).AddTicks(5165),
                             NekretninaTask = 2,
                             Priority = "Medium",
                             Status = "TO DO",

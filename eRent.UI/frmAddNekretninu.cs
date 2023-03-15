@@ -12,6 +12,7 @@ namespace eRent.UI
 
         public APIService NekretnineService { get; set; } = new APIService("Nekretnine");
         public APIService nekretninaTagoviService { get; set; } = new APIService("NekretnineTagovi");
+        bool isPressed = false;
         NekretninaModel _nekretninaModel { get; set; }
         NekretninaTagSearchObject nekretninaSearchObject = new NekretninaTagSearchObject();
         public frmAddNekretninu(NekretninaModel nekretnina = null)
@@ -20,6 +21,7 @@ namespace eRent.UI
             if (nekretnina != null)
             {
                 loadNekretnina(nekretnina.NekretninaId);
+                nekretninaSearchObject.NekretninaId = nekretnina.NekretninaId;
                 loadTags(nekretninaSearchObject);
             }
         }
@@ -142,7 +144,14 @@ namespace eRent.UI
             nekretninaUpdateRequest.Popunjena = cbPopunjena.Checked;
             nekretninaUpdateRequest.Izdvojena = cbIzdvojena.Checked;
             nekretninaUpdateRequest.Opis = txtOpis.Text;
-            nekretninaUpdateRequest.Slika = FromImageToBase64(pbSlikaNekretnine.Image);
+            if (isPressed)
+            {
+                nekretninaUpdateRequest.Slika = FromImageToBase64(pbSlikaNekretnine.Image);
+            }
+            else
+            {
+                nekretninaUpdateRequest.Slika = _nekretninaModel.Slika;
+            }
             return nekretninaUpdateRequest;
         }
 
@@ -233,6 +242,7 @@ namespace eRent.UI
         {
             if (ofdSlikaNekretnine.ShowDialog() == DialogResult.OK)
             {
+                isPressed = true;
                 pbSlikaNekretnine.Image = Image.FromFile(ofdSlikaNekretnine.FileName);
             }
         }

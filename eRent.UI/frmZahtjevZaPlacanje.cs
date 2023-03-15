@@ -35,10 +35,8 @@ namespace eRent.UI
                 double iznosPoKorisniku = double.Parse(txtIznos.Text) / BrojKorisnika;
                 string komentar = txtKomentar.Text;
                 string naslov = txtNaslov.Text + " - " + iznosPoKorisniku.ToString() + " KM";
-                KorisnikSearchObject korisnikObj = new KorisnikSearchObject();
-                korisnikObj.KorisnikId = 5;
-                List<KorisnikModel> korisnik = await _korisnikService.Get<List<KorisnikModel>>(korisnikObj);
-                await posaljiNotifikacijuAsync(komentar, naslov, korisnik[0].FcmDeviceToken);
+                var korisnik = await _korisnikService.GetById<KorisnikModel>(2);
+                await posaljiNotifikacijuAsync(komentar, naslov, korisnik.FcmDeviceToken);
                 await savePaymentRequestToDatabase(iznosPoKorisniku);
             }
         }
@@ -58,7 +56,7 @@ namespace eRent.UI
             paymentUpsertRequest.Mjesecno = cbMjesecno.Checked;
             paymentUpsertRequest.Naslov = txtNaslov.Text;
             paymentUpsertRequest.IsProcessed = false;
-            paymentUpsertRequest.KorisnikPaymentId = 2016;
+            paymentUpsertRequest.KorisnikPaymentId = 2;
             var postPaymentRequest = await PaymentRequestService.Post<PaymentUpsertRequest>(paymentUpsertRequest);
             showMessage();
             this.Close();

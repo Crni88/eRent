@@ -392,23 +392,23 @@ Widget _buildNekretnineChipList(List<NekretninaTagovi> nekretninaTagovi) {
         ),
         children: [
           for (var tag in nekretninaTagovi)
-            if (tag.tagID == 1)
+            if (tag.tagID == 1 && tag.isActive!)
               Chip(
                 label: const Text("Tiho naselje"),
                 backgroundColor: Colors.grey[200],
               )
-            else if (tag.tagID == 2)
+            else if (tag.tagID == 2 && tag.isActive!)
               Chip(
                   label: const Text("Miran"), backgroundColor: Colors.grey[200])
-            else if (tag.tagID == 3)
+            else if (tag.tagID == 3 && tag.isActive!)
               Chip(
                   label: const Text("No Smoking"),
                   backgroundColor: Colors.grey[200])
-            else if (tag.tagID == 4)
+            else if (tag.tagID == 4 && tag.isActive!)
               Chip(
                   label: const Text("Osvijetljen"),
                   backgroundColor: Colors.grey[200])
-            else if (tag.tagID == 5)
+            else if (tag.tagID == 5 && tag.isActive!)
               Chip(
                   label: const Text("Pet Friendly"),
                   backgroundColor: Colors.grey[200])

@@ -1,10 +1,41 @@
 # eRent
 
-Data Source=localhost, 1433;Initial Catalog=eRent; user=sa;Password=eRent123
+Credentials
+Desktop app
 
---Install Docker Desktop
+    Administrator
 
---Run following command
+    Username: desktop             
+    Password: admin                                      
 
-docker run -e "ACCEPT_EULA=Y" -e "SA_PASSWORD=eRentdatabase" --name sqlserver -p 1433:1433 -d mcr.microsoft.com/mssql/server:2022-latest
+Mobile app
 
+    Customer
+
+    Username: mobile                        
+    Password: customer     
+
+    Customer 2
+
+    Username: desktop
+    Password: admin  
+
+Running the app
+
+Open a terminal inside the solution folder and use following commands (API+DB):
+
+    docker-compose build
+    docker-compose up
+
+Mobile app:
+
+    flutter pub get
+    flutter run
+
+Stripe test card number:
+
+    4242 4242 4242 4242
+
+Start the windows app inside visual studio IDE.
+
+To recive FCM notifications your AVD need to have Google Play Services. (The time to recive a notification can vary.)
