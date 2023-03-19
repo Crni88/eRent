@@ -13,7 +13,7 @@ Mobile app
     Customer
 
     Username: mobile                        
-    Password: customer     
+    Password: admin     
 
     Customer 2
 
