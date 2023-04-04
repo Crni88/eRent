@@ -2,6 +2,7 @@
 using eRent.Models.Requests;
 using eRent.Models.Requests.NekretninaTag;
 using eRent.Models.Search_Objects;
+using eRent.UI.Helpers;
 using System.Text.RegularExpressions;
 using static eRent.UI.Helpers.ImageConverter;
 
@@ -88,6 +89,7 @@ namespace eRent.UI
                     _nekretninaModel = postNekretnina;
                     //TODO Test this
                     await UpdateTagsAsync();
+                    showMessage("Nekretnina dodana!", "Nekretnina uspjesno dodana!");
                     this.Close();
                 }
                 else
@@ -96,6 +98,7 @@ namespace eRent.UI
                     var updateNekretnina =
                         await NekretnineService.Put<NekretninaUpdateRequest>(_nekretninaModel.NekretninaId, nekretninaUpdateRequest);
                     await UpdateTagsAsync();
+                    showMessage("Nekretnina azurirana!", "Nekretnina uspjesno azurirana!");
                     this.Close();
                 }
             }
@@ -111,11 +114,11 @@ namespace eRent.UI
                 NekretninaTagUpdateRequest nekretninaTagoviUpsertRequest = new NekretninaTagUpdateRequest();
                 for (int i = 0; i < 5; i++)
                 {
-                        int id = allTags[i].NtId;
-                        nekretninaTagoviUpsertRequest.TagId = tagIds[i];
-                        nekretninaTagoviUpsertRequest.NekretninaId = _nekretninaModel.NekretninaId;
-                        nekretninaTagoviUpsertRequest.IsActive = checkboxValues[i];
-                        var postNekretnina = await nekretninaTagoviService.Put<NekretninaTagUpdateRequest>(id, nekretninaTagoviUpsertRequest);
+                    int id = allTags[i].NtId;
+                    nekretninaTagoviUpsertRequest.TagId = tagIds[i];
+                    nekretninaTagoviUpsertRequest.NekretninaId = _nekretninaModel.NekretninaId;
+                    nekretninaTagoviUpsertRequest.IsActive = checkboxValues[i];
+                    var postNekretnina = await nekretninaTagoviService.Put<NekretninaTagUpdateRequest>(id, nekretninaTagoviUpsertRequest);
                 }
             }
             else
@@ -140,10 +143,11 @@ namespace eRent.UI
             nekretninaUpdateRequest.Grad = txtGrad.Text;
             nekretninaUpdateRequest.DatumObjave = DateTime.Now;
             nekretninaUpdateRequest.Namještena = cbNamjestena.Checked;
-            nekretninaUpdateRequest.Cijena = int.Parse(txtBrojSoba.Text);
+            nekretninaUpdateRequest.Cijena = int.Parse(txtCijena.Text);
             nekretninaUpdateRequest.Popunjena = cbPopunjena.Checked;
             nekretninaUpdateRequest.Izdvojena = cbIzdvojena.Checked;
             nekretninaUpdateRequest.Opis = txtOpis.Text;
+            nekretninaUpdateRequest.IsActive = true;
             if (isPressed)
             {
                 nekretninaUpdateRequest.Slika = FromImageToBase64(pbSlikaNekretnine.Image);
@@ -170,6 +174,7 @@ namespace eRent.UI
             nekretninaInsertRequest.Izdvojena = cbIzdvojena.Checked;
             nekretninaInsertRequest.Slika = FromImageToBase64(pbSlikaNekretnine.Image);
             nekretninaInsertRequest.Opis = txtOpis.Text;
+            nekretninaInsertRequest.IsActive = true;
             return nekretninaInsertRequest;
         }
 
@@ -247,5 +252,19 @@ namespace eRent.UI
             }
         }
 
+        private void showMessage(string title, string poruka)
+        {
+            AutoClosingMessageBox.Show(poruka, title, 3000);
+        }
+
+        private async void btnObrisiNekretninu_Click(object sender, EventArgs e)
+        {
+            NekretninaUpdateRequest nekretninaUpdateRequest = CreateUpdateObject();
+            nekretninaUpdateRequest.IsActive = false;
+            var updateNekretnina =
+                        await NekretnineService.Put<NekretninaUpdateRequest>(_nekretninaModel.NekretninaId, nekretninaUpdateRequest);
+            showMessage("Nekretnina obrisana!", "Nekretnina uspjesno obrisana!");
+            this.Close();
+        }
     }
 }

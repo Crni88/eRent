@@ -57,6 +57,7 @@ namespace eRent.Services.DataDB
                     Username = "desktop",
                     Grad = "Sarajevo",
                     Slika = slikaNekretnine,
+                    IsActive = true
                 },
                 new Nekretnina
                 {
@@ -74,6 +75,8 @@ namespace eRent.Services.DataDB
                     Username = "desktop",
                     Grad = "Travnik",
                     Slika = slikaNekretnine,
+                    IsActive = true
+
                 },
                 new Nekretnina
                 {
@@ -91,6 +94,8 @@ namespace eRent.Services.DataDB
                     Username = "desktop",
                     Grad = "Mostar",
                     Slika = slikaNekretnine,
+                    IsActive = true
+
                 },
                 new Nekretnina
                 {
@@ -108,6 +113,7 @@ namespace eRent.Services.DataDB
                     Username = "desktop",
                     Grad = "Sarajevo",
                     Slika = slikaNekretnine,
+                    IsActive = true
                 },
                 new Nekretnina
                 {
@@ -125,6 +131,7 @@ namespace eRent.Services.DataDB
                     Username = "desktop",
                     Grad = "Tuzla",
                     Slika = slikaNekretnine,
+                    IsActive = true
                 });
             modelBuilder.Entity<NekretninaTagovi>().HasData(
                 new NekretninaTagovi { NtId = 1, NekretninaId = 1, TagId = 1, IsActive = true },

@@ -52,6 +52,10 @@ namespace eRent.Services.Nekretnina
             {
                 filteredQuery = filteredQuery.Where(x => x.Cijena <= search.CijenaMax);
             }
+            if (search.IsActive != null)
+            {
+                filteredQuery = filteredQuery.Where(x => x.IsActive == search.IsActive);
+            }
             return filteredQuery;
         }
 

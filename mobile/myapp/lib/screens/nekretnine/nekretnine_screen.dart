@@ -46,7 +46,8 @@ class _NekretnineListScreenState extends State<NekretnineListScreen> {
   }
 
   Future loadData() async {
-    var tempData = await _nekretnineProvider?.get();
+    var search = {"IsActive": true};
+    var tempData = await _nekretnineProvider?.get(search);
     setState(() {
       data = tempData!;
     });

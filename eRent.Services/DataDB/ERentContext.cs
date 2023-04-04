@@ -45,7 +45,7 @@ public partial class ERentContext : DbContext
 
 //    protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
 //#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see http://go.microsoft.com/fwlink/?LinkId=723263.
-//        => optionsBuilder.UseSqlServer("Server=localhost, 1434;Database=180040;Trusted_Connection=True;TrustServerCertificate=True");
+//        => optionsBuilder.UseSqlServer("Server=.;Database=eRent;Trusted_Connection=True;TrustServerCertificate=True");
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -122,6 +122,7 @@ public partial class ERentContext : DbContext
                 .HasColumnType("datetime")
                 .HasColumnName("datumObjave");
             entity.Property(e => e.Grad).HasMaxLength(50);
+            entity.Property(e => e.IsActive).HasColumnName("isActive");
             entity.Property(e => e.Izdvojena).HasColumnName("izdvojena");
             entity.Property(e => e.KorisnikNekretnina).HasColumnName("korisnikNekretnina");
             entity.Property(e => e.Namještena).HasColumnName("namještena");

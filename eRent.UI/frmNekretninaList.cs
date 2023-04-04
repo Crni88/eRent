@@ -6,7 +6,7 @@ namespace eRent.UI
     public partial class frmNekretninaList : Form
     {
         public APIService NekretnineService { get; set; } = new APIService("Nekretnine");
-       // public APIService LokacijaService { get; set; } = new APIService("Lokacija");
+        // public APIService LokacijaService { get; set; } = new APIService("Lokacija");
         public dynamic Result { get; }
 
         //public frmNekretninaList()
@@ -31,13 +31,16 @@ namespace eRent.UI
             //var update = await NekretnineService.Put<NekretninaModel>(entity.NekretninaId, entity);
             if (txtSearch.Text == "")
             {
-                var list = await NekretnineService.Get<List<NekretninaModel>>();
+                NekretninaSearchObject nekretnina = new NekretninaSearchObject();
+                nekretnina.IsActive = true;
+                var list = await NekretnineService.Get<List<NekretninaModel>>(nekretnina);
                 dgvNekretnineList.DataSource = list;
             }
             else
             {
                 NekretninaSearchObject nekretnina = new NekretninaSearchObject();
                 nekretnina.NameFTS = txtSearch.Text;
+                nekretnina.IsActive = true;
                 var list = await NekretnineService.Get<List<NekretninaModel>>(nekretnina);
                 dgvNekretnineList.DataSource = list;
             }
@@ -57,8 +60,8 @@ namespace eRent.UI
                 var nekretnina = dgvNekretnineList.SelectedRows[0].DataBoundItem as NekretninaModel;
                 if (nekretnina != null)
                 {
-                   frmRezervacije frmRezervacije = new frmRezervacije(nekretnina);    
-                   frmRezervacije.Show();
+                    frmRezervacije frmRezervacije = new frmRezervacije(nekretnina);
+                    frmRezervacije.Show();
                 }
             }
             if (e.ColumnIndex == 4)
@@ -101,14 +104,14 @@ namespace eRent.UI
 
         private void btnIzvjestaj_Click(object sender, EventArgs e)
         {
-            frmOpcijeIzvjestaja frmIzvjestaj = new frmOpcijeIzvjestaja(); 
-            frmIzvjestaj.Show();    
+            frmOpcijeIzvjestaja frmIzvjestaj = new frmOpcijeIzvjestaja();
+            frmIzvjestaj.Show();
         }
 
         private void btnRejting_Click(object sender, EventArgs e)
         {
             frmRejting frmRejting = new frmRejting(Result);
-            frmRejting.Show();      
+            frmRejting.Show();
         }
     }
 }

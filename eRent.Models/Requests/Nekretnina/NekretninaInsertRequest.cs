@@ -24,5 +24,6 @@ namespace eRent.Models.Requests
         //public List<int> TagIdList { get; set; } = new List<int> { };
         public string Slika { get; set; }
         public int? Brojkvadrata { get; set; }
+        public bool? IsActive { get; set; }
     }
 }

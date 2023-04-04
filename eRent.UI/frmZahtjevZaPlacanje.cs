@@ -1,6 +1,5 @@
 ﻿using eRent.Models;
 using eRent.Models.Requests.Payment;
-using eRent.Models.Search_Objects;
 using eRent.UI.Helpers;
 using Newtonsoft.Json;
 using System.Text.RegularExpressions;
@@ -62,7 +61,7 @@ namespace eRent.UI
             this.Close();
         }
 
-        private async Task posaljiNotifikacijuAsync(string komentar = "", string naslov = "",string fcmToken = "")
+        private async Task posaljiNotifikacijuAsync(string komentar = "", string naslov = "", string fcmToken = "")
         {
             string fcmServerKey = "AAAAbOMTstM:APA91bFkF0lQHgpECturTYijOzuGRsduCjtvIGnCRH1AiSDuorCxNAuUmvdxhyJJ-MAXyatpfpsZrX8XQykh0ql_3i2-p9vVObo4gbdibGmsC9ah8qS2v9KQbaCQ0fdE1YlY4An9iV72";
             string fcmEndpoint = "https://fcm.googleapis.com/fcm/send";

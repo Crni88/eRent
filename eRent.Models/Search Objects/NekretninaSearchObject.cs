@@ -27,6 +27,8 @@ namespace eRent.Models.Search_Objects
 
         public string NameFTS { get; set; }
 
+        public bool? IsActive { get; set; }
+
         //public bool? Izdvojena { get; set; }
     }
 }

@@ -26,7 +26,7 @@ namespace eRent.UI
         {
             RezervacijaSearchObject rezervacijaSearchObject = new RezervacijaSearchObject();
             rezervacijaSearchObject.NekretninaId = _nekretnina.NekretninaId;
-            var list =await rezervacijeAPIService.Get<List<RezervacijaModel>>(rezervacijaSearchObject);
+            var list = await rezervacijeAPIService.Get<List<RezervacijaModel>>(rezervacijaSearchObject);
             dgvRezervacije.DataSource = list;
         }
 
@@ -60,7 +60,7 @@ namespace eRent.UI
             ugovorUpsert.PodnosiocUgovora = "Admin Desktop";
             ugovorUpsert.UgovornaStranka = rezervacija.ImePrezime;
             ugovorUpsert.NekretninaId = rezervacija.NekretninaId;
-            var res =await ugovorAPIService.Post<UgovorUpsertRequest>(ugovorUpsert);
+            var res = await ugovorAPIService.Post<UgovorUpsertRequest>(ugovorUpsert);
         }
 
         private async void updateRezervacija(RezervacijaModel? rezervacija)
@@ -68,7 +68,7 @@ namespace eRent.UI
             var rezervacijaUpdateRequest = new RezervacijaUpdateRequest();
             rezervacijaUpdateRequest.RezervacijaId = rezervacija.RezervacijaId;
             rezervacijaUpdateRequest.Odobrena = true;
-            var res =await rezervacijeAPIService.Put<RezervacijaUpdateRequest>(rezervacija.RezervacijaId, rezervacijaUpdateRequest);
+            var res = await rezervacijeAPIService.Put<RezervacijaUpdateRequest>(rezervacija.RezervacijaId, rezervacijaUpdateRequest);
         }
 
         private void generisiUgovor(RezervacijaModel rezervacija)

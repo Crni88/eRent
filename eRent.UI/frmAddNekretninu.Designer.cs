@@ -55,6 +55,7 @@
             this.err = new System.Windows.Forms.ErrorProvider(this.components);
             this.ofdSlikaNekretnine = new System.Windows.Forms.OpenFileDialog();
             this.cbTihoNaselje = new System.Windows.Forms.CheckBox();
+            this.btnObrisiNekretninu = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbSlikaNekretnine)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.err)).BeginInit();
             this.SuspendLayout();
@@ -285,11 +286,22 @@
             this.cbTihoNaselje.Text = "Tiho Naselje";
             this.cbTihoNaselje.UseVisualStyleBackColor = true;
             // 
+            // btnObrisiNekretninu
+            // 
+            this.btnObrisiNekretninu.Location = new System.Drawing.Point(67, 415);
+            this.btnObrisiNekretninu.Name = "btnObrisiNekretninu";
+            this.btnObrisiNekretninu.Size = new System.Drawing.Size(111, 23);
+            this.btnObrisiNekretninu.TabIndex = 26;
+            this.btnObrisiNekretninu.Text = "Obrisi nekretninu";
+            this.btnObrisiNekretninu.UseVisualStyleBackColor = true;
+            this.btnObrisiNekretninu.Click += new System.EventHandler(this.btnObrisiNekretninu_Click);
+            // 
             // frmAddNekretninu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnObrisiNekretninu);
             this.Controls.Add(this.cbTihoNaselje);
             this.Controls.Add(this.cbOsvjetljen);
             this.Controls.Add(this.cbIzdvojena);
@@ -352,5 +364,6 @@
         private ErrorProvider err;
         private OpenFileDialog ofdSlikaNekretnine;
         private CheckBox cbTihoNaselje;
+        private Button btnObrisiNekretninu;
     }
 }

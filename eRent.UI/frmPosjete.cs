@@ -13,7 +13,7 @@ namespace eRent.UI
             dataGridView1.AutoGenerateColumns = false;
             this._nekretnina = nekretnina;
         }
-        
+
         private async void btnUcitaj_Click(object sender, EventArgs e)
         {
             PosjetaSearchObject posjetaSearchObject = new PosjetaSearchObject();
@@ -21,6 +21,6 @@ namespace eRent.UI
             var list = await prosjetaAPIService.Get<List<PosjetaModel>>(posjetaSearchObject);
             dataGridView1.DataSource = list;
         }
-       
+
     }
 }

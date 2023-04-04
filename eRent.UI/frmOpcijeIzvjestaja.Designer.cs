@@ -41,8 +41,12 @@
             this.label6 = new System.Windows.Forms.Label();
             this.label7 = new System.Windows.Forms.Label();
             this.button2 = new System.Windows.Forms.Button();
-            this.label8 = new System.Windows.Forms.Label();
             this.button3 = new System.Windows.Forms.Button();
+            this.dtpFrom = new System.Windows.Forms.DateTimePicker();
+            this.dtpUntil = new System.Windows.Forms.DateTimePicker();
+            this.groupBox1 = new System.Windows.Forms.GroupBox();
+            this.cbListaNekretnina = new System.Windows.Forms.ComboBox();
+            this.groupBox1.SuspendLayout();
             this.SuspendLayout();
             // 
             // btnListaRezervacija
@@ -113,7 +117,7 @@
             // 
             // button1
             // 
-            this.button1.Location = new System.Drawing.Point(104, 27);
+            this.button1.Location = new System.Drawing.Point(294, 13);
             this.button1.Name = "button1";
             this.button1.Size = new System.Drawing.Size(75, 23);
             this.button1.TabIndex = 0;
@@ -124,7 +128,7 @@
             // label6
             // 
             this.label6.AutoSize = true;
-            this.label6.Location = new System.Drawing.Point(75, 9);
+            this.label6.Location = new System.Drawing.Point(30, 13);
             this.label6.Name = "label6";
             this.label6.Size = new System.Drawing.Size(140, 15);
             this.label6.TabIndex = 1;
@@ -133,7 +137,7 @@
             // label7
             // 
             this.label7.AutoSize = true;
-            this.label7.Location = new System.Drawing.Point(103, 117);
+            this.label7.Location = new System.Drawing.Point(12, 201);
             this.label7.Name = "label7";
             this.label7.Size = new System.Drawing.Size(90, 15);
             this.label7.TabIndex = 3;
@@ -141,7 +145,7 @@
             // 
             // button2
             // 
-            this.button2.Location = new System.Drawing.Point(104, 135);
+            this.button2.Location = new System.Drawing.Point(294, 197);
             this.button2.Name = "button2";
             this.button2.Size = new System.Drawing.Size(75, 23);
             this.button2.TabIndex = 2;
@@ -149,18 +153,9 @@
             this.button2.UseVisualStyleBackColor = true;
             this.button2.Click += new System.EventHandler(this.btnListaNekretninaReportGenerate);
             // 
-            // label8
-            // 
-            this.label8.AutoSize = true;
-            this.label8.Location = new System.Drawing.Point(104, 65);
-            this.label8.Name = "label8";
-            this.label8.Size = new System.Drawing.Size(89, 15);
-            this.label8.TabIndex = 5;
-            this.label8.Text = "Lista rezervacija";
-            // 
             // button3
             // 
-            this.button3.Location = new System.Drawing.Point(104, 83);
+            this.button3.Location = new System.Drawing.Point(276, 51);
             this.button3.Name = "button3";
             this.button3.Size = new System.Drawing.Size(75, 23);
             this.button3.TabIndex = 4;
@@ -168,11 +163,45 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.btnListaRezervacija_Click);
             // 
+            // dtpFrom
+            // 
+            this.dtpFrom.Location = new System.Drawing.Point(18, 51);
+            this.dtpFrom.Name = "dtpFrom";
+            this.dtpFrom.Size = new System.Drawing.Size(200, 23);
+            this.dtpFrom.TabIndex = 6;
+            // 
+            // dtpUntil
+            // 
+            this.dtpUntil.Location = new System.Drawing.Point(18, 80);
+            this.dtpUntil.Name = "dtpUntil";
+            this.dtpUntil.Size = new System.Drawing.Size(200, 23);
+            this.dtpUntil.TabIndex = 7;
+            // 
+            // groupBox1
+            // 
+            this.groupBox1.Controls.Add(this.cbListaNekretnina);
+            this.groupBox1.Controls.Add(this.dtpUntil);
+            this.groupBox1.Controls.Add(this.dtpFrom);
+            this.groupBox1.Controls.Add(this.button3);
+            this.groupBox1.Location = new System.Drawing.Point(12, 68);
+            this.groupBox1.Name = "groupBox1";
+            this.groupBox1.Size = new System.Drawing.Size(357, 119);
+            this.groupBox1.TabIndex = 8;
+            this.groupBox1.TabStop = false;
+            this.groupBox1.Text = "Rezervacije";
+            // 
+            // cbListaNekretnina
+            // 
+            this.cbListaNekretnina.FormattingEnabled = true;
+            this.cbListaNekretnina.Location = new System.Drawing.Point(18, 22);
+            this.cbListaNekretnina.Name = "cbListaNekretnina";
+            this.cbListaNekretnina.Size = new System.Drawing.Size(200, 23);
+            this.cbListaNekretnina.TabIndex = 8;
+            // 
             // frmOpcijeIzvjestaja
             // 
-            this.ClientSize = new System.Drawing.Size(277, 188);
-            this.Controls.Add(this.label8);
-            this.Controls.Add(this.button3);
+            this.ClientSize = new System.Drawing.Size(381, 233);
+            this.Controls.Add(this.groupBox1);
             this.Controls.Add(this.label7);
             this.Controls.Add(this.button2);
             this.Controls.Add(this.label6);
@@ -181,6 +210,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Reporti";
             this.Load += new System.EventHandler(this.frmOpcijeIzvjestaja_Load);
+            this.groupBox1.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -201,7 +231,10 @@
         private Label label6;
         private Label label7;
         private Button button2;
-        private Label label8;
         private Button button3;
+        private DateTimePicker dtpFrom;
+        private DateTimePicker dtpUntil;
+        private GroupBox groupBox1;
+        private ComboBox cbListaNekretnina;
     }
 }

@@ -35,5 +35,6 @@ namespace eRent.Models
 
         public int? Brojkvadrata { get; set; }
 
+        public bool? IsActive { get; set; }
     }
 }

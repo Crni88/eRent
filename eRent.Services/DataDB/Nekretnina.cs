@@ -33,6 +33,8 @@ public partial class Nekretnina
 
     public string? Slika { get; set; }
 
+    public bool? IsActive { get; set; }
+
     public virtual Korisnik KorisnikNekretninaNavigation { get; set; } = null!;
 
     public virtual ICollection<NekretninaKorisnik> NekretninaKorisniks { get; } = new List<NekretninaKorisnik>();

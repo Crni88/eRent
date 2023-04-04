@@ -15,5 +15,6 @@ namespace eRent.Models.Requests
         public string Grad { get; set; }
         public int Brojkvadrata { get; set; }
         public string Slika { get; set; }
+        public bool? IsActive { get; set; }
     }
 }

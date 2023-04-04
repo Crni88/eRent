@@ -14,19 +14,17 @@ namespace eRent.UI
 
         APIService rezervacijeAPIService { get; set; } = new APIService("Rezervacija");
         APIService NekretnineService { get; set; } = new APIService("Nekretnine");
-         APIService NekretninaKorisnikService { get; set; } = new APIService("NekretninaKorisnik");
+        APIService NekretninaKorisnikService { get; set; } = new APIService("NekretninaKorisnik");
+
+        List<NekretninaModel> data = new List<NekretninaModel>();
 
         public frmOpcijeIzvjestaja()
         {
             InitializeComponent();
         }
 
-        private async void btnListaNekretninaReportGenerate(object sender, EventArgs e)
+        private void btnListaNekretninaReportGenerate(object sender, EventArgs e)
         {
-
-            // Retrieve data from API
-            List<NekretninaModel> data = await NekretnineService.Get<List<NekretninaModel>>();
-
             // create a new PDF document
             PdfDocument pdfDoc = new PdfDocument(new PdfWriter(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\listaNekretnina.pdf"));
 
@@ -40,9 +38,9 @@ namespace eRent.UI
             table.AddHeaderCell("Naziv Nekretnine");
             table.AddHeaderCell("Grad");
             table.AddHeaderCell("Cijena");
-            table.AddHeaderCell("Br. Soba");
+            table.AddHeaderCell("Broj Soba");
             table.AddHeaderCell("Namještena");
-            table.AddHeaderCell("Br. Kvadrata");
+            table.AddHeaderCell("Broj Kvadrata");
 
 
             // add table rows dynamically based on API data
@@ -53,8 +51,8 @@ namespace eRent.UI
                 table.AddCell(item.Cijena.ToString());
                 table.AddCell(item.BrojSoba.ToString());
                 table.AddCell(item.Namještena ? "Da" : "Ne");
-                table.AddCell(item.Popunjena ? "Ne" : "Da");
                 table.AddCell(item.Brojkvadrata.ToString());
+                //table.AddCell(item.Popunjena ? "Ne" : "Da");
             }
 
             Paragraph title = new Paragraph("Broj nekretnina")
@@ -81,7 +79,6 @@ namespace eRent.UI
         private async void btnListaRezervacija_Click(object sender, EventArgs e)
         {
             List<RezervacijaModel> data = await rezervacijeAPIService.Get<List<RezervacijaModel>>();
-
             // create a new PDF document
             PdfDocument pdfDoc = new PdfDocument(new PdfWriter(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\listaRezervacija.pdf"));
             // create a new document instance
@@ -123,7 +120,6 @@ namespace eRent.UI
 
         private async void btnMjesecniPrihodiUkupno_Click(object sender, EventArgs e)
         {
-            List<NekretninaModel> data = await NekretnineService.Get<List<NekretninaModel>>();
             List<NekretninaKorisnikModel> nekretninaKorisnikModels = new List<NekretninaKorisnikModel>();
             foreach (NekretninaModel item in data)
             {
@@ -176,9 +172,18 @@ namespace eRent.UI
             this.Close();
         }
 
-        private void frmOpcijeIzvjestaja_Load(object sender, EventArgs e)
+        private async void frmOpcijeIzvjestaja_Load(object sender, EventArgs e)
         {
-
+            NekretninaSearchObject nekretninaSearchObject = new NekretninaSearchObject();
+            nekretninaSearchObject.IsActive = true;
+            List<NekretninaModel> nekretninas = await NekretnineService.Get<List<NekretninaModel>>(nekretninaSearchObject);
+            data = nekretninas;
+            List<String> nekretnineNames = new List<string>();
+            foreach (var nekretnina in nekretninas)
+            {
+                nekretnineNames.Add(nekretnina.NazivNekretnine);
+            }
+            cbListaNekretnina.DataSource = nekretnineNames;
         }
     }
 }

@@ -1,4 +1,7 @@
-﻿namespace eRent.Services.DataDB;
+﻿using System;
+using System.Collections.Generic;
+
+namespace eRent.Services.DataDB;
 
 public partial class PaymentRequest
 {
