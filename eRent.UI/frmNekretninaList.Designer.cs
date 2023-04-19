@@ -208,9 +208,9 @@
             // 
             this.btnDodajKorisnika.Location = new System.Drawing.Point(139, 659);
             this.btnDodajKorisnika.Name = "btnDodajKorisnika";
-            this.btnDodajKorisnika.Size = new System.Drawing.Size(198, 32);
+            this.btnDodajKorisnika.Size = new System.Drawing.Size(96, 32);
             this.btnDodajKorisnika.TabIndex = 7;
-            this.btnDodajKorisnika.Text = "Dodaj novog korisnika";
+            this.btnDodajKorisnika.Text = "Korisnici";
             this.btnDodajKorisnika.UseVisualStyleBackColor = true;
             this.btnDodajKorisnika.Click += new System.EventHandler(this.btnDodajKorisnika_Click);
             // 

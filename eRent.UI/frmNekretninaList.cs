@@ -6,20 +6,14 @@ namespace eRent.UI
     public partial class frmNekretninaList : Form
     {
         public APIService NekretnineService { get; set; } = new APIService("Nekretnine");
-        // public APIService LokacijaService { get; set; } = new APIService("Lokacija");
         public dynamic Result { get; }
-
-        //public frmNekretninaList()
-        //{
-        //    InitializeComponent();
-        //    dgvNekretnineList.AutoGenerateColumns = false;
-        //}
-
-        public frmNekretninaList(dynamic result)
+        private string _username { get; set; }
+        public frmNekretninaList(string username,dynamic result)
         {
             InitializeComponent();
             dgvNekretnineList.AutoGenerateColumns = false;
             Result = result;
+            this._username = username;
         }
 
         private async void btnShowNekretnine_Click(object sender, EventArgs e)
@@ -28,6 +22,7 @@ namespace eRent.UI
             {
                 NekretninaSearchObject nekretnina = new NekretninaSearchObject();
                 nekretnina.IsActive = true;
+                nekretnina.Username = _username;
                 var list = await NekretnineService.Get<List<NekretninaModel>>(nekretnina);
                 dgvNekretnineList.DataSource = list;
             }
@@ -36,6 +31,7 @@ namespace eRent.UI
                 NekretninaSearchObject nekretnina = new NekretninaSearchObject();
                 nekretnina.NameFTS = txtSearch.Text;
                 nekretnina.IsActive = true;
+                nekretnina.Username = _username;
                 var list = await NekretnineService.Get<List<NekretninaModel>>(nekretnina);
                 dgvNekretnineList.DataSource = list;
             }
@@ -44,7 +40,7 @@ namespace eRent.UI
 
         private void btnDodajNovu_Click(object sender, EventArgs e)
         {
-            frmAddNekretninu addNekretninu = new frmAddNekretninu();
+            frmAddNekretninu addNekretninu = new frmAddNekretninu(_username);
             addNekretninu.Show();
         }
 
@@ -64,7 +60,7 @@ namespace eRent.UI
                 var nekretnina = dgvNekretnineList.SelectedRows[0].DataBoundItem as NekretninaModel;
                 if (nekretnina != null)
                 {
-                    frmAddNekretninu addNekretninu = new frmAddNekretninu(nekretnina);
+                    frmAddNekretninu addNekretninu = new frmAddNekretninu(_username, nekretnina);
                     addNekretninu.Show();
                 }
             }
@@ -111,7 +107,7 @@ namespace eRent.UI
 
         private void btnDodajKorisnika_Click(object sender, EventArgs e)
         {
-            frmAddNovogKorisnika frmAddNovogKorisnika = new frmAddNovogKorisnika();
+            frmSviKorisnici frmAddNovogKorisnika = new frmSviKorisnici();
             frmAddNovogKorisnika.Show();
         }
     }

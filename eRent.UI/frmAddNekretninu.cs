@@ -13,13 +13,20 @@ namespace eRent.UI
 
         public APIService NekretnineService { get; set; } = new APIService("Nekretnine");
         public APIService nekretninaTagoviService { get; set; } = new APIService("NekretnineTagovi");
+        private readonly APIService korisnikService = new APIService("Korisnici");
+        private string _username { get; set; }
+
+        int userId { get; set; }
         bool isPressed = false;
+
         NekretninaModel _nekretninaModel { get; set; }
         NekretninaTagSearchObject nekretninaSearchObject = new NekretninaTagSearchObject();
-        public frmAddNekretninu(NekretninaModel nekretnina = null)
+        public frmAddNekretninu(string username, NekretninaModel nekretnina = null)
         {
             InitializeComponent();
+            this._username = username;
             btnObrisiNekretninu.Enabled = false;
+            loadUser();
             if (nekretnina != null)
             {
                 loadNekretnina(nekretnina.NekretninaId);
@@ -27,6 +34,14 @@ namespace eRent.UI
                 loadTags(nekretninaSearchObject);
                 btnObrisiNekretninu.Enabled = true;
             }
+        }
+
+        private async void loadUser()
+        {
+            KorisnikSearchObject korisnikSearchObject = new KorisnikSearchObject();
+            korisnikSearchObject.Username = _username;
+            List<KorisnikModel> korisnikModel = await korisnikService.Get<List<KorisnikModel>>(korisnikSearchObject);
+            userId = korisnikModel[0].KorisnikId;
         }
 
         private async void loadNekretnina(int nekretninaId)
@@ -162,7 +177,7 @@ namespace eRent.UI
 
         private NekretninaInsertRequest CreateInsertObject(NekretninaInsertRequest nekretninaInsertRequest)
         {
-            nekretninaInsertRequest.KorisnikNekretnina = 1;
+            nekretninaInsertRequest.KorisnikNekretnina = userId;
             nekretninaInsertRequest.Username = APIService.username;
             nekretninaInsertRequest.Brojkvadrata = int.Parse(txtBrojKvadrata.Text);
             nekretninaInsertRequest.BrojSoba = int.Parse(txtBrojSoba.Text);
