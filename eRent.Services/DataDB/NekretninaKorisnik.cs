@@ -21,5 +21,7 @@ public partial class NekretninaKorisnik
 
     public string? Slika { get; set; }
 
+    public bool? IsActive { get; set; }
+
     public virtual Nekretnina NekretninaNavigation { get; set; } = null!;
 }

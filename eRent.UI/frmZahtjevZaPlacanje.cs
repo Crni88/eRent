@@ -57,8 +57,11 @@ namespace eRent.UI
             paymentUpsertRequest.IsProcessed = false;
             paymentUpsertRequest.KorisnikPaymentId = 2;
             var postPaymentRequest = await PaymentRequestService.Post<PaymentUpsertRequest>(paymentUpsertRequest);
-            showMessage();
-            this.Close();
+            if (postPaymentRequest != null)
+            {
+                showMessage();
+                this.Close();
+            }
         }
 
         private async Task posaljiNotifikacijuAsync(string komentar = "", string naslov = "", string fcmToken = "")

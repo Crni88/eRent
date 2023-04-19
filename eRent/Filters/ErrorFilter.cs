@@ -1,7 +1,7 @@
-﻿using eRent.Models;
-using Microsoft.AspNetCore.Mvc.Filters;
+﻿using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.AspNetCore.Mvc;
 using System.Net;
+using eRent.Models.Exceptions;
 
 namespace eRent.Filters
 {
@@ -13,6 +13,11 @@ namespace eRent.Filters
             {
                 context.ModelState.AddModelError("ERROR", context.Exception.Message);
                 context.HttpContext.Response.StatusCode = (int)HttpStatusCode.BadRequest;
+            }
+            else if (context.Exception is ConflictException)
+            {
+                context.ModelState.AddModelError("ERROR", context.Exception.Message);
+                context.HttpContext.Response.StatusCode = (int)HttpStatusCode.Conflict;
             }
             else
             {

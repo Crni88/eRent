@@ -19,7 +19,7 @@ namespace eRent.Models.Requests.Korisnik
         [Required(AllowEmptyStrings = false)]
         public string Username { get; set; }
 
-        public int? UlogaId { get; set; }
+        public string Uloga { get; set; }
 
         public double? Rejting { get; set; }
 

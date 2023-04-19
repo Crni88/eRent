@@ -18,6 +18,14 @@ namespace eRent.Services.Rezervacija
             {
                 filteredQuery = filteredQuery.Where(x => x.NekretninaId == search.NekretninaId);
             }
+            if (search?.DatumKraja != null)
+            {
+                filteredQuery = filteredQuery.Where(x => x.DatumKraja <= search.DatumKraja);
+            }
+            if (search?.DatumPocetka != null)
+            {
+                filteredQuery = filteredQuery.Where(x => x.DatumKraja >= search.DatumPocetka);
+            }
             return filteredQuery;
         }
 

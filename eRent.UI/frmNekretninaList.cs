@@ -24,11 +24,6 @@ namespace eRent.UI
 
         private async void btnShowNekretnine_Click(object sender, EventArgs e)
         {
-            //Get Json Async Returns a TASK 
-            //TODO Test Out The Update Method When Get By Id is Fixed
-            //var entity = await NekretnineService.GetById<NekretninaModel>(4);
-            //entity.Opis = "Testni Opis Sa Formi Dolazi";
-            //var update = await NekretnineService.Put<NekretninaModel>(entity.NekretninaId, entity);
             if (txtSearch.Text == "")
             {
                 NekretninaSearchObject nekretnina = new NekretninaSearchObject();
@@ -112,6 +107,12 @@ namespace eRent.UI
         {
             frmRejting frmRejting = new frmRejting(Result);
             frmRejting.Show();
+        }
+
+        private void btnDodajKorisnika_Click(object sender, EventArgs e)
+        {
+            frmAddNovogKorisnika frmAddNovogKorisnika = new frmAddNovogKorisnika();
+            frmAddNovogKorisnika.Show();
         }
     }
 }

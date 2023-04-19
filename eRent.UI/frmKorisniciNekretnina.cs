@@ -23,6 +23,7 @@ namespace eRent.UI
         {
             NekretninaKorisnikSearchObject nekretninaKorisnik = new NekretninaKorisnikSearchObject();
             nekretninaKorisnik.NekretninaId = _nekretnina.NekretninaId;
+            nekretninaKorisnik.IsActive = true;
             list = await NekretninaKorisnikService.Get<List<NekretninaKorisnikModel>>(nekretninaKorisnik);
             dgvKorisniciNekretnina.DataSource = list;
         }

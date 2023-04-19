@@ -6,6 +6,7 @@ using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
 using iText.Layout.Properties;
+using System.Globalization;
 
 namespace eRent.UI
 {
@@ -78,7 +79,11 @@ namespace eRent.UI
 
         private async void btnListaRezervacija_Click(object sender, EventArgs e)
         {
-            List<RezervacijaModel> data = await rezervacijeAPIService.Get<List<RezervacijaModel>>();
+            RezervacijaSearchObject rezervacijaSearchObject = new RezervacijaSearchObject();
+            rezervacijaSearchObject.NekretninaId = data.Where(x => x.NazivNekretnine == cbListaNekretnina.Text).Select(x => x.NekretninaId).FirstOrDefault();
+            rezervacijaSearchObject.DatumPocetka = dtpFrom.Value;
+            rezervacijaSearchObject.DatumKraja = dtpUntil.Value;
+            List<RezervacijaModel> rezervacijas = await rezervacijeAPIService.Get<List<RezervacijaModel>>(rezervacijaSearchObject);
             // create a new PDF document
             PdfDocument pdfDoc = new PdfDocument(new PdfWriter(Environment.GetFolderPath(Environment.SpecialFolder.Desktop) + "\\listaRezervacija.pdf"));
             // create a new document instance
@@ -90,24 +95,29 @@ namespace eRent.UI
             table.AddHeaderCell("Ime i prezime");
             table.AddHeaderCell("Broj telefona");
             table.AddHeaderCell("Naziv Nekretnine");
-            table.AddHeaderCell("Datum Početka");
+            table.AddHeaderCell("Datum Pocetka");
             table.AddHeaderCell("Datum kraja");
             table.AddHeaderCell("Mjesečna rezervacija");
 
 
             // add table rows dynamically based on API data
-            foreach (RezervacijaModel item in data)
+            foreach (RezervacijaModel item in rezervacijas)
             {
+                DateTime datumPocetka = DateTime.ParseExact(item.DatumPocetka.ToString(), "d. M. yyyy. HH:mm:ss", CultureInfo.InvariantCulture);
+                string formattedDate = datumPocetka.ToString("d. M. yyyy");
+                DateTime datumKraja = DateTime.ParseExact(item.DatumKraja.ToString(), "d. M. yyyy. HH:mm:ss", CultureInfo.InvariantCulture);
+                string formattedDate1 = datumPocetka.ToString("d. M. yyyy");
+
                 table.AddCell(item.ImePrezime);
                 table.AddCell(item.BrojTelefona);
                 table.AddCell(item.Nazivnekretnine);
-                table.AddCell(item.DatumPocetka.ToString());
-                table.AddCell(item.DatumKraja.ToString());
+                table.AddCell(formattedDate);
+                table.AddCell(formattedDate1);
                 table.AddCell(item.MjesecnaRezervacija ? "Da" : "Ne");
             }
             Paragraph title = new Paragraph("Broj rezervacija").SetFont(PdfFontFactory.CreateFont("Helvetica-Bold"))
             .SetFontSize(22).SetTextAlignment(TextAlignment.CENTER);
-            Paragraph para = new Paragraph("Ukupan broj rezervacija " + data.Count + ".");
+            Paragraph para = new Paragraph("Ukupan broj rezervacija " + rezervacijas.Count + ".");
             // add the table to the document
             doc.Add(title);
             doc.Add(table);

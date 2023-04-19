@@ -42,16 +42,19 @@ namespace eRent.UI
                 var rezervacija = dgvRezervacije.SelectedRows[0].DataBoundItem as RezervacijaModel;
                 if (rezervacija != null)
                 {
-                    updateRezervacija(rezervacija);
-                    createUgovor(rezervacija);
+                    var rezervacijaRes = updateRezervacija(rezervacija);
+                    var ugovorRes = createUgovor(rezervacija);
                     generisiUgovor(rezervacija);
-                    showMessage();
-                    this.Close();
+                    if (rezervacijaRes != null && ugovorRes != null)
+                    {
+                        showMessage();
+                        this.Close();
+                    }
                 }
             }
         }
 
-        private async void createUgovor(RezervacijaModel rezervacija)
+        private async Task<UgovorUpsertRequest> createUgovor(RezervacijaModel rezervacija)
         {
             var ugovorUpsert = new UgovorUpsertRequest();
             ugovorUpsert.PodnosiocUgovoraId = 2015;
@@ -61,14 +64,16 @@ namespace eRent.UI
             ugovorUpsert.UgovornaStranka = rezervacija.ImePrezime;
             ugovorUpsert.NekretninaId = rezervacija.NekretninaId;
             var res = await ugovorAPIService.Post<UgovorUpsertRequest>(ugovorUpsert);
+            return res;
         }
 
-        private async void updateRezervacija(RezervacijaModel? rezervacija)
+        private async Task<RezervacijaUpdateRequest> updateRezervacija(RezervacijaModel? rezervacija)
         {
             var rezervacijaUpdateRequest = new RezervacijaUpdateRequest();
             rezervacijaUpdateRequest.RezervacijaId = rezervacija.RezervacijaId;
             rezervacijaUpdateRequest.Odobrena = true;
             var res = await rezervacijeAPIService.Put<RezervacijaUpdateRequest>(rezervacija.RezervacijaId, rezervacijaUpdateRequest);
+            return res;
         }
 
         private void generisiUgovor(RezervacijaModel rezervacija)

@@ -1,5 +1,6 @@
 ﻿using eRent.Models;
 using eRent.Models.Requests.NekretninaKorisnik;
+using eRent.UI.Helpers;
 using System.Text.RegularExpressions;
 using static eRent.UI.Helpers.ImageConverter;
 
@@ -10,6 +11,8 @@ namespace eRent.UI
         public APIService NekretninaKorisnikService { get; set; } = new APIService("NekretninaKorisnik");
         public NekretninaKorisnikModel _nekretninaKorisnik { get; set; }
         public NekretninaModel _nekretnina { get; }
+        bool isPressed = false;
+
         public frmAddKorisnikNekretnina(NekretninaKorisnikModel nekretninaKorisnik = null)
         {
             InitializeComponent();
@@ -17,6 +20,7 @@ namespace eRent.UI
             if (nekretninaKorisnik != null)
             {
                 GetKorisnik(nekretninaKorisnik.NekretninaKorisnikId);
+                btnObrisi.Enabled = true;
                 //btnKorisnikSlika.Enabled = false;
             }
         }
@@ -30,6 +34,7 @@ namespace eRent.UI
         public frmAddKorisnikNekretnina(NekretninaModel nekretnina)
         {
             InitializeComponent();
+            btnObrisi.Enabled = false;
             _nekretnina = nekretnina;
         }
 
@@ -51,6 +56,7 @@ namespace eRent.UI
             nekretninaKorisnikInsertRequest.DatumIseljenja = dtpDatumIseljenja.Value;
             nekretninaKorisnikInsertRequest.DatumUseljenja = dtpDatumUseljenja.Value;
             nekretninaKorisnikInsertRequest.Slika = FromImageToBase64(pbKorisnikSlika.Image);
+            nekretninaKorisnikInsertRequest.IsActive = true;
         }
         private async void btnDodajKorisnika_Click(object sender, EventArgs e)
         {
@@ -68,6 +74,11 @@ namespace eRent.UI
                             insertKorisnikNekretnina(nekretninaKorisnikUpsert);
                             nekretninaKorisnikUpsert.Nekretnina = _nekretnina.NekretninaId;
                             var postNekretnina = await NekretninaKorisnikService.Post<NekretninaKorisnikInsertRequest>(nekretninaKorisnikUpsert);
+                            if (postNekretnina != null)
+                            {
+                                showMessage("Korisnik dodan!", "Korisnik uspjesno dodan!");
+                                this.Close();
+                            }
                         }
                         catch (Exception ex)
                         {
@@ -80,7 +91,11 @@ namespace eRent.UI
                         {
                             NekretninaKorisnikUpdateRequest nekretninaKorisnikUpdateRequest = UpdateKorisnikNekretnina();
                             var putNekretnina = await NekretninaKorisnikService.Put<NekretninaKorisnikUpdateRequest>(_nekretninaKorisnik.NekretninaKorisnikId, nekretninaKorisnikUpdateRequest);
-
+                            if (putNekretnina != null)
+                            {
+                                showMessage("Korisnik azuriran!", "Korisnik uspjesno azuriran!");
+                                this.Close();
+                            }
                         }
                         catch (Exception ex)
                         {
@@ -105,7 +120,15 @@ namespace eRent.UI
             nekretninaKorisnikUpdateRequest.BrojTelefona = txtBrojTelefona.Text;
             nekretninaKorisnikUpdateRequest.ImeKorisnika = txtIme.Text;
             nekretninaKorisnikUpdateRequest.PrezimeKorisnika = txtPrezime.Text;
-            nekretninaKorisnikUpdateRequest.Slika = FromImageToBase64(pbKorisnikSlika.Image);
+            nekretninaKorisnikUpdateRequest.IsActive = true;
+            if (isPressed)
+            {
+                nekretninaKorisnikUpdateRequest.Slika = FromImageToBase64(pbKorisnikSlika.Image);
+            }
+            else
+            {
+                nekretninaKorisnikUpdateRequest.Slika = _nekretninaKorisnik.Slika;
+            }
             return nekretninaKorisnikUpdateRequest;
         }
 
@@ -117,11 +140,11 @@ namespace eRent.UI
 
         private void btnKorisnikSlika_Click(object sender, EventArgs e)
         {
-
             try
             {
                 if (ofdKorisnikNekretnina.ShowDialog() == DialogResult.OK)
                 {
+                    isPressed = true;
                     pbKorisnikSlika.Image = Image.FromFile(ofdKorisnikNekretnina.FileName);
                 }
             }
@@ -180,6 +203,28 @@ namespace eRent.UI
             {
                 e.Cancel = false;
                 err.SetError(txtBrojTelefona, "");
+            }
+        }
+
+        private void showMessage(string title, string poruka)
+        {
+            AutoClosingMessageBox.Show(poruka, title, 3000);
+            this.Close();
+        }
+
+        private async void btnObrisi_Click(object sender, EventArgs e)
+        {
+            NekretninaKorisnikUpdateRequest nekretninaKorisnik = UpdateKorisnikNekretnina();
+            nekretninaKorisnik.IsActive = false;
+            try
+            {
+                NekretninaKorisnikUpdateRequest nekretninaKorisnikUpdateRequest = UpdateKorisnikNekretnina();
+                var putNekretnina = await NekretninaKorisnikService.Put<NekretninaKorisnikUpdateRequest>(_nekretninaKorisnik.NekretninaKorisnikId, nekretninaKorisnikUpdateRequest);
+                showMessage("Korisnik obrisan!", "Korisnik uspjesno obrisan!");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
     }

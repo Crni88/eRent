@@ -9,7 +9,7 @@ namespace eRent.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    [Authorize]
+    //[Authorize]
     public class KorisniciController : BaseCRUDController<KorisnikModel, KorisnikSearchObject, KorisnikInsertRequest, KorisnikUpdateRequest>
     {
         public KorisniciController(IKorisniciService korisniciServis) : base(korisniciServis)
@@ -18,10 +18,10 @@ namespace eRent.Controllers
 
 
         //Dodavanje sa authorizacijom
-        //[Authorize("Admin")]
-        //public override KorisnikModel Insert([FromBody] KorisnikInsertRequest korisnikInsertRequest)
-        //{
-        //    return base.Insert(korisnikInsertRequest);
-        //}
+        //[Authorize(Roles = "Admin")]
+        public override KorisnikModel Insert([FromBody] KorisnikInsertRequest korisnikInsertRequest)
+        {
+            return base.Insert(korisnikInsertRequest);
+        }
     }
 }
