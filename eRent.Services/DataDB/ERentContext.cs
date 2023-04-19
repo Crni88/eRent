@@ -76,12 +76,14 @@ public partial class ERentContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("lozinkaSalt");
             entity.Property(e => e.Rejting).HasColumnName("rejting");
-            entity.Property(e => e.Uloga)
-                .HasMaxLength(30)
-                .HasColumnName("uloga");
+            entity.Property(e => e.UlogaId).HasColumnName("ulogaId");
             entity.Property(e => e.Username)
                 .HasMaxLength(50)
                 .HasColumnName("username");
+
+            entity.HasOne(d => d.Uloga).WithMany(p => p.Korisniks)
+                .HasForeignKey(d => d.UlogaId)
+                .HasConstraintName("FK__korisnik__ulogaI__1CBC4616");
         });
 
         modelBuilder.Entity<KorisnikTagovi>(entity =>
@@ -163,7 +165,6 @@ public partial class ERentContext : DbContext
             entity.Property(e => e.ImeKorisnika)
                 .HasMaxLength(50)
                 .HasColumnName("imeKorisnika");
-            entity.Property(e => e.IsActive).HasColumnName("isActive");
             entity.Property(e => e.Nekretnina).HasColumnName("nekretnina");
             entity.Property(e => e.PrezimeKorisnika)
                 .HasMaxLength(50)

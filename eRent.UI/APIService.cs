@@ -45,13 +45,6 @@ namespace eRent.UI
             }
             catch (FlurlHttpException ex)
             {
-
-                if (ex.StatusCode == 403)
-                {
-                    MessageBox.Show("Nedozvoljena radnja!", "Greška", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                    return default(T);
-                }
-
                 var errors = await ex.GetResponseJsonAsync<Dictionary<string, string[]>>();
 
                 var stringBuilder = new StringBuilder();

@@ -1,14 +1,10 @@
 ﻿using AutoMapper;
 using eRent.Models;
-using eRent.Models.Exceptions;
 using eRent.Models.Requests.Korisnik;
 using eRent.Models.Search_Objects;
 using eRent.Services.DataDB;
-using System.Data.Entity;
-using System.Net;
 using System.Security.Cryptography;
 using System.Text;
-using System.Web;
 
 namespace eRent.Services.Korisnici
 {
@@ -22,7 +18,7 @@ namespace eRent.Services.Korisnici
 
         public Models.KorisnikModel Login(string username, string password)
         {
-            var entity = Context.Korisniks.Include("UlogaId").FirstOrDefault(x => x.Username == username);
+            var entity = Context.Korisniks.FirstOrDefault(x => x.Username == username);
             if (entity == null)
             {
                 return null;
@@ -53,15 +49,6 @@ namespace eRent.Services.Korisnici
             entity.LozinkaSalt = salt;
             entity.LozinkaHash = GenerateHash(salt, insert.Password);
             entity.Username = insert.Username;
-            //entity.Uloga = insert.UlogaId;
-            if (Context.Korisniks.Any(k => k.Username == insert.Username))
-            {
-                throw new ConflictException("User with this username already exists.");
-            }
-            else if (Context.Korisniks.Any(k => k.Email == insert.Email))
-            {
-                throw new ConflictException("User with this email already exists.");
-            }
             base.BeforeInsert(insert, entity);
         }
 

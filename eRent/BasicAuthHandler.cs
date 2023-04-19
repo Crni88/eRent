@@ -13,7 +13,6 @@ public class BasicAuthHandler : AuthenticationHandler<AuthenticationSchemeOption
         IOptionsMonitor<AuthenticationSchemeOptions> options, ILoggerFactory logger, UrlEncoder encoder, ISystemClock clock) : base(options, logger, encoder, clock)
     {
         KorisniciService = korisniciService;
-       
     }
 
     protected override async Task<AuthenticateResult> HandleAuthenticateAsync()
@@ -39,8 +38,6 @@ public class BasicAuthHandler : AuthenticationHandler<AuthenticationSchemeOption
         var claims = new List<Claim>
         {
             new Claim(ClaimTypes.Name, username),
-            new Claim(ClaimTypes.Name, user.KorsnikIme),
-            new Claim(ClaimTypes.Role, user.Uloga),
             //new Claim(ClaimTypes.Name, user.KorsnikIme),
         };
 
@@ -51,6 +48,4 @@ public class BasicAuthHandler : AuthenticationHandler<AuthenticationSchemeOption
 
         return AuthenticateResult.Success(ticket);
     }
-
-
 }

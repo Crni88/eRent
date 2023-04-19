@@ -45,7 +45,6 @@
             this.btnDodajKorisnika = new System.Windows.Forms.Button();
             this.ofdKorisnikNekretnina = new System.Windows.Forms.OpenFileDialog();
             this.err = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnObrisi = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.pbKorisnikSlika)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.err)).BeginInit();
             this.SuspendLayout();
@@ -186,22 +185,11 @@
             // 
             this.err.ContainerControl = this;
             // 
-            // btnObrisi
-            // 
-            this.btnObrisi.Location = new System.Drawing.Point(427, 321);
-            this.btnObrisi.Name = "btnObrisi";
-            this.btnObrisi.Size = new System.Drawing.Size(75, 55);
-            this.btnObrisi.TabIndex = 14;
-            this.btnObrisi.Text = "Obrisi";
-            this.btnObrisi.UseVisualStyleBackColor = true;
-            this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
-            // 
             // frmAddKorisnikNekretnina
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnObrisi);
             this.Controls.Add(this.btnDodajKorisnika);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.dtpDatumIseljenja);
@@ -244,6 +232,5 @@
         private Button btnDodajKorisnika;
         private OpenFileDialog ofdKorisnikNekretnina;
         private ErrorProvider err;
-        private Button btnObrisi;
     }
 }

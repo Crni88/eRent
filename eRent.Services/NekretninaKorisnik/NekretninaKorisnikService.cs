@@ -21,10 +21,6 @@ namespace eRent.Services.NekretninaKorisnik
             {
                 filteredQuery = filteredQuery.Where(x => x.Nekretnina == search.NekretninaId);
             }
-            if (search?.IsActive != null)
-            {
-                filteredQuery = filteredQuery.Where(x => x.IsActive == search.IsActive);
-            }
             return filteredQuery;
         }
     }

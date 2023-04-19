@@ -68,7 +68,7 @@ internal class Program
 
 
         builder.Services.AddDbContext<ERentContext>(options =>
-        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly(nameof(eRent))));
+        options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),b=>b.MigrationsAssembly(nameof(eRent))));
 
         var app = builder.Build();
 
@@ -92,7 +92,6 @@ internal class Program
             dataContext.Database.EnsureCreated();
             dataContext.Database.Migrate();
         }
-
         app.Run();
     }
 }

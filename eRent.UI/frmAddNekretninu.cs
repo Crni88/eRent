@@ -19,13 +19,11 @@ namespace eRent.UI
         public frmAddNekretninu(NekretninaModel nekretnina = null)
         {
             InitializeComponent();
-            btnObrisiNekretninu.Enabled = false;
             if (nekretnina != null)
             {
                 loadNekretnina(nekretnina.NekretninaId);
                 nekretninaSearchObject.NekretninaId = nekretnina.NekretninaId;
                 loadTags(nekretninaSearchObject);
-                btnObrisiNekretninu.Enabled = true;
             }
         }
 
@@ -89,6 +87,7 @@ namespace eRent.UI
                     CreateInsertObject(nekretninaInsertRequest);
                     var postNekretnina = await NekretnineService.Post<NekretninaModel>(nekretninaInsertRequest);
                     _nekretninaModel = postNekretnina;
+                    //TODO Test this
                     await UpdateTagsAsync();
                     showMessage("Nekretnina dodana!", "Nekretnina uspjesno dodana!");
                     this.Close();

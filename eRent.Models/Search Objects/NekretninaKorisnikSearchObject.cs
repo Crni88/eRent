@@ -3,7 +3,5 @@
     public class NekretninaKorisnikSearchObject:BaseSearchObject
     {
         public int NekretninaId { get; set; }
-        public bool? IsActive { get; set; }
-
     }
 }

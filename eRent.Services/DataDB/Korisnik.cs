@@ -17,6 +17,8 @@ public partial class Korisnik
 
     public string? Email { get; set; }
 
+    public int? UlogaId { get; set; }
+
     public double? Rejting { get; set; }
 
     public string? Username { get; set; }
@@ -24,8 +26,6 @@ public partial class Korisnik
     public int? BrojOcjena { get; set; }
 
     public string? FcmDeviceToken { get; set; }
-
-    public string? Uloga { get; set; }
 
     public virtual ICollection<KorisnikTagovi> KorisnikTagovis { get; } = new List<KorisnikTagovi>();
 
@@ -40,4 +40,6 @@ public partial class Korisnik
     public virtual ICollection<Rejting> RejtingKorisnikSecNavigations { get; } = new List<Rejting>();
 
     public virtual ICollection<Ugovor> Ugovors { get; } = new List<Ugovor>();
+
+    public virtual Uloga? Uloga { get; set; }
 }

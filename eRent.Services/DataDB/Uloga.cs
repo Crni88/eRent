@@ -10,4 +10,6 @@ public partial class Uloga
     public string Naziv { get; set; } = null!;
 
     public string? Opis { get; set; }
+
+    public virtual ICollection<Korisnik> Korisniks { get; } = new List<Korisnik>();
 }

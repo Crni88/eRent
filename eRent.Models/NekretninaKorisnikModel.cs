@@ -21,8 +21,5 @@ namespace eRent.Models
         public DateTime? DatumIseljenja { get; set; }
 
         public string Slika { get; set; }
-
-        public bool? IsActive { get; set; }
-
     }
 }

@@ -19,7 +19,5 @@ namespace eRent.Models.Requests.NekretninaKorisnik
         public DateTime? DatumIseljenja { get; set; }
 
         public string Slika { get; set; }
-        public bool? IsActive { get; set; }
-
     }
 }

@@ -48,11 +48,8 @@ namespace eRent.UI
                     taskInsertRequest.Priority = cbPriority.Text;
                     taskInsertRequest.DueDate = dtpDueDate.Value;
                     var taskInsert = await TaskService.Post<TaskModel>(taskInsertRequest);
-                    if (taskInsert != null)
-                    {
-                        showMessage();
-                        this.Close();
-                    }
+                    showMessage();
+                    this.Close();
                 }
                 catch (Exception ex)
                 {
