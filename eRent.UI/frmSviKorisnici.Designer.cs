@@ -29,12 +29,13 @@
         private void InitializeComponent()
         {
             this.dgvKorisnici = new System.Windows.Forms.DataGridView();
+            this.btnUcitajKorisnike = new System.Windows.Forms.Button();
+            this.btnDodajKorisnika = new System.Windows.Forms.Button();
             this.korsnikIme = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.korisnikPrezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnUcitajKorisnike = new System.Windows.Forms.Button();
-            this.btnDodajKorisnika = new System.Windows.Forms.Button();
+            this.Obrisi = new System.Windows.Forms.DataGridViewButtonColumn();
             ((System.ComponentModel.ISupportInitialize)(this.dgvKorisnici)).BeginInit();
             this.SuspendLayout();
             // 
@@ -47,14 +48,40 @@
             this.korsnikIme,
             this.korisnikPrezime,
             this.email,
-            this.username});
-            this.dgvKorisnici.Location = new System.Drawing.Point(12, 64);
+            this.username,
+            this.Obrisi});
+            this.dgvKorisnici.Location = new System.Drawing.Point(10, 48);
+            this.dgvKorisnici.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.dgvKorisnici.Name = "dgvKorisnici";
             this.dgvKorisnici.ReadOnly = true;
             this.dgvKorisnici.RowHeadersWidth = 51;
             this.dgvKorisnici.RowTemplate.Height = 29;
-            this.dgvKorisnici.Size = new System.Drawing.Size(776, 374);
+            this.dgvKorisnici.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dgvKorisnici.Size = new System.Drawing.Size(679, 280);
             this.dgvKorisnici.TabIndex = 0;
+            this.dgvKorisnici.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKorisnici_CellContentClick);
+            // 
+            // btnUcitajKorisnike
+            // 
+            this.btnUcitajKorisnike.Location = new System.Drawing.Point(10, 9);
+            this.btnUcitajKorisnike.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnUcitajKorisnike.Name = "btnUcitajKorisnike";
+            this.btnUcitajKorisnike.Size = new System.Drawing.Size(82, 22);
+            this.btnUcitajKorisnike.TabIndex = 1;
+            this.btnUcitajKorisnike.Text = "Ucitaj";
+            this.btnUcitajKorisnike.UseVisualStyleBackColor = true;
+            this.btnUcitajKorisnike.Click += new System.EventHandler(this.btnUcitajKorisnike_Click);
+            // 
+            // btnDodajKorisnika
+            // 
+            this.btnDodajKorisnika.Location = new System.Drawing.Point(607, 9);
+            this.btnDodajKorisnika.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
+            this.btnDodajKorisnika.Name = "btnDodajKorisnika";
+            this.btnDodajKorisnika.Size = new System.Drawing.Size(82, 22);
+            this.btnDodajKorisnika.TabIndex = 2;
+            this.btnDodajKorisnika.Text = "Dodaj";
+            this.btnDodajKorisnika.UseVisualStyleBackColor = true;
+            this.btnDodajKorisnika.Click += new System.EventHandler(this.btnDodajKorisnika_Click);
             // 
             // korsnikIme
             // 
@@ -92,34 +119,23 @@
             this.username.Name = "username";
             this.username.ReadOnly = true;
             // 
-            // btnUcitajKorisnike
+            // Obrisi
             // 
-            this.btnUcitajKorisnike.Location = new System.Drawing.Point(12, 12);
-            this.btnUcitajKorisnike.Name = "btnUcitajKorisnike";
-            this.btnUcitajKorisnike.Size = new System.Drawing.Size(94, 29);
-            this.btnUcitajKorisnike.TabIndex = 1;
-            this.btnUcitajKorisnike.Text = "Ucitaj";
-            this.btnUcitajKorisnike.UseVisualStyleBackColor = true;
-            this.btnUcitajKorisnike.Click += new System.EventHandler(this.btnUcitajKorisnike_Click);
-            // 
-            // btnDodajKorisnika
-            // 
-            this.btnDodajKorisnika.Location = new System.Drawing.Point(694, 12);
-            this.btnDodajKorisnika.Name = "btnDodajKorisnika";
-            this.btnDodajKorisnika.Size = new System.Drawing.Size(94, 29);
-            this.btnDodajKorisnika.TabIndex = 2;
-            this.btnDodajKorisnika.Text = "Dodaj";
-            this.btnDodajKorisnika.UseVisualStyleBackColor = true;
-            this.btnDodajKorisnika.Click += new System.EventHandler(this.btnDodajKorisnika_Click);
+            this.Obrisi.HeaderText = "Obrisi";
+            this.Obrisi.Name = "Obrisi";
+            this.Obrisi.ReadOnly = true;
+            this.Obrisi.Text = "Obrisi";
+            this.Obrisi.UseColumnTextForButtonValue = true;
             // 
             // frmSviKorisnici
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
+            this.ClientSize = new System.Drawing.Size(700, 338);
             this.Controls.Add(this.btnDodajKorisnika);
             this.Controls.Add(this.btnUcitajKorisnike);
             this.Controls.Add(this.dgvKorisnici);
+            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
             this.Name = "frmSviKorisnici";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Svi korisnici";
@@ -137,5 +153,6 @@
         private DataGridViewTextBoxColumn korisnikPrezime;
         private DataGridViewTextBoxColumn email;
         private DataGridViewTextBoxColumn username;
+        private DataGridViewButtonColumn Obrisi;
     }
 }

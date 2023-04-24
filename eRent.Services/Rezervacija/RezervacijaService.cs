@@ -26,6 +26,10 @@ namespace eRent.Services.Rezervacija
             {
                 filteredQuery = filteredQuery.Where(x => x.DatumKraja >= search.DatumPocetka);
             }
+            if (search?.Odobrena != null)
+            {
+                filteredQuery = filteredQuery.Where(x=>x.Odobrena == search.Odobrena);
+            }
             return filteredQuery;
         }
 

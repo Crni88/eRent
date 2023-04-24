@@ -1,5 +1,6 @@
 ﻿using eRent.Models;
 using eRent.Models.Requests.Korisnik;
+using eRent.Models.Requests.KorisnikTag;
 using eRent.UI.Helpers;
 using System.Text.RegularExpressions;
 
@@ -10,6 +11,7 @@ namespace eRent.UI
 
         public APIService KorisnikService { get; set; } = new APIService("Korisnici");
         public APIService UlogeService { get; set; } = new APIService("Uloge");
+        private APIService KorisnikTagoviService { get; set; } = new APIService("KorisnikTagovi");
 
         public frmAddNovogKorisnika()
         {
@@ -128,7 +130,6 @@ namespace eRent.UI
                 try
                 {
                     KorisnikInsertRequest korisnikInsertRequest = new KorisnikInsertRequest();
-
                     korisnikInsertRequest.Email = txtEmail.Text;
                     korisnikInsertRequest.Rejting = 0;
                     korisnikInsertRequest.KorisnikPrezime = txtKorisnikPrezime.Text;
@@ -136,9 +137,11 @@ namespace eRent.UI
                     korisnikInsertRequest.Username = txtUsername.Text;
                     korisnikInsertRequest.Password = txtPassword.Text;
                     korisnikInsertRequest.Uloga = cbUloga.SelectedItem.ToString();
-                    var taskInsert = await KorisnikService.Post<TaskModel>(korisnikInsertRequest);
+                    korisnikInsertRequest.IsActive = true;
+                    var taskInsert = await KorisnikService.Post<KorisnikModel>(korisnikInsertRequest);
                     if (taskInsert != null)
                     {
+                        CreateKorisnikTags(taskInsert.KorisnikId);
                         showMessage();
                         this.Close();
                     }
@@ -147,6 +150,25 @@ namespace eRent.UI
                 {
                     MessageBox.Show(ex.Message);
                 }
+            }
+        }
+
+        private async void CreateKorisnikTags(int korisnikId)
+        {
+            try
+            {
+                KorisnikTagUpsertRequest korisnikTagUpsertRequest = new KorisnikTagUpsertRequest();
+                for (int i = 1; i <= 5; i++)
+                {
+                    korisnikTagUpsertRequest.KorisnikId = korisnikId;
+                    korisnikTagUpsertRequest.TagId = i;
+                    korisnikTagUpsertRequest.IsActive = true;
+                    var taskInsert = await KorisnikTagoviService.Post<KorisnikTagoviModel>(korisnikTagUpsertRequest);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
             }
         }
 

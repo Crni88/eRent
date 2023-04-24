@@ -24,6 +24,7 @@ namespace eRent.Services.DataDB
                 Email = "desktop@desktop.com",
                 Rejting = 5,
                 Uloga = "Admin",
+                IsActive = true,
             },
             new Korisnik
             {
@@ -36,6 +37,7 @@ namespace eRent.Services.DataDB
                 Email = "mobile@mobile.com",
                 Rejting = 5,
                 Uloga = "Korisnik",
+                IsActive = true,
             });
             modelBuilder.Entity<Tag>().HasData(
                 new Tag { TagId = 1, TagName = "Tiho Naselje" },
@@ -251,9 +253,9 @@ namespace eRent.Services.DataDB
                 new PaymentRequest { PaymentRequestId = 3, IsProcessed = false, Iznos = 200, Komentar = "Komentar 3", KorisnikPaymentId = 2, Mjesecno = false, Naslov = "Naslov placanja 3", NekretninaPayment = 3, Nekretnina = "Vikendica Mostar" });
 
             modelBuilder.Entity<Posjetum>().HasData(
-                new Posjetum { PosjetaId = 1, KorisnikId = 2, NekretninaId = 2, NazivNekretnine = "Vikendica Travnik", DatumPosjete = DateTime.Today, VrijemePosjete = DateTime.Now.TimeOfDay.ToString(), KorisnikImePrezime = "Mobile Mobile" },
-                new Posjetum { PosjetaId = 2, KorisnikId = 2, NekretninaId = 1, NazivNekretnine = "Vikendica Sarajevo", DatumPosjete = DateTime.Today, VrijemePosjete = DateTime.Now.TimeOfDay.ToString(), KorisnikImePrezime = "Mobile Mobile" },
-                new Posjetum { PosjetaId = 3, KorisnikId = 2, NekretninaId = 3, NazivNekretnine = "Vikendica Mostar", DatumPosjete = DateTime.Today, VrijemePosjete = DateTime.Now.TimeOfDay.ToString(), KorisnikImePrezime = "Mobile Mobile" }
+                new Posjetum { PosjetaId = 1, KorisnikId = 2, NekretninaId = 2, NazivNekretnine = "Vikendica Travnik", DatumPosjete = DateTime.Today, VrijemePosjete = DateTime.Now.ToString("HH:mm"), KorisnikImePrezime = "Mobile Mobile" },
+                new Posjetum { PosjetaId = 2, KorisnikId = 2, NekretninaId = 1, NazivNekretnine = "Vikendica Sarajevo", DatumPosjete = DateTime.Today, VrijemePosjete = DateTime.Now.ToString("HH:mm"), KorisnikImePrezime = "Mobile Mobile" },
+                new Posjetum { PosjetaId = 3, KorisnikId = 2, NekretninaId = 3, NazivNekretnine = "Vikendica Mostar", DatumPosjete = DateTime.Today, VrijemePosjete = DateTime.Now.ToString("HH:mm"), KorisnikImePrezime = "Mobile Mobile" }
                 );
 
             modelBuilder.Entity<Rejting>().HasData(
@@ -348,9 +350,39 @@ namespace eRent.Services.DataDB
             }
             );
             modelBuilder.Entity<Task>().HasData(
-                new Task { TaskId = 1, NekretninaTask = 2, Title = "Popravak", Description = "Opis", DueDate = DateTime.Now.AddDays(3), Status = "TO DO", Priority = "Medium" },
-                new Task { TaskId = 2, NekretninaTask = 1, Title = "Popravak 2", Description = "Opis 2", DueDate = DateTime.Now.AddDays(3), Status = "TO DO", Priority = "Medium" },
-                new Task { TaskId = 3, NekretninaTask = 3, Title = "Popravak 3", Description = "Opis 3", DueDate = DateTime.Now.AddDays(3), Status = "TO DO", Priority = "Medium" }
+                new Task
+                {
+                    TaskId = 1,
+                    IsActive = true,
+                    NekretninaTask = 2,
+                    Title = "Popravak",
+                    Description = "Opis",
+                    DueDate = DateTime.Now.AddDays(3),
+                    Status = "TO DO",
+                    Priority = "Medium"
+                },
+                new Task
+                {
+                    TaskId = 2,
+                    IsActive = true,
+                    NekretninaTask = 1,
+                    Title = "Popravak 2",
+                    Description = "Opis 2",
+                    DueDate = DateTime.Now.AddDays(3),
+                    Status = "TO DO",
+                    Priority = "Medium"
+                },
+                new Task
+                {
+                    TaskId = 3,
+                    IsActive = true,
+                    NekretninaTask = 3,
+                    Title = "Popravak 3",
+                    Description = "Opis 3",
+                    DueDate = DateTime.Now.AddDays(3),
+                    Status = "TO DO",
+                    Priority = "Medium"
+                }
                 );
         }
     }

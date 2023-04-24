@@ -5,10 +5,8 @@ using eRent.Models.Requests.Korisnik;
 using eRent.Models.Search_Objects;
 using eRent.Services.DataDB;
 using System.Data.Entity;
-using System.Net;
 using System.Security.Cryptography;
 using System.Text;
-using System.Web;
 
 namespace eRent.Services.Korisnici
 {
@@ -34,7 +32,7 @@ namespace eRent.Services.Korisnici
             {
                 return null;
             }
-            return Mapper.Map<Models.KorisnikModel>(entity);    
+            return Mapper.Map<Models.KorisnikModel>(entity);
         }
 
 
@@ -85,7 +83,7 @@ namespace eRent.Services.Korisnici
 
             if (search.KorisnikId != 0)
             {
-                filteredQuery = filteredQuery.Where(x => x.KorisnikId == search.KorisnikId);            
+                filteredQuery = filteredQuery.Where(x => x.KorisnikId == search.KorisnikId);
             }
 
             if (!string.IsNullOrEmpty(search?.NameFTS))
@@ -102,19 +100,10 @@ namespace eRent.Services.Korisnici
             {
                 filteredQuery = filteredQuery.Where(x => x.Username == search.Username);
             }
-            //if (!string.IsNullOrEmpty(search?.KorsnikIme))
-            //{
-            //    filteredQuery = filteredQuery.Where(x => x.KorsnikIme == search.KorsnikIme);
-            //}
-            //if (!string.IsNullOrEmpty(search?.KorsnikPrezime))
-            //{
-            //    filteredQuery = filteredQuery.Where(x => x.KorisnikPrezime == search.KorsnikPrezime);
-            //}
-
-            //if (search.Page.HasValue)
-            //{
-            //    //filteredQuery = filteredQuery.Take(search.Page.Value).Skip(search.PageSize.Value);
-            //}
+            if (search.IsActive != null)
+            {
+                filteredQuery = filteredQuery.Where(x => x.IsActive == search.IsActive);
+            }
             return filteredQuery;
         }
     }

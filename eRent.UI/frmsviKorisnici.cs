@@ -1,13 +1,7 @@
 ﻿using eRent.Models;
-using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
+using eRent.Models.Requests.Korisnik;
+using eRent.Models.Search_Objects;
+using eRent.UI.Helpers;
 
 namespace eRent.UI
 {
@@ -23,7 +17,14 @@ namespace eRent.UI
 
         private async void btnUcitajKorisnike_Click(object sender, EventArgs e)
         {
-            List<KorisnikModel> korisnikModels = await korisnikService.Get<List<KorisnikModel>>();
+            await loadKorisnike();
+        }
+
+        private async Task loadKorisnike()
+        {
+            KorisnikSearchObject korisnikSearchObject = new KorisnikSearchObject();
+            korisnikSearchObject.IsActive = true;
+            List<KorisnikModel> korisnikModels = await korisnikService.Get<List<KorisnikModel>>(korisnikSearchObject);
             dgvKorisnici.DataSource = korisnikModels;
         }
 
@@ -31,6 +32,25 @@ namespace eRent.UI
         {
             frmAddNovogKorisnika frmAddNovogKorisnika = new frmAddNovogKorisnika();
             frmAddNovogKorisnika.ShowDialog();
+        }
+
+        private void showMessage(string title, string poruka)
+        {
+            AutoClosingMessageBox.Show(poruka, title, 3000);
+        }
+
+
+        private async void dgvKorisnici_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == 4)
+            {
+                KorisnikModel korisnik = (KorisnikModel)dgvKorisnici.SelectedRows[0].DataBoundItem;
+                KorisnikUpdateRequest korisnikSearchObject = new KorisnikUpdateRequest();
+                korisnikSearchObject.IsActive = false;
+                var korisnikModels = await korisnikService.Put<KorisnikUpdateRequest>(korisnik.KorisnikId, korisnikSearchObject);
+                loadKorisnike();
+                showMessage("Korisnik obrisan", "Korisnik uspjesno obrisan!");
+            }
         }
     }
 }

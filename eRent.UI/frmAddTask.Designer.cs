@@ -171,7 +171,6 @@
             this.Name = "frmAddTask";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Dodaj novi task";
-            this.Load += new System.EventHandler(this.frmAddTask_Load);
             ((System.ComponentModel.ISupportInitialize)(this.err)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();

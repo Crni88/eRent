@@ -25,5 +25,9 @@ namespace eRent.Models.Requests.Korisnik
 
         public string Password { get; set; }
 
+
+        public bool? IsActive { get; set; }
+
+
     }
 }

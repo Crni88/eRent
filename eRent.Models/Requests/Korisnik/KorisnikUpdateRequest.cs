@@ -6,5 +6,6 @@
         //public string KorisnikPrezime { get; set; }
         //public double? Rejting { get; set; }
         public string FcmDeviceToken { get; set; }
+        public bool? IsActive { get; set; }
     }
 }

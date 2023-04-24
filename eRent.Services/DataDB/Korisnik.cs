@@ -27,6 +27,8 @@ public partial class Korisnik
 
     public string? Uloga { get; set; }
 
+    public bool? IsActive { get; set; }
+
     public virtual ICollection<KorisnikTagovi> KorisnikTagovis { get; } = new List<KorisnikTagovi>();
 
     public virtual ICollection<Nekretnina> Nekretninas { get; } = new List<Nekretnina>();

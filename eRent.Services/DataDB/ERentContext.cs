@@ -63,6 +63,7 @@ public partial class ERentContext : DbContext
             entity.Property(e => e.FcmDeviceToken)
                 .HasMaxLength(200)
                 .HasColumnName("fcmDeviceToken");
+            entity.Property(e => e.IsActive).HasColumnName("isActive");
             entity.Property(e => e.KorisnikPrezime)
                 .HasMaxLength(25)
                 .HasColumnName("korisnikPrezime");
@@ -373,6 +374,7 @@ public partial class ERentContext : DbContext
 
             entity.Property(e => e.Description).HasMaxLength(500);
             entity.Property(e => e.DueDate).HasColumnType("datetime");
+            entity.Property(e => e.IsActive).HasColumnName("isActive");
             entity.Property(e => e.NekretninaTask).HasColumnName("nekretninaTask");
             entity.Property(e => e.Priority).HasMaxLength(20);
             entity.Property(e => e.Status).HasMaxLength(20);

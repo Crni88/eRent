@@ -20,6 +20,11 @@ namespace eRent.Services.Task
             {
                 filteredQuery = filteredQuery.Where(x => x.NekretninaTask == search.NekretninaTask);
             }
+            if (search.IsActive != null)
+            {
+                filteredQuery = filteredQuery.Where(x => x.IsActive == search.IsActive);
+
+            }
             return filteredQuery;
         }
     }

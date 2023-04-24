@@ -19,5 +19,7 @@ public partial class Task
 
     public string? Priority { get; set; }
 
+    public bool? IsActive { get; set; }
+
     public virtual Nekretnina NekretninaTaskNavigation { get; set; } = null!;
 }

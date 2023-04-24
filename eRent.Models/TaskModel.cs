@@ -17,5 +17,7 @@ namespace eRent.Models
         public string Status { get; set; }
 
         public string Priority { get; set; }
+        public bool? IsActive { get; set; }
+
     }
 }

@@ -8,14 +8,27 @@ namespace eRent.UI
     {
         public APIService TaskService { get; set; } = new APIService("Task");
         public NekretninaModel Nekretnina { get; }
+        public TaskModel TaskModel { get; } = null;
 
-        public frmAddTask(NekretninaModel nekretnina)
+        public frmAddTask(NekretninaModel nekretnina, TaskModel taskModel = null)
         {
             InitializeComponent();
             Nekretnina = nekretnina;
+            TaskModel = taskModel;
+            loadData();
+            loadTaskData();
         }
 
-        private void frmAddTask_Load(object sender, EventArgs e)
+        private void loadTaskData()
+        {
+            txtDescription.Text = TaskModel.Description;
+            txtTitle.Text = TaskModel.Title;
+            cbPriority.Text = TaskModel.Priority;
+            cbStatus.Text = TaskModel.Status;
+            dtpDueDate.Value = TaskModel.DueDate;
+        }
+
+        private void loadData()
         {
             List<String> priority = new List<String>();
             priority.Add("Low");
@@ -29,9 +42,9 @@ namespace eRent.UI
             cbStatus.DataSource = status;
         }
 
-        private void showMessage()
+        private void showMessage(string title, string poruka)
         {
-            AutoClosingMessageBox.Show("Zadatak uspjesno kreiran!", "Zadatak kreiran!", 3000);
+            AutoClosingMessageBox.Show(poruka, title, 3000);
         }
 
         private async void btnSave_Click(object sender, EventArgs e)
@@ -40,24 +53,54 @@ namespace eRent.UI
             {
                 try
                 {
-                    TaskInsertRequest taskInsertRequest = new TaskInsertRequest();
-                    taskInsertRequest.NekretninaTask = Nekretnina.NekretninaId;
-                    taskInsertRequest.Title = txtTitle.Text;
-                    taskInsertRequest.Description = txtDescription.Text;
-                    taskInsertRequest.Status = cbStatus.Text;
-                    taskInsertRequest.Priority = cbPriority.Text;
-                    taskInsertRequest.DueDate = dtpDueDate.Value;
-                    var taskInsert = await TaskService.Post<TaskModel>(taskInsertRequest);
-                    if (taskInsert != null)
+                    if (TaskModel == null)
                     {
-                        showMessage();
-                        this.Close();
+                        await addTask();
+                    }
+                    else
+                    {
+                        await updateTask();
                     }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
+            }
+        }
+
+        private async Task updateTask()
+        {
+            TaskUpdateRequest taskInsertRequest = new TaskUpdateRequest();
+            taskInsertRequest.NekretninaTask = Nekretnina.NekretninaId;
+            taskInsertRequest.Title = txtTitle.Text;
+            taskInsertRequest.Description = txtDescription.Text;
+            taskInsertRequest.Status = cbStatus.Text;
+            taskInsertRequest.Priority = cbPriority.Text;
+            taskInsertRequest.DueDate = dtpDueDate.Value;
+            taskInsertRequest.IsActive = true;
+            var taskInsert = await TaskService.Put<TaskModel>(TaskModel.TaskId,taskInsertRequest);
+            if (taskInsert != null)
+            {
+                showMessage("Task azuriran!","Task uspjesno azuriran.");
+                this.Close();
+            }
+        }
+
+        private async Task addTask()
+        {
+            TaskInsertRequest taskInsertRequest = new TaskInsertRequest();
+            taskInsertRequest.NekretninaTask = Nekretnina.NekretninaId;
+            taskInsertRequest.Title = txtTitle.Text;
+            taskInsertRequest.Description = txtDescription.Text;
+            taskInsertRequest.Status = cbStatus.Text;
+            taskInsertRequest.Priority = cbPriority.Text;
+            taskInsertRequest.DueDate = dtpDueDate.Value;
+            var taskInsert = await TaskService.Post<TaskModel>(taskInsertRequest);
+            if (taskInsert != null)
+            {
+                showMessage("Task dodan!", "Task uspjesno dodan.");
+                this.Close();
             }
         }
 
