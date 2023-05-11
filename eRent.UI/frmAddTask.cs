@@ -77,8 +77,8 @@ namespace eRent.UI
             var taskInsert = await TaskService.Put<TaskModel>(TaskModel.TaskId, taskInsertRequest);
             if (taskInsert != null)
             {
-                AutoClosingMessageBox.Show("Task azuriran!", "Task uspjesno azuriran.", 3000);
                 this.Close();
+                AutoClosingMessageBox.Show("Task azuriran!", "Task uspjesno azuriran.", 3000);
             }
         }
 

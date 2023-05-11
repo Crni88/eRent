@@ -8,7 +8,7 @@ namespace eRent.UI
         public APIService NekretnineService { get; set; } = new APIService("Nekretnine");
         public dynamic Result { get; }
         private string _username { get; set; }
-        public frmNekretninaList(string username,dynamic result)
+        public frmNekretninaList(string username, dynamic result)
         {
             InitializeComponent();
             dgvNekretnineList.AutoGenerateColumns = false;
@@ -16,15 +16,11 @@ namespace eRent.UI
             this._username = username;
         }
 
-        private async void btnShowNekretnine_Click(object sender, EventArgs e)
+        public async void btnShowNekretnine_Click(object sender, EventArgs e)
         {
             if (txtSearch.Text == "")
             {
-                NekretninaSearchObject nekretnina = new NekretninaSearchObject();
-                nekretnina.IsActive = true;
-                nekretnina.Username = _username;
-                var list = await NekretnineService.Get<List<NekretninaModel>>(nekretnina);
-                dgvNekretnineList.DataSource = list;
+                await loadData();
             }
             else
             {
@@ -37,6 +33,14 @@ namespace eRent.UI
             }
         }
 
+        private async Task loadData()
+        {
+            NekretninaSearchObject nekretnina = new NekretninaSearchObject();
+            nekretnina.IsActive = true;
+            nekretnina.Username = _username;
+            var list = await NekretnineService.Get<List<NekretninaModel>>(nekretnina);
+            dgvNekretnineList.DataSource = list;
+        }
 
         private void btnDodajNovu_Click(object sender, EventArgs e)
         {
@@ -44,7 +48,7 @@ namespace eRent.UI
             addNekretninu.Show();
         }
 
-        private void dgvNekretnineList_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private async void dgvNekretnineList_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == 3)
             {
@@ -71,6 +75,7 @@ namespace eRent.UI
                 {
                     frmKorisniciNekretnina frmKorisniciNekretnina = new frmKorisniciNekretnina(nekretnina);
                     frmKorisniciNekretnina.ShowDialog();
+                    await loadData();
                 }
             }
             if (e.ColumnIndex == 6)

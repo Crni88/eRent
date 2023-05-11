@@ -176,7 +176,7 @@ namespace eRent.UI
             {
                 e.Cancel = true;
                 txtPrezime.Focus();
-                err.SetError(txtIme, "Obavezno polje!");
+                err.SetError(txtPrezime, "Obavezno polje!");
             }
             else
             {
@@ -208,13 +208,13 @@ namespace eRent.UI
 
         private async void btnObrisi_Click(object sender, EventArgs e)
         {
-            NekretninaKorisnikUpdateRequest nekretninaKorisnik = UpdateKorisnikNekretnina();
-            nekretninaKorisnik.IsActive = false;
             try
             {
                 NekretninaKorisnikUpdateRequest nekretninaKorisnikUpdateRequest = UpdateKorisnikNekretnina();
+                nekretninaKorisnikUpdateRequest.IsActive = false;
                 var putNekretnina = await NekretninaKorisnikService.Put<NekretninaKorisnikUpdateRequest>(_nekretninaKorisnik.NekretninaKorisnikId, nekretninaKorisnikUpdateRequest);
                 AutoClosingMessageBox.Show("Korisnik uspjesno obrisan!", "Korisnik obrisan!", 3000);
+                this.Close();
             }
             catch (Exception ex)
             {

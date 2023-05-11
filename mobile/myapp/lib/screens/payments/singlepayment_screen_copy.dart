@@ -86,9 +86,17 @@ class _SinglePaymentScreenState extends State<SinglePaymentScreen_Copy> {
                             ));
                     throw Exception("Payment declined");
                   });
-                  print("payment sheet created");
-                  print(paymentIntentData!['client_secret']);
-                  var temp = await Stripe.instance.presentPaymentSheet();
+                  if (kDebugMode) {
+                    print("payment sheet created");
+                    print(paymentIntentData!['client_secret']);
+                  }
+                  try {
+                    var temp = await Stripe.instance.presentPaymentSheet();
+                  } catch (e) {
+                    if (kDebugMode) {
+                      print(e);
+                    }
+                  }
 
                   // hendlat saveanje u bazu
                   _saveToDatabase(paymentIntentData!['id'], payment);

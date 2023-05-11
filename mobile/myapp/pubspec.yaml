@@ -46,6 +46,8 @@ dependencies:
   flutter_stripe: ^8.0.0+1
   flutter_map: ^4.0.0
   latlong2: ^0.8.1
+  geocoding: ^2.0.1
+
 
 dev_dependencies:
   flutter_test:

@@ -23,6 +23,7 @@ import '../../providers/nekretnine_provider.dart';
 import '../messages/poruke.dart';
 import '../nekretnine/nekretnine_screen.dart';
 import 'korisnik_tagovi.dart';
+import 'package:geocoding/geocoding.dart';
 
 class SingleNekretninaScreen extends StatefulWidget {
   static const String routeName = "/nekretnina_{id}";
@@ -87,10 +88,12 @@ class _SingleNekretninaScreenState extends State<SingleNekretninaScreen> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? id = prefs.getString('korisnikId');
     var temp3 = await korisnikProvider?.getById(int.parse(id!));
+    List<Location> locations = await locationFromAddress(temp!.grad!);
     setState(() {
-      nekretnina = temp!;
+      nekretnina = temp;
       nekretninaTagovi = temp2!;
       korisnik = temp3!;
+      myLocation = LatLng(locations[0].latitude, locations[0].longitude);
     });
     var avg = await getAvgRejting(nekretnina.korisnikNekretnina);
     var temp4 = await korisnikProvider?.getById(nekretnina.korisnikNekretnina!);

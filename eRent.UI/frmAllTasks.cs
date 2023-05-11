@@ -28,7 +28,7 @@ namespace eRent.UI
             await loadTasks();
         }
 
-        private async Task loadTasks()
+        public async Task loadTasks()
         {
             try
             {
@@ -42,11 +42,6 @@ namespace eRent.UI
             {
                 MessageBox.Show(ex.Message);
             }
-        }
-
-        private void showMessage(string title, string poruka)
-        {
-            AutoClosingMessageBox.Show(poruka, title, 3000);
         }
 
         private async void dgvAllTask_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -78,7 +73,7 @@ namespace eRent.UI
             //tagUpsertRequest.TaskId = taskModel.TaskId;
             var taskModels = await TaskService.Put<TaskUpdateRequest>(taskModel.TaskId, tagUpsertRequest);
             loadTasks();
-            showMessage("Task obrisan", "Task uspjesno obrisan!");
+            AutoClosingMessageBox.Show("Task obrisan", "Task uspjesno obrisan!", 3000);
         }
     }
 }

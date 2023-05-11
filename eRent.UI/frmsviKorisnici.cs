@@ -34,12 +34,6 @@ namespace eRent.UI
             frmAddNovogKorisnika.ShowDialog();
         }
 
-        private void showMessage(string title, string poruka)
-        {
-            AutoClosingMessageBox.Show(poruka, title, 3000);
-        }
-
-
         private async void dgvKorisnici_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             KorisnikModel korisnik = (KorisnikModel)dgvKorisnici.SelectedRows[0].DataBoundItem;
@@ -47,9 +41,11 @@ namespace eRent.UI
             {
                 KorisnikUpdateRequest korisnikSearchObject = new KorisnikUpdateRequest();
                 korisnikSearchObject.IsActive = false;
+                korisnikSearchObject.KorisnikPrezime = "deleted";
+                korisnikSearchObject.KorsnikIme = "deleted";
                 var korisnikModels = await korisnikService.Put<KorisnikUpdateRequest>(korisnik.KorisnikId, korisnikSearchObject);
-                loadKorisnike();
-                showMessage("Korisnik obrisan!", "Korisnik uspjesno obrisan.");
+                AutoClosingMessageBox.Show("Korisnik obrisan!", "Korisnik uspjesno obrisan.", 3000);
+                await loadKorisnike();
             }
             else
             {
