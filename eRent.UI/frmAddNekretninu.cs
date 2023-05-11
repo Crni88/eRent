@@ -105,7 +105,7 @@ namespace eRent.UI
                     var postNekretnina = await NekretnineService.Post<NekretninaModel>(nekretninaInsertRequest);
                     _nekretninaModel = postNekretnina;
                     await UpdateTagsAsync();
-                    showMessage("Nekretnina dodana!", "Nekretnina uspjesno dodana!");
+                    AutoClosingMessageBox.Show("Nekretnina dodana!", "Nekretnina uspjesno dodana!", 3000);
                     this.Close();
                 }
                 else
@@ -114,7 +114,7 @@ namespace eRent.UI
                     var updateNekretnina =
                         await NekretnineService.Put<NekretninaUpdateRequest>(_nekretninaModel.NekretninaId, nekretninaUpdateRequest);
                     await UpdateTagsAsync();
-                    showMessage("Nekretnina azurirana!", "Nekretnina uspjesno azurirana!");
+                    AutoClosingMessageBox.Show("Nekretnina azurirana!", "Nekretnina uspjesno azurirana!", 3000);
                     this.Close();
                 }
             }
@@ -268,18 +268,13 @@ namespace eRent.UI
             }
         }
 
-        private void showMessage(string title, string poruka)
-        {
-            AutoClosingMessageBox.Show(poruka, title, 3000);
-        }
-
         private async void btnObrisiNekretninu_Click(object sender, EventArgs e)
         {
             NekretninaUpdateRequest nekretninaUpdateRequest = CreateUpdateObject();
             nekretninaUpdateRequest.IsActive = false;
             var updateNekretnina =
                         await NekretnineService.Put<NekretninaUpdateRequest>(_nekretninaModel.NekretninaId, nekretninaUpdateRequest);
-            showMessage("Nekretnina obrisana!", "Nekretnina uspjesno obrisana!");
+            AutoClosingMessageBox.Show("Nekretnina obrisana!", "Nekretnina uspjesno obrisana!", 3000);
             this.Close();
         }
     }

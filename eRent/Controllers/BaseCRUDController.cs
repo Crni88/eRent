@@ -22,7 +22,7 @@ namespace eRent.Controllers
         }
 
         [HttpPut("{id}")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public virtual T Update(int id, [FromBody] TUpdate update)
         {
             var results = ((ICRUDService<T, TSearch, TInsert, TUpdate>)this.Service).Update(id, update);

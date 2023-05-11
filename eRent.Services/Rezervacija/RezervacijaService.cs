@@ -14,17 +14,17 @@ namespace eRent.Services.Rezervacija
         public override IQueryable<DataDB.Rezervacija> AddFilter(IQueryable<DataDB.Rezervacija> query, RezervacijaSearchObject search = null)
         {
             var filteredQuery = base.AddFilter(query, search);
-            if (search != null)
+            if (search?.NekretninaId != null)
             {
                 filteredQuery = filteredQuery.Where(x => x.NekretninaId == search.NekretninaId);
             }
             if (search?.DatumKraja != null)
             {
-                filteredQuery = filteredQuery.Where(x => x.DatumKraja <= search.DatumKraja);
+                filteredQuery = filteredQuery.Where(x => x.DatumKraja.Value <= search.DatumKraja.Value);
             }
             if (search?.DatumPocetka != null)
             {
-                filteredQuery = filteredQuery.Where(x => x.DatumKraja >= search.DatumPocetka);
+                filteredQuery = filteredQuery.Where(x => x.DatumPocetka.Value >= search.DatumPocetka.Value);
             }
             if (search?.Odobrena != null)
             {

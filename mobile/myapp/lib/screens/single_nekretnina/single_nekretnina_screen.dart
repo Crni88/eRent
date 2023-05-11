@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_map/flutter_map.dart';
+import 'package:latlong2/latlong.dart';
 import 'package:myapp/components/button.dart';
 import 'package:myapp/components/mytext.dart';
 import 'package:myapp/components/title.dart';
@@ -48,6 +50,8 @@ class _SingleNekretninaScreenState extends State<SingleNekretninaScreen> {
   RejtingProvider rejtingProvider = RejtingProvider();
   int? arguments;
   String averageAge = "";
+  LatLng? myLocation = LatLng(51.5, -0.09); // nullable LatLng object
+  final MapController mapController = MapController();
   double _rating = 0;
   bool isVisible = false;
   final TextEditingController _komentarController = TextEditingController();
@@ -144,6 +148,8 @@ class _SingleNekretninaScreenState extends State<SingleNekretninaScreen> {
                 rejtingProvider,
                 isVisible,
                 data,
+                myLocation,
+                mapController,
                 context),
             Container(
               width: 500,
@@ -273,6 +279,8 @@ Widget _buildSingleNekretnina(
   RejtingProvider rejtingProvider,
   bool isVisible,
   List<Nekretnina> data,
+  LatLng? latlgn,
+  MapController mapController,
   BuildContext context,
 ) {
   if (nekretnina.nazivNekretnine == null) {
@@ -307,7 +315,28 @@ Widget _buildSingleNekretnina(
             const MySpacer(),
             const MyTitle("Detalji nekretnine"),
             _buildNekretnineChipList(nekretninaTagovi),
-            //const MySpacer(),
+            const MySpacer(),
+            //Mapa
+            const MyTitle("Lokacija"),
+            const MySpacer(),
+            SizedBox(
+              height: 250, // set the height to 100 pixels
+              child: FlutterMap(
+                options: MapOptions(
+                  center: LatLng(
+                      latlgn?.latitude ?? 51.5, latlgn?.longitude ?? -0.09),
+                  zoom: 13.0,
+                ),
+                children: [
+                  TileLayer(
+                    urlTemplate:
+                        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+                    subdomains: const ['a', 'b', 'c'],
+                  ),
+                ],
+              ),
+            ),
+            const MySpacer(),
             const MyTitle("Detaljan opis nekretnine"),
             if (nekretnina.opis != null)
               MyText(nekretnina.opis!, false)

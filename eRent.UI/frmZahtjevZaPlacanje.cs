@@ -10,10 +10,8 @@ namespace eRent.UI
     {
         public int BrojKorisnika { get; }
         public NekretninaModel Nekretnina { get; }
-
         public APIService PaymentRequestService { get; set; } = new APIService("PaymentRequest");
         public APIService _korisnikService { get; set; } = new APIService("Korisnici");
-
 
         public frmZahtjevZaPlacanje(int brojKorisnika, NekretninaModel nekretnina)
         {
@@ -40,11 +38,6 @@ namespace eRent.UI
             }
         }
 
-        private void showMessage()
-        {
-            AutoClosingMessageBox.Show("Zahtjev za plaćanje je uspješno poslan.", "Zahtjev poslan!", 3000);
-        }
-
         private async Task savePaymentRequestToDatabase(double iznosPoKorisniku)
         {
             //TODO add for each customer to send separate payment request
@@ -59,7 +52,7 @@ namespace eRent.UI
             var postPaymentRequest = await PaymentRequestService.Post<PaymentUpsertRequest>(paymentUpsertRequest);
             if (postPaymentRequest != null)
             {
-                showMessage();
+                AutoClosingMessageBox.Show("Zahtjev poslan!", "Zahtjev za plaćanje je uspješno poslan.", 3000);
                 this.Close();
             }
         }
@@ -90,7 +83,6 @@ namespace eRent.UI
 
             Console.WriteLine($"FCM Notification Response: {response.StatusCode} - {responseContent}");
         }
-
         private void txtNaslov_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (string.IsNullOrWhiteSpace(txtNaslov.Text))

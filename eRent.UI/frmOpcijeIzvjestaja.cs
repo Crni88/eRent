@@ -7,6 +7,7 @@ using iText.Layout;
 using iText.Layout.Element;
 using iText.Layout.Properties;
 using System.Globalization;
+using System.Windows.Forms;
 
 namespace eRent.UI
 {

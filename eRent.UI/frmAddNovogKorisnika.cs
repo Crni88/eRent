@@ -12,16 +12,34 @@ namespace eRent.UI
         public APIService KorisnikService { get; set; } = new APIService("Korisnici");
         public APIService UlogeService { get; set; } = new APIService("Uloge");
         private APIService KorisnikTagoviService { get; set; } = new APIService("KorisnikTagovi");
+        public KorisnikModel Korisnik { get; }
 
-        public frmAddNovogKorisnika()
+        public frmAddNovogKorisnika(KorisnikModel korisnik = null)
         {
             InitializeComponent();
+            loadUloge();
+            if (korisnik != null)
+            {
+                Korisnik = korisnik;
+                txtEmail.Enabled = false;
+                txtUsername.Enabled = false;
+                txtPassword.Enabled = false;
+                txtPassword.Visible = false;
+                lblPassword.Visible = false;
+                loadData();
+            }
+
         }
 
-        private void showMessage()
+        private void loadData()
         {
-            AutoClosingMessageBox.Show("Korisnik uspjesno dodan!", "Korisnik kreiran!", 3000);
+            txtKorisnikIme.Text = Korisnik.KorsnikIme;
+            txtEmail.Text = Korisnik.Email;
+            txtUsername.Text = Korisnik.Username;
+            txtKorisnikPrezime.Text = Korisnik.KorisnikPrezime;
+            cbUloga.Text = Korisnik.Uloga;
         }
+
 
         private void txtKorisnikIme_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -125,31 +143,57 @@ namespace eRent.UI
 
         private async void btnDodajNovogKorisnika_Click(object sender, EventArgs e)
         {
-            if (ValidateChildren())
+
+            try
             {
-                try
+                if (Korisnik == null && ValidateChildren())
                 {
-                    KorisnikInsertRequest korisnikInsertRequest = new KorisnikInsertRequest();
-                    korisnikInsertRequest.Email = txtEmail.Text;
-                    korisnikInsertRequest.Rejting = 0;
-                    korisnikInsertRequest.KorisnikPrezime = txtKorisnikPrezime.Text;
-                    korisnikInsertRequest.KorsnikIme = txtKorisnikIme.Text;
-                    korisnikInsertRequest.Username = txtUsername.Text;
-                    korisnikInsertRequest.Password = txtPassword.Text;
-                    korisnikInsertRequest.Uloga = cbUloga.SelectedItem.ToString();
-                    korisnikInsertRequest.IsActive = true;
-                    var taskInsert = await KorisnikService.Post<KorisnikModel>(korisnikInsertRequest);
-                    if (taskInsert != null)
-                    {
-                        CreateKorisnikTags(taskInsert.KorisnikId);
-                        showMessage();
-                        this.Close();
-                    }
+                    await addKorisnik();
                 }
-                catch (Exception ex)
+                else
                 {
-                    MessageBox.Show(ex.Message);
+                    await updateKorisnik();
                 }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private async Task updateKorisnik()
+        {
+            KorisnikUpdateRequest korisnikInsertRequest = new KorisnikUpdateRequest();
+            korisnikInsertRequest.Uloga = cbUloga.SelectedItem.ToString();
+            korisnikInsertRequest.KorisnikPrezime = txtKorisnikPrezime.Text;
+            korisnikInsertRequest.KorsnikIme = txtKorisnikIme.Text;
+            korisnikInsertRequest.IsActive = true;
+            var taskInsert = await KorisnikService.Put<KorisnikModel>(Korisnik.KorisnikId, korisnikInsertRequest);
+            if (taskInsert != null)
+            {
+                //CreateKorisnikTags(taskInsert.KorisnikId);
+                AutoClosingMessageBox.Show("Korisnik uspjesno azuriran!", "Korisnik azuriran!", 3000);
+                this.Close();
+            }
+        }
+
+        private async Task addKorisnik()
+        {
+            KorisnikInsertRequest korisnikInsertRequest = new KorisnikInsertRequest();
+            korisnikInsertRequest.Email = txtEmail.Text;
+            korisnikInsertRequest.Rejting = 0;
+            korisnikInsertRequest.KorisnikPrezime = txtKorisnikPrezime.Text;
+            korisnikInsertRequest.KorsnikIme = txtKorisnikIme.Text;
+            korisnikInsertRequest.Username = txtUsername.Text;
+            korisnikInsertRequest.Password = txtPassword.Text;
+            korisnikInsertRequest.Uloga = cbUloga.SelectedItem.ToString();
+            korisnikInsertRequest.IsActive = true;
+            var taskInsert = await KorisnikService.Post<KorisnikModel>(korisnikInsertRequest);
+            if (taskInsert != null)
+            {
+                CreateKorisnikTags(taskInsert.KorisnikId);
+                AutoClosingMessageBox.Show("Korisnik uspjesno dodan!", "Korisnik kreiran!", 3000);
+                this.Close();
             }
         }
 
@@ -172,9 +216,8 @@ namespace eRent.UI
             }
         }
 
-        private void frmAddNovogKorisnika_Load(object sender, EventArgs e)
+        private void loadUloge()
         {
-            //TODO Load the roles from an API
             List<String> Uloge = new List<String>();
             Uloge.Add("Admin");
             Uloge.Add("Korisnik");

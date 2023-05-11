@@ -76,7 +76,7 @@ namespace eRent.UI
                             var postNekretnina = await NekretninaKorisnikService.Post<NekretninaKorisnikInsertRequest>(nekretninaKorisnikUpsert);
                             if (postNekretnina != null)
                             {
-                                showMessage("Korisnik dodan!", "Korisnik uspjesno dodan!");
+                                AutoClosingMessageBox.Show("Korisnik uspjesno dodan!", "Korisnik dodan!", 3000);
                                 this.Close();
                             }
                         }
@@ -93,7 +93,7 @@ namespace eRent.UI
                             var putNekretnina = await NekretninaKorisnikService.Put<NekretninaKorisnikUpdateRequest>(_nekretninaKorisnik.NekretninaKorisnikId, nekretninaKorisnikUpdateRequest);
                             if (putNekretnina != null)
                             {
-                                showMessage("Korisnik azuriran!", "Korisnik uspjesno azuriran!");
+                                AutoClosingMessageBox.Show("Korisnik uspjesno azuriran!", "Korisnik azuriran!", 3000);
                                 this.Close();
                             }
                         }
@@ -206,12 +206,6 @@ namespace eRent.UI
             }
         }
 
-        private void showMessage(string title, string poruka)
-        {
-            AutoClosingMessageBox.Show(poruka, title, 3000);
-            this.Close();
-        }
-
         private async void btnObrisi_Click(object sender, EventArgs e)
         {
             NekretninaKorisnikUpdateRequest nekretninaKorisnik = UpdateKorisnikNekretnina();
@@ -220,7 +214,7 @@ namespace eRent.UI
             {
                 NekretninaKorisnikUpdateRequest nekretninaKorisnikUpdateRequest = UpdateKorisnikNekretnina();
                 var putNekretnina = await NekretninaKorisnikService.Put<NekretninaKorisnikUpdateRequest>(_nekretninaKorisnik.NekretninaKorisnikId, nekretninaKorisnikUpdateRequest);
-                showMessage("Korisnik obrisan!", "Korisnik uspjesno obrisan!");
+                AutoClosingMessageBox.Show("Korisnik uspjesno obrisan!", "Korisnik obrisan!", 3000);
             }
             catch (Exception ex)
             {

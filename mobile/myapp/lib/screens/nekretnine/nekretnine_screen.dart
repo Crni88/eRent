@@ -58,8 +58,16 @@ class _NekretnineListScreenState extends State<NekretnineListScreen> {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     String? id = prefs.getString('korisnikId');
     String? token = prefs.getString('fcmToken');
+    String? imePrezime = prefs.getString('korisnikImePrezime');
+    List<String>? nameParts = imePrezime?.split(" ");
+    String firstName = nameParts![0];
+    String lastName = nameParts[1];
     var userUpdate = {
       'fcmDeviceToken': token,
+      'korsnikIme': firstName,
+      'korisnikPrezime': lastName,
+      'uloga': 'Korisnik',
+      'isActive': true,
     };
     _userProvider?.update(int.parse(id!), userUpdate);
   }

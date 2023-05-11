@@ -42,14 +42,19 @@ namespace eRent.UI
 
         private async void dgvKorisnici_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
+            KorisnikModel korisnik = (KorisnikModel)dgvKorisnici.SelectedRows[0].DataBoundItem;
             if (e.ColumnIndex == 4)
             {
-                KorisnikModel korisnik = (KorisnikModel)dgvKorisnici.SelectedRows[0].DataBoundItem;
                 KorisnikUpdateRequest korisnikSearchObject = new KorisnikUpdateRequest();
                 korisnikSearchObject.IsActive = false;
                 var korisnikModels = await korisnikService.Put<KorisnikUpdateRequest>(korisnik.KorisnikId, korisnikSearchObject);
                 loadKorisnike();
-                showMessage("Korisnik obrisan", "Korisnik uspjesno obrisan!");
+                showMessage("Korisnik obrisan!", "Korisnik uspjesno obrisan.");
+            }
+            else
+            {
+                frmAddNovogKorisnika frmAddNovogKorisnika = new frmAddNovogKorisnika(korisnik);
+                frmAddNovogKorisnika.ShowDialog();  
             }
         }
     }

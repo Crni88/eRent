@@ -4,7 +4,7 @@
     {
         System.Threading.Timer _timeoutTimer;
         string _caption;
-        AutoClosingMessageBox(string text, string caption, int timeout)
+        AutoClosingMessageBox(string text, string caption, int timeout = 3000)
         {
             _caption = caption;
             _timeoutTimer = new System.Threading.Timer(OnTimerElapsed,

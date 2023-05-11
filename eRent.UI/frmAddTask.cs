@@ -42,11 +42,6 @@ namespace eRent.UI
             cbStatus.DataSource = status;
         }
 
-        private void showMessage(string title, string poruka)
-        {
-            AutoClosingMessageBox.Show(poruka, title, 3000);
-        }
-
         private async void btnSave_Click(object sender, EventArgs e)
         {
             if (ValidateChildren())
@@ -79,10 +74,10 @@ namespace eRent.UI
             taskInsertRequest.Priority = cbPriority.Text;
             taskInsertRequest.DueDate = dtpDueDate.Value;
             taskInsertRequest.IsActive = true;
-            var taskInsert = await TaskService.Put<TaskModel>(TaskModel.TaskId,taskInsertRequest);
+            var taskInsert = await TaskService.Put<TaskModel>(TaskModel.TaskId, taskInsertRequest);
             if (taskInsert != null)
             {
-                showMessage("Task azuriran!","Task uspjesno azuriran.");
+                AutoClosingMessageBox.Show("Task azuriran!", "Task uspjesno azuriran.", 3000);
                 this.Close();
             }
         }
@@ -99,7 +94,7 @@ namespace eRent.UI
             var taskInsert = await TaskService.Post<TaskModel>(taskInsertRequest);
             if (taskInsert != null)
             {
-                showMessage("Task dodan!", "Task uspjesno dodan.");
+                AutoClosingMessageBox.Show("Task dodan!", "Task uspjesno dodan.", 3000);
                 this.Close();
             }
         }

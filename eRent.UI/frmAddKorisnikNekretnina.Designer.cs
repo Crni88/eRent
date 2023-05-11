@@ -28,202 +28,211 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
-            this.pbKorisnikSlika = new System.Windows.Forms.PictureBox();
-            this.btnKorisnikSlika = new System.Windows.Forms.Button();
-            this.Ime = new System.Windows.Forms.Label();
-            this.txtIme = new System.Windows.Forms.TextBox();
-            this.txtBrojTelefona = new System.Windows.Forms.TextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.txtPrezime = new System.Windows.Forms.TextBox();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dtpDatumUseljenja = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.dtpDatumIseljenja = new System.Windows.Forms.DateTimePicker();
-            this.btnDodajKorisnika = new System.Windows.Forms.Button();
-            this.ofdKorisnikNekretnina = new System.Windows.Forms.OpenFileDialog();
-            this.err = new System.Windows.Forms.ErrorProvider(this.components);
-            this.btnObrisi = new System.Windows.Forms.Button();
-            ((System.ComponentModel.ISupportInitialize)(this.pbKorisnikSlika)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.err)).BeginInit();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            label1 = new Label();
+            pbKorisnikSlika = new PictureBox();
+            btnKorisnikSlika = new Button();
+            Ime = new Label();
+            txtIme = new TextBox();
+            txtBrojTelefona = new TextBox();
+            label2 = new Label();
+            txtPrezime = new TextBox();
+            label3 = new Label();
+            dtpDatumUseljenja = new DateTimePicker();
+            label4 = new Label();
+            label5 = new Label();
+            dtpDatumIseljenja = new DateTimePicker();
+            btnDodajKorisnika = new Button();
+            ofdKorisnikNekretnina = new OpenFileDialog();
+            err = new ErrorProvider(components);
+            btnObrisi = new Button();
+            ((System.ComponentModel.ISupportInitialize)pbKorisnikSlika).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)err).BeginInit();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(236, 30);
-            this.label1.TabIndex = 0;
-            this.label1.Text = "Dodaj novog korisnika";
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(14, 12);
+            label1.Name = "label1";
+            label1.Size = new Size(307, 37);
+            label1.TabIndex = 0;
+            label1.Text = "Dodaj novog korisnika";
             // 
             // pbKorisnikSlika
             // 
-            this.pbKorisnikSlika.Location = new System.Drawing.Point(12, 46);
-            this.pbKorisnikSlika.Name = "pbKorisnikSlika";
-            this.pbKorisnikSlika.Size = new System.Drawing.Size(320, 330);
-            this.pbKorisnikSlika.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.pbKorisnikSlika.TabIndex = 1;
-            this.pbKorisnikSlika.TabStop = false;
+            pbKorisnikSlika.Location = new Point(14, 61);
+            pbKorisnikSlika.Margin = new Padding(3, 4, 3, 4);
+            pbKorisnikSlika.Name = "pbKorisnikSlika";
+            pbKorisnikSlika.Size = new Size(366, 440);
+            pbKorisnikSlika.SizeMode = PictureBoxSizeMode.StretchImage;
+            pbKorisnikSlika.TabIndex = 1;
+            pbKorisnikSlika.TabStop = false;
             // 
             // btnKorisnikSlika
             // 
-            this.btnKorisnikSlika.Location = new System.Drawing.Point(122, 382);
-            this.btnKorisnikSlika.Name = "btnKorisnikSlika";
-            this.btnKorisnikSlika.Size = new System.Drawing.Size(75, 23);
-            this.btnKorisnikSlika.TabIndex = 2;
-            this.btnKorisnikSlika.Text = "Dodaj sliku";
-            this.btnKorisnikSlika.UseVisualStyleBackColor = true;
-            this.btnKorisnikSlika.Click += new System.EventHandler(this.btnKorisnikSlika_Click);
+            btnKorisnikSlika.Location = new Point(139, 509);
+            btnKorisnikSlika.Margin = new Padding(3, 4, 3, 4);
+            btnKorisnikSlika.Name = "btnKorisnikSlika";
+            btnKorisnikSlika.Size = new Size(86, 31);
+            btnKorisnikSlika.TabIndex = 2;
+            btnKorisnikSlika.Text = "Dodaj sliku";
+            btnKorisnikSlika.UseVisualStyleBackColor = true;
+            btnKorisnikSlika.Click += btnKorisnikSlika_Click;
             // 
             // Ime
             // 
-            this.Ime.AutoSize = true;
-            this.Ime.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.Ime.Location = new System.Drawing.Point(338, 46);
-            this.Ime.Name = "Ime";
-            this.Ime.Size = new System.Drawing.Size(43, 21);
-            this.Ime.TabIndex = 3;
-            this.Ime.Text = "Ime*";
+            Ime.AutoSize = true;
+            Ime.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            Ime.Location = new Point(386, 61);
+            Ime.Name = "Ime";
+            Ime.Size = new Size(52, 28);
+            Ime.TabIndex = 3;
+            Ime.Text = "Ime*";
             // 
             // txtIme
             // 
-            this.txtIme.Location = new System.Drawing.Point(338, 73);
-            this.txtIme.Name = "txtIme";
-            this.txtIme.Size = new System.Drawing.Size(164, 23);
-            this.txtIme.TabIndex = 4;
-            this.txtIme.Validating += new System.ComponentModel.CancelEventHandler(this.txtIme_Validating);
+            txtIme.Location = new Point(386, 97);
+            txtIme.Margin = new Padding(3, 4, 3, 4);
+            txtIme.Name = "txtIme";
+            txtIme.Size = new Size(187, 27);
+            txtIme.TabIndex = 4;
+            txtIme.Validating += txtIme_Validating;
             // 
             // txtBrojTelefona
             // 
-            this.txtBrojTelefona.Location = new System.Drawing.Point(338, 219);
-            this.txtBrojTelefona.Name = "txtBrojTelefona";
-            this.txtBrojTelefona.PlaceholderText = "123 456 789";
-            this.txtBrojTelefona.Size = new System.Drawing.Size(164, 23);
-            this.txtBrojTelefona.TabIndex = 6;
-            this.txtBrojTelefona.Validating += new System.ComponentModel.CancelEventHandler(this.txtBrojTelefona_Validating);
+            txtBrojTelefona.Location = new Point(386, 292);
+            txtBrojTelefona.Margin = new Padding(3, 4, 3, 4);
+            txtBrojTelefona.Name = "txtBrojTelefona";
+            txtBrojTelefona.PlaceholderText = "123 456 789";
+            txtBrojTelefona.Size = new Size(187, 27);
+            txtBrojTelefona.TabIndex = 6;
+            txtBrojTelefona.Validating += txtBrojTelefona_Validating;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(338, 195);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(105, 21);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Broj telefona*";
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(386, 260);
+            label2.Name = "label2";
+            label2.Size = new Size(131, 28);
+            label2.TabIndex = 5;
+            label2.Text = "Broj telefona*";
             // 
             // txtPrezime
             // 
-            this.txtPrezime.Location = new System.Drawing.Point(338, 141);
-            this.txtPrezime.Name = "txtPrezime";
-            this.txtPrezime.Size = new System.Drawing.Size(164, 23);
-            this.txtPrezime.TabIndex = 8;
-            this.txtPrezime.Validating += new System.ComponentModel.CancelEventHandler(this.txtPrezime_Validating);
+            txtPrezime.Location = new Point(386, 188);
+            txtPrezime.Margin = new Padding(3, 4, 3, 4);
+            txtPrezime.Name = "txtPrezime";
+            txtPrezime.Size = new Size(187, 27);
+            txtPrezime.TabIndex = 8;
+            txtPrezime.Validating += txtPrezime_Validating;
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(338, 117);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(73, 21);
-            this.label3.TabIndex = 7;
-            this.label3.Text = "Prezime*";
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(386, 156);
+            label3.Name = "label3";
+            label3.Size = new Size(89, 28);
+            label3.TabIndex = 7;
+            label3.Text = "Prezime*";
             // 
             // dtpDatumUseljenja
             // 
-            this.dtpDatumUseljenja.Location = new System.Drawing.Point(588, 73);
-            this.dtpDatumUseljenja.Name = "dtpDatumUseljenja";
-            this.dtpDatumUseljenja.Size = new System.Drawing.Size(200, 23);
-            this.dtpDatumUseljenja.TabIndex = 9;
+            dtpDatumUseljenja.Location = new Point(595, 97);
+            dtpDatumUseljenja.Margin = new Padding(3, 4, 3, 4);
+            dtpDatumUseljenja.Name = "dtpDatumUseljenja";
+            dtpDatumUseljenja.Size = new Size(305, 27);
+            dtpDatumUseljenja.TabIndex = 9;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(588, 46);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(122, 21);
-            this.label4.TabIndex = 10;
-            this.label4.Text = "Datum useljenja";
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Location = new Point(595, 61);
+            label4.Name = "label4";
+            label4.Size = new Size(151, 28);
+            label4.TabIndex = 10;
+            label4.Text = "Datum useljenja";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(588, 114);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(117, 21);
-            this.label5.TabIndex = 12;
-            this.label5.Text = "Datum iseljenja";
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(595, 156);
+            label5.Name = "label5";
+            label5.Size = new Size(145, 28);
+            label5.TabIndex = 12;
+            label5.Text = "Datum iseljenja";
             // 
             // dtpDatumIseljenja
             // 
-            this.dtpDatumIseljenja.Location = new System.Drawing.Point(588, 141);
-            this.dtpDatumIseljenja.Name = "dtpDatumIseljenja";
-            this.dtpDatumIseljenja.Size = new System.Drawing.Size(200, 23);
-            this.dtpDatumIseljenja.TabIndex = 11;
+            dtpDatumIseljenja.Location = new Point(595, 188);
+            dtpDatumIseljenja.Margin = new Padding(3, 4, 3, 4);
+            dtpDatumIseljenja.Name = "dtpDatumIseljenja";
+            dtpDatumIseljenja.Size = new Size(305, 27);
+            dtpDatumIseljenja.TabIndex = 11;
             // 
             // btnDodajKorisnika
             // 
-            this.btnDodajKorisnika.Location = new System.Drawing.Point(713, 219);
-            this.btnDodajKorisnika.Name = "btnDodajKorisnika";
-            this.btnDodajKorisnika.Size = new System.Drawing.Size(75, 23);
-            this.btnDodajKorisnika.TabIndex = 13;
-            this.btnDodajKorisnika.Text = "Dodaj";
-            this.btnDodajKorisnika.UseVisualStyleBackColor = true;
-            this.btnDodajKorisnika.Click += new System.EventHandler(this.btnDodajKorisnika_Click);
+            btnDodajKorisnika.Location = new Point(814, 288);
+            btnDodajKorisnika.Margin = new Padding(3, 4, 3, 4);
+            btnDodajKorisnika.Name = "btnDodajKorisnika";
+            btnDodajKorisnika.Size = new Size(86, 31);
+            btnDodajKorisnika.TabIndex = 13;
+            btnDodajKorisnika.Text = "Dodaj";
+            btnDodajKorisnika.UseVisualStyleBackColor = true;
+            btnDodajKorisnika.Click += btnDodajKorisnika_Click;
             // 
             // ofdKorisnikNekretnina
             // 
-            this.ofdKorisnikNekretnina.FileName = "openFileDialog1";
+            ofdKorisnikNekretnina.FileName = "openFileDialog1";
             // 
             // err
             // 
-            this.err.ContainerControl = this;
+            err.ContainerControl = this;
             // 
             // btnObrisi
             // 
-            this.btnObrisi.Location = new System.Drawing.Point(427, 321);
-            this.btnObrisi.Name = "btnObrisi";
-            this.btnObrisi.Size = new System.Drawing.Size(75, 55);
-            this.btnObrisi.TabIndex = 14;
-            this.btnObrisi.Text = "Obrisi";
-            this.btnObrisi.UseVisualStyleBackColor = true;
-            this.btnObrisi.Click += new System.EventHandler(this.btnObrisi_Click);
+            btnObrisi.Location = new Point(488, 428);
+            btnObrisi.Margin = new Padding(3, 4, 3, 4);
+            btnObrisi.Name = "btnObrisi";
+            btnObrisi.Size = new Size(86, 73);
+            btnObrisi.TabIndex = 14;
+            btnObrisi.Text = "Obrisi";
+            btnObrisi.UseVisualStyleBackColor = true;
+            btnObrisi.Click += btnObrisi_Click;
             // 
             // frmAddKorisnikNekretnina
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnObrisi);
-            this.Controls.Add(this.btnDodajKorisnika);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.dtpDatumIseljenja);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.dtpDatumUseljenja);
-            this.Controls.Add(this.txtPrezime);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.txtBrojTelefona);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtIme);
-            this.Controls.Add(this.Ime);
-            this.Controls.Add(this.btnKorisnikSlika);
-            this.Controls.Add(this.pbKorisnikSlika);
-            this.Controls.Add(this.label1);
-            this.Name = "frmAddKorisnikNekretnina";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Dodaj novog korisnika";
-            ((System.ComponentModel.ISupportInitialize)(this.pbKorisnikSlika)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.err)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(914, 571);
+            Controls.Add(btnObrisi);
+            Controls.Add(btnDodajKorisnika);
+            Controls.Add(label5);
+            Controls.Add(dtpDatumIseljenja);
+            Controls.Add(label4);
+            Controls.Add(dtpDatumUseljenja);
+            Controls.Add(txtPrezime);
+            Controls.Add(label3);
+            Controls.Add(txtBrojTelefona);
+            Controls.Add(label2);
+            Controls.Add(txtIme);
+            Controls.Add(Ime);
+            Controls.Add(btnKorisnikSlika);
+            Controls.Add(pbKorisnikSlika);
+            Controls.Add(label1);
+            Margin = new Padding(3, 4, 3, 4);
+            Name = "frmAddKorisnikNekretnina";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Dodaj novog korisnika";
+            ((System.ComponentModel.ISupportInitialize)pbKorisnikSlika).EndInit();
+            ((System.ComponentModel.ISupportInitialize)err).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

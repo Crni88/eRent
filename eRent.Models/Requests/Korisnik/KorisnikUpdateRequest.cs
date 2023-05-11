@@ -1,10 +1,14 @@
-﻿namespace eRent.Models.Requests.Korisnik
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace eRent.Models.Requests.Korisnik
 {
     public class KorisnikUpdateRequest
     {
-        //public string KorsnikIme { get; set; }
-        //public string KorisnikPrezime { get; set; }
-        //public double? Rejting { get; set; }
+        [Required(AllowEmptyStrings = false)]
+        public string KorsnikIme { get; set; }
+        [Required(AllowEmptyStrings = false)]
+        public string KorisnikPrezime { get; set; }
+        public string Uloga { get; set; }
         public string FcmDeviceToken { get; set; }
         public bool? IsActive { get; set; }
     }
