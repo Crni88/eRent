@@ -5,12 +5,15 @@ part 'rezervacija.g.dart';
 @JsonSerializable()
 class Rezervacija {
   int? nekretninaId;
+  int? korisnikId;
   bool? mjesecnaRezervacija;
+  bool? odobrena;
   DateTime? datumPocetka;
   DateTime? datumKraja;
   String? imePrezime;
   String? brojTelefona;
   String? nazivnekretnine;
+  bool? otkazana;
 
   Rezervacija();
 

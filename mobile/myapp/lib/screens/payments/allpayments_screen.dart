@@ -37,7 +37,7 @@ class _AllPaymentsScreenState extends State<AllPaymentsScreen> {
     });
   }
 
-  int _selectedIndex = 0;
+  int _selectedIndex = 1;
 
   void _onItemTapped(int index) {
     setState(() {

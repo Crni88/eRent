@@ -19,6 +19,8 @@ public partial class Posjetum
 
     public string? KorisnikImePrezime { get; set; }
 
+    public bool? Otkazana { get; set; }
+
     public virtual Korisnik? Korisnik { get; set; }
 
     public virtual Nekretnina? Nekretnina { get; set; }

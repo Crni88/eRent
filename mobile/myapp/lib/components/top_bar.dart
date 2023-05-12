@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:myapp/screens/customer/customer_profile.dart';
 import 'package:myapp/screens/nekretnine/nekretnine_screen.dart';
-import 'package:myapp/screens/payments/allpayments_screen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class TopBar extends StatelessWidget {
   const TopBar({
@@ -40,9 +39,7 @@ class TopBar extends StatelessWidget {
                   fontWeight: FontWeight.bold,
                   fontSize: 30)),
           _TopBarIcons(
-              path: 'assets/images/cashless-payment.png',
-              context: context,
-              messages: true),
+              path: 'assets/images/user.png', context: context, messages: true),
         ]),
       ),
     );
@@ -59,7 +56,7 @@ class TopBar extends StatelessWidget {
             Navigator.push(
               context,
               MaterialPageRoute(
-                  builder: (context) => const AllPaymentsScreen()),
+                  builder: (context) => const CustomerProfileScreen()),
             )
           }
         else

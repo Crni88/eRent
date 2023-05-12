@@ -7,9 +7,10 @@ class Posjeta {
   int? posjetaId;
   int? korisnikId;
   int? nekretninaId;
-  String? nazivnekretnine;
+  String? nazivNekretnine;
   DateTime? datumPosjete;
   String? vrijemePosjete;
+  bool? otkazana;
 
   Posjeta();
 

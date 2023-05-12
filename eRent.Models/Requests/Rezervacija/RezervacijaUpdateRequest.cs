@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace eRent.Models.Requests.Rezervacija
+﻿namespace eRent.Models.Requests.Rezervacija
 {
     public class RezervacijaUpdateRequest
     {
@@ -11,7 +9,7 @@ namespace eRent.Models.Requests.Rezervacija
         //public DateTime? DatumPocetka { get; set; }
 
         //public DateTime? DatumKraja { get; set; }
-
         public bool? Odobrena { get; set; }
+        public bool? Otkazana { get; set; }
     }
 }

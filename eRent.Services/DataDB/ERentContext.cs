@@ -273,6 +273,7 @@ public partial class ERentContext : DbContext
                 .HasMaxLength(50)
                 .HasColumnName("nazivNekretnine");
             entity.Property(e => e.NekretninaId).HasColumnName("nekretninaID");
+            entity.Property(e => e.Otkazana).HasColumnName("otkazana");
             entity.Property(e => e.VrijemePosjete)
                 .HasMaxLength(20)
                 .HasColumnName("vrijemePosjete");
@@ -343,12 +344,14 @@ public partial class ERentContext : DbContext
             entity.Property(e => e.ImePrezime)
                 .HasMaxLength(50)
                 .HasColumnName("ime_prezime");
+            entity.Property(e => e.KorisnikId).HasColumnName("korisnikId");
             entity.Property(e => e.MjesecnaRezervacija).HasColumnName("mjesecnaRezervacija");
             entity.Property(e => e.Nazivnekretnine)
                 .HasMaxLength(50)
                 .HasColumnName("nazivnekretnine");
             entity.Property(e => e.NekretninaId).HasColumnName("nekretninaId");
             entity.Property(e => e.Odobrena).HasColumnName("odobrena");
+            entity.Property(e => e.Otkazana).HasColumnName("otkazana");
 
             entity.HasOne(d => d.Nekretnina).WithMany(p => p.Rezervacijas)
                 .HasForeignKey(d => d.NekretninaId)

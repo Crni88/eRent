@@ -32,9 +32,17 @@ namespace eRent.Services.Posjeta
         public override IQueryable<DataDB.Posjetum> AddFilter(IQueryable<DataDB.Posjetum> query, PosjetaSearchObject search = null)
         {
             var filteredQuery = base.AddFilter(query, search);
-            if (search != null)
+            if (search?.NekretninaId != null)
             {
                 filteredQuery = filteredQuery.Where(x => x.NekretninaId == search.NekretninaId);
+            }
+            if (search?.KorisnikId != null)
+            {
+                filteredQuery = filteredQuery.Where(x => x.KorisnikId == search.KorisnikId);
+            }
+            if (search?.Otkazana != null)
+            {
+                filteredQuery = filteredQuery.Where(x => x.Otkazana == search.Otkazana);
             }
             return filteredQuery;
         }

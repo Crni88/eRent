@@ -18,6 +18,7 @@ namespace eRent.UI
         {
             PosjetaSearchObject posjetaSearchObject = new PosjetaSearchObject();
             posjetaSearchObject.NekretninaId = _nekretnina.NekretninaId;
+            posjetaSearchObject.Otkazana = false;
             var list = await prosjetaAPIService.Get<List<PosjetaModel>>(posjetaSearchObject);
             dataGridView1.DataSource = list;
         }

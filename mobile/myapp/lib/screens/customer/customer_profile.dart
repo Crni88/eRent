@@ -35,7 +35,7 @@ class _CustomerProfileScreenState extends State<CustomerProfileScreen> {
     });
   }
 
-  int _selectedIndex = 1;
+  int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
     setState(() {

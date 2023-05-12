@@ -1,6 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace eRent.Models.Requests.Posjeta
 {
@@ -10,6 +8,6 @@ namespace eRent.Models.Requests.Posjeta
 
         public DateTime? DatumPosjete { get; set; }
         public string vrijemePosjete { get; set; }
-
+        public bool? Otkazana { get; set; }
     }
 }

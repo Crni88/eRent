@@ -27,6 +27,7 @@ namespace eRent.UI
             RezervacijaSearchObject rezervacijaSearchObject = new RezervacijaSearchObject();
             rezervacijaSearchObject.NekretninaId = _nekretnina.NekretninaId;
             rezervacijaSearchObject.Odobrena = false;
+            rezervacijaSearchObject.Otkazana = false;
             var list = await rezervacijeAPIService.Get<List<RezervacijaModel>>(rezervacijaSearchObject);
             dgvRezervacije.DataSource = list;
         }

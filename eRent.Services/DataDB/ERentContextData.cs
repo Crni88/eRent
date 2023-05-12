@@ -253,9 +253,9 @@ namespace eRent.Services.DataDB
                 new PaymentRequest { PaymentRequestId = 3, IsProcessed = false, Iznos = 200, Komentar = "Komentar 3", KorisnikPaymentId = 2, Mjesecno = false, Naslov = "Naslov placanja 3", NekretninaPayment = 3, Nekretnina = "Vikendica Mostar" });
 
             modelBuilder.Entity<Posjetum>().HasData(
-                new Posjetum { PosjetaId = 1, KorisnikId = 2, NekretninaId = 2, NazivNekretnine = "Vikendica Travnik", DatumPosjete = DateTime.Today, VrijemePosjete = DateTime.Now.ToString("HH:mm"), KorisnikImePrezime = "Mobile Mobile" },
-                new Posjetum { PosjetaId = 2, KorisnikId = 2, NekretninaId = 1, NazivNekretnine = "Vikendica Sarajevo", DatumPosjete = DateTime.Today, VrijemePosjete = DateTime.Now.ToString("HH:mm"), KorisnikImePrezime = "Mobile Mobile" },
-                new Posjetum { PosjetaId = 3, KorisnikId = 2, NekretninaId = 3, NazivNekretnine = "Vikendica Mostar", DatumPosjete = DateTime.Today, VrijemePosjete = DateTime.Now.ToString("HH:mm"), KorisnikImePrezime = "Mobile Mobile" }
+                new Posjetum { PosjetaId = 1, KorisnikId = 2, NekretninaId = 2, NazivNekretnine = "Vikendica Travnik", DatumPosjete = DateTime.Today, VrijemePosjete = DateTime.Now.ToString("HH:mm"), KorisnikImePrezime = "Mobile Mobile", Otkazana = false },
+                new Posjetum { PosjetaId = 2, KorisnikId = 2, NekretninaId = 1, NazivNekretnine = "Vikendica Sarajevo", DatumPosjete = DateTime.Today, VrijemePosjete = DateTime.Now.ToString("HH:mm"), KorisnikImePrezime = "Mobile Mobile", Otkazana = false },
+                new Posjetum { PosjetaId = 3, KorisnikId = 2, NekretninaId = 3, NazivNekretnine = "Vikendica Mostar", DatumPosjete = DateTime.Today, VrijemePosjete = DateTime.Now.ToString("HH:mm"), KorisnikImePrezime = "Mobile Mobile", Otkazana = false }
                 );
 
             modelBuilder.Entity<Rejting>().HasData(
@@ -267,6 +267,8 @@ namespace eRent.Services.DataDB
                 new Rezervacija
                 {
                     RezervacijaId = 1,
+                    KorisnikId = 2,
+                    Otkazana = false,
                     MjesecnaRezervacija = false,
                     DatumPocetka = DateTime.Now,
                     DatumKraja = DateTime.Now.AddDays(30),
@@ -279,6 +281,8 @@ namespace eRent.Services.DataDB
             new Rezervacija
             {
                 RezervacijaId = 2,
+                KorisnikId = 2,
+                Otkazana = false,
                 MjesecnaRezervacija = false,
                 DatumPocetka = DateTime.Now,
                 DatumKraja = DateTime.Now.AddDays(30),
@@ -291,6 +295,8 @@ namespace eRent.Services.DataDB
             new Rezervacija
             {
                 RezervacijaId = 3,
+                KorisnikId = 2,
+                Otkazana = false,
                 MjesecnaRezervacija = false,
                 DatumPocetka = DateTime.Now,
                 DatumKraja = DateTime.Now.AddDays(30),
@@ -303,6 +309,8 @@ namespace eRent.Services.DataDB
             new Rezervacija
             {
                 RezervacijaId = 4,
+                KorisnikId = 2,
+                Otkazana = false,
                 MjesecnaRezervacija = false,
                 DatumPocetka = DateTime.Now,
                 DatumKraja = DateTime.Now.AddDays(50),
@@ -315,6 +323,8 @@ namespace eRent.Services.DataDB
             new Rezervacija
             {
                 RezervacijaId = 5,
+                KorisnikId = 2,
+                Otkazana = false,
                 MjesecnaRezervacija = false,
                 DatumPocetka = DateTime.Now.AddDays(10),
                 DatumKraja = DateTime.Now.AddDays(30),
@@ -327,6 +337,8 @@ namespace eRent.Services.DataDB
             new Rezervacija
             {
                 RezervacijaId = 6,
+                KorisnikId = 2,
+                Otkazana = false,
                 MjesecnaRezervacija = false,
                 DatumPocetka = DateTime.Now.AddDays(12),
                 DatumKraja = DateTime.Now.AddDays(30),
@@ -336,9 +348,39 @@ namespace eRent.Services.DataDB
                 Nazivnekretnine = "Stan Sarajevo",
                 Odobrena = false,
             },
+              new Rezervacija
+              {
+                  RezervacijaId = 8,
+                  KorisnikId = 2,
+                  Otkazana = false,
+                  MjesecnaRezervacija = false,
+                  DatumPocetka = DateTime.Now.AddDays(12),
+                  DatumKraja = DateTime.Now.AddDays(30),
+                  ImePrezime = "Mobile Mobile",
+                  BrojTelefona = "062 498 653",
+                  NekretninaId = 4,
+                  Nazivnekretnine = "Stan Sarajevo",
+                  Odobrena = false,
+              },
+                new Rezervacija
+                {
+                    RezervacijaId = 9,
+                    KorisnikId = 2,
+                    Otkazana = false,
+                    MjesecnaRezervacija = false,
+                    DatumPocetka = DateTime.Now.AddDays(12),
+                    DatumKraja = DateTime.Now.AddDays(30),
+                    ImePrezime = "Mobile Mobile",
+                    BrojTelefona = "062 498 653",
+                    NekretninaId = 4,
+                    Nazivnekretnine = "Stan Sarajevo",
+                    Odobrena = false,
+                },
             new Rezervacija
             {
                 RezervacijaId = 7,
+                KorisnikId = 2,
+                Otkazana = false,
                 MjesecnaRezervacija = false,
                 DatumPocetka = DateTime.Now,
                 DatumKraja = DateTime.Now.AddDays(60),

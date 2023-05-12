@@ -39,3 +39,5 @@ Stripe test card number:
 Start the windows app inside visual studio IDE.
 
 To recive FCM notifications your AVD need to have Google Play Services. (The time to recive a notification can vary.)
+
+Notifications can only be recived if the app is in the foreground or closed. 
