@@ -50,7 +50,7 @@ namespace eRent.UI
             else
             {
                 frmAddNovogKorisnika frmAddNovogKorisnika = new frmAddNovogKorisnika(korisnik);
-                frmAddNovogKorisnika.ShowDialog();  
+                frmAddNovogKorisnika.ShowDialog();
             }
         }
     }

@@ -7,8 +7,8 @@ namespace eRent.UI
     public partial class frmAddTask : Form
     {
         public APIService TaskService { get; set; } = new APIService("Task");
-        public NekretninaModel Nekretnina { get; }
-        public TaskModel TaskModel { get; } = null;
+        public NekretninaModel Nekretnina { get; set; }
+        public TaskModel TaskModel { get; set; } = null;
 
         public frmAddTask(NekretninaModel nekretnina, TaskModel taskModel = null)
         {
@@ -16,7 +16,10 @@ namespace eRent.UI
             Nekretnina = nekretnina;
             TaskModel = taskModel;
             loadData();
-            loadTaskData();
+            if (taskModel != null)
+            {
+                loadTaskData();
+            }
         }
 
         private void loadTaskData()
@@ -64,6 +67,13 @@ namespace eRent.UI
             }
         }
 
+        private void updateAndCloseForm()
+        {
+            frmAllTasks frmAllTasks = new frmAllTasks(Nekretnina);
+            frmAllTasks.ShowDialog();
+            this.Close();
+        }
+
         private async Task updateTask()
         {
             TaskUpdateRequest taskInsertRequest = new TaskUpdateRequest();
@@ -77,8 +87,8 @@ namespace eRent.UI
             var taskInsert = await TaskService.Put<TaskModel>(TaskModel.TaskId, taskInsertRequest);
             if (taskInsert != null)
             {
-                this.Close();
                 AutoClosingMessageBox.Show("Task azuriran!", "Task uspjesno azuriran.", 3000);
+                updateAndCloseForm();
             }
         }
 
@@ -91,11 +101,12 @@ namespace eRent.UI
             taskInsertRequest.Status = cbStatus.Text;
             taskInsertRequest.Priority = cbPriority.Text;
             taskInsertRequest.DueDate = dtpDueDate.Value;
+            taskInsertRequest.IsActive = true;
             var taskInsert = await TaskService.Post<TaskModel>(taskInsertRequest);
             if (taskInsert != null)
             {
                 AutoClosingMessageBox.Show("Task dodan!", "Task uspjesno dodan.", 3000);
-                this.Close();
+                updateAndCloseForm();
             }
         }
 

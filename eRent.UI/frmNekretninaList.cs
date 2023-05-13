@@ -8,12 +8,13 @@ namespace eRent.UI
         public APIService NekretnineService { get; set; } = new APIService("Nekretnine");
         public dynamic Result { get; }
         private string _username { get; set; }
-        public frmNekretninaList(string username, dynamic result)
+        public frmNekretninaList(string username, dynamic result = null)
         {
             InitializeComponent();
             dgvNekretnineList.AutoGenerateColumns = false;
             Result = result;
             this._username = username;
+
         }
 
         public async void btnShowNekretnine_Click(object sender, EventArgs e)
@@ -33,7 +34,7 @@ namespace eRent.UI
             }
         }
 
-        private async Task loadData()
+        public async Task loadData()
         {
             NekretninaSearchObject nekretnina = new NekretninaSearchObject();
             nekretnina.IsActive = true;
@@ -66,6 +67,7 @@ namespace eRent.UI
                 {
                     frmAddNekretninu addNekretninu = new frmAddNekretninu(_username, nekretnina);
                     addNekretninu.Show();
+                    this.Close();
                 }
             }
             if (e.ColumnIndex == 5)
@@ -114,6 +116,11 @@ namespace eRent.UI
         {
             frmSviKorisnici frmAddNovogKorisnika = new frmSviKorisnici();
             frmAddNovogKorisnika.Show();
+        }
+
+        private async void frmNekretninaList_Load(object sender, EventArgs e)
+        {
+            await loadData();
         }
     }
 }

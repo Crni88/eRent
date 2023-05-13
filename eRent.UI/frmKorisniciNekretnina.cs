@@ -14,12 +14,17 @@ namespace eRent.UI
 
         public frmKorisniciNekretnina(NekretninaModel nekretnina)
         {
-            this._nekretnina = nekretnina;
             InitializeComponent();
+            this._nekretnina = nekretnina;
             dgvKorisniciNekretnina.AutoGenerateColumns = false;
         }
 
         private async void btnUcitajKorisnike_Click(object sender, EventArgs e)
+        {
+            await loadData();
+        }
+
+        public async Task loadData()
         {
             NekretninaKorisnikSearchObject nekretninaKorisnik = new NekretninaKorisnikSearchObject();
             nekretninaKorisnik.NekretninaId = _nekretnina.NekretninaId;
@@ -41,8 +46,9 @@ namespace eRent.UI
                 var nekretninaKorisnik = dgvKorisniciNekretnina.SelectedRows[0].DataBoundItem as NekretninaKorisnikModel;
                 if (nekretninaKorisnik != null)
                 {
-                    frmAddKorisnikNekretnina frmAddKorisniciNekretnina = new frmAddKorisnikNekretnina(nekretninaKorisnik);
+                    frmAddKorisnikNekretnina frmAddKorisniciNekretnina = new frmAddKorisnikNekretnina(nekretninaKorisnik,_nekretnina);
                     frmAddKorisniciNekretnina.ShowDialog();
+                    //  this.Close();
                 }
             }
         }
@@ -64,6 +70,11 @@ namespace eRent.UI
                 frmZahtjevZaPlacanje frmZahtjevZaPlacanje = new frmZahtjevZaPlacanje(brojKorisnika, _nekretnina);
                 frmZahtjevZaPlacanje.ShowDialog();
             }
+        }
+
+        private async void frmKorisniciNekretnina_Load(object sender, EventArgs e)
+        {
+            await loadData();
         }
     }
 }

@@ -28,120 +28,114 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvKorisnici = new System.Windows.Forms.DataGridView();
-            this.btnUcitajKorisnike = new System.Windows.Forms.Button();
-            this.btnDodajKorisnika = new System.Windows.Forms.Button();
-            this.korsnikIme = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.korisnikPrezime = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.email = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.username = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Obrisi = new System.Windows.Forms.DataGridViewButtonColumn();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvKorisnici)).BeginInit();
-            this.SuspendLayout();
+            dgvKorisnici = new DataGridView();
+            korsnikIme = new DataGridViewTextBoxColumn();
+            korisnikPrezime = new DataGridViewTextBoxColumn();
+            email = new DataGridViewTextBoxColumn();
+            username = new DataGridViewTextBoxColumn();
+            Obrisi = new DataGridViewButtonColumn();
+            btnUcitajKorisnike = new Button();
+            btnDodajKorisnika = new Button();
+            ((System.ComponentModel.ISupportInitialize)dgvKorisnici).BeginInit();
+            SuspendLayout();
             // 
             // dgvKorisnici
             // 
-            this.dgvKorisnici.AllowUserToAddRows = false;
-            this.dgvKorisnici.AllowUserToDeleteRows = false;
-            this.dgvKorisnici.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvKorisnici.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.korsnikIme,
-            this.korisnikPrezime,
-            this.email,
-            this.username,
-            this.Obrisi});
-            this.dgvKorisnici.Location = new System.Drawing.Point(10, 48);
-            this.dgvKorisnici.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dgvKorisnici.Name = "dgvKorisnici";
-            this.dgvKorisnici.ReadOnly = true;
-            this.dgvKorisnici.RowHeadersWidth = 51;
-            this.dgvKorisnici.RowTemplate.Height = 29;
-            this.dgvKorisnici.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dgvKorisnici.Size = new System.Drawing.Size(679, 280);
-            this.dgvKorisnici.TabIndex = 0;
-            this.dgvKorisnici.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvKorisnici_CellContentClick);
-            // 
-            // btnUcitajKorisnike
-            // 
-            this.btnUcitajKorisnike.Location = new System.Drawing.Point(10, 9);
-            this.btnUcitajKorisnike.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnUcitajKorisnike.Name = "btnUcitajKorisnike";
-            this.btnUcitajKorisnike.Size = new System.Drawing.Size(82, 22);
-            this.btnUcitajKorisnike.TabIndex = 1;
-            this.btnUcitajKorisnike.Text = "Ucitaj";
-            this.btnUcitajKorisnike.UseVisualStyleBackColor = true;
-            this.btnUcitajKorisnike.Click += new System.EventHandler(this.btnUcitajKorisnike_Click);
-            // 
-            // btnDodajKorisnika
-            // 
-            this.btnDodajKorisnika.Location = new System.Drawing.Point(607, 9);
-            this.btnDodajKorisnika.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnDodajKorisnika.Name = "btnDodajKorisnika";
-            this.btnDodajKorisnika.Size = new System.Drawing.Size(82, 22);
-            this.btnDodajKorisnika.TabIndex = 2;
-            this.btnDodajKorisnika.Text = "Dodaj";
-            this.btnDodajKorisnika.UseVisualStyleBackColor = true;
-            this.btnDodajKorisnika.Click += new System.EventHandler(this.btnDodajKorisnika_Click);
+            dgvKorisnici.AllowUserToAddRows = false;
+            dgvKorisnici.AllowUserToDeleteRows = false;
+            dgvKorisnici.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvKorisnici.Columns.AddRange(new DataGridViewColumn[] { korsnikIme, korisnikPrezime, email, username, Obrisi });
+            dgvKorisnici.Location = new Point(10, 48);
+            dgvKorisnici.Margin = new Padding(3, 2, 3, 2);
+            dgvKorisnici.Name = "dgvKorisnici";
+            dgvKorisnici.ReadOnly = true;
+            dgvKorisnici.RowHeadersWidth = 51;
+            dgvKorisnici.RowTemplate.Height = 29;
+            dgvKorisnici.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
+            dgvKorisnici.Size = new Size(679, 280);
+            dgvKorisnici.TabIndex = 0;
+            dgvKorisnici.CellContentClick += dgvKorisnici_CellContentClick;
             // 
             // korsnikIme
             // 
-            this.korsnikIme.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.korsnikIme.DataPropertyName = "korsnikIme";
-            this.korsnikIme.HeaderText = "Korisnik Ime";
-            this.korsnikIme.MinimumWidth = 6;
-            this.korsnikIme.Name = "korsnikIme";
-            this.korsnikIme.ReadOnly = true;
+            korsnikIme.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            korsnikIme.DataPropertyName = "korsnikIme";
+            korsnikIme.HeaderText = "Korisnik Ime";
+            korsnikIme.MinimumWidth = 6;
+            korsnikIme.Name = "korsnikIme";
+            korsnikIme.ReadOnly = true;
             // 
             // korisnikPrezime
             // 
-            this.korisnikPrezime.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.korisnikPrezime.DataPropertyName = "korisnikPrezime";
-            this.korisnikPrezime.HeaderText = "Korisnik Prezime";
-            this.korisnikPrezime.MinimumWidth = 6;
-            this.korisnikPrezime.Name = "korisnikPrezime";
-            this.korisnikPrezime.ReadOnly = true;
+            korisnikPrezime.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            korisnikPrezime.DataPropertyName = "korisnikPrezime";
+            korisnikPrezime.HeaderText = "Korisnik Prezime";
+            korisnikPrezime.MinimumWidth = 6;
+            korisnikPrezime.Name = "korisnikPrezime";
+            korisnikPrezime.ReadOnly = true;
             // 
             // email
             // 
-            this.email.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.email.DataPropertyName = "email";
-            this.email.HeaderText = "Email";
-            this.email.MinimumWidth = 6;
-            this.email.Name = "email";
-            this.email.ReadOnly = true;
+            email.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            email.DataPropertyName = "email";
+            email.HeaderText = "Email";
+            email.MinimumWidth = 6;
+            email.Name = "email";
+            email.ReadOnly = true;
             // 
             // username
             // 
-            this.username.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.username.DataPropertyName = "username";
-            this.username.HeaderText = "Username";
-            this.username.MinimumWidth = 6;
-            this.username.Name = "username";
-            this.username.ReadOnly = true;
+            username.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            username.DataPropertyName = "username";
+            username.HeaderText = "Username";
+            username.MinimumWidth = 6;
+            username.Name = "username";
+            username.ReadOnly = true;
             // 
             // Obrisi
             // 
-            this.Obrisi.HeaderText = "Obrisi";
-            this.Obrisi.Name = "Obrisi";
-            this.Obrisi.ReadOnly = true;
-            this.Obrisi.Text = "Obrisi";
-            this.Obrisi.UseColumnTextForButtonValue = true;
+            Obrisi.HeaderText = "Obrisi";
+            Obrisi.Name = "Obrisi";
+            Obrisi.ReadOnly = true;
+            Obrisi.Text = "Obrisi";
+            Obrisi.UseColumnTextForButtonValue = true;
+            // 
+            // btnUcitajKorisnike
+            // 
+            btnUcitajKorisnike.Location = new Point(10, 9);
+            btnUcitajKorisnike.Margin = new Padding(3, 2, 3, 2);
+            btnUcitajKorisnike.Name = "btnUcitajKorisnike";
+            btnUcitajKorisnike.Size = new Size(82, 22);
+            btnUcitajKorisnike.TabIndex = 1;
+            btnUcitajKorisnike.Text = "Ucitaj";
+            btnUcitajKorisnike.UseVisualStyleBackColor = true;
+            btnUcitajKorisnike.Click += btnUcitajKorisnike_Click;
+            // 
+            // btnDodajKorisnika
+            // 
+            btnDodajKorisnika.Location = new Point(607, 3);
+            btnDodajKorisnika.Margin = new Padding(3, 2, 3, 2);
+            btnDodajKorisnika.Name = "btnDodajKorisnika";
+            btnDodajKorisnika.Size = new Size(82, 35);
+            btnDodajKorisnika.TabIndex = 2;
+            btnDodajKorisnika.Text = "Dodaj";
+            btnDodajKorisnika.UseVisualStyleBackColor = true;
+            btnDodajKorisnika.Click += btnDodajKorisnika_Click;
             // 
             // frmSviKorisnici
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(700, 338);
-            this.Controls.Add(this.btnDodajKorisnika);
-            this.Controls.Add(this.btnUcitajKorisnike);
-            this.Controls.Add(this.dgvKorisnici);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "frmSviKorisnici";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Svi korisnici";
-            ((System.ComponentModel.ISupportInitialize)(this.dgvKorisnici)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(700, 338);
+            Controls.Add(btnDodajKorisnika);
+            Controls.Add(btnUcitajKorisnike);
+            Controls.Add(dgvKorisnici);
+            Margin = new Padding(3, 2, 3, 2);
+            Name = "frmSviKorisnici";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Svi korisnici";
+            ((System.ComponentModel.ISupportInitialize)dgvKorisnici).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion

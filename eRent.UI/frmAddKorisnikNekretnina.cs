@@ -13,10 +13,11 @@ namespace eRent.UI
         public NekretninaModel _nekretnina { get; }
         bool isPressed = false;
 
-        public frmAddKorisnikNekretnina(NekretninaKorisnikModel nekretninaKorisnik = null)
+        public frmAddKorisnikNekretnina(NekretninaKorisnikModel nekretninaKorisnik = null, NekretninaModel nekretnina = null)
         {
             InitializeComponent();
             //this._nekretninaKorisnik = nekretninaKorisnik;
+            this._nekretnina = nekretnina;
             if (nekretninaKorisnik != null)
             {
                 GetKorisnik(nekretninaKorisnik.NekretninaKorisnikId);
@@ -77,7 +78,7 @@ namespace eRent.UI
                             if (postNekretnina != null)
                             {
                                 AutoClosingMessageBox.Show("Korisnik uspjesno dodan!", "Korisnik dodan!", 3000);
-                                this.Close();
+                                saveDataAndLoadForm();
                             }
                         }
                         catch (Exception ex)
@@ -94,7 +95,8 @@ namespace eRent.UI
                             if (putNekretnina != null)
                             {
                                 AutoClosingMessageBox.Show("Korisnik uspjesno azuriran!", "Korisnik azuriran!", 3000);
-                                this.Close();
+                                saveDataAndLoadForm();
+
                             }
                         }
                         catch (Exception ex)
@@ -102,7 +104,6 @@ namespace eRent.UI
                             MessageBox.Show(ex.Message);
                         }
                     }
-                    this.Close();
                 }
                 else
                 {
@@ -110,6 +111,13 @@ namespace eRent.UI
                     err.SetError(pbKorisnikSlika, "Slika je obavezna!");
                 }
             }
+        }
+
+        private void saveDataAndLoadForm()
+        {
+            frmKorisniciNekretnina frmKorisniciNekretnina = new frmKorisniciNekretnina(_nekretnina);
+            frmKorisniciNekretnina.ShowDialog();
+            this.Close();
         }
 
         private NekretninaKorisnikUpdateRequest UpdateKorisnikNekretnina()
@@ -214,7 +222,7 @@ namespace eRent.UI
                 nekretninaKorisnikUpdateRequest.IsActive = false;
                 var putNekretnina = await NekretninaKorisnikService.Put<NekretninaKorisnikUpdateRequest>(_nekretninaKorisnik.NekretninaKorisnikId, nekretninaKorisnikUpdateRequest);
                 AutoClosingMessageBox.Show("Korisnik uspjesno obrisan!", "Korisnik obrisan!", 3000);
-                this.Close();
+                saveDataAndLoadForm();
             }
             catch (Exception ex)
             {

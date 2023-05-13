@@ -106,7 +106,6 @@ namespace eRent.UI
                     _nekretninaModel = postNekretnina;
                     await UpdateTagsAsync();
                     AutoClosingMessageBox.Show("Nekretnina dodana!", "Nekretnina uspjesno dodana!", 3000);
-                    this.Close();
                 }
                 else
                 {
@@ -115,8 +114,10 @@ namespace eRent.UI
                         await NekretnineService.Put<NekretninaUpdateRequest>(_nekretninaModel.NekretninaId, nekretninaUpdateRequest);
                     await UpdateTagsAsync();
                     AutoClosingMessageBox.Show("Nekretnina azurirana!", "Nekretnina uspjesno azurirana!", 3000);
-                    this.Close();
                 }
+                frmNekretninaList frmNekretninaList = new frmNekretninaList(_username);
+                frmNekretninaList.ShowDialog();
+                this.Close();
             }
         }
 
@@ -148,6 +149,7 @@ namespace eRent.UI
                     var postNekretnina = await nekretninaTagoviService.Post<NekretninaTagoviInsertRequest>(nekretninaTagoviUpsertRequest);
                 }
             }
+
         }
 
         private NekretninaUpdateRequest CreateUpdateObject()

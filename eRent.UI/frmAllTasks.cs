@@ -21,6 +21,7 @@ namespace eRent.UI
         {
             frmAddTask frmAddTask = new frmAddTask(Nekretnina);
             frmAddTask.ShowDialog();
+            this.Close();
         }
 
         private async void btnLoad_Click(object sender, EventArgs e)
@@ -46,16 +47,17 @@ namespace eRent.UI
 
         private async void dgvAllTask_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 5)
+            if (e.ColumnIndex == 6)
             {
                 await deleteTask();
             }
-            else
+            else if (e.ColumnIndex == 5)
             {
                 //Otvori novu formu
                 TaskModel taskModel = (TaskModel)dgvAllTask.SelectedRows[0].DataBoundItem;
                 frmAddTask frmAddTask = new frmAddTask(Nekretnina, taskModel);
                 frmAddTask.Show();
+                this.Close();
             }
         }
 
@@ -72,8 +74,13 @@ namespace eRent.UI
             tagUpsertRequest.Priority = taskModel.Priority;
             //tagUpsertRequest.TaskId = taskModel.TaskId;
             var taskModels = await TaskService.Put<TaskUpdateRequest>(taskModel.TaskId, tagUpsertRequest);
-            loadTasks();
+            await loadTasks();
             AutoClosingMessageBox.Show("Task obrisan", "Task uspjesno obrisan!", 3000);
+        }
+
+        private async void frmAllTasks_Load(object sender, EventArgs e)
+        {
+            await loadTasks();
         }
     }
 }
