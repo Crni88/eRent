@@ -50,10 +50,9 @@
             // 
             // btnShowNekretnine
             // 
-            btnShowNekretnine.Location = new Point(554, 16);
-            btnShowNekretnine.Margin = new Padding(3, 4, 3, 4);
+            btnShowNekretnine.Location = new Point(485, 12);
             btnShowNekretnine.Name = "btnShowNekretnine";
-            btnShowNekretnine.Size = new Size(91, 31);
+            btnShowNekretnine.Size = new Size(80, 23);
             btnShowNekretnine.TabIndex = 1;
             btnShowNekretnine.Text = "Show";
             btnShowNekretnine.UseVisualStyleBackColor = true;
@@ -61,17 +60,19 @@
             // 
             // dgvNekretnineList
             // 
+            dgvNekretnineList.AllowUserToAddRows = false;
+            dgvNekretnineList.AllowUserToDeleteRows = false;
             dgvNekretnineList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvNekretnineList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvNekretnineList.Columns.AddRange(new DataGridViewColumn[] { Naziv, Lokacija, Popunjena, Rezervacije, Detaljno, Korisnici, Posjete, Odrzavanje });
-            dgvNekretnineList.Location = new Point(10, 60);
-            dgvNekretnineList.Margin = new Padding(3, 4, 3, 4);
+            dgvNekretnineList.Location = new Point(9, 45);
             dgvNekretnineList.MultiSelect = false;
             dgvNekretnineList.Name = "dgvNekretnineList";
+            dgvNekretnineList.ReadOnly = true;
             dgvNekretnineList.RowHeadersWidth = 51;
             dgvNekretnineList.RowTemplate.Height = 25;
             dgvNekretnineList.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvNekretnineList.Size = new Size(1158, 592);
+            dgvNekretnineList.Size = new Size(1013, 444);
             dgvNekretnineList.TabIndex = 0;
             dgvNekretnineList.CellContentClick += dgvNekretnineList_CellContentClick;
             // 
@@ -81,6 +82,7 @@
             Naziv.HeaderText = "Naziv";
             Naziv.MinimumWidth = 6;
             Naziv.Name = "Naziv";
+            Naziv.ReadOnly = true;
             // 
             // Lokacija
             // 
@@ -88,6 +90,7 @@
             Lokacija.HeaderText = "Lokacija";
             Lokacija.MinimumWidth = 6;
             Lokacija.Name = "Lokacija";
+            Lokacija.ReadOnly = true;
             // 
             // Popunjena
             // 
@@ -95,6 +98,7 @@
             Popunjena.HeaderText = "Popunjena";
             Popunjena.MinimumWidth = 6;
             Popunjena.Name = "Popunjena";
+            Popunjena.ReadOnly = true;
             // 
             // Rezervacije
             // 
@@ -102,9 +106,10 @@
             Rezervacije.HeaderText = "Rezervacije";
             Rezervacije.MinimumWidth = 6;
             Rezervacije.Name = "Rezervacije";
+            Rezervacije.ReadOnly = true;
             Rezervacije.Text = "Rezervacije";
             Rezervacije.UseColumnTextForButtonValue = true;
-            Rezervacije.Width = 90;
+            Rezervacije.Width = 71;
             // 
             // Detaljno
             // 
@@ -112,9 +117,10 @@
             Detaljno.HeaderText = "Detaljno";
             Detaljno.MinimumWidth = 6;
             Detaljno.Name = "Detaljno";
+            Detaljno.ReadOnly = true;
             Detaljno.Text = "Detaljno";
             Detaljno.UseColumnTextForButtonValue = true;
-            Detaljno.Width = 72;
+            Detaljno.Width = 57;
             // 
             // Korisnici
             // 
@@ -122,9 +128,10 @@
             Korisnici.HeaderText = "Korisnici";
             Korisnici.MinimumWidth = 6;
             Korisnici.Name = "Korisnici";
+            Korisnici.ReadOnly = true;
             Korisnici.Text = "Korisnici";
             Korisnici.UseColumnTextForButtonValue = true;
-            Korisnici.Width = 71;
+            Korisnici.Width = 58;
             // 
             // Posjete
             // 
@@ -132,10 +139,11 @@
             Posjete.HeaderText = "Posjete";
             Posjete.MinimumWidth = 6;
             Posjete.Name = "Posjete";
+            Posjete.ReadOnly = true;
             Posjete.Text = "Posjete";
             Posjete.ToolTipText = "Posjete";
             Posjete.UseColumnTextForButtonValue = true;
-            Posjete.Width = 62;
+            Posjete.Width = 51;
             // 
             // Odrzavanje
             // 
@@ -143,32 +151,33 @@
             Odrzavanje.HeaderText = "Odrzavanje";
             Odrzavanje.MinimumWidth = 6;
             Odrzavanje.Name = "Odrzavanje";
+            Odrzavanje.ReadOnly = true;
             Odrzavanje.Text = "Odrzavanje";
             Odrzavanje.UseColumnTextForButtonValue = true;
-            Odrzavanje.Width = 90;
+            Odrzavanje.Width = 72;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(11, 19);
+            label1.Location = new Point(10, 14);
             label1.Name = "label1";
-            label1.Size = new Size(159, 20);
+            label1.Size = new Size(128, 15);
             label1.TabIndex = 2;
             label1.Text = "Pretrga svih nekretnina";
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(176, 16);
+            txtSearch.Location = new Point(154, 12);
+            txtSearch.Margin = new Padding(3, 2, 3, 2);
             txtSearch.Name = "txtSearch";
-            txtSearch.Size = new Size(371, 27);
+            txtSearch.Size = new Size(325, 23);
             txtSearch.TabIndex = 3;
             // 
             // btnDodajNovu
             // 
-            btnDodajNovu.Location = new Point(1082, 13);
-            btnDodajNovu.Margin = new Padding(3, 4, 3, 4);
+            btnDodajNovu.Location = new Point(947, 10);
             btnDodajNovu.Name = "btnDodajNovu";
-            btnDodajNovu.Size = new Size(86, 31);
+            btnDodajNovu.Size = new Size(75, 23);
             btnDodajNovu.TabIndex = 4;
             btnDodajNovu.Text = "Dodaj Novu";
             btnDodajNovu.UseVisualStyleBackColor = true;
@@ -176,10 +185,9 @@
             // 
             // btnIzvjestaj
             // 
-            btnIzvjestaj.Location = new Point(1083, 660);
-            btnIzvjestaj.Margin = new Padding(3, 4, 3, 4);
+            btnIzvjestaj.Location = new Point(948, 495);
             btnIzvjestaj.Name = "btnIzvjestaj";
-            btnIzvjestaj.Size = new Size(86, 31);
+            btnIzvjestaj.Size = new Size(75, 23);
             btnIzvjestaj.TabIndex = 5;
             btnIzvjestaj.Text = "Izvjestaj";
             btnIzvjestaj.UseVisualStyleBackColor = true;
@@ -187,10 +195,9 @@
             // 
             // btnRejting
             // 
-            btnRejting.Location = new Point(14, 660);
-            btnRejting.Margin = new Padding(3, 4, 3, 4);
+            btnRejting.Location = new Point(12, 495);
             btnRejting.Name = "btnRejting";
-            btnRejting.Size = new Size(86, 31);
+            btnRejting.Size = new Size(75, 23);
             btnRejting.TabIndex = 6;
             btnRejting.Text = "Rejting";
             btnRejting.UseVisualStyleBackColor = true;
@@ -198,9 +205,10 @@
             // 
             // btnDodajKorisnika
             // 
-            btnDodajKorisnika.Location = new Point(139, 659);
+            btnDodajKorisnika.Location = new Point(122, 494);
+            btnDodajKorisnika.Margin = new Padding(3, 2, 3, 2);
             btnDodajKorisnika.Name = "btnDodajKorisnika";
-            btnDodajKorisnika.Size = new Size(96, 32);
+            btnDodajKorisnika.Size = new Size(84, 24);
             btnDodajKorisnika.TabIndex = 7;
             btnDodajKorisnika.Text = "Korisnici";
             btnDodajKorisnika.UseVisualStyleBackColor = true;
@@ -208,9 +216,9 @@
             // 
             // frmNekretninaList
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1182, 707);
+            ClientSize = new Size(1034, 530);
             Controls.Add(btnDodajKorisnika);
             Controls.Add(btnRejting);
             Controls.Add(btnIzvjestaj);
@@ -219,11 +227,10 @@
             Controls.Add(label1);
             Controls.Add(btnShowNekretnine);
             Controls.Add(dgvNekretnineList);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "frmNekretninaList";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Lista svih nekretnina";
-            Load += this.frmNekretninaList_Load;
+            Load += frmNekretninaList_Load;
             ((System.ComponentModel.ISupportInitialize)dgvNekretnineList).EndInit();
             ResumeLayout(false);
             PerformLayout();

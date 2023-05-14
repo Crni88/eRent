@@ -28,95 +28,97 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dgvRejting = new System.Windows.Forms.DataGridView();
-            this.Nekretnina = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Korisnik = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Rejting = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.Komentar = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.btnLoad = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRejting)).BeginInit();
-            this.SuspendLayout();
+            dgvRejting = new DataGridView();
+            Nekretnina = new DataGridViewTextBoxColumn();
+            Korisnik = new DataGridViewTextBoxColumn();
+            Rejting = new DataGridViewTextBoxColumn();
+            Komentar = new DataGridViewTextBoxColumn();
+            btnLoad = new Button();
+            label1 = new Label();
+            ((System.ComponentModel.ISupportInitialize)dgvRejting).BeginInit();
+            SuspendLayout();
             // 
             // dgvRejting
             // 
-            this.dgvRejting.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvRejting.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Nekretnina,
-            this.Korisnik,
-            this.Rejting,
-            this.Komentar});
-            this.dgvRejting.Location = new System.Drawing.Point(12, 36);
-            this.dgvRejting.Name = "dgvRejting";
-            this.dgvRejting.RowTemplate.Height = 25;
-            this.dgvRejting.Size = new System.Drawing.Size(776, 402);
-            this.dgvRejting.TabIndex = 0;
+            dgvRejting.AllowUserToAddRows = false;
+            dgvRejting.AllowUserToDeleteRows = false;
+            dgvRejting.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvRejting.Columns.AddRange(new DataGridViewColumn[] { Nekretnina, Korisnik, Rejting, Komentar });
+            dgvRejting.Location = new Point(12, 36);
+            dgvRejting.Name = "dgvRejting";
+            dgvRejting.ReadOnly = true;
+            dgvRejting.RowTemplate.Height = 25;
+            dgvRejting.Size = new Size(776, 402);
+            dgvRejting.TabIndex = 0;
             // 
             // Nekretnina
             // 
-            this.Nekretnina.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Nekretnina.DataPropertyName = "Nekretnina";
-            this.Nekretnina.HeaderText = "Nekretnina";
-            this.Nekretnina.Name = "Nekretnina";
+            Nekretnina.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Nekretnina.DataPropertyName = "Nekretnina";
+            Nekretnina.HeaderText = "Nekretnina";
+            Nekretnina.Name = "Nekretnina";
+            Nekretnina.ReadOnly = true;
             // 
             // Korisnik
             // 
-            this.Korisnik.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Korisnik.DataPropertyName = "ImePrezime";
-            this.Korisnik.HeaderText = "Korisnik";
-            this.Korisnik.Name = "Korisnik";
+            Korisnik.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Korisnik.DataPropertyName = "ImePrezime";
+            Korisnik.HeaderText = "Korisnik";
+            Korisnik.Name = "Korisnik";
+            Korisnik.ReadOnly = true;
             // 
             // Rejting
             // 
-            this.Rejting.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.ColumnHeader;
-            this.Rejting.DataPropertyName = "Rejting1";
-            this.Rejting.HeaderText = "Rejting";
-            this.Rejting.Name = "Rejting";
-            this.Rejting.Width = 69;
+            Rejting.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Rejting.DataPropertyName = "Rejting1";
+            Rejting.HeaderText = "Rejting";
+            Rejting.Name = "Rejting";
+            Rejting.ReadOnly = true;
+            Rejting.Width = 69;
             // 
             // Komentar
             // 
-            this.Komentar.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.Fill;
-            this.Komentar.DataPropertyName = "Komentar";
-            this.Komentar.HeaderText = "Komentar";
-            this.Komentar.Name = "Komentar";
+            Komentar.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Komentar.DataPropertyName = "Komentar";
+            Komentar.HeaderText = "Komentar";
+            Komentar.Name = "Komentar";
+            Komentar.ReadOnly = true;
             // 
             // btnLoad
             // 
-            this.btnLoad.Location = new System.Drawing.Point(713, 7);
-            this.btnLoad.Name = "btnLoad";
-            this.btnLoad.Size = new System.Drawing.Size(75, 23);
-            this.btnLoad.TabIndex = 1;
-            this.btnLoad.Text = "Ucitaj";
-            this.btnLoad.UseVisualStyleBackColor = true;
-            this.btnLoad.Click += new System.EventHandler(this.btnLoad_Click);
+            btnLoad.Location = new Point(713, 7);
+            btnLoad.Name = "btnLoad";
+            btnLoad.Size = new Size(75, 23);
+            btnLoad.TabIndex = 1;
+            btnLoad.Text = "Ucitaj";
+            btnLoad.UseVisualStyleBackColor = true;
+            btnLoad.Click += btnLoad_Click;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(83, 30);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "Rejting";
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(12, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(83, 30);
+            label1.TabIndex = 3;
+            label1.Text = "Rejting";
             // 
             // frmRejting
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnLoad);
-            this.Controls.Add(this.dgvRejting);
-            this.Name = "frmRejting";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Rejting";
-            this.Load += new System.EventHandler(this.frmRejting_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvRejting)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(label1);
+            Controls.Add(btnLoad);
+            Controls.Add(dgvRejting);
+            Name = "frmRejting";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Rejting";
+            Load += frmRejting_Load;
+            ((System.ComponentModel.ISupportInitialize)dgvRejting).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

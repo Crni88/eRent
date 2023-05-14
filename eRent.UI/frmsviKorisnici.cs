@@ -20,7 +20,7 @@ namespace eRent.UI
             await loadKorisnike();
         }
 
-        private async Task loadKorisnike()
+        public async Task loadKorisnike()
         {
             KorisnikSearchObject korisnikSearchObject = new KorisnikSearchObject();
             korisnikSearchObject.IsActive = true;
@@ -32,12 +32,13 @@ namespace eRent.UI
         {
             frmAddNovogKorisnika frmAddNovogKorisnika = new frmAddNovogKorisnika();
             frmAddNovogKorisnika.ShowDialog();
+            this.Close();
         }
 
         private async void dgvKorisnici_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             KorisnikModel korisnik = (KorisnikModel)dgvKorisnici.SelectedRows[0].DataBoundItem;
-            if (e.ColumnIndex == 4)
+            if (e.ColumnIndex == 5)
             {
                 KorisnikUpdateRequest korisnikSearchObject = new KorisnikUpdateRequest();
                 korisnikSearchObject.IsActive = false;
@@ -47,11 +48,17 @@ namespace eRent.UI
                 AutoClosingMessageBox.Show("Korisnik obrisan!", "Korisnik uspjesno obrisan.", 3000);
                 await loadKorisnike();
             }
-            else
+            if (e.ColumnIndex == 4)
             {
+                this.Close();
                 frmAddNovogKorisnika frmAddNovogKorisnika = new frmAddNovogKorisnika(korisnik);
                 frmAddNovogKorisnika.ShowDialog();
             }
+        }
+
+        private async void frmSviKorisnici_Load(object sender, EventArgs e)
+        {
+            await loadKorisnike();
         }
     }
 }

@@ -3,7 +3,6 @@ using eRent.Models;
 using eRent.Models.Requests;
 using eRent.Models.Requests.Korisnik;
 using eRent.Models.Requests.KorisnikTag;
-using eRent.Models.Requests.Lokacija;
 using eRent.Models.Requests.NekretninaKorisnik;
 using eRent.Models.Requests.NekretninaTag;
 using eRent.Models.Requests.Payment;

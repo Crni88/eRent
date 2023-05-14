@@ -77,6 +77,7 @@
             pbSlikaNekretnine.SizeMode = PictureBoxSizeMode.StretchImage;
             pbSlikaNekretnine.TabIndex = 1;
             pbSlikaNekretnine.TabStop = false;
+            pbSlikaNekretnine.Validating += pbSlikaNekretnine_Validating;
             // 
             // btnDodajSliku
             // 

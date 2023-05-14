@@ -173,8 +173,15 @@ namespace eRent.UI
             {
                 //CreateKorisnikTags(taskInsert.KorisnikId);
                 AutoClosingMessageBox.Show("Korisnik uspjesno azuriran!", "Korisnik azuriran!", 3000);
-                this.Close();
+                reloadData();
             }
+        }
+
+        private async void reloadData()
+        {
+            this.Close();
+            frmSviKorisnici frmSviKorisnici = new frmSviKorisnici();
+            frmSviKorisnici.ShowDialog();
         }
 
         private async Task addKorisnik()
@@ -193,7 +200,7 @@ namespace eRent.UI
             {
                 CreateKorisnikTags(taskInsert.KorisnikId);
                 AutoClosingMessageBox.Show("Korisnik uspjesno dodan!", "Korisnik kreiran!", 3000);
-                this.Close();
+                reloadData();
             }
         }
 

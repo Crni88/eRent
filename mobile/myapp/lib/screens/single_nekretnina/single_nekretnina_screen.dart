@@ -80,21 +80,27 @@ class _SingleNekretninaScreenState extends State<SingleNekretninaScreen> {
   }
 
   Future loadData() async {
-    var temp = await nekretninaProvider?.getById(arguments!);
-    var searchObject = {
-      "NekretninaId": arguments,
-    };
-    var temp2 = await nekretninaTagoviProvider?.get(searchObject);
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    String? id = prefs.getString('korisnikId');
-    var temp3 = await korisnikProvider?.getById(int.parse(id!));
-    List<Location> locations = await locationFromAddress(temp!.grad!);
-    setState(() {
-      nekretnina = temp;
-      nekretninaTagovi = temp2!;
-      korisnik = temp3!;
-      myLocation = LatLng(locations[0].latitude, locations[0].longitude);
-    });
+    try {
+      var temp = await nekretninaProvider?.getById(arguments!);
+      var searchObject = {
+        "NekretninaId": arguments,
+      };
+      var temp2 = await nekretninaTagoviProvider?.get(searchObject);
+      SharedPreferences prefs = await SharedPreferences.getInstance();
+      String? id = prefs.getString('korisnikId');
+      var temp3 = await korisnikProvider?.getById(int.parse(id!));
+      List<Location> locations = await locationFromAddress(temp!.grad!);
+      setState(() {
+        nekretnina = temp!;
+        nekretninaTagovi = temp2!;
+        korisnik = temp3!;
+        myLocation = LatLng(locations[0].latitude, locations[0].longitude);
+      });
+    } catch (e) {
+      AlertDialog(
+        title: Text(e.toString()),
+      );
+    }
     var avg = await getAvgRejting(nekretnina.korisnikNekretnina);
     var temp4 = await korisnikProvider?.getById(nekretnina.korisnikNekretnina!);
     setState(() {
@@ -372,6 +378,7 @@ Widget _buildSingleNekretnina(
             ),
             const MySpacer(),
             const MyTitle("Kako izgleda vasa idealna nekretnina?"),
+            const MySpacer(),
             const MyButton("Postavi taggove", KorisnikTagoviScreen()),
             const MySpacer(),
             MyTitle(isVisible ? "Vaši podaci" : "Ostavi recenziju"),
