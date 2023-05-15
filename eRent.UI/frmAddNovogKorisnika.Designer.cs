@@ -191,7 +191,6 @@
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Dodaj novog korisnika";
             FormClosing += frmAddNovogKorisnika_FormClosing;
-            Load += frmAddNovogKorisnika_Load;
             ((System.ComponentModel.ISupportInitialize)err).EndInit();
             ResumeLayout(false);
             PerformLayout();
