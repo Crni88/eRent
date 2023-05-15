@@ -316,7 +316,7 @@ Widget _buildSingleNekretnina(
             MyTitle(nekretnina.nazivNekretnine!),
             const MySpacer(),
             //TODO Add Tip Nekretnine
-            const SingleNekretinaRow("Tip nekretnine", "Tip", true),
+            const SingleNekretinaRow("Tip nekretnine", "Stan", true),
             SingleNekretinaRow(
                 "Broj kvadrata", "${nekretnina.brojkvadrata}", false),
             SingleNekretinaRow("Broj soba", "${nekretnina.brojSoba}", true),

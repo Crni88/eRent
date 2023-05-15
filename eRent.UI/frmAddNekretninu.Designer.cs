@@ -330,6 +330,7 @@
             Name = "frmAddNekretninu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Dodaj novu nekretninu";
+            FormClosing += frmAddNekretninu_FormClosing;
             ((System.ComponentModel.ISupportInitialize)pbSlikaNekretnine).EndInit();
             ((System.ComponentModel.ISupportInitialize)err).EndInit();
             ResumeLayout(false);

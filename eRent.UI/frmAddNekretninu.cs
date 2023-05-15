@@ -303,5 +303,11 @@ namespace eRent.UI
                 err.SetError(pbSlikaNekretnine, "Slika je obavezna!");
             }
         }
+
+        private void frmAddNekretninu_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            frmNekretninaList frmNekretninaList = new frmNekretninaList(_username);
+            frmNekretninaList.ShowDialog();
+        }
     }
 }

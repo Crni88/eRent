@@ -52,7 +52,7 @@ namespace eRent.UI
             var postPaymentRequest = await PaymentRequestService.Post<PaymentUpsertRequest>(paymentUpsertRequest);
             if (postPaymentRequest != null)
             {
-                AutoClosingMessageBox.Show("Zahtjev poslan!", "Zahtjev za plaćanje je uspješno poslan.", 3000);
+                AutoClosingMessageBox.Show("Zahtjev za plaćanje je uspješno poslan.", "Zahtjev poslan!", 3000);
                 this.Close();
             }
         }

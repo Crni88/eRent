@@ -30,9 +30,9 @@ namespace eRent.UI
 
         private void btnDodajKorisnika_Click(object sender, EventArgs e)
         {
+            this.Close();
             frmAddNovogKorisnika frmAddNovogKorisnika = new frmAddNovogKorisnika();
             frmAddNovogKorisnika.ShowDialog();
-            this.Close();
         }
 
         private async void dgvKorisnici_CellContentClick(object sender, DataGridViewCellEventArgs e)

@@ -65,9 +65,9 @@ namespace eRent.UI
                 var nekretnina = dgvNekretnineList.SelectedRows[0].DataBoundItem as NekretninaModel;
                 if (nekretnina != null)
                 {
+                    this.Close();
                     frmAddNekretninu addNekretninu = new frmAddNekretninu(_username, nekretnina);
                     addNekretninu.Show();
-                    this.Close();
                 }
             }
             if (e.ColumnIndex == 5)

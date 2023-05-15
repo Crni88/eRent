@@ -35,6 +35,7 @@ namespace eRent.UI
 
         private void btnDodajNovogKorisnika_Click(object sender, EventArgs e)
         {
+            this.Close();
             frmAddKorisnikNekretnina frmAddKorisnikNekretnina = new frmAddKorisnikNekretnina(_nekretnina);
             frmAddKorisnikNekretnina.ShowDialog();
         }
@@ -46,9 +47,9 @@ namespace eRent.UI
                 var nekretninaKorisnik = dgvKorisniciNekretnina.SelectedRows[0].DataBoundItem as NekretninaKorisnikModel;
                 if (nekretninaKorisnik != null)
                 {
+                    this.Close();
                     frmAddKorisnikNekretnina frmAddKorisniciNekretnina = new frmAddKorisnikNekretnina(nekretninaKorisnik,_nekretnina);
                     frmAddKorisniciNekretnina.ShowDialog();
-                    //  this.Close();
                 }
             }
         }

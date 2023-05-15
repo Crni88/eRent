@@ -219,6 +219,7 @@
             Name = "frmAddKorisnikNekretnina";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Dodaj novog korisnika";
+            FormClosing += frmAddKorisnikNekretnina_FormClosing;
             ((System.ComponentModel.ISupportInitialize)pbKorisnikSlika).EndInit();
             ((System.ComponentModel.ISupportInitialize)err).EndInit();
             ResumeLayout(false);

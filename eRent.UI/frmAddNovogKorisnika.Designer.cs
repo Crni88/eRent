@@ -49,76 +49,81 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(101, 9);
+            label1.Location = new Point(88, 7);
             label1.Name = "label1";
-            label1.Size = new Size(106, 20);
+            label1.Size = new Size(85, 15);
             label1.TabIndex = 0;
             label1.Text = "Korisnicko Ime";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(88, 72);
+            label2.Location = new Point(77, 54);
             label2.Name = "label2";
-            label2.Size = new Size(134, 20);
+            label2.Size = new Size(107, 15);
             label2.TabIndex = 1;
             label2.Text = "Korisnicko Prezime";
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(126, 137);
+            label3.Location = new Point(110, 103);
             label3.Name = "label3";
-            label3.Size = new Size(52, 20);
+            label3.Size = new Size(41, 15);
             label3.TabIndex = 2;
             label3.Text = "E-mail";
             // 
             // Username
             // 
             Username.AutoSize = true;
-            Username.Location = new Point(114, 203);
+            Username.Location = new Point(100, 152);
             Username.Name = "Username";
-            Username.Size = new Size(75, 20);
+            Username.Size = new Size(60, 15);
             Username.TabIndex = 3;
             Username.Text = "Username";
             // 
             // txtKorisnikIme
             // 
-            txtKorisnikIme.Location = new Point(63, 32);
+            txtKorisnikIme.Location = new Point(55, 24);
+            txtKorisnikIme.Margin = new Padding(3, 2, 3, 2);
             txtKorisnikIme.Name = "txtKorisnikIme";
-            txtKorisnikIme.Size = new Size(171, 27);
+            txtKorisnikIme.Size = new Size(150, 23);
             txtKorisnikIme.TabIndex = 5;
             txtKorisnikIme.Validating += txtKorisnikIme_Validating;
             // 
             // txtKorisnikPrezime
             // 
-            txtKorisnikPrezime.Location = new Point(63, 95);
+            txtKorisnikPrezime.Location = new Point(55, 71);
+            txtKorisnikPrezime.Margin = new Padding(3, 2, 3, 2);
             txtKorisnikPrezime.Name = "txtKorisnikPrezime";
-            txtKorisnikPrezime.Size = new Size(171, 27);
+            txtKorisnikPrezime.Size = new Size(150, 23);
             txtKorisnikPrezime.TabIndex = 6;
             txtKorisnikPrezime.Validating += txtKorisnikPrezime_Validating;
             // 
             // txtEmail
             // 
-            txtEmail.Location = new Point(62, 160);
+            txtEmail.Location = new Point(54, 120);
+            txtEmail.Margin = new Padding(3, 2, 3, 2);
             txtEmail.Name = "txtEmail";
-            txtEmail.Size = new Size(173, 27);
+            txtEmail.Size = new Size(152, 23);
             txtEmail.TabIndex = 7;
             txtEmail.Validating += txtEmail_Validating;
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(62, 225);
+            txtUsername.Location = new Point(54, 169);
+            txtUsername.Margin = new Padding(3, 2, 3, 2);
             txtUsername.Name = "txtUsername";
-            txtUsername.Size = new Size(173, 27);
+            txtUsername.Size = new Size(152, 23);
             txtUsername.TabIndex = 8;
             txtUsername.Validating += txtUsername_Validating;
             // 
             // btnDodajNovogKorisnika
             // 
-            btnDodajNovogKorisnika.Location = new Point(102, 407);
+            btnDodajNovogKorisnika.Location = new Point(89, 305);
+            btnDodajNovogKorisnika.Margin = new Padding(3, 2, 3, 2);
             btnDodajNovogKorisnika.Name = "btnDodajNovogKorisnika";
-            btnDodajNovogKorisnika.Size = new Size(94, 40);
+            btnDodajNovogKorisnika.Size = new Size(82, 30);
             btnDodajNovogKorisnika.TabIndex = 9;
             btnDodajNovogKorisnika.Text = "Dodaj";
             btnDodajNovogKorisnika.UseVisualStyleBackColor = true;
@@ -130,44 +135,44 @@
             // 
             // txtPassword
             // 
-            txtPassword.Location = new Point(62, 371);
+            txtPassword.Location = new Point(54, 278);
+            txtPassword.Margin = new Padding(3, 2, 3, 2);
             txtPassword.Name = "txtPassword";
-            txtPassword.Size = new Size(173, 27);
+            txtPassword.Size = new Size(152, 23);
             txtPassword.TabIndex = 11;
             txtPassword.Validating += txtPassword_Validating;
             // 
             // lblPassword
             // 
             lblPassword.AutoSize = true;
-            lblPassword.Location = new Point(117, 348);
+            lblPassword.Location = new Point(102, 261);
             lblPassword.Name = "lblPassword";
-            lblPassword.Size = new Size(70, 20);
+            lblPassword.Size = new Size(57, 15);
             lblPassword.TabIndex = 10;
             lblPassword.Text = "Password";
             // 
             // cbUloga
             // 
             cbUloga.FormattingEnabled = true;
-            cbUloga.Location = new Point(63, 300);
-            cbUloga.Margin = new Padding(3, 4, 3, 4);
+            cbUloga.Location = new Point(55, 225);
             cbUloga.Name = "cbUloga";
-            cbUloga.Size = new Size(172, 28);
+            cbUloga.Size = new Size(151, 23);
             cbUloga.TabIndex = 12;
             // 
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(127, 276);
+            label4.Location = new Point(111, 207);
             label4.Name = "label4";
-            label4.Size = new Size(49, 20);
+            label4.Size = new Size(38, 15);
             label4.TabIndex = 13;
             label4.Text = "Uloga";
             // 
             // frmAddNovogKorisnika
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(337, 451);
+            ClientSize = new Size(295, 338);
             Controls.Add(label4);
             Controls.Add(cbUloga);
             Controls.Add(txtPassword);
@@ -181,9 +186,12 @@
             Controls.Add(label3);
             Controls.Add(label2);
             Controls.Add(label1);
+            Margin = new Padding(3, 2, 3, 2);
             Name = "frmAddNovogKorisnika";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Dodaj novog korisnika";
+            FormClosing += frmAddNovogKorisnika_FormClosing;
+            Load += frmAddNovogKorisnika_Load;
             ((System.ComponentModel.ISupportInitialize)err).EndInit();
             ResumeLayout(false);
             PerformLayout();

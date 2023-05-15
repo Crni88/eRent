@@ -230,5 +230,11 @@ namespace eRent.UI
             Uloge.Add("Korisnik");
             cbUloga.DataSource = Uloge;
         }
+
+        private void frmAddNovogKorisnika_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            frmSviKorisnici frmSviKorisnici = new frmSviKorisnici();
+            frmSviKorisnici.ShowDialog();
+        }
     }
 }

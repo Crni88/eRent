@@ -115,9 +115,9 @@ namespace eRent.UI
 
         private void saveDataAndLoadForm()
         {
+            this.Close();
             frmKorisniciNekretnina frmKorisniciNekretnina = new frmKorisniciNekretnina(_nekretnina);
             frmKorisniciNekretnina.ShowDialog();
-            this.Close();
         }
 
         private NekretninaKorisnikUpdateRequest UpdateKorisnikNekretnina()
@@ -142,7 +142,7 @@ namespace eRent.UI
 
         private bool isPhoneNumber(string text)
         {
-            Regex regex = new Regex(@"^\d{3}\s\d{3}\s\d{3}$");
+            Regex regex = new Regex(@"^\d{3}\s\d{3}\s\d{3,4}$");
             return regex.IsMatch(text);
         }
 
@@ -201,7 +201,7 @@ namespace eRent.UI
                 txtBrojTelefona.Focus();
                 err.SetError(txtBrojTelefona, "Obavezno polje!");
             }
-            else if (isPhoneNumber(txtBrojTelefona.Text))
+            else if (!isPhoneNumber(txtBrojTelefona.Text))
             {
                 e.Cancel = true;
                 txtBrojTelefona.Focus();
@@ -228,6 +228,12 @@ namespace eRent.UI
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void frmAddKorisnikNekretnina_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            frmKorisniciNekretnina frmKorisniciNekretnina = new frmKorisniciNekretnina(_nekretnina);
+            frmKorisniciNekretnina.ShowDialog();   
         }
     }
 }

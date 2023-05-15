@@ -28,153 +28,153 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.btnSave = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.txtTitle = new System.Windows.Forms.TextBox();
-            this.txtDescription = new System.Windows.Forms.RichTextBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.dtpDueDate = new System.Windows.Forms.DateTimePicker();
-            this.label4 = new System.Windows.Forms.Label();
-            this.cbPriority = new System.Windows.Forms.ComboBox();
-            this.cbStatus = new System.Windows.Forms.ComboBox();
-            this.label5 = new System.Windows.Forms.Label();
-            this.err = new System.Windows.Forms.ErrorProvider(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.err)).BeginInit();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            btnSave = new Button();
+            label1 = new Label();
+            txtTitle = new TextBox();
+            txtDescription = new RichTextBox();
+            label2 = new Label();
+            label3 = new Label();
+            dtpDueDate = new DateTimePicker();
+            label4 = new Label();
+            cbPriority = new ComboBox();
+            cbStatus = new ComboBox();
+            label5 = new Label();
+            err = new ErrorProvider(components);
+            ((System.ComponentModel.ISupportInitialize)err).BeginInit();
+            SuspendLayout();
             // 
             // btnSave
             // 
-            this.btnSave.Location = new System.Drawing.Point(126, 220);
-            this.btnSave.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.btnSave.Name = "btnSave";
-            this.btnSave.Size = new System.Drawing.Size(82, 22);
-            this.btnSave.TabIndex = 0;
-            this.btnSave.Text = "Sacuvaj";
-            this.btnSave.UseVisualStyleBackColor = true;
-            this.btnSave.Click += new System.EventHandler(this.btnSave_Click);
+            btnSave.Location = new Point(126, 220);
+            btnSave.Margin = new Padding(3, 2, 3, 2);
+            btnSave.Name = "btnSave";
+            btnSave.Size = new Size(82, 22);
+            btnSave.TabIndex = 0;
+            btnSave.Text = "Sacuvaj";
+            btnSave.UseVisualStyleBackColor = true;
+            btnSave.Click += btnSave_Click;
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(10, 7);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(43, 15);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Naslov";
+            label1.AutoSize = true;
+            label1.Location = new Point(10, 7);
+            label1.Name = "label1";
+            label1.Size = new Size(43, 15);
+            label1.TabIndex = 1;
+            label1.Text = "Naslov";
             // 
             // txtTitle
             // 
-            this.txtTitle.Location = new System.Drawing.Point(10, 24);
-            this.txtTitle.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtTitle.Name = "txtTitle";
-            this.txtTitle.Size = new System.Drawing.Size(110, 23);
-            this.txtTitle.TabIndex = 2;
-            this.txtTitle.Validating += new System.ComponentModel.CancelEventHandler(this.txtTitle_Validating);
+            txtTitle.Location = new Point(10, 24);
+            txtTitle.Margin = new Padding(3, 2, 3, 2);
+            txtTitle.Name = "txtTitle";
+            txtTitle.Size = new Size(110, 23);
+            txtTitle.TabIndex = 2;
+            txtTitle.Validating += txtTitle_Validating;
             // 
             // txtDescription
             // 
-            this.txtDescription.Location = new System.Drawing.Point(10, 72);
-            this.txtDescription.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.txtDescription.Name = "txtDescription";
-            this.txtDescription.Size = new System.Drawing.Size(110, 91);
-            this.txtDescription.TabIndex = 3;
-            this.txtDescription.Text = "";
-            this.txtDescription.Validating += new System.ComponentModel.CancelEventHandler(this.txtDescription_Validating);
+            txtDescription.Location = new Point(10, 72);
+            txtDescription.Margin = new Padding(3, 2, 3, 2);
+            txtDescription.Name = "txtDescription";
+            txtDescription.Size = new Size(110, 91);
+            txtDescription.TabIndex = 3;
+            txtDescription.Text = "";
+            txtDescription.Validating += txtDescription_Validating;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(10, 49);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(31, 15);
-            this.label2.TabIndex = 4;
-            this.label2.Text = "Opis";
+            label2.AutoSize = true;
+            label2.Location = new Point(10, 49);
+            label2.Name = "label2";
+            label2.Size = new Size(31, 15);
+            label2.TabIndex = 4;
+            label2.Text = "Opis";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(10, 165);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(94, 15);
-            this.label3.TabIndex = 5;
-            this.label3.Text = "Datum završetka";
+            label3.AutoSize = true;
+            label3.Location = new Point(10, 165);
+            label3.Name = "label3";
+            label3.Size = new Size(94, 15);
+            label3.TabIndex = 5;
+            label3.Text = "Datum završetka";
             // 
             // dtpDueDate
             // 
-            this.dtpDueDate.Location = new System.Drawing.Point(10, 182);
-            this.dtpDueDate.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.dtpDueDate.Name = "dtpDueDate";
-            this.dtpDueDate.Size = new System.Drawing.Size(219, 23);
-            this.dtpDueDate.TabIndex = 6;
+            dtpDueDate.Location = new Point(10, 182);
+            dtpDueDate.Margin = new Padding(3, 2, 3, 2);
+            dtpDueDate.Name = "dtpDueDate";
+            dtpDueDate.Size = new Size(219, 23);
+            dtpDueDate.TabIndex = 6;
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Location = new System.Drawing.Point(174, 7);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(49, 15);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Prioritet";
+            label4.AutoSize = true;
+            label4.Location = new Point(174, 7);
+            label4.Name = "label4";
+            label4.Size = new Size(49, 15);
+            label4.TabIndex = 7;
+            label4.Text = "Prioritet";
             // 
             // cbPriority
             // 
-            this.cbPriority.FormattingEnabled = true;
-            this.cbPriority.Location = new System.Drawing.Point(174, 24);
-            this.cbPriority.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbPriority.Name = "cbPriority";
-            this.cbPriority.Size = new System.Drawing.Size(133, 23);
-            this.cbPriority.TabIndex = 8;
-            this.cbPriority.Validating += new System.ComponentModel.CancelEventHandler(this.cbPriority_Validating);
+            cbPriority.FormattingEnabled = true;
+            cbPriority.Location = new Point(174, 24);
+            cbPriority.Margin = new Padding(3, 2, 3, 2);
+            cbPriority.Name = "cbPriority";
+            cbPriority.Size = new Size(133, 23);
+            cbPriority.TabIndex = 8;
+            cbPriority.Validating += cbPriority_Validating;
             // 
             // cbStatus
             // 
-            this.cbStatus.FormattingEnabled = true;
-            this.cbStatus.Location = new System.Drawing.Point(174, 76);
-            this.cbStatus.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbStatus.Name = "cbStatus";
-            this.cbStatus.Size = new System.Drawing.Size(133, 23);
-            this.cbStatus.TabIndex = 10;
-            this.cbStatus.Validating += new System.ComponentModel.CancelEventHandler(this.cbStatus_Validating);
+            cbStatus.FormattingEnabled = true;
+            cbStatus.Location = new Point(174, 76);
+            cbStatus.Margin = new Padding(3, 2, 3, 2);
+            cbStatus.Name = "cbStatus";
+            cbStatus.Size = new Size(133, 23);
+            cbStatus.TabIndex = 10;
+            cbStatus.Validating += cbStatus_Validating;
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Location = new System.Drawing.Point(174, 59);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(39, 15);
-            this.label5.TabIndex = 9;
-            this.label5.Text = "Status";
+            label5.AutoSize = true;
+            label5.Location = new Point(174, 59);
+            label5.Name = "label5";
+            label5.Size = new Size(39, 15);
+            label5.TabIndex = 9;
+            label5.Text = "Status";
             // 
             // err
             // 
-            this.err.ContainerControl = this;
+            err.ContainerControl = this;
             // 
             // frmAddTask
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(348, 251);
-            this.Controls.Add(this.cbStatus);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.cbPriority);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.dtpDueDate);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.txtDescription);
-            this.Controls.Add(this.txtTitle);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnSave);
-            this.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.Name = "frmAddTask";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Dodaj novi task";
-            ((System.ComponentModel.ISupportInitialize)(this.err)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(348, 251);
+            Controls.Add(cbStatus);
+            Controls.Add(label5);
+            Controls.Add(cbPriority);
+            Controls.Add(label4);
+            Controls.Add(dtpDueDate);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(txtDescription);
+            Controls.Add(txtTitle);
+            Controls.Add(label1);
+            Controls.Add(btnSave);
+            Margin = new Padding(3, 2, 3, 2);
+            Name = "frmAddTask";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Dodaj novi task";
+            FormClosing += frmAddTask_FormClosing;
+            ((System.ComponentModel.ISupportInitialize)err).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

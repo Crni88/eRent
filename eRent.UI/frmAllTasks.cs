@@ -47,17 +47,17 @@ namespace eRent.UI
 
         private async void dgvAllTask_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 6)
-            {
-                await deleteTask();
-            }
-            else if (e.ColumnIndex == 5)
+            if (e.ColumnIndex == 5)
             {
                 //Otvori novu formu
+                this.Close();
                 TaskModel taskModel = (TaskModel)dgvAllTask.SelectedRows[0].DataBoundItem;
                 frmAddTask frmAddTask = new frmAddTask(Nekretnina, taskModel);
                 frmAddTask.Show();
-                this.Close();
+            }
+            if (e.ColumnIndex == 6)
+            {
+                await deleteTask();
             }
         }
 

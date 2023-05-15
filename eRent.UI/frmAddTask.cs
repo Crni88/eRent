@@ -170,5 +170,11 @@ namespace eRent.UI
                 err.SetError(cbStatus, "");
             }
         }
+
+        private void frmAddTask_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            frmAllTasks frmAllTasks = new frmAllTasks(Nekretnina);
+            frmAllTasks.ShowDialog();   
+        }
     }
 }
