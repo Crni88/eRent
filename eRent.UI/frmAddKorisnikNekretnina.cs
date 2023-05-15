@@ -142,7 +142,7 @@ namespace eRent.UI
 
         private bool isPhoneNumber(string text)
         {
-            Regex regex = new Regex(@"^\+?[0-9]{1,3}[-\s]?\(?[0-9]{3}\)?[-\s]?[0-9]{3}[-\s]?[0-9]{3,4}$");
+            Regex regex = new Regex(@"^\d{3}\s\d{3}\s\d{3}$");
             return regex.IsMatch(text);
         }
 
