@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace eRent.Controllers
 {
     public class PaymentRequestController :
-        BaseAdminCRUDController<PaymentRequestModel, PaymentRequestSearchObject, PaymentUpsertRequest, PaymentUpsertRequest>
+        BaseCRUDController<PaymentRequestModel, PaymentRequestSearchObject, PaymentUpsertRequest, PaymentUpsertRequest>
     {
         public PaymentRequestController(IPaymentRequestService service) : base(service)
         {
