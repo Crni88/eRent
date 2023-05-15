@@ -37,7 +37,7 @@
             btnListaKorisnika = new Button();
             label5 = new Label();
             btnPrihodiZaNekretninu = new Button();
-            button1 = new Button();
+            btnMjesecniPrihodiUkupnoIzvjestaj = new Button();
             label6 = new Label();
             label7 = new Label();
             button2 = new Button();
@@ -45,9 +45,12 @@
             dtpFrom = new DateTimePicker();
             dtpUntil = new DateTimePicker();
             groupBox1 = new GroupBox();
+            btnRezervacijeIzvjestaj = new Button();
             label9 = new Label();
             label8 = new Label();
             cbListaNekretnina = new ComboBox();
+            btnMjesecniPrihodiUkupnoPDF = new Button();
+            btnListaNekretninaPDF = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -117,22 +120,22 @@
             btnPrihodiZaNekretninu.Size = new Size(75, 23);
             btnPrihodiZaNekretninu.TabIndex = 0;
             // 
-            // button1
+            // btnMjesecniPrihodiUkupnoIzvjestaj
             // 
-            button1.Location = new Point(294, 13);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 24);
-            button1.TabIndex = 0;
-            button1.Text = "Izvjestaj";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += btnMjesecniPrihodiUkupno_Click;
+            btnMjesecniPrihodiUkupnoIzvjestaj.Location = new Point(294, 13);
+            btnMjesecniPrihodiUkupnoIzvjestaj.Name = "btnMjesecniPrihodiUkupnoIzvjestaj";
+            btnMjesecniPrihodiUkupnoIzvjestaj.Size = new Size(75, 24);
+            btnMjesecniPrihodiUkupnoIzvjestaj.TabIndex = 0;
+            btnMjesecniPrihodiUkupnoIzvjestaj.Text = "Izvjestaj";
+            btnMjesecniPrihodiUkupnoIzvjestaj.UseVisualStyleBackColor = true;
+            btnMjesecniPrihodiUkupnoIzvjestaj.Click += btnMjesecniPrihodiUkupno_Click;
             // 
             // label6
             // 
             label6.AutoSize = true;
             label6.Location = new Point(12, 17);
             label6.Name = "label6";
-            label6.Size = new Size(173, 20);
+            label6.Size = new Size(140, 15);
             label6.TabIndex = 1;
             label6.Text = "Mjesecni Prihodi Ukupno";
             // 
@@ -141,13 +144,13 @@
             label7.AutoSize = true;
             label7.Location = new Point(12, 209);
             label7.Name = "label7";
-            label7.Size = new Size(112, 20);
+            label7.Size = new Size(90, 15);
             label7.TabIndex = 3;
             label7.Text = "Lista nekretnina";
             // 
             // button2
             // 
-            button2.Location = new Point(294, 205);
+            button2.Location = new Point(202, 212);
             button2.Name = "button2";
             button2.Size = new Size(75, 41);
             button2.TabIndex = 2;
@@ -157,11 +160,11 @@
             // 
             // button3
             // 
-            button3.Location = new Point(276, 68);
+            button3.Location = new Point(276, 104);
             button3.Name = "button3";
             button3.Size = new Size(75, 27);
             button3.TabIndex = 4;
-            button3.Text = "Izvjestaj";
+            button3.Text = "PDF";
             button3.UseVisualStyleBackColor = true;
             button3.Click += btnListaRezervacija_Click;
             // 
@@ -169,18 +172,19 @@
             // 
             dtpFrom.Location = new Point(18, 68);
             dtpFrom.Name = "dtpFrom";
-            dtpFrom.Size = new Size(200, 27);
+            dtpFrom.Size = new Size(200, 23);
             dtpFrom.TabIndex = 6;
             // 
             // dtpUntil
             // 
             dtpUntil.Location = new Point(18, 128);
             dtpUntil.Name = "dtpUntil";
-            dtpUntil.Size = new Size(200, 27);
+            dtpUntil.Size = new Size(200, 23);
             dtpUntil.TabIndex = 7;
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnRezervacijeIzvjestaj);
             groupBox1.Controls.Add(label9);
             groupBox1.Controls.Add(label8);
             groupBox1.Controls.Add(cbListaNekretnina);
@@ -194,12 +198,22 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Rezervacije";
             // 
+            // btnRezervacijeIzvjestaj
+            // 
+            btnRezervacijeIzvjestaj.Location = new Point(276, 44);
+            btnRezervacijeIzvjestaj.Name = "btnRezervacijeIzvjestaj";
+            btnRezervacijeIzvjestaj.Size = new Size(75, 27);
+            btnRezervacijeIzvjestaj.TabIndex = 11;
+            btnRezervacijeIzvjestaj.Text = "Izvjestaj";
+            btnRezervacijeIzvjestaj.UseVisualStyleBackColor = true;
+            btnRezervacijeIzvjestaj.Click += btnRezervacijeIzvjestaj_Click;
+            // 
             // label9
             // 
             label9.AutoSize = true;
             label9.Location = new Point(19, 110);
             label9.Name = "label9";
-            label9.Size = new Size(29, 20);
+            label9.Size = new Size(22, 15);
             label9.TabIndex = 10;
             label9.Text = "Do";
             // 
@@ -208,7 +222,7 @@
             label8.AutoSize = true;
             label8.Location = new Point(18, 50);
             label8.Name = "label8";
-            label8.Size = new Size(29, 20);
+            label8.Size = new Size(23, 15);
             label8.TabIndex = 9;
             label8.Text = "Od";
             // 
@@ -217,17 +231,39 @@
             cbListaNekretnina.FormattingEnabled = true;
             cbListaNekretnina.Location = new Point(18, 22);
             cbListaNekretnina.Name = "cbListaNekretnina";
-            cbListaNekretnina.Size = new Size(200, 28);
+            cbListaNekretnina.Size = new Size(200, 23);
             cbListaNekretnina.TabIndex = 8;
+            // 
+            // btnMjesecniPrihodiUkupnoPDF
+            // 
+            btnMjesecniPrihodiUkupnoPDF.Location = new Point(213, 13);
+            btnMjesecniPrihodiUkupnoPDF.Name = "btnMjesecniPrihodiUkupnoPDF";
+            btnMjesecniPrihodiUkupnoPDF.Size = new Size(75, 23);
+            btnMjesecniPrihodiUkupnoPDF.TabIndex = 9;
+            btnMjesecniPrihodiUkupnoPDF.Text = "PDF";
+            btnMjesecniPrihodiUkupnoPDF.UseVisualStyleBackColor = true;
+            btnMjesecniPrihodiUkupnoPDF.Click += btnMjesecniPrihodiUkupnoPDF_Click;
+            // 
+            // btnListaNekretninaPDF
+            // 
+            btnListaNekretninaPDF.Location = new Point(288, 212);
+            btnListaNekretninaPDF.Name = "btnListaNekretninaPDF";
+            btnListaNekretninaPDF.Size = new Size(75, 41);
+            btnListaNekretninaPDF.TabIndex = 10;
+            btnListaNekretninaPDF.Text = "PDF";
+            btnListaNekretninaPDF.UseVisualStyleBackColor = true;
+            btnListaNekretninaPDF.Click += btnListaNekretninaPDF_Click;
             // 
             // frmOpcijeIzvjestaja
             // 
             ClientSize = new Size(381, 258);
+            Controls.Add(btnListaNekretninaPDF);
+            Controls.Add(btnMjesecniPrihodiUkupnoPDF);
             Controls.Add(groupBox1);
             Controls.Add(label7);
             Controls.Add(button2);
             Controls.Add(label6);
-            Controls.Add(button1);
+            Controls.Add(btnMjesecniPrihodiUkupnoIzvjestaj);
             Name = "frmOpcijeIzvjestaja";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Reporti";
@@ -249,7 +285,7 @@
         private Button btnListaKorisnika;
         private Label label5;
         private Button btnPrihodiZaNekretninu;
-        private Button button1;
+        private Button btnMjesecniPrihodiUkupnoIzvjestaj;
         private Label label6;
         private Label label7;
         private Button button2;
@@ -260,5 +296,8 @@
         private ComboBox cbListaNekretnina;
         private Label label8;
         private Label label9;
+        private Button btnRezervacijeIzvjestaj;
+        private Button btnMjesecniPrihodiUkupnoPDF;
+        private Button btnListaNekretninaPDF;
     }
 }

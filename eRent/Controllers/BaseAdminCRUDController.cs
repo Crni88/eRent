@@ -5,10 +5,10 @@ using Microsoft.AspNetCore.Mvc;
 namespace eRent.Controllers
 {
     [Authorize]
-    public class BaseCRUDController<T, TSearch, TInsert, TUpdate> : BaseCRUDController<T, TSearch>
+    public class BaseAdminCRUDController<T, TSearch, TInsert, TUpdate> : BaseCRUDController<T, TSearch>
         where T : class where TSearch : class where TInsert : class where TUpdate : class
     {
-        public BaseCRUDController(ICRUDService<T, TSearch, TInsert, TUpdate> service) : base(service)
+        public BaseAdminCRUDController(ICRUDService<T, TSearch, TInsert, TUpdate> service) : base(service)
         {
 
         }

@@ -89,21 +89,21 @@ namespace eRent.UI
 
             string _stanar = rezervacija.ImePrezime;
             Paragraph firstParagraph = new Paragraph("UGOVOR O NAJMU STANA\n\n" +
-                "Ovaj ugovor o najmu stana (\"Ugovor\") zaključen je između (\"Stanodavac\")");
-            Paragraph stanodavac = new Paragraph(_nekretnina.Username);
-            Paragraph stanar = new Paragraph(_stanar);
-            Paragraph i = new Paragraph("i");
-            Paragraph finalParagraph = new Paragraph(" (\"Stanar\") dana [Datum zaključenja ugovora].\n\n" +
-                "1. Predmet ugovora: Stanodavac iznajmljuje Stanaru stan [Adresa stana] (\"Stan\") na period od [Broj godina/mjeseci/dana] počevši od [Datum početka najma].\n\n" +
-                "2. Visina najamnine: Stanar će platiti Stanodavcu najamninu u iznosu od [Iznos najamnine] KM po mjesecu. Najamnina će se plaćati [Opis vremena plaćanja najamnine - npr. do 5. u mjesecu].\n\n" +
-                "3. Depozit: Stanar će uplatiti depozit u iznosu od [Iznos depozita] KM Stanodavcu kao sigurnost za ispunjenje obaveza iz ovog Ugovora. Depozit će se vratiti Stanaru nakon isteka ugovornog perioda, pod uvjetom da Stanar ispuni sve svoje obaveze prema ovom Ugovoru. Stanodavac ima pravo zadržati dio ili cijeli iznos depozita ako Stanar ne ispuni svoje obaveze prema ovom Ugovoru.\n\n" +
+                "Ovaj ugovor o najmu stana (\"Ugovor\") zaključen je između (\"Stanodavac\") __________");
+            //Paragraph stanodavac = new Paragraph(_nekretnina.Username);
+            //Paragraph stanar = new Paragraph(_stanar);
+            //Paragraph i = new Paragraph("i");
+            Paragraph finalParagraph = new Paragraph(" (\"Stanar\") __________ dana __________.\n\n" +
+                "1. Predmet ugovora: Stanodavac iznajmljuje Stanaru stan __________ (\"Stan\") na period od __________ počevši od __________.\n\n" +
+                "2. Visina najamnine: Stanar će platiti Stanodavcu najamninu u iznosu od __________ KM po mjesecu. Najamnina će se plaćati __________.\n\n" +
+                "3. Depozit: Stanar će uplatiti depozit u iznosu od __________ KM Stanodavcu kao sigurnost za ispunjenje obaveza iz ovog Ugovora. Depozit će se vratiti Stanaru nakon isteka ugovornog perioda, pod uvjetom da Stanar ispuni sve svoje obaveze prema ovom Ugovoru. Stanodavac ima pravo zadržati dio ili cijeli iznos depozita ako Stanar ne ispuni svoje obaveze prema ovom Ugovoru.\n\n" +
                 "4. Troškovi: Stanar će snositi sve troškove vezane za korištenje stana, uključujući troškove struje, vode, plina, grijanja, telefona i interneta.\n\n" +
                 "5. Održavanje stana: Stanar će održavati Stan u dobrom stanju i čistiti ga redovito. Stanodavac će obavljati sve popravke i održavanje koji su potrebni zbog redovnog habanja i korištenja stana. Ako su potrebni popravci zbog Stanarovog nemara ili nepažnje, Stanar će snositi troškove popravka.\n\n" +
                 "6. Kućni red: Stanar će se pridržavati kućnog reda u zgradi i u susjedstvu. Stanodavac ima pravo otkazati ovaj Ugovor ako Stanar ne poštuje kućni red ili ako\n\n");
             document.Add(firstParagraph);
-            document.Add(stanodavac);
-            document.Add(i);
-            document.Add(stanar);
+            //document.Add(stanodavac);
+            //document.Add(i);
+            //document.Add(stanar);
             document.Add(finalParagraph);
 
             // Close the document
