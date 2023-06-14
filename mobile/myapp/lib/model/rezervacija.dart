@@ -4,6 +4,7 @@ part 'rezervacija.g.dart';
 
 @JsonSerializable()
 class Rezervacija {
+  int? rezervacijaId;
   int? nekretninaId;
   int? korisnikId;
   bool? mjesecnaRezervacija;

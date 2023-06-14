@@ -3,6 +3,8 @@ import 'package:myapp/components/spacer.dart';
 import 'package:myapp/components/title.dart';
 import 'package:myapp/model/rezervacija.dart';
 
+import '../providers/rezervacija_provider.dart';
+
 class ReservationRow extends StatelessWidget {
   ReservationRow(
     Rezervacija rezervacije, {
@@ -14,6 +16,8 @@ class ReservationRow extends StatelessWidget {
     required this.brojTelefona,
     required this.nazivnekretnine,
     required this.odobrena,
+    required this.id,
+    required this.onClick,
   });
 
   late bool mjesecnaRezervacija;
@@ -22,7 +26,11 @@ class ReservationRow extends StatelessWidget {
   late String imePrezime;
   late String brojTelefona;
   late String nazivnekretnine;
+  late int id;
   late bool odobrena;
+  final Null Function() onClick;
+
+  RezervacijaProvider rezervacijaProvider = RezervacijaProvider();
 
   @override
   Widget build(BuildContext context) {
@@ -68,8 +76,17 @@ class ReservationRow extends StatelessWidget {
               ),
               const SizedBox(height: 8),
               ElevatedButton(
-                onPressed: () {
-                  // Handle cancel button press
+                onPressed: () async {
+                  try {
+                    await rezervacijaProvider.update(id, {
+                      "rezervacijaId": id,
+                      "odobrena": false,
+                      "otkazana": true
+                    });
+                    onClick();
+                  } catch (e) {
+                    print(e);
+                  }
                 },
                 child: const Text('Cancel'),
               ),

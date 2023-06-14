@@ -79,38 +79,40 @@ class _SingleNekretninaScreenState extends State<SingleNekretninaScreen> {
     loadNekretnine();
   }
 
-  Future loadData() async {
+  Future<void> loadData() async {
     try {
-      var temp = await nekretninaProvider?.getById(arguments!);
-      var searchObject = {
-        "NekretninaId": arguments,
-      };
-      var temp2 = await nekretninaTagoviProvider?.get(searchObject);
-      SharedPreferences prefs = await SharedPreferences.getInstance();
-      String? id = prefs.getString('korisnikId');
-      var temp3 = await korisnikProvider?.getById(int.parse(id!));
-      List<Location> locations = await locationFromAddress(temp!.grad!);
+      final temp = await nekretninaProvider?.getById(arguments!);
+      final searchObject = {"NekretninaId": arguments};
+      final temp2 = await nekretninaTagoviProvider?.get(searchObject);
+      final prefs = await SharedPreferences.getInstance();
+      final id = prefs.getString('korisnikId');
+      final temp3 = await korisnikProvider?.getById(int.parse(id!));
+      final locations = await locationFromAddress(temp!.grad!);
+
       setState(() {
-        nekretnina = temp!;
+        nekretnina = temp;
         nekretninaTagovi = temp2!;
         korisnik = temp3!;
         myLocation = LatLng(locations[0].latitude, locations[0].longitude);
       });
-    } catch (e) {
-      AlertDialog(
-        title: Text(e.toString()),
-      );
-    }
-    var avg = await getAvgRejting(nekretnina.korisnikNekretnina);
-    var temp4 = await korisnikProvider?.getById(nekretnina.korisnikNekretnina!);
-    setState(() {
-      korisnikNekretnina = temp4!;
-      averageAge = avg;
-    });
-    if (korisnik?.korisnikId == korisnikNekretnina.korisnikId) {
+
+      final avg = await getAvgRejting(nekretnina.korisnikNekretnina!);
+      final temp4 =
+          await korisnikProvider?.getById(nekretnina.korisnikNekretnina!);
+
       setState(() {
-        isVisible = true;
+        korisnikNekretnina = temp4!;
+        averageAge = avg;
       });
+
+      if (int.parse(id!) == nekretnina.korisnikNekretnina) {
+        setState(() {
+          isVisible = true;
+        });
+      }
+    } catch (e) {
+      // Handle the error in a more user-friendly way, e.g., show a snackbar or toast message.
+      print('Error: $e');
     }
   }
 

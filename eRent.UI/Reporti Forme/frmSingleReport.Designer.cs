@@ -39,13 +39,13 @@
             reportViewer1.Size = new Size(784, 594);
             reportViewer1.TabIndex = 0;
             // 
-            // 784
+            // frmSingleReport
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(784, 594);
             Controls.Add(reportViewer1);
-            Name = "frmTestReporta";
+            Name = "frmSingleReport";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "frmTestReporta";
             Load += frmTestReporta_Load;

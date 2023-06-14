@@ -29,11 +29,12 @@ namespace eRent.UI
                 red.Cijena = _nekretninaModels1.Cijena;
                 int brojKorisnika = nekretninaKorisnikModels1.Count(x => x.Nekretnina == _nekretninaModels1.NekretninaId);
                 red.BrojKorisnika = nekretninaKorisnikModels1.Count(x => x.Nekretnina == _nekretninaModels1.NekretninaId).ToString();
-                 ukupanprihod+= (brojKorisnika * _nekretninaModels1.Cijena);
-                red.UkupanPrihod = ukupanprihod.ToString(); 
+                ukupanprihod += (brojKorisnika * _nekretninaModels1.Cijena);
+                red.UkupanPrihod = ukupanprihod.ToString();
                 tblPolozeni.Rows.Add(red);
+                ukupanprihod = 0;
             }
-            
+
             ReportDataSource rds = new ReportDataSource();
             rds.Name = "dsNekretnine"; // This should match the name of the data source in the .rdlc file
             rds.Value = tblPolozeni;

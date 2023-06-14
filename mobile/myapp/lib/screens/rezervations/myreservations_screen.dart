@@ -63,6 +63,7 @@ class _MyReservationsScreenState extends State<MyReservationsScreen> {
                   itemBuilder: ((context, index) {
                     return ReservationRow(
                       rezervacije[index],
+                      id: rezervacije[index].rezervacijaId!,
                       brojTelefona: rezervacije[index].brojTelefona!,
                       datumKraja: rezervacije[index].datumKraja!,
                       datumPocetka: rezervacije[index].datumPocetka!,
@@ -71,6 +72,15 @@ class _MyReservationsScreenState extends State<MyReservationsScreen> {
                           rezervacije[index].mjesecnaRezervacija!,
                       nazivnekretnine: rezervacije[index].nazivnekretnine!,
                       odobrena: rezervacije[index].mjesecnaRezervacija!,
+                      onClick: () {
+                        print("Rezervacija odbijena");
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  const MyReservationsScreen()),
+                        );
+                      },
                     );
                   }))),
           MyBottomBar(

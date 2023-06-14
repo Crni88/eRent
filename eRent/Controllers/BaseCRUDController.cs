@@ -14,7 +14,7 @@ namespace eRent.Controllers
         }
 
         [HttpPost]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Admin")]
         public virtual T Insert([FromBody] TInsert insert)
         {
             var results = ((ICRUDService<T, TSearch, TInsert, TUpdate>)this.Service).Insert(insert);

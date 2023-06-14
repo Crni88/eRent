@@ -49,7 +49,7 @@ class _HomeScreenState extends State<HomeScreen> {
   // This is the selected date range
   DateTimeRange _selectedDateRange = DateTimeRange(
     start: DateTime.now(),
-    end: DateTime.now().add(const Duration(days: 1)),
+    end: DateTime.now().add(const Duration(days: 30)),
   );
 
   _HomeScreenState(this.nekretnina, this.korisnik);

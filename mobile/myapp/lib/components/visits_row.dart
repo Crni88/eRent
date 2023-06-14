@@ -2,20 +2,25 @@ import 'package:flutter/material.dart';
 import 'package:myapp/components/spacer.dart';
 import 'package:myapp/components/title.dart';
 import 'package:myapp/model/posjeta.dart';
+import 'package:myapp/providers/posjeta_provider.dart';
 
 class VisitRow extends StatelessWidget {
-  const VisitRow({
+  VisitRow({
     Key? key,
     required this.nazivnekretnine,
     required this.datumPosjete,
     required this.vrijemePosjete,
     required Posjeta posjeta,
-    required Null Function() onCanceled,
+    required this.onClicked,
+    required this.id,
   }) : super(key: key);
 
+  final int? id;
   final String? nazivnekretnine;
   final DateTime? datumPosjete;
   final String? vrijemePosjete;
+  final Null Function() onClicked;
+  PosjetaProvider posjetaProvider = PosjetaProvider();
 
   @override
   Widget build(BuildContext context) {
@@ -38,8 +43,18 @@ class VisitRow extends StatelessWidget {
                   style: const TextStyle(fontSize: 16)),
               const SizedBox(height: 8),
               ElevatedButton(
-                onPressed: () {
-                  // Handle cancel button press
+                onPressed: () async {
+                  try {
+                    await posjetaProvider.update(id!, {
+                      "posjetaId": id!,
+                      "datumPosjete": "OTKAZANA",
+                      "vrijemePosjete": "OTKAZANA",
+                      "otkazana": true
+                    });
+                    onClicked();
+                  } catch (e) {
+                    print(e);
+                  }
                 },
                 child: const Text('Cancel', style: TextStyle(fontSize: 16)),
               ),

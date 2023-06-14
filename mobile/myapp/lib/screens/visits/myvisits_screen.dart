@@ -62,14 +62,18 @@ class _MyVisitsScreenState extends State<MyVisitsScreen> {
                   itemBuilder: ((context, index) {
                     return VisitRow(
                       posjeta: posjete[index],
-                      onCanceled: () {
-                        setState(() {
-                          posjete[index].otkazana = true;
-                        });
-                      },
+                      id: posjete[index].posjetaId!,
                       datumPosjete: posjete[index].datumPosjete!,
                       nazivnekretnine: posjete[index].nazivNekretnine!,
                       vrijemePosjete: posjete[index].vrijemePosjete!,
+                      onClicked: () {
+                        print("Rezervacija odbijena");
+                        Navigator.pushReplacement(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => const MyVisitsScreen()),
+                        );
+                      },
                     );
                   }))),
           MyBottomBar(
