@@ -19,9 +19,9 @@ namespace eRent.UI
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
+            //this.Close();
             frmAddTask frmAddTask = new frmAddTask(Nekretnina);
             frmAddTask.ShowDialog();
-            this.Close();
         }
 
         private async void btnLoad_Click(object sender, EventArgs e)
@@ -34,8 +34,16 @@ namespace eRent.UI
             try
             {
                 TaskSearchObject nekretninaKorisnik = new TaskSearchObject();
-                nekretninaKorisnik.NekretninaTask = Nekretnina.NekretninaId;
                 nekretninaKorisnik.IsActive = true;
+                if (cbPrioritet.Text != "Svi")
+                {
+                    nekretninaKorisnik.Priority = cbPrioritet.Text;
+                }
+                if (cbStatus.Text != "Svi")
+                {
+                    nekretninaKorisnik.Status = cbStatus.Text;
+                }
+                nekretninaKorisnik.NekretninaTask = Nekretnina.NekretninaId;
                 var list = await TaskService.Get<List<TaskModel>>(nekretninaKorisnik);
                 dgvAllTask.DataSource = list;
             }
@@ -50,7 +58,7 @@ namespace eRent.UI
             if (e.ColumnIndex == 5)
             {
                 //Otvori novu formu
-                this.Close();
+                //this.Close();
                 TaskModel taskModel = (TaskModel)dgvAllTask.SelectedRows[0].DataBoundItem;
                 frmAddTask frmAddTask = new frmAddTask(Nekretnina, taskModel);
                 frmAddTask.Show();
@@ -75,11 +83,23 @@ namespace eRent.UI
             //tagUpsertRequest.TaskId = taskModel.TaskId;
             var taskModels = await TaskService.Put<TaskUpdateRequest>(taskModel.TaskId, tagUpsertRequest);
             await loadTasks();
-            AutoClosingMessageBox.Show("Task obrisan", "Task uspjesno obrisan!", 3000);
+            AutoClosingMessageBox.Show("Task uspjesno obrisan!","Task obrisan", 3000);
         }
 
         private async void frmAllTasks_Load(object sender, EventArgs e)
         {
+            List<String> priority = new List<String>();
+            priority.Add("Svi");
+            priority.Add("Low");
+            priority.Add("Medium");
+            priority.Add("High");
+            cbPrioritet.DataSource = priority;
+            List<String> status = new List<String>();
+            status.Add("Svi");
+            status.Add("TO DO");
+            status.Add("In Progress");
+            status.Add("Done");
+            cbStatus.DataSource = status;
             await loadTasks();
         }
     }

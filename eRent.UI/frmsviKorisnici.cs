@@ -8,7 +8,7 @@ namespace eRent.UI
     public partial class frmSviKorisnici : Form
     {
         private readonly APIService korisnikService = new APIService("Korisnici");
-
+        private readonly APIService ulogaService = new APIService("Uloge");
         public frmSviKorisnici()
         {
             InitializeComponent();
@@ -24,6 +24,14 @@ namespace eRent.UI
         {
             KorisnikSearchObject korisnikSearchObject = new KorisnikSearchObject();
             korisnikSearchObject.IsActive = true;
+            //if (cbUloge.Text !="Sve")
+            //{
+            //    //korisnikSearchObject.Ulo
+            //}
+            if (!string.IsNullOrEmpty(txtUsername.Text))
+            {
+                korisnikSearchObject.NameFTS = txtUsername.Text;
+            }
             List<KorisnikModel> korisnikModels = await korisnikService.Get<List<KorisnikModel>>(korisnikSearchObject);
             dgvKorisnici.DataSource = korisnikModels;
         }
@@ -58,7 +66,16 @@ namespace eRent.UI
 
         private async void frmSviKorisnici_Load(object sender, EventArgs e)
         {
+            //await loadUloge();
             await loadKorisnike();
         }
+
+        //private async Task loadUloge()
+        //{
+        //    List<UlogaModel> ulogaModels = new List<UlogaModel>();
+        //    ulogaModels = await ulogaService.Get<List<UlogaModel>>(null);
+        //    cbUloge.Items.Add("Sve");
+        //    ulogaModels.ForEach(x => cbUloge.Items.Add(x.Naziv));
+        //}
     }
 }

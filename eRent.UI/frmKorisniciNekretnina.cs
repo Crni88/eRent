@@ -17,6 +17,7 @@ namespace eRent.UI
             InitializeComponent();
             this._nekretnina = nekretnina;
             dgvKorisniciNekretnina.AutoGenerateColumns = false;
+            btnDodajNovogKorisnika.Visible = false;
         }
 
         private async void btnUcitajKorisnike_Click(object sender, EventArgs e)
@@ -35,23 +36,23 @@ namespace eRent.UI
 
         private void btnDodajNovogKorisnika_Click(object sender, EventArgs e)
         {
-            this.Close();
+            //this.Close();
             frmAddKorisnikNekretnina frmAddKorisnikNekretnina = new frmAddKorisnikNekretnina(_nekretnina);
             frmAddKorisnikNekretnina.ShowDialog();
         }
 
         private void dgvKorisniciNekretnina_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == 5)
-            {
-                var nekretninaKorisnik = dgvKorisniciNekretnina.SelectedRows[0].DataBoundItem as NekretninaKorisnikModel;
-                if (nekretninaKorisnik != null)
-                {
-                    this.Close();
-                    frmAddKorisnikNekretnina frmAddKorisniciNekretnina = new frmAddKorisnikNekretnina(nekretninaKorisnik,_nekretnina);
-                    frmAddKorisniciNekretnina.ShowDialog();
-                }
-            }
+            //if (e.ColumnIndex == 5)
+            //{
+            //    var nekretninaKorisnik = dgvKorisniciNekretnina.SelectedRows[0].DataBoundItem as NekretninaKorisnikModel;
+            //    if (nekretninaKorisnik != null)
+            //    {
+            //        this.Close();
+            //        frmAddKorisnikNekretnina frmAddKorisniciNekretnina = new frmAddKorisnikNekretnina(nekretninaKorisnik,_nekretnina);
+            //        frmAddKorisniciNekretnina.ShowDialog();
+            //    }
+            //}
         }
 
         private async void btnZahtjevZaPlacanje_Click(object sender, EventArgs e)

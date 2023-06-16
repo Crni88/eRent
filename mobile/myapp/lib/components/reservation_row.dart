@@ -18,6 +18,7 @@ class ReservationRow extends StatelessWidget {
     required this.odobrena,
     required this.id,
     required this.onClick,
+    required this.odbijena,
   });
 
   late bool mjesecnaRezervacija;
@@ -28,6 +29,7 @@ class ReservationRow extends StatelessWidget {
   late String nazivnekretnine;
   late int id;
   late bool odobrena;
+  late bool odbijena;
   final Null Function() onClick;
 
   RezervacijaProvider rezervacijaProvider = RezervacijaProvider();
@@ -65,35 +67,66 @@ class ReservationRow extends StatelessWidget {
                 style: const TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 4),
-              Text(
-                'Odobrena: ${odobrena ? 'Da' : 'Ne'}',
-                style: const TextStyle(fontSize: 16),
-              ),
+              buildTextWidget(),
               const SizedBox(height: 4),
               Text(
                 'Mjesecna Rezervacija: ${mjesecnaRezervacija ? 'Da' : 'Ne'}',
                 style: const TextStyle(fontSize: 16),
               ),
               const SizedBox(height: 8),
-              ElevatedButton(
-                onPressed: () async {
-                  try {
-                    await rezervacijaProvider.update(id, {
-                      "rezervacijaId": id,
-                      "odobrena": false,
-                      "otkazana": true
-                    });
-                    onClick();
-                  } catch (e) {
-                    print(e);
-                  }
-                },
-                child: const Text('Cancel'),
+              Visibility(
+                visible: !odbijena,
+                child: ElevatedButton(
+                  onPressed: () async {
+                    try {
+                      await rezervacijaProvider.update(id, {
+                        "rezervacijaId": id,
+                        "odobrena": false,
+                        "otkazana": true
+                      });
+                      onClick();
+                    } catch (e) {
+                      print(e);
+                    }
+                  },
+                  child: const Text('Cancel'),
+                ),
               ),
             ],
           ),
         ),
       ],
+    );
+  }
+
+  Widget buildTextWidget() {
+    List<Widget> widgets = [];
+
+    if (odobrena) {
+      widgets.add(
+        const Text(
+          'Odobrena.',
+          style: TextStyle(fontSize: 16),
+        ),
+      );
+    } else if (odbijena) {
+      widgets.add(
+        const Text(
+          'Odbijena.',
+          style: TextStyle(fontSize: 16),
+        ),
+      );
+    } else {
+      widgets.add(
+        const Text(
+          'Na čekanju...',
+          style: TextStyle(fontSize: 16),
+        ),
+      );
+    }
+
+    return Column(
+      children: widgets,
     );
   }
 }

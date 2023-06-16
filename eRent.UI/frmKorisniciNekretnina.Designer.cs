@@ -30,15 +30,14 @@
         {
             label1 = new Label();
             dgvKorisniciNekretnina = new DataGridView();
+            btnUcitajKorisnike = new Button();
+            btnDodajNovogKorisnika = new Button();
+            btnZahtjevZaPlacanje = new Button();
             Ime = new DataGridViewTextBoxColumn();
             Prezime = new DataGridViewTextBoxColumn();
             Broj_Telefona = new DataGridViewTextBoxColumn();
             Datum_Useljenja = new DataGridViewTextBoxColumn();
             Datum_Iseljenja = new DataGridViewTextBoxColumn();
-            Uredi = new DataGridViewButtonColumn();
-            btnUcitajKorisnike = new Button();
-            btnDodajNovogKorisnika = new Button();
-            btnZahtjevZaPlacanje = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvKorisniciNekretnina).BeginInit();
             SuspendLayout();
             // 
@@ -56,7 +55,7 @@
             dgvKorisniciNekretnina.AllowUserToAddRows = false;
             dgvKorisniciNekretnina.AllowUserToDeleteRows = false;
             dgvKorisniciNekretnina.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvKorisniciNekretnina.Columns.AddRange(new DataGridViewColumn[] { Ime, Prezime, Broj_Telefona, Datum_Useljenja, Datum_Iseljenja, Uredi });
+            dgvKorisniciNekretnina.Columns.AddRange(new DataGridViewColumn[] { Ime, Prezime, Broj_Telefona, Datum_Useljenja, Datum_Iseljenja });
             dgvKorisniciNekretnina.Location = new Point(12, 38);
             dgvKorisniciNekretnina.MultiSelect = false;
             dgvKorisniciNekretnina.Name = "dgvKorisniciNekretnina";
@@ -67,6 +66,37 @@
             dgvKorisniciNekretnina.Size = new Size(776, 377);
             dgvKorisniciNekretnina.TabIndex = 2;
             dgvKorisniciNekretnina.CellContentClick += dgvKorisniciNekretnina_CellContentClick;
+            // 
+            // btnUcitajKorisnike
+            // 
+            btnUcitajKorisnike.Location = new Point(124, 9);
+            btnUcitajKorisnike.Margin = new Padding(3, 2, 3, 2);
+            btnUcitajKorisnike.Name = "btnUcitajKorisnike";
+            btnUcitajKorisnike.Size = new Size(82, 22);
+            btnUcitajKorisnike.TabIndex = 3;
+            btnUcitajKorisnike.Text = "Ucitaj";
+            btnUcitajKorisnike.UseVisualStyleBackColor = true;
+            btnUcitajKorisnike.Click += btnUcitajKorisnike_Click;
+            // 
+            // btnDodajNovogKorisnika
+            // 
+            btnDodajNovogKorisnika.Location = new Point(686, 8);
+            btnDodajNovogKorisnika.Name = "btnDodajNovogKorisnika";
+            btnDodajNovogKorisnika.Size = new Size(102, 23);
+            btnDodajNovogKorisnika.TabIndex = 4;
+            btnDodajNovogKorisnika.Text = "Dodaj Novog";
+            btnDodajNovogKorisnika.UseVisualStyleBackColor = true;
+            btnDodajNovogKorisnika.Click += btnDodajNovogKorisnika_Click;
+            // 
+            // btnZahtjevZaPlacanje
+            // 
+            btnZahtjevZaPlacanje.Location = new Point(650, 422);
+            btnZahtjevZaPlacanje.Name = "btnZahtjevZaPlacanje";
+            btnZahtjevZaPlacanje.Size = new Size(139, 23);
+            btnZahtjevZaPlacanje.TabIndex = 5;
+            btnZahtjevZaPlacanje.Text = "Zahtjev za placanje";
+            btnZahtjevZaPlacanje.UseVisualStyleBackColor = true;
+            btnZahtjevZaPlacanje.Click += btnZahtjevZaPlacanje_Click;
             // 
             // Ime
             // 
@@ -113,47 +143,6 @@
             Datum_Iseljenja.ReadOnly = true;
             Datum_Iseljenja.Width = 125;
             // 
-            // Uredi
-            // 
-            Uredi.HeaderText = "Uredi";
-            Uredi.MinimumWidth = 6;
-            Uredi.Name = "Uredi";
-            Uredi.ReadOnly = true;
-            Uredi.Text = "Uredi";
-            Uredi.UseColumnTextForButtonValue = true;
-            Uredi.Width = 125;
-            // 
-            // btnUcitajKorisnike
-            // 
-            btnUcitajKorisnike.Location = new Point(124, 9);
-            btnUcitajKorisnike.Margin = new Padding(3, 2, 3, 2);
-            btnUcitajKorisnike.Name = "btnUcitajKorisnike";
-            btnUcitajKorisnike.Size = new Size(82, 22);
-            btnUcitajKorisnike.TabIndex = 3;
-            btnUcitajKorisnike.Text = "Ucitaj";
-            btnUcitajKorisnike.UseVisualStyleBackColor = true;
-            btnUcitajKorisnike.Click += btnUcitajKorisnike_Click;
-            // 
-            // btnDodajNovogKorisnika
-            // 
-            btnDodajNovogKorisnika.Location = new Point(686, 8);
-            btnDodajNovogKorisnika.Name = "btnDodajNovogKorisnika";
-            btnDodajNovogKorisnika.Size = new Size(102, 23);
-            btnDodajNovogKorisnika.TabIndex = 4;
-            btnDodajNovogKorisnika.Text = "Dodaj Novog";
-            btnDodajNovogKorisnika.UseVisualStyleBackColor = true;
-            btnDodajNovogKorisnika.Click += btnDodajNovogKorisnika_Click;
-            // 
-            // btnZahtjevZaPlacanje
-            // 
-            btnZahtjevZaPlacanje.Location = new Point(650, 422);
-            btnZahtjevZaPlacanje.Name = "btnZahtjevZaPlacanje";
-            btnZahtjevZaPlacanje.Size = new Size(139, 23);
-            btnZahtjevZaPlacanje.TabIndex = 5;
-            btnZahtjevZaPlacanje.Text = "Zahtjev za placanje";
-            btnZahtjevZaPlacanje.UseVisualStyleBackColor = true;
-            btnZahtjevZaPlacanje.Click += btnZahtjevZaPlacanje_Click;
-            // 
             // frmKorisniciNekretnina
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -179,12 +168,11 @@
         private DataGridView dgvKorisniciNekretnina;
         private Button btnUcitajKorisnike;
         private Button btnDodajNovogKorisnika;
+        private Button btnZahtjevZaPlacanje;
         private DataGridViewTextBoxColumn Ime;
         private DataGridViewTextBoxColumn Prezime;
         private DataGridViewTextBoxColumn Broj_Telefona;
         private DataGridViewTextBoxColumn Datum_Useljenja;
         private DataGridViewTextBoxColumn Datum_Iseljenja;
-        private DataGridViewButtonColumn Uredi;
-        private Button btnZahtjevZaPlacanje;
     }
 }

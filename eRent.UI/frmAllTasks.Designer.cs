@@ -29,8 +29,6 @@
         private void InitializeComponent()
         {
             dgvAllTask = new DataGridView();
-            btnAddNew = new Button();
-            btnLoad = new Button();
             Title = new DataGridViewTextBoxColumn();
             Description = new DataGridViewTextBoxColumn();
             DueDate = new DataGridViewTextBoxColumn();
@@ -38,6 +36,12 @@
             Status = new DataGridViewTextBoxColumn();
             Uredi = new DataGridViewButtonColumn();
             Obrisi = new DataGridViewButtonColumn();
+            btnAddNew = new Button();
+            btnLoad = new Button();
+            cbPrioritet = new ComboBox();
+            label1 = new Label();
+            label2 = new Label();
+            cbStatus = new ComboBox();
             ((System.ComponentModel.ISupportInitialize)dgvAllTask).BeginInit();
             SuspendLayout();
             // 
@@ -47,38 +51,16 @@
             dgvAllTask.AllowUserToDeleteRows = false;
             dgvAllTask.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvAllTask.Columns.AddRange(new DataGridViewColumn[] { Title, Description, DueDate, Priority, Status, Uredi, Obrisi });
-            dgvAllTask.Location = new Point(10, 34);
+            dgvAllTask.Location = new Point(10, 50);
             dgvAllTask.Margin = new Padding(3, 2, 3, 2);
             dgvAllTask.Name = "dgvAllTask";
             dgvAllTask.ReadOnly = true;
             dgvAllTask.RowHeadersWidth = 51;
             dgvAllTask.RowTemplate.Height = 29;
             dgvAllTask.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvAllTask.Size = new Size(770, 295);
+            dgvAllTask.Size = new Size(770, 279);
             dgvAllTask.TabIndex = 0;
             dgvAllTask.CellContentClick += dgvAllTask_CellContentClick;
-            // 
-            // btnAddNew
-            // 
-            btnAddNew.Location = new Point(698, 8);
-            btnAddNew.Margin = new Padding(3, 2, 3, 2);
-            btnAddNew.Name = "btnAddNew";
-            btnAddNew.Size = new Size(82, 22);
-            btnAddNew.TabIndex = 1;
-            btnAddNew.Text = "Dodaj novi";
-            btnAddNew.UseVisualStyleBackColor = true;
-            btnAddNew.Click += btnAddNew_Click;
-            // 
-            // btnLoad
-            // 
-            btnLoad.Location = new Point(10, 9);
-            btnLoad.Margin = new Padding(3, 2, 3, 2);
-            btnLoad.Name = "btnLoad";
-            btnLoad.Size = new Size(82, 22);
-            btnLoad.TabIndex = 2;
-            btnLoad.Text = "Ucitaj";
-            btnLoad.UseVisualStyleBackColor = true;
-            btnLoad.Click += btnLoad_Click;
             // 
             // Title
             // 
@@ -143,11 +125,71 @@
             Obrisi.Text = "Obrisi";
             Obrisi.UseColumnTextForButtonValue = true;
             // 
+            // btnAddNew
+            // 
+            btnAddNew.Location = new Point(698, 8);
+            btnAddNew.Margin = new Padding(3, 2, 3, 2);
+            btnAddNew.Name = "btnAddNew";
+            btnAddNew.Size = new Size(82, 22);
+            btnAddNew.TabIndex = 1;
+            btnAddNew.Text = "Dodaj novi";
+            btnAddNew.UseVisualStyleBackColor = true;
+            btnAddNew.Click += btnAddNew_Click;
+            // 
+            // btnLoad
+            // 
+            btnLoad.Location = new Point(375, 10);
+            btnLoad.Margin = new Padding(3, 2, 3, 2);
+            btnLoad.Name = "btnLoad";
+            btnLoad.Size = new Size(82, 22);
+            btnLoad.TabIndex = 2;
+            btnLoad.Text = "Ucitaj";
+            btnLoad.UseVisualStyleBackColor = true;
+            btnLoad.Click += btnLoad_Click;
+            // 
+            // cbPrioritet
+            // 
+            cbPrioritet.FormattingEnabled = true;
+            cbPrioritet.Location = new Point(66, 11);
+            cbPrioritet.Name = "cbPrioritet";
+            cbPrioritet.Size = new Size(121, 23);
+            cbPrioritet.TabIndex = 3;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(11, 13);
+            label1.Name = "label1";
+            label1.Size = new Size(49, 15);
+            label1.TabIndex = 4;
+            label1.Text = "Prioritet";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(203, 14);
+            label2.Name = "label2";
+            label2.Size = new Size(39, 15);
+            label2.TabIndex = 5;
+            label2.Text = "Status";
+            // 
+            // cbStatus
+            // 
+            cbStatus.FormattingEnabled = true;
+            cbStatus.Location = new Point(248, 10);
+            cbStatus.Name = "cbStatus";
+            cbStatus.Size = new Size(121, 23);
+            cbStatus.TabIndex = 6;
+            // 
             // frmAllTasks
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(792, 338);
+            Controls.Add(cbStatus);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Controls.Add(cbPrioritet);
             Controls.Add(btnLoad);
             Controls.Add(btnAddNew);
             Controls.Add(dgvAllTask);
@@ -158,6 +200,7 @@
             Load += frmAllTasks_Load;
             ((System.ComponentModel.ISupportInitialize)dgvAllTask).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -172,5 +215,9 @@
         private DataGridViewTextBoxColumn Status;
         private DataGridViewButtonColumn Uredi;
         private DataGridViewButtonColumn Obrisi;
+        private ComboBox cbPrioritet;
+        private Label label1;
+        private Label label2;
+        private ComboBox cbStatus;
     }
 }

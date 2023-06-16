@@ -15,7 +15,7 @@ class Rezervacija {
   String? brojTelefona;
   String? nazivnekretnine;
   bool? otkazana;
-
+  bool? odbijena;
   Rezervacija();
 
   factory Rezervacija.fromJson(Map<String, dynamic> json) =>

@@ -23,7 +23,15 @@ namespace eRent.Services.Task
             if (search.IsActive != null)
             {
                 filteredQuery = filteredQuery.Where(x => x.IsActive == search.IsActive);
+            }
+            if (search.Status != null)
+            {
+                filteredQuery = filteredQuery.Where(x=>x.Status == search.Status);   
+            }
 
+            if (search.Priority != null)
+            {
+                filteredQuery = filteredQuery.Where(x => x.Priority == search.Priority);
             }
             return filteredQuery;
         }

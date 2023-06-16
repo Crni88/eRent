@@ -11,5 +11,7 @@
         //public DateTime? DatumKraja { get; set; }
         public bool? Odobrena { get; set; }
         public bool? Otkazana { get; set; }
+        public bool? Odbijena { get; set; }
+
     }
 }

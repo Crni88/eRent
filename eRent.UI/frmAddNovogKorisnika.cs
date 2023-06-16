@@ -21,12 +21,12 @@ namespace eRent.UI
             if (korisnik != null)
             {
                 Korisnik = korisnik;
+                loadData();
                 txtEmail.Enabled = false;
                 txtUsername.Enabled = false;
                 txtPassword.Enabled = false;
                 txtPassword.Visible = false;
                 lblPassword.Visible = false;
-                loadData();
             }
 
         }
@@ -122,22 +122,25 @@ namespace eRent.UI
 
         private void txtPassword_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            if (string.IsNullOrWhiteSpace(txtPassword.Text))
+            if (Korisnik == null)
             {
-                e.Cancel = true;
-                txtPassword.Focus();
-                err.SetError(txtPassword, "Obavezno polje");
-            }
-            else if (txtPassword.Text.Length < 5)
-            {
-                e.Cancel = true;
-                txtPassword.Focus();
-                err.SetError(txtPassword, "Minimalna duzina passworda je 5 karaktera.");
-            }
-            else
-            {
-                e.Cancel = false;
-                err.SetError(txtPassword, "");
+                if (string.IsNullOrWhiteSpace(txtPassword.Text))
+                {
+                    e.Cancel = true;
+                    txtPassword.Focus();
+                    err.SetError(txtPassword, "Obavezno polje");
+                }
+                else if (txtPassword.Text.Length < 5)
+                {
+                    e.Cancel = true;
+                    txtPassword.Focus();
+                    err.SetError(txtPassword, "Minimalna duzina passworda je 5 karaktera.");
+                }
+                else
+                {
+                    e.Cancel = false;
+                    err.SetError(txtPassword, "");
+                }
             }
         }
 
@@ -146,13 +149,18 @@ namespace eRent.UI
 
             try
             {
-                if (Korisnik == null && ValidateChildren())
+                if (ValidateChildren())
                 {
-                    await addKorisnik();
-                }
-                else
-                {
-                    await updateKorisnik();
+                    if (Korisnik == null)
+                    {
+                        await addKorisnik();
+
+                    }
+                    else
+                    {
+                        await updateKorisnik();
+
+                    }
                 }
             }
             catch (Exception ex)

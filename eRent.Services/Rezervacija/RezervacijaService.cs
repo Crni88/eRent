@@ -38,6 +38,10 @@ namespace eRent.Services.Rezervacija
             {
                 filteredQuery = filteredQuery.Where(x=>x.Odobrena == search.Odobrena);
             }
+            if (search?.Odbijena != null)
+            {
+                filteredQuery = filteredQuery.Where(x => x.Odbijena == search.Odbijena);
+            }
             return filteredQuery;
         }
 

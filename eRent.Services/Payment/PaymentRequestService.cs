@@ -24,12 +24,20 @@ namespace eRent.Services.Payment
         public override IQueryable<DataDB.PaymentRequest> AddFilter(IQueryable<DataDB.PaymentRequest> query, PaymentRequestSearchObject search = null)
         {
             var filteredQuery = base.AddFilter(query, search);
-            if (search != null)
+           
+            if (search.KorisnikPaymentId != null)
             {
                 filteredQuery = filteredQuery.Where(x => x.KorisnikPaymentId == search.KorisnikPaymentId);
-                filteredQuery = filteredQuery.Where(x => x.IsProcessed == false);
             }
-           
+            if (search.IsProcessed != null)
+            {
+                filteredQuery = filteredQuery.Where(x => x.IsProcessed == search.IsProcessed);
+            }
+            if (search.NekretninaPayment != null)
+            {
+                filteredQuery = filteredQuery.Where(x => x.NekretninaPayment == search.NekretninaPayment);
+            }
+
             return filteredQuery;
         }
     }

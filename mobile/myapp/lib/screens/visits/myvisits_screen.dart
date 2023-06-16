@@ -67,7 +67,7 @@ class _MyVisitsScreenState extends State<MyVisitsScreen> {
                       nazivnekretnine: posjete[index].nazivNekretnine!,
                       vrijemePosjete: posjete[index].vrijemePosjete!,
                       onClicked: () {
-                        print("Rezervacija odbijena");
+                        //print("Rezervacija odbijena");
                         Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(

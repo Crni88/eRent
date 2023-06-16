@@ -35,6 +35,8 @@
             Komentar = new DataGridViewTextBoxColumn();
             btnLoad = new Button();
             label1 = new Label();
+            cbOcjene = new ComboBox();
+            label2 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvRejting).BeginInit();
             SuspendLayout();
             // 
@@ -104,11 +106,31 @@
             label1.TabIndex = 3;
             label1.Text = "Rejting";
             // 
+            // cbOcjene
+            // 
+            cbOcjene.FormattingEnabled = true;
+            cbOcjene.Location = new Point(586, 7);
+            cbOcjene.Name = "cbOcjene";
+            cbOcjene.Size = new Size(121, 23);
+            cbOcjene.TabIndex = 4;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(522, 7);
+            label2.Name = "label2";
+            label2.Size = new Size(58, 21);
+            label2.TabIndex = 5;
+            label2.Text = "Ocjene";
+            // 
             // frmRejting
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(label2);
+            Controls.Add(cbOcjene);
             Controls.Add(label1);
             Controls.Add(btnLoad);
             Controls.Add(dgvRejting);
@@ -130,5 +152,7 @@
         private DataGridViewTextBoxColumn Rejting;
         private DataGridViewTextBoxColumn Komentar;
         private Label label1;
+        private ComboBox cbOcjene;
+        private Label label2;
     }
 }

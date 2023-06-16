@@ -29,14 +29,16 @@
         private void InitializeComponent()
         {
             dgvKorisnici = new DataGridView();
-            btnUcitajKorisnike = new Button();
-            btnDodajKorisnika = new Button();
             korsnikIme = new DataGridViewTextBoxColumn();
             korisnikPrezime = new DataGridViewTextBoxColumn();
             email = new DataGridViewTextBoxColumn();
             username = new DataGridViewTextBoxColumn();
             Uredi = new DataGridViewButtonColumn();
             Obrisi = new DataGridViewButtonColumn();
+            btnUcitajKorisnike = new Button();
+            btnDodajKorisnika = new Button();
+            txtUsername = new TextBox();
+            lblUsername = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvKorisnici).BeginInit();
             SuspendLayout();
             // 
@@ -56,28 +58,6 @@
             dgvKorisnici.Size = new Size(679, 280);
             dgvKorisnici.TabIndex = 0;
             dgvKorisnici.CellContentClick += dgvKorisnici_CellContentClick;
-            // 
-            // btnUcitajKorisnike
-            // 
-            btnUcitajKorisnike.Location = new Point(10, 9);
-            btnUcitajKorisnike.Margin = new Padding(3, 2, 3, 2);
-            btnUcitajKorisnike.Name = "btnUcitajKorisnike";
-            btnUcitajKorisnike.Size = new Size(82, 22);
-            btnUcitajKorisnike.TabIndex = 1;
-            btnUcitajKorisnike.Text = "Ucitaj";
-            btnUcitajKorisnike.UseVisualStyleBackColor = true;
-            btnUcitajKorisnike.Click += btnUcitajKorisnike_Click;
-            // 
-            // btnDodajKorisnika
-            // 
-            btnDodajKorisnika.Location = new Point(607, 3);
-            btnDodajKorisnika.Margin = new Padding(3, 2, 3, 2);
-            btnDodajKorisnika.Name = "btnDodajKorisnika";
-            btnDodajKorisnika.Size = new Size(82, 35);
-            btnDodajKorisnika.TabIndex = 2;
-            btnDodajKorisnika.Text = "Dodaj";
-            btnDodajKorisnika.UseVisualStyleBackColor = true;
-            btnDodajKorisnika.Click += btnDodajKorisnika_Click;
             // 
             // korsnikIme
             // 
@@ -132,11 +112,51 @@
             Obrisi.Text = "Obrisi";
             Obrisi.UseColumnTextForButtonValue = true;
             // 
+            // btnUcitajKorisnike
+            // 
+            btnUcitajKorisnike.Location = new Point(607, 9);
+            btnUcitajKorisnike.Margin = new Padding(3, 2, 3, 2);
+            btnUcitajKorisnike.Name = "btnUcitajKorisnike";
+            btnUcitajKorisnike.Size = new Size(82, 22);
+            btnUcitajKorisnike.TabIndex = 1;
+            btnUcitajKorisnike.Text = "Ucitaj";
+            btnUcitajKorisnike.UseVisualStyleBackColor = true;
+            btnUcitajKorisnike.Click += btnUcitajKorisnike_Click;
+            // 
+            // btnDodajKorisnika
+            // 
+            btnDodajKorisnika.Location = new Point(10, 9);
+            btnDodajKorisnika.Margin = new Padding(3, 2, 3, 2);
+            btnDodajKorisnika.Name = "btnDodajKorisnika";
+            btnDodajKorisnika.Size = new Size(82, 35);
+            btnDodajKorisnika.TabIndex = 2;
+            btnDodajKorisnika.Text = "Dodaj";
+            btnDodajKorisnika.UseVisualStyleBackColor = true;
+            btnDodajKorisnika.Click += btnDodajKorisnika_Click;
+            // 
+            // txtUsername
+            // 
+            txtUsername.Location = new Point(271, 9);
+            txtUsername.Name = "txtUsername";
+            txtUsername.Size = new Size(159, 23);
+            txtUsername.TabIndex = 5;
+            // 
+            // lblUsername
+            // 
+            lblUsername.AutoSize = true;
+            lblUsername.Location = new Point(238, 12);
+            lblUsername.Name = "lblUsername";
+            lblUsername.Size = new Size(27, 15);
+            lblUsername.TabIndex = 6;
+            lblUsername.Text = "Ime";
+            // 
             // frmSviKorisnici
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(700, 338);
+            Controls.Add(lblUsername);
+            Controls.Add(txtUsername);
             Controls.Add(btnDodajKorisnika);
             Controls.Add(btnUcitajKorisnike);
             Controls.Add(dgvKorisnici);
@@ -147,6 +167,7 @@
             Load += frmSviKorisnici_Load;
             ((System.ComponentModel.ISupportInitialize)dgvKorisnici).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -160,5 +181,7 @@
         private DataGridViewTextBoxColumn username;
         private DataGridViewButtonColumn Uredi;
         private DataGridViewButtonColumn Obrisi;
+        private TextBox txtUsername;
+        private Label lblUsername;
     }
 }

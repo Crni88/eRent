@@ -28,153 +28,153 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.label1 = new System.Windows.Forms.Label();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label3 = new System.Windows.Forms.Label();
-            this.label4 = new System.Windows.Forms.Label();
-            this.label5 = new System.Windows.Forms.Label();
-            this.txtKomentar = new System.Windows.Forms.RichTextBox();
-            this.txtNekretnina = new System.Windows.Forms.TextBox();
-            this.txtNaslov = new System.Windows.Forms.TextBox();
-            this.txtIznos = new System.Windows.Forms.TextBox();
-            this.btnPosalji = new System.Windows.Forms.Button();
-            this.cbMjesecno = new System.Windows.Forms.CheckBox();
-            this.err = new System.Windows.Forms.ErrorProvider(this.components);
-            ((System.ComponentModel.ISupportInitialize)(this.err)).BeginInit();
-            this.SuspendLayout();
+            components = new System.ComponentModel.Container();
+            label1 = new Label();
+            label2 = new Label();
+            label3 = new Label();
+            label4 = new Label();
+            label5 = new Label();
+            txtKomentar = new RichTextBox();
+            txtNekretnina = new TextBox();
+            txtNaslov = new TextBox();
+            txtIznos = new TextBox();
+            btnPosalji = new Button();
+            cbMjesecno = new CheckBox();
+            err = new ErrorProvider(components);
+            ((System.ComponentModel.ISupportInitialize)err).BeginInit();
+            SuspendLayout();
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(12, 9);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(315, 30);
-            this.label1.TabIndex = 4;
-            this.label1.Text = "Pošalji novi zahtjev za plaćanje";
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(12, 9);
+            label1.Name = "label1";
+            label1.Size = new Size(315, 30);
+            label1.TabIndex = 4;
+            label1.Text = "Pošalji novi zahtjev za plaćanje";
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(12, 49);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(68, 21);
-            this.label2.TabIndex = 5;
-            this.label2.Text = "Naslov:*";
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(12, 49);
+            label2.Name = "label2";
+            label2.Size = new Size(68, 21);
+            label2.TabIndex = 5;
+            label2.Text = "Naslov:*";
             // 
             // label3
             // 
-            this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label3.Location = new System.Drawing.Point(12, 155);
-            this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(56, 21);
-            this.label3.TabIndex = 6;
-            this.label3.Text = "Iznos:*";
+            label3.AutoSize = true;
+            label3.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label3.Location = new Point(12, 155);
+            label3.Name = "label3";
+            label3.Size = new Size(56, 21);
+            label3.TabIndex = 6;
+            label3.Text = "Iznos:*";
             // 
             // label4
             // 
-            this.label4.AutoSize = true;
-            this.label4.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label4.Location = new System.Drawing.Point(240, 49);
-            this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(87, 21);
-            this.label4.TabIndex = 7;
-            this.label4.Text = "Nekretnina";
+            label4.AutoSize = true;
+            label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label4.Location = new Point(240, 49);
+            label4.Name = "label4";
+            label4.Size = new Size(87, 21);
+            label4.TabIndex = 7;
+            label4.Text = "Nekretnina";
             // 
             // label5
             // 
-            this.label5.AutoSize = true;
-            this.label5.Font = new System.Drawing.Font("Segoe UI", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label5.Location = new System.Drawing.Point(246, 155);
-            this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(81, 21);
-            this.label5.TabIndex = 8;
-            this.label5.Text = "Komentar:";
+            label5.AutoSize = true;
+            label5.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            label5.Location = new Point(246, 155);
+            label5.Name = "label5";
+            label5.Size = new Size(81, 21);
+            label5.TabIndex = 8;
+            label5.Text = "Komentar:";
             // 
             // txtKomentar
             // 
-            this.txtKomentar.Location = new System.Drawing.Point(246, 179);
-            this.txtKomentar.Name = "txtKomentar";
-            this.txtKomentar.Size = new System.Drawing.Size(238, 114);
-            this.txtKomentar.TabIndex = 9;
-            this.txtKomentar.Text = "";
+            txtKomentar.Location = new Point(246, 179);
+            txtKomentar.Name = "txtKomentar";
+            txtKomentar.Size = new Size(238, 114);
+            txtKomentar.TabIndex = 9;
+            txtKomentar.Text = "";
             // 
             // txtNekretnina
             // 
-            this.txtNekretnina.Location = new System.Drawing.Point(240, 73);
-            this.txtNekretnina.Name = "txtNekretnina";
-            this.txtNekretnina.ReadOnly = true;
-            this.txtNekretnina.Size = new System.Drawing.Size(238, 23);
-            this.txtNekretnina.TabIndex = 10;
+            txtNekretnina.Location = new Point(240, 73);
+            txtNekretnina.Name = "txtNekretnina";
+            txtNekretnina.ReadOnly = true;
+            txtNekretnina.Size = new Size(238, 23);
+            txtNekretnina.TabIndex = 10;
             // 
             // txtNaslov
             // 
-            this.txtNaslov.Location = new System.Drawing.Point(12, 73);
-            this.txtNaslov.Name = "txtNaslov";
-            this.txtNaslov.Size = new System.Drawing.Size(222, 23);
-            this.txtNaslov.TabIndex = 11;
-            this.txtNaslov.Validating += new System.ComponentModel.CancelEventHandler(this.txtNaslov_Validating);
+            txtNaslov.Location = new Point(12, 73);
+            txtNaslov.Name = "txtNaslov";
+            txtNaslov.Size = new Size(222, 23);
+            txtNaslov.TabIndex = 11;
+            txtNaslov.Validating += txtNaslov_Validating;
             // 
             // txtIznos
             // 
-            this.txtIznos.Location = new System.Drawing.Point(12, 179);
-            this.txtIznos.Name = "txtIznos";
-            this.txtIznos.Size = new System.Drawing.Size(228, 23);
-            this.txtIznos.TabIndex = 12;
-            this.txtIznos.Validating += new System.ComponentModel.CancelEventHandler(this.txtIznos_Validating);
+            txtIznos.Location = new Point(12, 179);
+            txtIznos.Name = "txtIznos";
+            txtIznos.Size = new Size(228, 23);
+            txtIznos.TabIndex = 12;
+            txtIznos.Validating += txtIznos_Validating;
             // 
             // btnPosalji
             // 
-            this.btnPosalji.Location = new System.Drawing.Point(397, 299);
-            this.btnPosalji.Name = "btnPosalji";
-            this.btnPosalji.Size = new System.Drawing.Size(81, 39);
-            this.btnPosalji.TabIndex = 13;
-            this.btnPosalji.Text = "Posalji";
-            this.btnPosalji.UseVisualStyleBackColor = true;
-            this.btnPosalji.Click += new System.EventHandler(this.btnPosalji_Click);
+            btnPosalji.Location = new Point(397, 299);
+            btnPosalji.Name = "btnPosalji";
+            btnPosalji.Size = new Size(81, 39);
+            btnPosalji.TabIndex = 13;
+            btnPosalji.Text = "Posalji";
+            btnPosalji.UseVisualStyleBackColor = true;
+            btnPosalji.Click += btnPosalji_Click;
             // 
             // cbMjesecno
             // 
-            this.cbMjesecno.AutoSize = true;
-            this.cbMjesecno.Location = new System.Drawing.Point(12, 274);
-            this.cbMjesecno.Margin = new System.Windows.Forms.Padding(3, 2, 3, 2);
-            this.cbMjesecno.Name = "cbMjesecno";
-            this.cbMjesecno.Size = new System.Drawing.Size(82, 19);
-            this.cbMjesecno.TabIndex = 14;
-            this.cbMjesecno.Text = "Mjesecno?";
-            this.cbMjesecno.UseVisualStyleBackColor = true;
+            cbMjesecno.AutoSize = true;
+            cbMjesecno.Location = new Point(12, 274);
+            cbMjesecno.Margin = new Padding(3, 2, 3, 2);
+            cbMjesecno.Name = "cbMjesecno";
+            cbMjesecno.Size = new Size(82, 19);
+            cbMjesecno.TabIndex = 14;
+            cbMjesecno.Text = "Mjesecno?";
+            cbMjesecno.UseVisualStyleBackColor = true;
             // 
             // err
             // 
-            this.err.ContainerControl = this;
+            err.ContainerControl = this;
             // 
             // frmZahtjevZaPlacanje
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(496, 350);
-            this.Controls.Add(this.cbMjesecno);
-            this.Controls.Add(this.btnPosalji);
-            this.Controls.Add(this.txtIznos);
-            this.Controls.Add(this.txtNaslov);
-            this.Controls.Add(this.txtNekretnina);
-            this.Controls.Add(this.txtKomentar);
-            this.Controls.Add(this.label5);
-            this.Controls.Add(this.label4);
-            this.Controls.Add(this.label3);
-            this.Controls.Add(this.label2);
-            this.Controls.Add(this.label1);
-            this.Name = "frmZahtjevZaPlacanje";
-            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Zahtjev za placanje";
-            this.Load += new System.EventHandler(this.frmZahtjevZaPlacanje_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.err)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
-
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            AutoValidate = AutoValidate.Disable;
+            ClientSize = new Size(496, 350);
+            Controls.Add(cbMjesecno);
+            Controls.Add(btnPosalji);
+            Controls.Add(txtIznos);
+            Controls.Add(txtNaslov);
+            Controls.Add(txtNekretnina);
+            Controls.Add(txtKomentar);
+            Controls.Add(label5);
+            Controls.Add(label4);
+            Controls.Add(label3);
+            Controls.Add(label2);
+            Controls.Add(label1);
+            Name = "frmZahtjevZaPlacanje";
+            StartPosition = FormStartPosition.CenterScreen;
+            Text = "Zahtjev za placanje";
+            Load += frmZahtjevZaPlacanje_Load;
+            ((System.ComponentModel.ISupportInitialize)err).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion

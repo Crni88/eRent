@@ -150,6 +150,8 @@ class _HomeScreenState extends State<HomeScreen> {
                       "imePrezime":
                           "${korisnik!.korsnikIme} ${korisnik!.korisnikPrezime}",
                       "brojTelefona": "064 4002 619",
+                      "otkazana": false,
+                      "korisnikId": korisnik!.korisnikId,
                     };
                     await rezervacijaProvider.insert(rezervacijaObject);
                     showDialog(

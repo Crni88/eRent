@@ -65,7 +65,7 @@ namespace eRent.UI
                 var nekretnina = dgvNekretnineList.SelectedRows[0].DataBoundItem as NekretninaModel;
                 if (nekretnina != null)
                 {
-                    this.Close();
+                    //this.Close();
                     frmAddNekretninu addNekretninu = new frmAddNekretninu(_username, nekretnina);
                     addNekretninu.Show();
                 }
@@ -121,6 +121,12 @@ namespace eRent.UI
         private async void frmNekretninaList_Load(object sender, EventArgs e)
         {
             await loadData();
+        }
+
+        private void btnSveRezervacije_Click(object sender, EventArgs e)
+        {
+            frmSveRezervacije frmSveRezervacije = new frmSveRezervacije();
+            frmSveRezervacije.Show();
         }
     }
 }

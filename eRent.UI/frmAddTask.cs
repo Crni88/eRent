@@ -69,9 +69,9 @@ namespace eRent.UI
 
         private void updateAndCloseForm()
         {
+            //this.Close();
             frmAllTasks frmAllTasks = new frmAllTasks(Nekretnina);
             frmAllTasks.ShowDialog();
-            this.Close();
         }
 
         private async Task updateTask()
@@ -88,7 +88,7 @@ namespace eRent.UI
             if (taskInsert != null)
             {
                 AutoClosingMessageBox.Show("Task azuriran!", "Task uspjesno azuriran.", 3000);
-                updateAndCloseForm();
+                //updateAndCloseForm();
             }
         }
 
@@ -106,7 +106,7 @@ namespace eRent.UI
             if (taskInsert != null)
             {
                 AutoClosingMessageBox.Show("Task dodan!", "Task uspjesno dodan.", 3000);
-                updateAndCloseForm();
+                // updateAndCloseForm();
             }
         }
 
@@ -169,12 +169,6 @@ namespace eRent.UI
                 e.Cancel = false;
                 err.SetError(cbStatus, "");
             }
-        }
-
-        private void frmAddTask_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            frmAllTasks frmAllTasks = new frmAllTasks(Nekretnina);
-            frmAllTasks.ShowDialog();   
         }
     }
 }

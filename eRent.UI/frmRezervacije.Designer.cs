@@ -30,12 +30,11 @@
         {
             label1 = new Label();
             dgvRezervacije = new DataGridView();
-            Ime_Prezime = new DataGridViewTextBoxColumn();
-            Broj_Telefona = new DataGridViewTextBoxColumn();
-            Datum_Pocetka = new DataGridViewTextBoxColumn();
-            Datum_Kraja = new DataGridViewTextBoxColumn();
-            Odobrena = new DataGridViewCheckBoxColumn();
-            Odobri = new DataGridViewButtonColumn();
+            Naslov = new DataGridViewTextBoxColumn();
+            Komentar = new DataGridViewTextBoxColumn();
+            PaymentId = new DataGridViewTextBoxColumn();
+            Iznos = new DataGridViewTextBoxColumn();
+            isProcessed = new DataGridViewCheckBoxColumn();
             btnLoadRezervacije = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvRezervacije).BeginInit();
             SuspendLayout();
@@ -46,16 +45,16 @@
             label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
             label1.Location = new Point(12, 9);
             label1.Name = "label1";
-            label1.Size = new Size(122, 30);
+            label1.Size = new Size(94, 30);
             label1.TabIndex = 0;
-            label1.Text = "Rezervacije";
+            label1.Text = "Placanja";
             // 
             // dgvRezervacije
             // 
             dgvRezervacije.AllowUserToAddRows = false;
             dgvRezervacije.AllowUserToDeleteRows = false;
             dgvRezervacije.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvRezervacije.Columns.AddRange(new DataGridViewColumn[] { Ime_Prezime, Broj_Telefona, Datum_Pocetka, Datum_Kraja, Odobrena, Odobri });
+            dgvRezervacije.Columns.AddRange(new DataGridViewColumn[] { Naslov, Komentar, PaymentId, Iznos, isProcessed });
             dgvRezervacije.Location = new Point(12, 42);
             dgvRezervacije.Name = "dgvRezervacije";
             dgvRezervacije.ReadOnly = true;
@@ -63,52 +62,46 @@
             dgvRezervacije.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dgvRezervacije.Size = new Size(776, 396);
             dgvRezervacije.TabIndex = 1;
-            dgvRezervacije.CellContentClick += dgvRezervacije_CellContentClick;
             // 
-            // Ime_Prezime
+            // Naslov
             // 
-            Ime_Prezime.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Ime_Prezime.DataPropertyName = "ImePrezime";
-            Ime_Prezime.HeaderText = "Ime i prezime";
-            Ime_Prezime.Name = "Ime_Prezime";
-            Ime_Prezime.ReadOnly = true;
+            Naslov.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Naslov.DataPropertyName = "Naslov";
+            Naslov.HeaderText = "Naslov";
+            Naslov.Name = "Naslov";
+            Naslov.ReadOnly = true;
             // 
-            // Broj_Telefona
+            // Komentar
             // 
-            Broj_Telefona.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Broj_Telefona.DataPropertyName = "BrojTelefona";
-            Broj_Telefona.HeaderText = "Broj Telefona";
-            Broj_Telefona.Name = "Broj_Telefona";
-            Broj_Telefona.ReadOnly = true;
+            Komentar.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Komentar.DataPropertyName = "Komentar";
+            Komentar.HeaderText = "Komentar";
+            Komentar.Name = "Komentar";
+            Komentar.ReadOnly = true;
             // 
-            // Datum_Pocetka
+            // PaymentId
             // 
-            Datum_Pocetka.DataPropertyName = "DatumPocetka";
-            Datum_Pocetka.HeaderText = "Datum Pocetka";
-            Datum_Pocetka.Name = "Datum_Pocetka";
-            Datum_Pocetka.ReadOnly = true;
+            PaymentId.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            PaymentId.DataPropertyName = "PaymentId";
+            PaymentId.HeaderText = "Payment Id";
+            PaymentId.Name = "PaymentId";
+            PaymentId.ReadOnly = true;
             // 
-            // Datum_Kraja
+            // Iznos
             // 
-            Datum_Kraja.DataPropertyName = "DatumKraja";
-            Datum_Kraja.HeaderText = "Datum Kraja";
-            Datum_Kraja.Name = "Datum_Kraja";
-            Datum_Kraja.ReadOnly = true;
+            Iznos.DataPropertyName = "Iznos";
+            Iznos.HeaderText = "Iznos";
+            Iznos.Name = "Iznos";
+            Iznos.ReadOnly = true;
             // 
-            // Odobrena
+            // isProcessed
             // 
-            Odobrena.DataPropertyName = "Odobrena";
-            Odobrena.HeaderText = "Odobrena";
-            Odobrena.Name = "Odobrena";
-            Odobrena.ReadOnly = true;
-            // 
-            // Odobri
-            // 
-            Odobri.HeaderText = "Odobri";
-            Odobri.Name = "Odobri";
-            Odobri.ReadOnly = true;
-            Odobri.Text = "Odobri";
-            Odobri.UseColumnTextForButtonValue = true;
+            isProcessed.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            isProcessed.DataPropertyName = "isProcessed";
+            isProcessed.HeaderText = "Placena";
+            isProcessed.Name = "isProcessed";
+            isProcessed.ReadOnly = true;
+            isProcessed.Width = 54;
             // 
             // btnLoadRezervacije
             // 
@@ -130,7 +123,8 @@
             Controls.Add(label1);
             Name = "frmRezervacije";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Rezervacije";
+            Text = "Placanja";
+            Load += frmRezervacije_Load;
             ((System.ComponentModel.ISupportInitialize)dgvRezervacije).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -142,11 +136,10 @@
         private DataGridView dgvRezervacije;
         private Button btnRezervacije;
         private Button btnLoadRezervacije;
-        private DataGridViewTextBoxColumn Ime_Prezime;
-        private DataGridViewTextBoxColumn Broj_Telefona;
-        private DataGridViewTextBoxColumn Datum_Pocetka;
-        private DataGridViewTextBoxColumn Datum_Kraja;
-        private DataGridViewCheckBoxColumn Odobrena;
-        private DataGridViewButtonColumn Odobri;
+        private DataGridViewTextBoxColumn Naslov;
+        private DataGridViewTextBoxColumn Komentar;
+        private DataGridViewTextBoxColumn PaymentId;
+        private DataGridViewTextBoxColumn Iznos;
+        private DataGridViewCheckBoxColumn isProcessed;
     }
 }

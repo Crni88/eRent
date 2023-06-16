@@ -174,80 +174,80 @@ namespace eRent.Services.DataDB
                 new KorisnikTagovi { KtId = 4, KorisnikId = 2, TagId = 4, IsActive = false },
                 new KorisnikTagovi { KtId = 5, KorisnikId = 2, TagId = 5, IsActive = true }
                 );
-            modelBuilder.Entity<NekretninaKorisnik>().HasData(
-                new NekretninaKorisnik
-                {
-                    NekretninaKorisnikId = 1,
-                    Nekretnina = 1,
-                    ImeKorisnika = "Sarajevo",
-                    PrezimeKorisnika = "Korisnika",
-                    BrojTelefona = "061 785 982",
-                    DatumUseljenja = DateTime.Now.AddDays(1),
-                    DatumIseljenja = DateTime.Now.AddDays(30),
-                    Slika = slikaUsera,
-                    IsActive = true
-                },
-                new NekretninaKorisnik
-                {
-                    NekretninaKorisnikId = 4,
-                    Nekretnina = 1,
-                    ImeKorisnika = "Sarajevo",
-                    PrezimeKorisnika = "Korisnik 2",
-                    BrojTelefona = "061 749 982",
-                    DatumUseljenja = DateTime.Now.AddDays(1),
-                    DatumIseljenja = DateTime.Now.AddDays(30),
-                    Slika = slikaUsera,
-                    IsActive = true
-                },
-                new NekretninaKorisnik
-                {
-                    NekretninaKorisnikId = 2,
-                    Nekretnina = 2,
-                    ImeKorisnika = "Travnik",
-                    PrezimeKorisnika = "Korisnik",
-                    BrojTelefona = "061 785 982",
-                    DatumUseljenja = DateTime.Now.AddDays(1),
-                    DatumIseljenja = DateTime.Now.AddDays(30),
-                    Slika = slikaUsera,
-                    IsActive = true
-                },
-                new NekretninaKorisnik
-                {
-                    NekretninaKorisnikId = 3,
-                    Nekretnina = 3,
-                    ImeKorisnika = "Mostar",
-                    PrezimeKorisnika = "Korisnika",
-                    BrojTelefona = "061 785 982",
-                    DatumUseljenja = DateTime.Now.AddDays(1),
-                    DatumIseljenja = DateTime.Now.AddDays(30),
-                    Slika = slikaUsera,
-                    IsActive = true
-                },
-                new NekretninaKorisnik
-                {
-                    NekretninaKorisnikId = 5,
-                    Nekretnina = 4,
-                    ImeKorisnika = "Korisnik",
-                    PrezimeKorisnika = "Korisnik",
-                    BrojTelefona = "061 785 982",
-                    DatumUseljenja = DateTime.Now.AddDays(1),
-                    DatumIseljenja = DateTime.Now.AddDays(40),
-                    Slika = slikaUsera,
-                    IsActive = true
-                },
-                new NekretninaKorisnik
-                {
-                    NekretninaKorisnikId = 6,
-                    Nekretnina = 5,
-                    ImeKorisnika = "Tuzla",
-                    PrezimeKorisnika = "Korisnika",
-                    BrojTelefona = "061 726 982",
-                    DatumUseljenja = DateTime.Now.AddDays(1),
-                    DatumIseljenja = DateTime.Now.AddDays(36),
-                    Slika = slikaUsera,
-                    IsActive = true
-                }
-            );
+            //modelBuilder.Entity<NekretninaKorisnik>().HasData(
+            //    new NekretninaKorisnik
+            //    {
+            //        NekretninaKorisnikId = 1,
+            //        Nekretnina = 1,
+            //        ImeKorisnika = "Sarajevo",
+            //        PrezimeKorisnika = "Korisnika",
+            //        BrojTelefona = "061 785 982",
+            //        DatumUseljenja = DateTime.Now.AddDays(1),
+            //        DatumIseljenja = DateTime.Now.AddDays(30),
+            //        Slika = slikaUsera,
+            //        IsActive = true
+            //    }
+                //new NekretninaKorisnik
+                //{
+                //    NekretninaKorisnikId = 4,
+                //    Nekretnina = 1,
+                //    ImeKorisnika = "Sarajevo",
+                //    PrezimeKorisnika = "Korisnik 2",
+                //    BrojTelefona = "061 749 982",
+                //    DatumUseljenja = DateTime.Now.AddDays(1),
+                //    DatumIseljenja = DateTime.Now.AddDays(30),
+                //    Slika = slikaUsera,
+                //    IsActive = true
+                //},
+                //new NekretninaKorisnik
+                //{
+                //    NekretninaKorisnikId = 2,
+                //    Nekretnina = 2,
+                //    ImeKorisnika = "Travnik",
+                //    PrezimeKorisnika = "Korisnik",
+                //    BrojTelefona = "061 785 982",
+                //    DatumUseljenja = DateTime.Now.AddDays(1),
+                //    DatumIseljenja = DateTime.Now.AddDays(30),
+                //    Slika = slikaUsera,
+                //    IsActive = true
+                //},
+                //new NekretninaKorisnik
+                //{
+                //    NekretninaKorisnikId = 3,
+                //    Nekretnina = 3,
+                //    ImeKorisnika = "Mostar",
+                //    PrezimeKorisnika = "Korisnika",
+                //    BrojTelefona = "061 785 982",
+                //    DatumUseljenja = DateTime.Now.AddDays(1),
+                //    DatumIseljenja = DateTime.Now.AddDays(30),
+                //    Slika = slikaUsera,
+                //    IsActive = true
+                //},
+                //new NekretninaKorisnik
+                //{
+                //    NekretninaKorisnikId = 5,
+                //    Nekretnina = 4,
+                //    ImeKorisnika = "Korisnik",
+                //    PrezimeKorisnika = "Korisnik",
+                //    BrojTelefona = "061 785 982",
+                //    DatumUseljenja = DateTime.Now.AddDays(1),
+                //    DatumIseljenja = DateTime.Now.AddDays(40),
+                //    Slika = slikaUsera,
+                //    IsActive = true
+                //},
+                //new NekretninaKorisnik
+                //{
+                //    NekretninaKorisnikId = 6,
+                //    Nekretnina = 5,
+                //    ImeKorisnika = "Tuzla",
+                //    PrezimeKorisnika = "Korisnika",
+                //    BrojTelefona = "061 726 982",
+                //    DatumUseljenja = DateTime.Now.AddDays(1),
+                //    DatumIseljenja = DateTime.Now.AddDays(36),
+                //    Slika = slikaUsera,
+                //    IsActive = true
+                //}
+            //);
             modelBuilder.Entity<PaymentRequest>().HasData(
                 new PaymentRequest { PaymentRequestId = 1, IsProcessed = false, Iznos = 100, Komentar = "Komentar", KorisnikPaymentId = 2, Mjesecno = false, Naslov = "Naslov placanja", NekretninaPayment = 2, Nekretnina = "Vikendica Travnik" },
                 new PaymentRequest { PaymentRequestId = 2, IsProcessed = false, Iznos = 150, Komentar = "Komentar 2", KorisnikPaymentId = 2, Mjesecno = true, Naslov = "Naslov placanja 2", NekretninaPayment = 1, Nekretnina = "Vikendica Sarajevo" },
@@ -278,6 +278,7 @@ namespace eRent.Services.DataDB
                     NekretninaId = 2,
                     Nazivnekretnine = "Vikendica Travnik",
                     Odobrena = false,
+                    Odbijena = false,
                 },
             new Rezervacija
             {
@@ -292,6 +293,7 @@ namespace eRent.Services.DataDB
                 NekretninaId = 3,
                 Nazivnekretnine = "Vikendica Mostar",
                 Odobrena = false,
+                Odbijena = false,
             },
             new Rezervacija
             {
@@ -306,6 +308,7 @@ namespace eRent.Services.DataDB
                 NekretninaId = 1,
                 Nazivnekretnine = "Vikendica Sarajevo",
                 Odobrena = false,
+                Odbijena = false,
             },
             new Rezervacija
             {
@@ -320,6 +323,7 @@ namespace eRent.Services.DataDB
                 NekretninaId = 4,
                 Nazivnekretnine = "Stan Sarajevo",
                 Odobrena = false,
+                Odbijena = false,
             },
             new Rezervacija
             {
@@ -334,6 +338,7 @@ namespace eRent.Services.DataDB
                 NekretninaId = 4,
                 Nazivnekretnine = "Stan Sarajevo",
                 Odobrena = false,
+                Odbijena = false,
             },
             new Rezervacija
             {
@@ -348,6 +353,7 @@ namespace eRent.Services.DataDB
                 NekretninaId = 4,
                 Nazivnekretnine = "Stan Sarajevo",
                 Odobrena = false,
+                Odbijena = false,
             },
               new Rezervacija
               {
@@ -362,6 +368,7 @@ namespace eRent.Services.DataDB
                   NekretninaId = 4,
                   Nazivnekretnine = "Stan Sarajevo",
                   Odobrena = false,
+                  Odbijena = false,
               },
                 new Rezervacija
                 {
@@ -376,6 +383,7 @@ namespace eRent.Services.DataDB
                     NekretninaId = 4,
                     Nazivnekretnine = "Stan Sarajevo",
                     Odobrena = false,
+                    Odbijena = false,
                 },
             new Rezervacija
             {
@@ -390,6 +398,7 @@ namespace eRent.Services.DataDB
                 NekretninaId = 5,
                 Nazivnekretnine = "Kuca Tuzla",
                 Odobrena = false,
+                Odbijena = false,
             },
             new Rezervacija
             {
@@ -404,62 +413,7 @@ namespace eRent.Services.DataDB
                 NekretninaId = 4,
                 Nazivnekretnine = "Stan Sarajevo",
                 Odobrena = false,
-            },
-              new Rezervacija
-              {
-                  RezervacijaId = 11,
-                  KorisnikId = 2,
-                  Otkazana = false,
-                  MjesecnaRezervacija = false,
-                  DatumPocetka = DateTime.Now.AddDays(2),
-                  DatumKraja = DateTime.Now.AddDays(80),
-                  ImePrezime = "Mobile Mobile",
-                  BrojTelefona = "062 498 653",
-                  NekretninaId = 5,
-                  Nazivnekretnine = "Kuca Tuzla",
-                  Odobrena = false,
-              },
-              new Rezervacija
-              {
-                  RezervacijaId = 12,
-                  KorisnikId = 2,
-                  Otkazana = false,
-                  MjesecnaRezervacija = false,
-                  DatumPocetka = DateTime.Now,
-                  DatumKraja = DateTime.Now.AddDays(20),
-                  ImePrezime = "Mobile Mobile",
-                  BrojTelefona = "062 424 416",
-                  NekretninaId = 2,
-                  Nazivnekretnine = "Vikendica Travnik",
-                  Odobrena = false,
-              },
-            new Rezervacija
-            {
-                RezervacijaId = 13,
-                KorisnikId = 2,
-                Otkazana = false,
-                MjesecnaRezervacija = false,
-                DatumPocetka = DateTime.Now,
-                DatumKraja = DateTime.Now.AddDays(40),
-                ImePrezime = "Mobile Mobile",
-                BrojTelefona = "062 748 456",
-                NekretninaId = 3,
-                Nazivnekretnine = "Vikendica Mostar",
-                Odobrena = false,
-            },
-            new Rezervacija
-            {
-                RezervacijaId = 14,
-                KorisnikId = 2,
-                Otkazana = false,
-                MjesecnaRezervacija = false,
-                DatumPocetka = DateTime.Now,
-                DatumKraja = DateTime.Now.AddDays(50),
-                ImePrezime = "Mobile Mobile",
-                BrojTelefona = "062 498 653",
-                NekretninaId = 1,
-                Nazivnekretnine = "Vikendica Sarajevo",
-                Odobrena = false,
+                Odbijena = false,
             }
             );
             modelBuilder.Entity<Task>().HasData(

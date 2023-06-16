@@ -26,21 +26,25 @@ namespace eRent.Services.Rejting
             base.BeforeInsert(insert, entity);
         }
 
-            //double insertRejting(RejtingInsertRequest insert)
-            //{
-            //    var listabrojSvihRejtinga = Context.Rejtings.Where(x => x.KorisnikPrim == insert.KorisnikPrim);
-            //    int brojSvihRejtinga = listabrojSvihRejtinga.Count();
-            //    double averageRejting = listabrojSvihRejtinga.Average(x => x.Rejting1);
-            //    double finalRejting = (averageRejting + insert.Rejting1) / brojSvihRejtinga + 1;
-            //    return finalRejting;
-            //}
+        //double insertRejting(RejtingInsertRequest insert)
+        //{
+        //    var listabrojSvihRejtinga = Context.Rejtings.Where(x => x.KorisnikPrim == insert.KorisnikPrim);
+        //    int brojSvihRejtinga = listabrojSvihRejtinga.Count();
+        //    double averageRejting = listabrojSvihRejtinga.Average(x => x.Rejting1);
+        //    double finalRejting = (averageRejting + insert.Rejting1) / brojSvihRejtinga + 1;
+        //    return finalRejting;
+        //}
 
-             public override IQueryable<DataDB.Rejting> AddFilter(IQueryable<DataDB.Rejting> query, RejtingSearchObject search = null)
+        public override IQueryable<DataDB.Rejting> AddFilter(IQueryable<DataDB.Rejting> query, RejtingSearchObject search = null)
         {
             var filteredQuery = base.AddFilter(query, search);
             if (search != null)
             {
                 filteredQuery = filteredQuery.Where(x => x.KorisnikPrim == search.KorisnikPrim);
+            }
+            if (search.Rejting != null)
+            {
+                filteredQuery = filteredQuery.Where(x => x.Rejting1 == search.Rejting);
             }
             return filteredQuery;
         }

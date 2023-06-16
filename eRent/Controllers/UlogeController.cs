@@ -4,7 +4,7 @@ using eRent.Services.Uloge;
 
 namespace eRent.Controllers
 {
-    public class UlogeController : BaseCRUDController<UlogaModel, BaseSearchObject>
+    public class UlogeController : BaseCRUDController<UlogaModel, UlogaSearchObject>
     {
 
         public UlogeController(IUlogeService ulogeService) : base(ulogeService)

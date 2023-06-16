@@ -119,9 +119,9 @@
             label3.AutoSize = true;
             label3.Location = new Point(302, 90);
             label3.Name = "label3";
-            label3.Size = new Size(32, 15);
+            label3.Size = new Size(37, 15);
             label3.TabIndex = 7;
-            label3.Text = "Grad";
+            label3.Text = "Grad*";
             // 
             // txtGrad
             // 
@@ -129,6 +129,7 @@
             txtGrad.Name = "txtGrad";
             txtGrad.Size = new Size(207, 23);
             txtGrad.TabIndex = 8;
+            txtGrad.Validating += txtGrad_Validating;
             // 
             // txtBrojKvadrata
             // 
@@ -136,15 +137,16 @@
             txtBrojKvadrata.Name = "txtBrojKvadrata";
             txtBrojKvadrata.Size = new Size(207, 23);
             txtBrojKvadrata.TabIndex = 9;
+            txtBrojKvadrata.Validating += txtBrojKvadrata_Validating;
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Location = new Point(302, 148);
             label4.Name = "label4";
-            label4.Size = new Size(76, 15);
+            label4.Size = new Size(81, 15);
             label4.TabIndex = 10;
-            label4.Text = "Broj kvadrata";
+            label4.Text = "Broj kvadrata*";
             // 
             // txtBrojSoba
             // 
@@ -301,6 +303,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoValidate = AutoValidate.Disable;
             ClientSize = new Size(800, 450);
             Controls.Add(btnObrisiNekretninu);
             Controls.Add(cbTihoNaselje);
@@ -330,7 +333,6 @@
             Name = "frmAddNekretninu";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Dodaj novu nekretninu";
-            FormClosing += frmAddNekretninu_FormClosing;
             ((System.ComponentModel.ISupportInitialize)pbSlikaNekretnine).EndInit();
             ((System.ComponentModel.ISupportInitialize)err).EndInit();
             ResumeLayout(false);

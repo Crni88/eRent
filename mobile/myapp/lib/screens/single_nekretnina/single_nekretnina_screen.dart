@@ -87,13 +87,13 @@ class _SingleNekretninaScreenState extends State<SingleNekretninaScreen> {
       final prefs = await SharedPreferences.getInstance();
       final id = prefs.getString('korisnikId');
       final temp3 = await korisnikProvider?.getById(int.parse(id!));
-      final locations = await locationFromAddress(temp!.grad!);
+      //final locations = await locationFromAddress(temp!.grad!);
 
       setState(() {
-        nekretnina = temp;
+        nekretnina = temp!;
         nekretninaTagovi = temp2!;
         korisnik = temp3!;
-        myLocation = LatLng(locations[0].latitude, locations[0].longitude);
+        // myLocation = LatLng(locations[0].latitude, locations[0].longitude);
       });
 
       final avg = await getAvgRejting(nekretnina.korisnikNekretnina!);
@@ -326,27 +326,27 @@ Widget _buildSingleNekretnina(
             const MySpacer(),
             const MyTitle("Detalji nekretnine"),
             _buildNekretnineChipList(nekretninaTagovi),
-            const MySpacer(),
-            //Mapa
-            const MyTitle("Lokacija"),
-            const MySpacer(),
-            SizedBox(
-              height: 250, // set the height to 100 pixels
-              child: FlutterMap(
-                options: MapOptions(
-                  center: LatLng(
-                      latlgn?.latitude ?? 51.5, latlgn?.longitude ?? -0.09),
-                  zoom: 13.0,
-                ),
-                children: [
-                  TileLayer(
-                    urlTemplate:
-                        "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
-                    subdomains: const ['a', 'b', 'c'],
-                  ),
-                ],
-              ),
-            ),
+            // const MySpacer(),
+            // //Mapa
+            // const MyTitle("Lokacija"),
+            // const MySpacer(),
+            // SizedBox(
+            //   height: 250, // set the height to 100 pixels
+            //   child: FlutterMap(
+            //     options: MapOptions(
+            //       center: LatLng(
+            //           latlgn?.latitude ?? 51.5, latlgn?.longitude ?? -0.09),
+            //       zoom: 13.0,
+            //     ),
+            //     children: [
+            //       TileLayer(
+            //         urlTemplate:
+            //             "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
+            //         subdomains: const ['a', 'b', 'c'],
+            //       ),
+            //     ],
+            //   ),
+            // ),
             const MySpacer(),
             const MyTitle("Detaljan opis nekretnine"),
             if (nekretnina.opis != null)

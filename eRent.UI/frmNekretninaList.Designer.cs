@@ -30,20 +30,21 @@
         {
             Button btnShowNekretnine;
             dgvNekretnineList = new DataGridView();
-            Naziv = new DataGridViewTextBoxColumn();
-            Lokacija = new DataGridViewTextBoxColumn();
-            Popunjena = new DataGridViewCheckBoxColumn();
-            Rezervacije = new DataGridViewButtonColumn();
-            Detaljno = new DataGridViewButtonColumn();
-            Korisnici = new DataGridViewButtonColumn();
-            Posjete = new DataGridViewButtonColumn();
-            Odrzavanje = new DataGridViewButtonColumn();
             label1 = new Label();
             txtSearch = new TextBox();
             btnDodajNovu = new Button();
             btnIzvjestaj = new Button();
             btnRejting = new Button();
             btnDodajKorisnika = new Button();
+            btnSveRezervacije = new Button();
+            Naziv = new DataGridViewTextBoxColumn();
+            Lokacija = new DataGridViewTextBoxColumn();
+            Popunjena = new DataGridViewCheckBoxColumn();
+            Placanja = new DataGridViewButtonColumn();
+            Detaljno = new DataGridViewButtonColumn();
+            Korisnici = new DataGridViewButtonColumn();
+            Posjete = new DataGridViewButtonColumn();
+            Odrzavanje = new DataGridViewButtonColumn();
             btnShowNekretnine = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvNekretnineList).BeginInit();
             SuspendLayout();
@@ -54,7 +55,7 @@
             btnShowNekretnine.Name = "btnShowNekretnine";
             btnShowNekretnine.Size = new Size(80, 23);
             btnShowNekretnine.TabIndex = 1;
-            btnShowNekretnine.Text = "Show";
+            btnShowNekretnine.Text = "Prikazi";
             btnShowNekretnine.UseVisualStyleBackColor = true;
             btnShowNekretnine.Click += btnShowNekretnine_Click;
             // 
@@ -64,7 +65,7 @@
             dgvNekretnineList.AllowUserToDeleteRows = false;
             dgvNekretnineList.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvNekretnineList.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvNekretnineList.Columns.AddRange(new DataGridViewColumn[] { Naziv, Lokacija, Popunjena, Rezervacije, Detaljno, Korisnici, Posjete, Odrzavanje });
+            dgvNekretnineList.Columns.AddRange(new DataGridViewColumn[] { Naziv, Lokacija, Popunjena, Placanja, Detaljno, Korisnici, Posjete, Odrzavanje });
             dgvNekretnineList.Location = new Point(9, 45);
             dgvNekretnineList.MultiSelect = false;
             dgvNekretnineList.Name = "dgvNekretnineList";
@@ -75,86 +76,6 @@
             dgvNekretnineList.Size = new Size(1013, 444);
             dgvNekretnineList.TabIndex = 0;
             dgvNekretnineList.CellContentClick += dgvNekretnineList_CellContentClick;
-            // 
-            // Naziv
-            // 
-            Naziv.DataPropertyName = "NazivNekretnine";
-            Naziv.HeaderText = "Naziv";
-            Naziv.MinimumWidth = 6;
-            Naziv.Name = "Naziv";
-            Naziv.ReadOnly = true;
-            // 
-            // Lokacija
-            // 
-            Lokacija.DataPropertyName = "grad";
-            Lokacija.HeaderText = "Lokacija";
-            Lokacija.MinimumWidth = 6;
-            Lokacija.Name = "Lokacija";
-            Lokacija.ReadOnly = true;
-            // 
-            // Popunjena
-            // 
-            Popunjena.DataPropertyName = "popunjena";
-            Popunjena.HeaderText = "Popunjena";
-            Popunjena.MinimumWidth = 6;
-            Popunjena.Name = "Popunjena";
-            Popunjena.ReadOnly = true;
-            // 
-            // Rezervacije
-            // 
-            Rezervacije.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Rezervacije.HeaderText = "Rezervacije";
-            Rezervacije.MinimumWidth = 6;
-            Rezervacije.Name = "Rezervacije";
-            Rezervacije.ReadOnly = true;
-            Rezervacije.Text = "Rezervacije";
-            Rezervacije.UseColumnTextForButtonValue = true;
-            Rezervacije.Width = 71;
-            // 
-            // Detaljno
-            // 
-            Detaljno.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Detaljno.HeaderText = "Detaljno";
-            Detaljno.MinimumWidth = 6;
-            Detaljno.Name = "Detaljno";
-            Detaljno.ReadOnly = true;
-            Detaljno.Text = "Detaljno";
-            Detaljno.UseColumnTextForButtonValue = true;
-            Detaljno.Width = 57;
-            // 
-            // Korisnici
-            // 
-            Korisnici.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Korisnici.HeaderText = "Korisnici";
-            Korisnici.MinimumWidth = 6;
-            Korisnici.Name = "Korisnici";
-            Korisnici.ReadOnly = true;
-            Korisnici.Text = "Korisnici";
-            Korisnici.UseColumnTextForButtonValue = true;
-            Korisnici.Width = 58;
-            // 
-            // Posjete
-            // 
-            Posjete.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Posjete.HeaderText = "Posjete";
-            Posjete.MinimumWidth = 6;
-            Posjete.Name = "Posjete";
-            Posjete.ReadOnly = true;
-            Posjete.Text = "Posjete";
-            Posjete.ToolTipText = "Posjete";
-            Posjete.UseColumnTextForButtonValue = true;
-            Posjete.Width = 51;
-            // 
-            // Odrzavanje
-            // 
-            Odrzavanje.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Odrzavanje.HeaderText = "Odrzavanje";
-            Odrzavanje.MinimumWidth = 6;
-            Odrzavanje.Name = "Odrzavanje";
-            Odrzavanje.ReadOnly = true;
-            Odrzavanje.Text = "Odrzavanje";
-            Odrzavanje.UseColumnTextForButtonValue = true;
-            Odrzavanje.Width = 72;
             // 
             // label1
             // 
@@ -214,11 +135,101 @@
             btnDodajKorisnika.UseVisualStyleBackColor = true;
             btnDodajKorisnika.Click += btnDodajKorisnika_Click;
             // 
+            // btnSveRezervacije
+            // 
+            btnSveRezervacije.Location = new Point(234, 495);
+            btnSveRezervacije.Name = "btnSveRezervacije";
+            btnSveRezervacije.Size = new Size(121, 23);
+            btnSveRezervacije.TabIndex = 8;
+            btnSveRezervacije.Text = "Sve rezervacije";
+            btnSveRezervacije.UseVisualStyleBackColor = true;
+            btnSveRezervacije.Click += btnSveRezervacije_Click;
+            // 
+            // Naziv
+            // 
+            Naziv.DataPropertyName = "NazivNekretnine";
+            Naziv.HeaderText = "Naziv";
+            Naziv.MinimumWidth = 6;
+            Naziv.Name = "Naziv";
+            Naziv.ReadOnly = true;
+            // 
+            // Lokacija
+            // 
+            Lokacija.DataPropertyName = "grad";
+            Lokacija.HeaderText = "Lokacija";
+            Lokacija.MinimumWidth = 6;
+            Lokacija.Name = "Lokacija";
+            Lokacija.ReadOnly = true;
+            // 
+            // Popunjena
+            // 
+            Popunjena.DataPropertyName = "popunjena";
+            Popunjena.HeaderText = "Popunjena";
+            Popunjena.MinimumWidth = 6;
+            Popunjena.Name = "Popunjena";
+            Popunjena.ReadOnly = true;
+            // 
+            // Placanja
+            // 
+            Placanja.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Placanja.HeaderText = "Placanja";
+            Placanja.Name = "Placanja";
+            Placanja.ReadOnly = true;
+            Placanja.Text = "Placanja";
+            Placanja.UseColumnTextForButtonValue = true;
+            Placanja.Width = 57;
+            // 
+            // Detaljno
+            // 
+            Detaljno.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Detaljno.HeaderText = "Detaljno";
+            Detaljno.MinimumWidth = 6;
+            Detaljno.Name = "Detaljno";
+            Detaljno.ReadOnly = true;
+            Detaljno.Text = "Detaljno";
+            Detaljno.UseColumnTextForButtonValue = true;
+            Detaljno.Width = 57;
+            // 
+            // Korisnici
+            // 
+            Korisnici.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Korisnici.HeaderText = "Korisnici";
+            Korisnici.MinimumWidth = 6;
+            Korisnici.Name = "Korisnici";
+            Korisnici.ReadOnly = true;
+            Korisnici.Text = "Korisnici";
+            Korisnici.UseColumnTextForButtonValue = true;
+            Korisnici.Width = 58;
+            // 
+            // Posjete
+            // 
+            Posjete.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Posjete.HeaderText = "Posjete";
+            Posjete.MinimumWidth = 6;
+            Posjete.Name = "Posjete";
+            Posjete.ReadOnly = true;
+            Posjete.Text = "Posjete";
+            Posjete.ToolTipText = "Posjete";
+            Posjete.UseColumnTextForButtonValue = true;
+            Posjete.Width = 51;
+            // 
+            // Odrzavanje
+            // 
+            Odrzavanje.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Odrzavanje.HeaderText = "Odrzavanje";
+            Odrzavanje.MinimumWidth = 6;
+            Odrzavanje.Name = "Odrzavanje";
+            Odrzavanje.ReadOnly = true;
+            Odrzavanje.Text = "Odrzavanje";
+            Odrzavanje.UseColumnTextForButtonValue = true;
+            Odrzavanje.Width = 72;
+            // 
             // frmNekretninaList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1034, 530);
+            Controls.Add(btnSveRezervacije);
             Controls.Add(btnDodajKorisnika);
             Controls.Add(btnRejting);
             Controls.Add(btnIzvjestaj);
@@ -245,14 +256,15 @@
         private Button btnDodajNovu;
         private Button btnIzvjestaj;
         private Button btnRejting;
+        private Button btnDodajKorisnika;
+        private Button btnSveRezervacije;
         private DataGridViewTextBoxColumn Naziv;
         private DataGridViewTextBoxColumn Lokacija;
         private DataGridViewCheckBoxColumn Popunjena;
-        private DataGridViewButtonColumn Rezervacije;
+        private DataGridViewButtonColumn Placanja;
         private DataGridViewButtonColumn Detaljno;
         private DataGridViewButtonColumn Korisnici;
         private DataGridViewButtonColumn Posjete;
         private DataGridViewButtonColumn Odrzavanje;
-        private Button btnDodajKorisnika;
     }
 }

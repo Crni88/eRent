@@ -3,6 +3,7 @@ import 'package:myapp/components/spacer.dart';
 import 'package:myapp/components/title.dart';
 import 'package:myapp/model/posjeta.dart';
 import 'package:myapp/providers/posjeta_provider.dart';
+import 'package:intl/intl.dart';
 
 class VisitRow extends StatelessWidget {
   VisitRow({
@@ -36,7 +37,7 @@ class VisitRow extends StatelessWidget {
               MyTitle(nazivnekretnine ?? ""),
               const SizedBox(height: 8),
               Text(
-                  'Datum Posjete: ${datumPosjete?.toString()?.substring(0, 10) ?? ""}',
+                  'Datum Posjete: ${datumPosjete?.toString().substring(0, 10) ?? ""}',
                   style: const TextStyle(fontSize: 16)),
               const SizedBox(height: 4),
               Text('Vrijeme Posjete: ${vrijemePosjete ?? ""}',
@@ -44,11 +45,13 @@ class VisitRow extends StatelessWidget {
               const SizedBox(height: 8),
               ElevatedButton(
                 onPressed: () async {
+                  String formattedDate =
+                      DateFormat('yyyy-MM-dd').format(datumPosjete!);
                   try {
                     await posjetaProvider.update(id!, {
                       "posjetaId": id!,
-                      "datumPosjete": "OTKAZANA",
-                      "vrijemePosjete": "OTKAZANA",
+                      "datumPosjete": formattedDate,
+                      "vrijemePosjete": vrijemePosjete,
                       "otkazana": true
                     });
                     onClicked();

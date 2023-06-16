@@ -21,7 +21,8 @@ Rezervacija _$RezervacijaFromJson(Map<String, dynamic> json) => Rezervacija()
   ..imePrezime = json['imePrezime'] as String?
   ..brojTelefona = json['brojTelefona'] as String?
   ..nazivnekretnine = json['nazivnekretnine'] as String?
-  ..otkazana = json['otkazana'] as bool?;
+  ..otkazana = json['otkazana'] as bool?
+  ..odbijena = json['odbijena'] as bool?;
 
 Map<String, dynamic> _$RezervacijaToJson(Rezervacija instance) =>
     <String, dynamic>{
@@ -36,4 +37,5 @@ Map<String, dynamic> _$RezervacijaToJson(Rezervacija instance) =>
       'brojTelefona': instance.brojTelefona,
       'nazivnekretnine': instance.nazivnekretnine,
       'otkazana': instance.otkazana,
+      'odbijena': instance.odbijena,
     };

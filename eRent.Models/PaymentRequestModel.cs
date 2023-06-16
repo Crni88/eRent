@@ -17,6 +17,8 @@
 
         public bool? Mjesecno { get; set; }
 
+        public string PaymentId { get; set; }
+
         public string Nekretnina { get; set; }
     }
 }

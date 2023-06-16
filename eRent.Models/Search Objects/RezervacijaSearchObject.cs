@@ -10,5 +10,6 @@ namespace eRent.Models.Search_Objects
         public DateTime? DatumPocetka { get; set; }
         public DateTime? DatumKraja { get; set; }
         public bool? Odobrena { get; set; }
+        public bool? Odbijena { get; set; }
     }
 }

@@ -119,9 +119,9 @@ namespace eRent.UI
                         await UpdateTagsAsync();
                         AutoClosingMessageBox.Show("Nekretnina azurirana!", "Nekretnina uspjesno azurirana!", 3000);
                     }
+                    this.Close();
                     frmNekretninaList frmNekretninaList = new frmNekretninaList(_username);
                     frmNekretninaList.ShowDialog();
-                    this.Close();
                 }
                 else
                 {
@@ -304,10 +304,47 @@ namespace eRent.UI
             }
         }
 
-        private void frmAddNekretninu_FormClosing(object sender, FormClosingEventArgs e)
+        //private void frmAddNekretninu_FormClosing(object sender, FormClosingEventArgs e)
+        //{
+        //    frmNekretninaList frmNekretninaList = new frmNekretninaList(_username);
+        //    frmNekretninaList.ShowDialog();
+        //}
+
+        private void txtGrad_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
-            frmNekretninaList frmNekretninaList = new frmNekretninaList(_username);
-            frmNekretninaList.ShowDialog();
+            if (string.IsNullOrWhiteSpace(txtCijena.Text))
+            {
+                e.Cancel = true;
+                txtGrad.Focus();
+                err.SetError(txtGrad, "Grad ne smije biti prazan.");
+            }
+
+            else
+            {
+                e.Cancel = false;
+                err.SetError(txtGrad, "");
+            }
+        }
+
+        private void txtBrojKvadrata_Validating(object sender, System.ComponentModel.CancelEventArgs e)
+        {
+            if (string.IsNullOrWhiteSpace(txtCijena.Text))
+            {
+                e.Cancel = true;
+                txtBrojKvadrata.Focus();
+                err.SetError(txtBrojKvadrata, "Broj kvadrata ne smije biti prazan.");
+            }
+            else if (!IsNumber(txtBrojKvadrata.Text))
+            {
+                e.Cancel = true;
+                txtBrojKvadrata.Focus();
+                err.SetError(txtBrojKvadrata, "Broj kvadrata mora biti broj.");
+            }
+            else
+            {
+                e.Cancel = false;
+                err.SetError(txtBrojKvadrata, "");
+            }
         }
     }
 }

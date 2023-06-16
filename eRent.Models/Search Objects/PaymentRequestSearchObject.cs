@@ -8,6 +8,8 @@ namespace eRent.Models.Search_Objects
     {
         public int? KorisnikPaymentId { get; set; }
 
-       // public bool? IsProcessed { get; set; }
+        // public bool? IsProcessed { get; set; }
+        public bool? IsProcessed { get; set; }
+        public int? NekretninaPayment { get; set; }
     }
 }

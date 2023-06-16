@@ -22,5 +22,7 @@ namespace eRent.Models
         public string Nazivnekretnine { get; set; }
         
         public bool? Odobrena { get; set; }
+        public bool? Odbijena { get; set; }
+
     }
 }

@@ -27,6 +27,8 @@ public partial class Rezervacija
 
     public int? KorisnikId { get; set; }
 
+    public bool? Odbijena { get; set; }
+
     public virtual Nekretnina Nekretnina { get; set; } = null!;
 
     public virtual ICollection<NekretninaRezervacija> NekretninaRezervacijas { get; } = new List<NekretninaRezervacija>();

@@ -71,7 +71,8 @@ class _MyReservationsScreenState extends State<MyReservationsScreen> {
                       mjesecnaRezervacija:
                           rezervacije[index].mjesecnaRezervacija!,
                       nazivnekretnine: rezervacije[index].nazivnekretnine!,
-                      odobrena: rezervacije[index].mjesecnaRezervacija!,
+                      odobrena: rezervacije[index].odobrena!,
+                      odbijena: rezervacije[index].odbijena!,
                       onClick: () {
                         print("Rezervacija odbijena");
                         Navigator.pushReplacement(

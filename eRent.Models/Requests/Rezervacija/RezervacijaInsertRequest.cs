@@ -15,5 +15,9 @@ namespace eRent.Models.Requests.Rezervacija
         public string ImePrezime { get; set; }
 
         public string BrojTelefona { get; set; }
+
+        public bool? Odobrena { get; set; }
+        public bool? Otkazana { get; set; }
+        public bool? Odbijena { get; set; }
     }
 }

@@ -155,6 +155,7 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
+            AutoValidate = AutoValidate.Disable;
             ClientSize = new Size(348, 251);
             Controls.Add(cbStatus);
             Controls.Add(label5);
@@ -171,7 +172,6 @@
             Name = "frmAddTask";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Dodaj novi task";
-            FormClosing += frmAddTask_FormClosing;
             ((System.ComponentModel.ISupportInitialize)err).EndInit();
             ResumeLayout(false);
             PerformLayout();

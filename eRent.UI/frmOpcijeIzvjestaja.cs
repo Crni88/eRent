@@ -86,7 +86,10 @@ namespace eRent.UI
         private async Task<List<RezervacijaModel>> loadRezervacije()
         {
             RezervacijaSearchObject rezervacijaSearchObject = new RezervacijaSearchObject();
-            rezervacijaSearchObject.NekretninaId = data.Where(x => x.NazivNekretnine == cbListaNekretnina.Text).Select(x => x.NekretninaId).FirstOrDefault();
+            if (cbListaNekretnina.Text != "Sve")
+            {
+                rezervacijaSearchObject.NekretninaId = data.Where(x => x.NazivNekretnine == cbListaNekretnina.Text).Select(x => x.NekretninaId).FirstOrDefault();
+            }
             rezervacijaSearchObject.DatumPocetka = dtpFrom.Value;
             rezervacijaSearchObject.DatumKraja = dtpUntil.Value;
             List<RezervacijaModel> rezervacijas = await rezervacijeAPIService.Get<List<RezervacijaModel>>(rezervacijaSearchObject);
@@ -121,6 +124,7 @@ namespace eRent.UI
             List<NekretninaModel> nekretninas = await NekretnineService.Get<List<NekretninaModel>>(nekretninaSearchObject);
             data = nekretninas;
             List<String> nekretnineNames = new List<string>();
+            nekretnineNames.Add("Sve");
             foreach (var nekretnina in nekretninas)
             {
                 nekretnineNames.Add(nekretnina.NazivNekretnine);
@@ -232,5 +236,7 @@ namespace eRent.UI
             showMessage();
             this.Close();
         }
+
+
     }
 }

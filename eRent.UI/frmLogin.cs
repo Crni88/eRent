@@ -22,7 +22,7 @@ namespace eRent.UI
 
             try
             {
-                List< KorisnikModel > korisnikModel = new List<KorisnikModel>();
+                List<KorisnikModel> korisnikModel = new List<KorisnikModel>();
                 KorisnikSearchObject korisnikSearchObject = new KorisnikSearchObject();
                 korisnikSearchObject.Username = txtUsername.Text;
                 korisnikModel = await korisnikService.Get<List<KorisnikModel>>(korisnikSearchObject);

@@ -49,20 +49,20 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(88, 7);
+            label1.Location = new Point(111, 9);
             label1.Name = "label1";
-            label1.Size = new Size(85, 15);
+            label1.Size = new Size(27, 15);
             label1.TabIndex = 0;
-            label1.Text = "Korisnicko Ime";
+            label1.Text = "Ime";
             // 
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(77, 54);
+            label2.Location = new Point(102, 54);
             label2.Name = "label2";
-            label2.Size = new Size(107, 15);
+            label2.Size = new Size(49, 15);
             label2.TabIndex = 1;
-            label2.Text = "Korisnicko Prezime";
+            label2.Text = "Prezime";
             // 
             // label3
             // 
@@ -120,12 +120,12 @@
             // 
             // btnDodajNovogKorisnika
             // 
-            btnDodajNovogKorisnika.Location = new Point(89, 305);
+            btnDodajNovogKorisnika.Location = new Point(87, 315);
             btnDodajNovogKorisnika.Margin = new Padding(3, 2, 3, 2);
             btnDodajNovogKorisnika.Name = "btnDodajNovogKorisnika";
             btnDodajNovogKorisnika.Size = new Size(82, 30);
             btnDodajNovogKorisnika.TabIndex = 9;
-            btnDodajNovogKorisnika.Text = "Dodaj";
+            btnDodajNovogKorisnika.Text = "Spasi";
             btnDodajNovogKorisnika.UseVisualStyleBackColor = true;
             btnDodajNovogKorisnika.Click += btnDodajNovogKorisnika_Click;
             // 
@@ -162,7 +162,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(111, 207);
+            label4.Location = new Point(110, 207);
             label4.Name = "label4";
             label4.Size = new Size(38, 15);
             label4.TabIndex = 13;
@@ -172,7 +172,8 @@
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(295, 338);
+            AutoValidate = AutoValidate.Disable;
+            ClientSize = new Size(258, 356);
             Controls.Add(label4);
             Controls.Add(cbUloga);
             Controls.Add(txtPassword);

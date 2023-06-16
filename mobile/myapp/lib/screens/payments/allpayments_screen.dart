@@ -68,7 +68,24 @@ class _AllPaymentsScreenState extends State<AllPaymentsScreen> {
                     child: ListTile(
                       title: Text(payments[index].naslov!),
                       subtitle: Text(payments[index].komentar!),
-                      trailing: Text(payments[index].iznos.toString()),
+                      trailing: Text(
+                        payments[index].isProcessed != null &&
+                                payments[index].isProcessed!
+                            ? 'Processed'
+                            : payments[index].iznos.toString(),
+                        style: TextStyle(
+                          color: payments[index].isProcessed != null &&
+                                  payments[index].isProcessed!
+                              ? Colors
+                                  .red // Set the color to red for processed text
+                              : null, // Use the default color for non-processed text
+                          fontWeight: payments[index].isProcessed != null &&
+                                  payments[index].isProcessed!
+                              ? FontWeight
+                                  .bold // Set the font weight to bold for processed text
+                              : null, // Use the default font weight for non-processed text
+                        ),
+                      ),
                     ),
                   );
                 }),
