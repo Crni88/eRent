@@ -23,7 +23,6 @@ import '../../providers/nekretnine_provider.dart';
 import '../messages/poruke.dart';
 import '../nekretnine/nekretnine_screen.dart';
 import 'korisnik_tagovi.dart';
-import 'package:geocoding/geocoding.dart';
 
 class SingleNekretninaScreen extends StatefulWidget {
   static const String routeName = "/nekretnina_{id}";
@@ -409,12 +408,12 @@ Widget _korisnikDetails(
                   true),
               MyText("${korisnikNekretnina?.email} ", false),
               MyText("Rejting $averageAge/5", true),
-              const MySpacer(),
-              MyButton(
-                  "Posalji poruku",
-                  chatpage(
-                    email: '${korisnik.email}',
-                  ))
+              //const MySpacer(),
+              // MyButton(
+              //     "Posalji poruku",
+              //     chatpage(
+              //       email: '${korisnik.email}',
+              //     ))
             ]));
   }
 }

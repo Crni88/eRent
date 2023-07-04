@@ -6,7 +6,6 @@ namespace eRent.Models.Exceptions
     {
         public ConflictException(string message) : base(message)
         {
-
         }
     }
 }

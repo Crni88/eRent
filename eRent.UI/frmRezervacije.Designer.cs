@@ -36,6 +36,10 @@
             Iznos = new DataGridViewTextBoxColumn();
             isProcessed = new DataGridViewCheckBoxColumn();
             btnLoadRezervacije = new Button();
+            lblImeNekretnine = new Label();
+            label8 = new Label();
+            label7 = new Label();
+            lblNemaPlacanja = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvRezervacije).BeginInit();
             SuspendLayout();
             // 
@@ -43,11 +47,11 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(12, 9);
+            label1.Location = new Point(12, 31);
             label1.Name = "label1";
-            label1.Size = new Size(94, 30);
+            label1.Size = new Size(149, 30);
             label1.TabIndex = 0;
-            label1.Text = "Placanja";
+            label1.Text = "Rezervacije za";
             // 
             // dgvRezervacije
             // 
@@ -55,13 +59,14 @@
             dgvRezervacije.AllowUserToDeleteRows = false;
             dgvRezervacije.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvRezervacije.Columns.AddRange(new DataGridViewColumn[] { Naslov, Komentar, PaymentId, Iznos, isProcessed });
-            dgvRezervacije.Location = new Point(12, 42);
+            dgvRezervacije.Location = new Point(15, 68);
             dgvRezervacije.Name = "dgvRezervacije";
             dgvRezervacije.ReadOnly = true;
             dgvRezervacije.RowTemplate.Height = 25;
             dgvRezervacije.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvRezervacije.Size = new Size(776, 396);
+            dgvRezervacije.Size = new Size(776, 370);
             dgvRezervacije.TabIndex = 1;
+            dgvRezervacije.CellContentClick += dgvRezervacije_CellContentClick;
             // 
             // Naslov
             // 
@@ -105,7 +110,7 @@
             // 
             // btnLoadRezervacije
             // 
-            btnLoadRezervacije.Location = new Point(713, 9);
+            btnLoadRezervacije.Location = new Point(713, 35);
             btnLoadRezervacije.Name = "btnLoadRezervacije";
             btnLoadRezervacije.Size = new Size(75, 23);
             btnLoadRezervacije.TabIndex = 2;
@@ -113,17 +118,64 @@
             btnLoadRezervacije.UseVisualStyleBackColor = true;
             btnLoadRezervacije.Click += btnLoadRezervacije_Click;
             // 
+            // lblImeNekretnine
+            // 
+            lblImeNekretnine.AutoSize = true;
+            lblImeNekretnine.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
+            lblImeNekretnine.Location = new Point(161, 31);
+            lblImeNekretnine.Name = "lblImeNekretnine";
+            lblImeNekretnine.Size = new Size(0, 30);
+            lblImeNekretnine.TabIndex = 3;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.ForeColor = Color.Black;
+            label8.Location = new Point(36, 10);
+            label8.Name = "label8";
+            label8.Size = new Size(59, 21);
+            label8.TabIndex = 29;
+            label8.Text = "Nazad";
+            label8.Click += label8_Click;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label7.ForeColor = Color.Black;
+            label7.Location = new Point(15, 9);
+            label7.Name = "label7";
+            label7.Size = new Size(28, 21);
+            label7.TabIndex = 28;
+            label7.Text = "<-";
+            label7.Click += label7_Click;
+            // 
+            // lblNemaPlacanja
+            // 
+            lblNemaPlacanja.AutoSize = true;
+            lblNemaPlacanja.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            lblNemaPlacanja.Location = new Point(105, 230);
+            lblNemaPlacanja.Name = "lblNemaPlacanja";
+            lblNemaPlacanja.Size = new Size(0, 32);
+            lblNemaPlacanja.TabIndex = 30;
+            lblNemaPlacanja.Click += lblNemaPlacanja_Click;
+            // 
             // frmRezervacije
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(lblNemaPlacanja);
+            Controls.Add(label8);
+            Controls.Add(label7);
+            Controls.Add(lblImeNekretnine);
             Controls.Add(btnLoadRezervacije);
             Controls.Add(dgvRezervacije);
             Controls.Add(label1);
             Name = "frmRezervacije";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Placanja";
+            Text = "Rezervacije";
             Load += frmRezervacije_Load;
             ((System.ComponentModel.ISupportInitialize)dgvRezervacije).EndInit();
             ResumeLayout(false);
@@ -141,5 +193,9 @@
         private DataGridViewTextBoxColumn PaymentId;
         private DataGridViewTextBoxColumn Iznos;
         private DataGridViewCheckBoxColumn isProcessed;
+        private Label lblImeNekretnine;
+        private Label label8;
+        private Label label7;
+        private Label lblNemaPlacanja;
     }
 }

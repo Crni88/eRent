@@ -68,43 +68,65 @@ class _PosjetaScreenState extends State<PosjetaScreen> {
               ),
               child: InkWell(
                 onTap: () async {
-                  try {
-                    var posjetaObject = {
-                      "korisnikId": korisnik.korisnikId,
-                      "nekretninaId": nekretnina.nekretninaId,
-                      "datumPosjete": startDate.toIso8601String(),
-                      "vrijemePosjete": vrijemePosjete
-                    };
-                    await posjetaProvider.insert(posjetaObject);
+                  if (startDate.isBefore(DateTime.now())) {
                     showDialog(
                         context: context,
-                        builder: (context) {
-                          Future.delayed(const Duration(seconds: 5), () {
-                            Navigator.of(context).pop(true);
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const NekretnineListScreen()),
-                            );
-                          });
-                          return const AlertDialog(
-                            title: Text('Uspjesno poslano!'),
+                        builder: (BuildContext context) {
+                          return AlertDialog(
+                            title: const Text("Greška"),
+                            content: const Text(
+                                "Nije moguća rezevacija za taj datum!"),
+                            actions: [
+                              TextButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                child: const Text("U redu"),
+                              ),
+                            ],
                           );
                         });
-                  } catch (e) {
-                    showDialog(
-                        context: context,
-                        builder: (BuildContext context) => AlertDialog(
-                              title: const Text("Error"),
-                              content: Text(e.toString()),
-                              actions: [
-                                TextButton(
-                                  child: const Text("Ok"),
-                                  onPressed: () => Navigator.pop(context),
-                                )
-                              ],
-                            ));
+                    return;
+                  } else {
+                    try {
+                      var posjetaObject = {
+                        "korisnikId": korisnik.korisnikId,
+                        "nekretninaId": nekretnina.nekretninaId,
+                        "datumPosjete": startDate.toIso8601String(),
+                        "vrijemePosjete": vrijemePosjete,
+                        "otkazana": false,
+                      };
+                      await posjetaProvider.insert(posjetaObject);
+                      showDialog(
+                          context: context,
+                          builder: (context) {
+                            Future.delayed(const Duration(seconds: 5), () {
+                              Navigator.of(context).pop(true);
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                        const NekretnineListScreen()),
+                              );
+                            });
+                            return const AlertDialog(
+                              title: Text('Uspjesno poslano!'),
+                            );
+                          });
+                    } catch (e) {
+                      showDialog(
+                          context: context,
+                          builder: (BuildContext context) => AlertDialog(
+                                title: const Text("Error"),
+                                content: Text(e.toString()),
+                                actions: [
+                                  TextButton(
+                                    child: const Text("Ok"),
+                                    onPressed: () => Navigator.pop(context),
+                                  )
+                                ],
+                              ));
+                    }
                   }
                 },
                 child: const Center(child: MyText("Posalji!", true)),

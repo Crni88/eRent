@@ -41,6 +41,8 @@
             btnPosalji = new Button();
             cbMjesecno = new CheckBox();
             err = new ErrorProvider(components);
+            label8 = new Label();
+            label7 = new Label();
             ((System.ComponentModel.ISupportInitialize)err).BeginInit();
             SuspendLayout();
             // 
@@ -48,7 +50,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(12, 9);
+            label1.Location = new Point(12, 49);
             label1.Name = "label1";
             label1.Size = new Size(315, 30);
             label1.TabIndex = 4;
@@ -58,7 +60,7 @@
             // 
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label2.Location = new Point(12, 49);
+            label2.Location = new Point(12, 89);
             label2.Name = "label2";
             label2.Size = new Size(68, 21);
             label2.TabIndex = 5;
@@ -78,7 +80,7 @@
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            label4.Location = new Point(240, 49);
+            label4.Location = new Point(240, 89);
             label4.Name = "label4";
             label4.Size = new Size(87, 21);
             label4.TabIndex = 7;
@@ -104,7 +106,7 @@
             // 
             // txtNekretnina
             // 
-            txtNekretnina.Location = new Point(240, 73);
+            txtNekretnina.Location = new Point(240, 113);
             txtNekretnina.Name = "txtNekretnina";
             txtNekretnina.ReadOnly = true;
             txtNekretnina.Size = new Size(238, 23);
@@ -112,7 +114,7 @@
             // 
             // txtNaslov
             // 
-            txtNaslov.Location = new Point(12, 73);
+            txtNaslov.Location = new Point(12, 113);
             txtNaslov.Name = "txtNaslov";
             txtNaslov.Size = new Size(222, 23);
             txtNaslov.TabIndex = 11;
@@ -139,7 +141,7 @@
             // cbMjesecno
             // 
             cbMjesecno.AutoSize = true;
-            cbMjesecno.Location = new Point(12, 274);
+            cbMjesecno.Location = new Point(12, 207);
             cbMjesecno.Margin = new Padding(3, 2, 3, 2);
             cbMjesecno.Name = "cbMjesecno";
             cbMjesecno.Size = new Size(82, 19);
@@ -151,12 +153,38 @@
             // 
             err.ContainerControl = this;
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.ForeColor = Color.Black;
+            label8.Location = new Point(35, 9);
+            label8.Name = "label8";
+            label8.Size = new Size(59, 21);
+            label8.TabIndex = 33;
+            label8.Text = "Nazad";
+            label8.Click += label8_Click;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label7.ForeColor = Color.Black;
+            label7.Location = new Point(14, 8);
+            label7.Name = "label7";
+            label7.Size = new Size(28, 21);
+            label7.TabIndex = 32;
+            label7.Text = "<-";
+            label7.Click += label7_Click;
+            // 
             // frmZahtjevZaPlacanje
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoValidate = AutoValidate.Disable;
             ClientSize = new Size(496, 350);
+            Controls.Add(label8);
+            Controls.Add(label7);
             Controls.Add(cbMjesecno);
             Controls.Add(btnPosalji);
             Controls.Add(txtIznos);
@@ -191,5 +219,7 @@
         private Button btnPosalji;
         private CheckBox cbMjesecno;
         private ErrorProvider err;
+        private Label label8;
+        private Label label7;
     }
 }

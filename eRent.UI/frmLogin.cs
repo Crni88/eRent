@@ -30,8 +30,10 @@ namespace eRent.UI
                 {
                     var result = await _ApiService.Get<dynamic>();
                     string username = txtUsername.Text;
-                    frmNekretninaList frmNekretnina = new frmNekretninaList(username, result);
-                    frmNekretnina.Show();
+                    this.Hide();
+                    var form2 = new frmNekretninaList(username, result);
+                    form2.Closed += (s, args) => this.Close();
+                    form2.Show();
                 }
                 else
                 {

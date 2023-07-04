@@ -10,7 +10,6 @@ namespace eRent.UI
 {
     public partial class frmAddNekretninu : Form
     {
-
         public APIService NekretnineService { get; set; } = new APIService("Nekretnine");
         public APIService nekretninaTagoviService { get; set; } = new APIService("NekretnineTagovi");
         private readonly APIService korisnikService = new APIService("Korisnici");
@@ -25,14 +24,12 @@ namespace eRent.UI
         {
             InitializeComponent();
             this._username = username;
-            btnObrisiNekretninu.Enabled = false;
             loadUser();
             if (nekretnina != null)
             {
                 loadNekretnina(nekretnina.NekretninaId);
                 nekretninaSearchObject.NekretninaId = nekretnina.NekretninaId;
                 loadTags(nekretninaSearchObject);
-                btnObrisiNekretninu.Enabled = true;
             }
         }
 
@@ -119,9 +116,7 @@ namespace eRent.UI
                         await UpdateTagsAsync();
                         AutoClosingMessageBox.Show("Nekretnina azurirana!", "Nekretnina uspjesno azurirana!", 3000);
                     }
-                    this.Close();
-                    frmNekretninaList frmNekretninaList = new frmNekretninaList(_username);
-                    frmNekretninaList.ShowDialog();
+                    openNekretnineListForm();
                 }
                 else
                 {
@@ -129,6 +124,14 @@ namespace eRent.UI
                     err.SetError(pbSlikaNekretnine, "Slika je obavezna!");
                 }
             }
+        }
+
+        private void openNekretnineListForm()
+        {
+            this.Hide();
+            var form2 = new frmNekretninaList(_username);
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
         }
 
         private async Task UpdateTagsAsync()
@@ -280,16 +283,6 @@ namespace eRent.UI
             }
         }
 
-        private async void btnObrisiNekretninu_Click(object sender, EventArgs e)
-        {
-            NekretninaUpdateRequest nekretninaUpdateRequest = CreateUpdateObject();
-            nekretninaUpdateRequest.IsActive = false;
-            var updateNekretnina =
-                        await NekretnineService.Put<NekretninaUpdateRequest>(_nekretninaModel.NekretninaId, nekretninaUpdateRequest);
-            AutoClosingMessageBox.Show("Nekretnina obrisana!", "Nekretnina uspjesno obrisana!", 3000);
-            this.Close();
-        }
-
         private void pbSlikaNekretnine_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
             if (pbSlikaNekretnine.Image != null)
@@ -303,12 +296,6 @@ namespace eRent.UI
                 err.SetError(pbSlikaNekretnine, "Slika je obavezna!");
             }
         }
-
-        //private void frmAddNekretninu_FormClosing(object sender, FormClosingEventArgs e)
-        //{
-        //    frmNekretninaList frmNekretninaList = new frmNekretninaList(_username);
-        //    frmNekretninaList.ShowDialog();
-        //}
 
         private void txtGrad_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -345,6 +332,17 @@ namespace eRent.UI
                 e.Cancel = false;
                 err.SetError(txtBrojKvadrata, "");
             }
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+            openNekretnineListForm();
+
+        }
+        private void label7_Click(object sender, EventArgs e)
+        {
+            openNekretnineListForm();
+
         }
     }
 }

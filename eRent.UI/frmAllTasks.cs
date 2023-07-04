@@ -10,18 +10,40 @@ namespace eRent.UI
         public APIService TaskService { get; set; } = new APIService("Task");
         public NekretninaModel Nekretnina { get; }
 
-        public frmAllTasks(NekretninaModel nekretnina)
+        string _username;
+
+        public frmAllTasks(string _username, NekretninaModel nekretnina)
         {
             InitializeComponent();
             Nekretnina = nekretnina;
             dgvAllTask.AutoGenerateColumns = false;
+            this._username = _username;
+            loadTasks();
         }
 
         private void btnAddNew_Click(object sender, EventArgs e)
         {
-            //this.Close();
-            frmAddTask frmAddTask = new frmAddTask(Nekretnina);
-            frmAddTask.ShowDialog();
+            openNewForm(1);
+        }
+
+        private void openNewForm(int v, TaskModel taskModel = null)
+        {
+            this.Hide();
+            frmAddTask form2;
+            if (v == 1)
+            {
+                form2 = new frmAddTask(Nekretnina, _username);
+            }
+            else if (v == 2)
+            {
+                form2 = new frmAddTask(Nekretnina, _username, taskModel);
+            }
+            else
+            {
+                form2 = new frmAddTask(Nekretnina, _username);
+            }
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
         }
 
         private async void btnLoad_Click(object sender, EventArgs e)
@@ -57,11 +79,9 @@ namespace eRent.UI
         {
             if (e.ColumnIndex == 5)
             {
-                //Otvori novu formu
-                //this.Close();
+
                 TaskModel taskModel = (TaskModel)dgvAllTask.SelectedRows[0].DataBoundItem;
-                frmAddTask frmAddTask = new frmAddTask(Nekretnina, taskModel);
-                frmAddTask.Show();
+                openNewForm(2, taskModel);
             }
             if (e.ColumnIndex == 6)
             {
@@ -83,7 +103,7 @@ namespace eRent.UI
             //tagUpsertRequest.TaskId = taskModel.TaskId;
             var taskModels = await TaskService.Put<TaskUpdateRequest>(taskModel.TaskId, tagUpsertRequest);
             await loadTasks();
-            AutoClosingMessageBox.Show("Task uspjesno obrisan!","Task obrisan", 3000);
+            AutoClosingMessageBox.Show("Task uspjesno obrisan!", "Task obrisan", 3000);
         }
 
         private async void frmAllTasks_Load(object sender, EventArgs e)
@@ -101,6 +121,24 @@ namespace eRent.UI
             status.Add("Done");
             cbStatus.DataSource = status;
             await loadTasks();
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+            goBack();
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            goBack();
+        }
+
+        private void goBack()
+        {
+            this.Hide();
+            var form2 = new frmNekretninaList(_username);
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
         }
     }
 }

@@ -1,11 +1,14 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:myapp/components/spacer.dart';
 import 'package:myapp/model/korisnik.dart';
 import 'package:myapp/providers/nekretnina_provider.dart';
 import 'package:myapp/providers/nekretnine_provider.dart';
 import 'package:myapp/providers/user_provider.dart';
+import 'package:myapp/screens/customer/register_customer_screen.dart';
 import 'package:myapp/screens/nekretnine/nekretnine_screen.dart';
 import 'package:myapp/utils/util.dart';
 import 'package:provider/provider.dart';
@@ -17,7 +20,8 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   //await Firebase.initializeApp();
 
-  Stripe.publishableKey = stripePublishableKey;
+  Stripe.publishableKey = const String.fromEnvironment("stripePublishableKey",
+      defaultValue: stripePublishableKey);
   Stripe.merchantIdentifier = 'eRent';
   await Stripe.instance.applySettings();
 
@@ -39,10 +43,14 @@ Future<void> main() async {
     sound: true,
   );
 
-  print('User granted permission: ${settings.authorizationStatus}');
+  if (kDebugMode) {
+    print('User granted permission: ${settings.authorizationStatus}');
+  }
   FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-    print('Got a message whilst in the foreground!');
-    print('Message data: ${message.data}');
+    if (kDebugMode) {
+      print('Got a message whilst in the foreground!');
+      print('Message data: ${message.data}');
+    }
 
     if (message.notification != null) {
       print('Message also contained a notification: ${message.notification}');
@@ -224,6 +232,17 @@ class _MyHomePageState extends State<MyHomePage> {
                       },
                       child: const Center(child: Text("Login")),
                     ),
+                  ),
+                  const MySpacer(),
+                  InkWell(
+                    onTap: () async {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => RegisterScreen()),
+                      );
+                    },
+                    child: const Center(child: Text("Register")),
                   ),
                 ]),
           ),

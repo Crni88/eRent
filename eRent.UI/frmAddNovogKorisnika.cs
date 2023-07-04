@@ -14,9 +14,12 @@ namespace eRent.UI
         private APIService KorisnikTagoviService { get; set; } = new APIService("KorisnikTagovi");
         public KorisnikModel Korisnik { get; }
 
-        public frmAddNovogKorisnika(KorisnikModel korisnik = null)
+        string _username { get; set; }  
+
+        public frmAddNovogKorisnika(string _username, KorisnikModel korisnik = null)
         {
             InitializeComponent();
+            this._username = _username;
             loadUloge();
             if (korisnik != null)
             {
@@ -39,7 +42,6 @@ namespace eRent.UI
             txtKorisnikPrezime.Text = Korisnik.KorisnikPrezime;
             cbUloga.Text = Korisnik.Uloga;
         }
-
 
         private void txtKorisnikIme_Validating(object sender, System.ComponentModel.CancelEventArgs e)
         {
@@ -181,15 +183,8 @@ namespace eRent.UI
             {
                 //CreateKorisnikTags(taskInsert.KorisnikId);
                 AutoClosingMessageBox.Show("Korisnik uspjesno azuriran!", "Korisnik azuriran!", 3000);
-                reloadData();
+                closeForm();
             }
-        }
-
-        private async void reloadData()
-        {
-            this.Close();
-            frmSviKorisnici frmSviKorisnici = new frmSviKorisnici();
-            frmSviKorisnici.ShowDialog();
         }
 
         private async Task addKorisnik()
@@ -208,8 +203,16 @@ namespace eRent.UI
             {
                 CreateKorisnikTags(taskInsert.KorisnikId);
                 AutoClosingMessageBox.Show("Korisnik uspjesno dodan!", "Korisnik kreiran!", 3000);
-                reloadData();
+                closeForm();
             }
+        }
+
+        private void closeForm()
+        {
+            this.Hide();
+            var form2 = new frmSviKorisnici(_username);
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
         }
 
         private async void CreateKorisnikTags(int korisnikId)
@@ -239,10 +242,23 @@ namespace eRent.UI
             cbUloga.DataSource = Uloge;
         }
 
-        private void frmAddNovogKorisnika_FormClosing(object sender, FormClosingEventArgs e)
+
+        private void label8_Click(object sender, EventArgs e)
         {
-            frmSviKorisnici frmSviKorisnici = new frmSviKorisnici();
-            frmSviKorisnici.ShowDialog();
+            goBack();
+        }
+
+        private void goBack()
+        {
+            this.Hide();
+            var form2 = new frmSviKorisnici(_username);
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            goBack();   
         }
     }
 }

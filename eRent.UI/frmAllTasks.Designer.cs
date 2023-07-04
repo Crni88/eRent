@@ -42,6 +42,8 @@
             label1 = new Label();
             label2 = new Label();
             cbStatus = new ComboBox();
+            label8 = new Label();
+            label7 = new Label();
             ((System.ComponentModel.ISupportInitialize)dgvAllTask).BeginInit();
             SuspendLayout();
             // 
@@ -51,14 +53,14 @@
             dgvAllTask.AllowUserToDeleteRows = false;
             dgvAllTask.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvAllTask.Columns.AddRange(new DataGridViewColumn[] { Title, Description, DueDate, Priority, Status, Uredi, Obrisi });
-            dgvAllTask.Location = new Point(10, 50);
+            dgvAllTask.Location = new Point(10, 76);
             dgvAllTask.Margin = new Padding(3, 2, 3, 2);
             dgvAllTask.Name = "dgvAllTask";
             dgvAllTask.ReadOnly = true;
             dgvAllTask.RowHeadersWidth = 51;
             dgvAllTask.RowTemplate.Height = 29;
             dgvAllTask.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvAllTask.Size = new Size(770, 279);
+            dgvAllTask.Size = new Size(770, 253);
             dgvAllTask.TabIndex = 0;
             dgvAllTask.CellContentClick += dgvAllTask_CellContentClick;
             // 
@@ -82,55 +84,60 @@
             // 
             // DueDate
             // 
-            DueDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            DueDate.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
             DueDate.DataPropertyName = "DueDate";
             DueDate.HeaderText = "Datum Zavrsetka";
             DueDate.MinimumWidth = 6;
             DueDate.Name = "DueDate";
             DueDate.ReadOnly = true;
-            DueDate.Width = 111;
             // 
             // Priority
             // 
+            Priority.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             Priority.DataPropertyName = "Priority";
             Priority.HeaderText = "Prioritet";
             Priority.MinimumWidth = 6;
             Priority.Name = "Priority";
             Priority.ReadOnly = true;
-            Priority.Width = 125;
+            Priority.Width = 74;
             // 
             // Status
             // 
+            Status.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             Status.DataPropertyName = "Status";
             Status.HeaderText = "Status";
             Status.MinimumWidth = 6;
             Status.Name = "Status";
             Status.ReadOnly = true;
-            Status.Width = 125;
+            Status.Width = 64;
             // 
             // Uredi
             // 
+            Uredi.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             Uredi.HeaderText = "Uredi";
             Uredi.Name = "Uredi";
             Uredi.ReadOnly = true;
             Uredi.Text = "Uredi";
             Uredi.ToolTipText = "Uredi";
             Uredi.UseColumnTextForButtonValue = true;
+            Uredi.Width = 41;
             // 
             // Obrisi
             // 
+            Obrisi.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
             Obrisi.HeaderText = "Obrisi";
             Obrisi.Name = "Obrisi";
             Obrisi.ReadOnly = true;
             Obrisi.Text = "Obrisi";
             Obrisi.UseColumnTextForButtonValue = true;
+            Obrisi.Width = 44;
             // 
             // btnAddNew
             // 
-            btnAddNew.Location = new Point(698, 8);
+            btnAddNew.Location = new Point(698, 39);
             btnAddNew.Margin = new Padding(3, 2, 3, 2);
             btnAddNew.Name = "btnAddNew";
-            btnAddNew.Size = new Size(82, 22);
+            btnAddNew.Size = new Size(82, 27);
             btnAddNew.TabIndex = 1;
             btnAddNew.Text = "Dodaj novi";
             btnAddNew.UseVisualStyleBackColor = true;
@@ -138,10 +145,10 @@
             // 
             // btnLoad
             // 
-            btnLoad.Location = new Point(375, 10);
+            btnLoad.Location = new Point(376, 39);
             btnLoad.Margin = new Padding(3, 2, 3, 2);
             btnLoad.Name = "btnLoad";
-            btnLoad.Size = new Size(82, 22);
+            btnLoad.Size = new Size(82, 27);
             btnLoad.TabIndex = 2;
             btnLoad.Text = "Ucitaj";
             btnLoad.UseVisualStyleBackColor = true;
@@ -150,7 +157,7 @@
             // cbPrioritet
             // 
             cbPrioritet.FormattingEnabled = true;
-            cbPrioritet.Location = new Point(66, 11);
+            cbPrioritet.Location = new Point(65, 42);
             cbPrioritet.Name = "cbPrioritet";
             cbPrioritet.Size = new Size(121, 23);
             cbPrioritet.TabIndex = 3;
@@ -158,7 +165,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(11, 13);
+            label1.Location = new Point(10, 42);
             label1.Name = "label1";
             label1.Size = new Size(49, 15);
             label1.TabIndex = 4;
@@ -167,7 +174,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(203, 14);
+            label2.Location = new Point(204, 45);
             label2.Name = "label2";
             label2.Size = new Size(39, 15);
             label2.TabIndex = 5;
@@ -176,16 +183,40 @@
             // cbStatus
             // 
             cbStatus.FormattingEnabled = true;
-            cbStatus.Location = new Point(248, 10);
+            cbStatus.Location = new Point(249, 42);
             cbStatus.Name = "cbStatus";
             cbStatus.Size = new Size(121, 23);
             cbStatus.TabIndex = 6;
+            // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.Location = new Point(49, 9);
+            label8.Name = "label8";
+            label8.Size = new Size(59, 21);
+            label8.TabIndex = 29;
+            label8.Text = "Nazad";
+            label8.Click += label8_Click;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label7.Location = new Point(15, 9);
+            label7.Name = "label7";
+            label7.Size = new Size(28, 21);
+            label7.TabIndex = 28;
+            label7.Text = "<-";
+            label7.Click += label7_Click;
             // 
             // frmAllTasks
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(792, 338);
+            Controls.Add(label8);
+            Controls.Add(label7);
             Controls.Add(cbStatus);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -208,6 +239,10 @@
         private DataGridView dgvAllTask;
         private Button btnAddNew;
         private Button btnLoad;
+        private ComboBox cbPrioritet;
+        private Label label1;
+        private Label label2;
+        private ComboBox cbStatus;
         private DataGridViewTextBoxColumn Title;
         private DataGridViewTextBoxColumn Description;
         private DataGridViewTextBoxColumn DueDate;
@@ -215,9 +250,7 @@
         private DataGridViewTextBoxColumn Status;
         private DataGridViewButtonColumn Uredi;
         private DataGridViewButtonColumn Obrisi;
-        private ComboBox cbPrioritet;
-        private Label label1;
-        private Label label2;
-        private ComboBox cbStatus;
+        private Label label8;
+        private Label label7;
     }
 }

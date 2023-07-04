@@ -10,11 +10,14 @@ namespace eRent.UI
         public NekretninaModel Nekretnina { get; set; }
         public TaskModel TaskModel { get; set; } = null;
 
-        public frmAddTask(NekretninaModel nekretnina, TaskModel taskModel = null)
+        string _username; 
+
+        public frmAddTask(NekretninaModel nekretnina, string _username, TaskModel taskModel = null)
         {
             InitializeComponent();
             Nekretnina = nekretnina;
             TaskModel = taskModel;
+            this._username = _username;
             loadData();
             if (taskModel != null)
             {
@@ -69,10 +72,12 @@ namespace eRent.UI
 
         private void updateAndCloseForm()
         {
-            //this.Close();
-            frmAllTasks frmAllTasks = new frmAllTasks(Nekretnina);
-            frmAllTasks.ShowDialog();
+            this.Hide();
+            var form2 = new frmAllTasks(_username,Nekretnina);
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
         }
+
 
         private async Task updateTask()
         {
@@ -88,7 +93,7 @@ namespace eRent.UI
             if (taskInsert != null)
             {
                 AutoClosingMessageBox.Show("Task azuriran!", "Task uspjesno azuriran.", 3000);
-                //updateAndCloseForm();
+                updateAndCloseForm();
             }
         }
 
@@ -106,7 +111,7 @@ namespace eRent.UI
             if (taskInsert != null)
             {
                 AutoClosingMessageBox.Show("Task dodan!", "Task uspjesno dodan.", 3000);
-                // updateAndCloseForm();
+                updateAndCloseForm();
             }
         }
 
@@ -169,6 +174,16 @@ namespace eRent.UI
                 e.Cancel = false;
                 err.SetError(cbStatus, "");
             }
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+            updateAndCloseForm();
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            updateAndCloseForm();
         }
     }
 }

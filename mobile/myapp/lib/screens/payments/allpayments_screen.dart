@@ -58,12 +58,15 @@ class _AllPaymentsScreenState extends State<AllPaymentsScreen> {
                 itemBuilder: (context, index) {
                   return GestureDetector(
                     onTap: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                                SinglePaymentScreen_Copy(payments[index])),
-                      );
+                      if (payments[index].isProcessed == null ||
+                          !payments[index].isProcessed!) {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                                  SinglePaymentScreen_Copy(payments[index])),
+                        );
+                      }
                     },
                     child: ListTile(
                       title: Text(payments[index].naslov!),
@@ -76,14 +79,12 @@ class _AllPaymentsScreenState extends State<AllPaymentsScreen> {
                         style: TextStyle(
                           color: payments[index].isProcessed != null &&
                                   payments[index].isProcessed!
-                              ? Colors
-                                  .red // Set the color to red for processed text
-                              : null, // Use the default color for non-processed text
+                              ? Colors.red
+                              : null,
                           fontWeight: payments[index].isProcessed != null &&
                                   payments[index].isProcessed!
-                              ? FontWeight
-                                  .bold // Set the font weight to bold for processed text
-                              : null, // Use the default font weight for non-processed text
+                              ? FontWeight.bold
+                              : null,
                         ),
                       ),
                     ),

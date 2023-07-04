@@ -20,9 +20,11 @@ namespace eRent.UI
 
         List<NekretninaModel> data = new List<NekretninaModel>();
 
-        public frmOpcijeIzvjestaja()
+        string _username;
+        public frmOpcijeIzvjestaja(string _username)
         {
             InitializeComponent();
+            this._username = _username;
         }
 
         private void btnListaNekretninaReportGenerate(object sender, EventArgs e)
@@ -237,6 +239,22 @@ namespace eRent.UI
             this.Close();
         }
 
+        private void label10_Click(object sender, EventArgs e)
+        {
+            goBack();
+        }
 
+        private void goBack()
+        {
+            this.Hide();
+            var form2 = new frmNekretninaList(_username);
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
+        }
+
+        private void label11_Click(object sender, EventArgs e)
+        {
+            goBack();
+        }
     }
 }

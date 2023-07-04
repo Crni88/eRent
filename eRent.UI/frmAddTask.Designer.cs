@@ -41,12 +41,14 @@
             cbStatus = new ComboBox();
             label5 = new Label();
             err = new ErrorProvider(components);
+            label8 = new Label();
+            label7 = new Label();
             ((System.ComponentModel.ISupportInitialize)err).BeginInit();
             SuspendLayout();
             // 
             // btnSave
             // 
-            btnSave.Location = new Point(126, 220);
+            btnSave.Location = new Point(128, 262);
             btnSave.Margin = new Padding(3, 2, 3, 2);
             btnSave.Name = "btnSave";
             btnSave.Size = new Size(82, 22);
@@ -58,7 +60,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(10, 7);
+            label1.Location = new Point(12, 49);
             label1.Name = "label1";
             label1.Size = new Size(43, 15);
             label1.TabIndex = 1;
@@ -66,7 +68,7 @@
             // 
             // txtTitle
             // 
-            txtTitle.Location = new Point(10, 24);
+            txtTitle.Location = new Point(12, 66);
             txtTitle.Margin = new Padding(3, 2, 3, 2);
             txtTitle.Name = "txtTitle";
             txtTitle.Size = new Size(110, 23);
@@ -75,7 +77,7 @@
             // 
             // txtDescription
             // 
-            txtDescription.Location = new Point(10, 72);
+            txtDescription.Location = new Point(12, 114);
             txtDescription.Margin = new Padding(3, 2, 3, 2);
             txtDescription.Name = "txtDescription";
             txtDescription.Size = new Size(110, 91);
@@ -86,7 +88,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(10, 49);
+            label2.Location = new Point(12, 91);
             label2.Name = "label2";
             label2.Size = new Size(31, 15);
             label2.TabIndex = 4;
@@ -95,7 +97,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(10, 165);
+            label3.Location = new Point(12, 207);
             label3.Name = "label3";
             label3.Size = new Size(94, 15);
             label3.TabIndex = 5;
@@ -103,7 +105,7 @@
             // 
             // dtpDueDate
             // 
-            dtpDueDate.Location = new Point(10, 182);
+            dtpDueDate.Location = new Point(12, 224);
             dtpDueDate.Margin = new Padding(3, 2, 3, 2);
             dtpDueDate.Name = "dtpDueDate";
             dtpDueDate.Size = new Size(219, 23);
@@ -112,7 +114,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(174, 7);
+            label4.Location = new Point(176, 49);
             label4.Name = "label4";
             label4.Size = new Size(49, 15);
             label4.TabIndex = 7;
@@ -121,7 +123,7 @@
             // cbPriority
             // 
             cbPriority.FormattingEnabled = true;
-            cbPriority.Location = new Point(174, 24);
+            cbPriority.Location = new Point(176, 66);
             cbPriority.Margin = new Padding(3, 2, 3, 2);
             cbPriority.Name = "cbPriority";
             cbPriority.Size = new Size(133, 23);
@@ -131,7 +133,7 @@
             // cbStatus
             // 
             cbStatus.FormattingEnabled = true;
-            cbStatus.Location = new Point(174, 76);
+            cbStatus.Location = new Point(176, 118);
             cbStatus.Margin = new Padding(3, 2, 3, 2);
             cbStatus.Name = "cbStatus";
             cbStatus.Size = new Size(133, 23);
@@ -141,7 +143,7 @@
             // label5
             // 
             label5.AutoSize = true;
-            label5.Location = new Point(174, 59);
+            label5.Location = new Point(176, 101);
             label5.Name = "label5";
             label5.Size = new Size(39, 15);
             label5.TabIndex = 9;
@@ -151,12 +153,38 @@
             // 
             err.ContainerControl = this;
             // 
+            // label8
+            // 
+            label8.AutoSize = true;
+            label8.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label8.ForeColor = Color.Black;
+            label8.Location = new Point(34, 9);
+            label8.Name = "label8";
+            label8.Size = new Size(59, 21);
+            label8.TabIndex = 33;
+            label8.Text = "Nazad";
+            label8.Click += label8_Click;
+            // 
+            // label7
+            // 
+            label7.AutoSize = true;
+            label7.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            label7.ForeColor = Color.Black;
+            label7.Location = new Point(13, 8);
+            label7.Name = "label7";
+            label7.Size = new Size(28, 21);
+            label7.TabIndex = 32;
+            label7.Text = "<-";
+            label7.Click += label7_Click;
+            // 
             // frmAddTask
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoValidate = AutoValidate.Disable;
-            ClientSize = new Size(348, 251);
+            ClientSize = new Size(374, 301);
+            Controls.Add(label8);
+            Controls.Add(label7);
             Controls.Add(cbStatus);
             Controls.Add(label5);
             Controls.Add(cbPriority);
@@ -191,5 +219,7 @@
         private ComboBox cbStatus;
         private Label label5;
         private ErrorProvider err;
+        private Label label8;
+        private Label label7;
     }
 }

@@ -6,7 +6,7 @@ using eRent.Services.Ugovor;
 namespace eRent.Controllers
 {
     public class UgovorController
-        : BaseCRUDController<UgovorModel, BaseSearchObject, UgovorUpsertRequest, UgovorUpsertRequest>
+        : BaseAdminCRUDController<UgovorModel, BaseSearchObject, UgovorUpsertRequest, UgovorUpsertRequest>
     {
         public UgovorController(IUgovorService service) : base(service)
         {

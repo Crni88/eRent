@@ -15,11 +15,12 @@ namespace eRent.UI
         APIService rezervacijeAPIService { get; set; } = new APIService("Rezervacija");
         public APIService NekretninaKorisnikService { get; set; } = new APIService("NekretninaKorisnik");
         APIService ugovorAPIService { get; set; } = new APIService("Ugovor");
-
-        public frmSveRezervacije()
+        string _username;
+        public frmSveRezervacije(string _username)
         {
             InitializeComponent();
             dgvSveRezervacije.AutoGenerateColumns = false;
+            this._username = _username;
         }
 
         private async void btnUcitaj_Click(object sender, EventArgs e)
@@ -29,6 +30,22 @@ namespace eRent.UI
 
         private async Task loadData()
         {
+            bool isVisible = true;
+
+            if (cbStatus.Text == "Odobrena")
+            {
+                dgvSveRezervacije.Columns[6].Visible = false;
+                isVisible = false;
+            }
+            else if (cbStatus.Text == "Odbijena")
+            {
+                dgvSveRezervacije.Columns[7].Visible = false;
+                isVisible = false;
+            }
+
+            dgvSveRezervacije.Columns[6].Visible = isVisible;
+            dgvSveRezervacije.Columns[7].Visible = isVisible;
+
             RezervacijaSearchObject rezervacijaSearchObject = new RezervacijaSearchObject();
             rezervacijaSearchObject.Otkazana = false;
             rezervacijaSearchObject.Odobrena = cbStatus.Text == "Sve" ? null : (bool?)(cbStatus.Text == "Odobrena");
@@ -37,7 +54,29 @@ namespace eRent.UI
             dgvSveRezervacije.DataSource = list;
         }
 
-        private async void frmSveRezervacije_Load(object sender, EventArgs e)
+        private async Task odobriRezervaiju()
+        {
+            cbStatus.Text = "Odobrena";
+            RezervacijaSearchObject rezervacijaSearchObject = new RezervacijaSearchObject();
+            rezervacijaSearchObject.Otkazana = false;
+            rezervacijaSearchObject.Odobrena = true;
+            rezervacijaSearchObject.Odbijena = false;
+            var list = await rezervacijeAPIService.Get<List<RezervacijaModel>>(rezervacijaSearchObject);
+            dgvSveRezervacije.DataSource = list;
+        }
+
+        private async Task odbijRezervaciju()
+        {
+            cbStatus.Text = "Odbijena";
+            RezervacijaSearchObject rezervacijaSearchObject = new RezervacijaSearchObject();
+            rezervacijaSearchObject.Otkazana = false;
+            rezervacijaSearchObject.Odobrena = false;
+            rezervacijaSearchObject.Odbijena = true;
+            var list = await rezervacijeAPIService.Get<List<RezervacijaModel>>(rezervacijaSearchObject);
+            dgvSveRezervacije.DataSource = list;
+        }
+
+        private void frmSveRezervacije_Load(object sender, EventArgs e)
         {
             //await  loadData();
             List<String> status = new List<string>();
@@ -56,39 +95,44 @@ namespace eRent.UI
                 try
                 {
                     RezervacijaModel taskModel = (RezervacijaModel)dgvSveRezervacije.SelectedRows[0].DataBoundItem;
-                    RezervacijaUpdateRequest rezervacijaUpdateRequest = new RezervacijaUpdateRequest();
-                    rezervacijaUpdateRequest.RezervacijaId = taskModel.RezervacijaId;
-                    rezervacijaUpdateRequest.Odobrena = true;
-                    rezervacijaUpdateRequest.Otkazana = false;
-                    rezervacijaUpdateRequest.Odbijena = false;
-                    var list = await rezervacijeAPIService.Put<RezervacijaUpdateRequest>(taskModel.RezervacijaId, rezervacijaUpdateRequest);
+                    if ((bool)taskModel.Odobrena)
+                    {
+                        MessageBox.Show("Rezervacija je već odobrena!");
+                    }
+                    else
+                    {
+                        RezervacijaUpdateRequest rezervacijaUpdateRequest = new RezervacijaUpdateRequest();
+                        rezervacijaUpdateRequest.RezervacijaId = taskModel.RezervacijaId;
+                        rezervacijaUpdateRequest.Odobrena = true;
+                        rezervacijaUpdateRequest.Otkazana = false;
+                        rezervacijaUpdateRequest.Odbijena = false;
+                        var list = await rezervacijeAPIService.Put<RezervacijaUpdateRequest>(taskModel.RezervacijaId, rezervacijaUpdateRequest);
 
-                    string[] parts = taskModel.ImePrezime.Split(' ');
+                        string[] parts = taskModel.ImePrezime.Split(' ');
 
-                    NekretninaKorisnikModel nekretninaKorisnikModel = new NekretninaKorisnikModel();
-                    nekretninaKorisnikModel.Nekretnina = taskModel.NekretninaId;
-                    nekretninaKorisnikModel.ImeKorisnika = parts[0];
-                    nekretninaKorisnikModel.PrezimeKorisnika = parts[1];
-                    nekretninaKorisnikModel.BrojTelefona = taskModel.BrojTelefona;
-                    nekretninaKorisnikModel.DatumUseljenja = taskModel.DatumPocetka;
-                    nekretninaKorisnikModel.DatumIseljenja = taskModel.DatumKraja;
-                    nekretninaKorisnikModel.IsActive = true;
-                    nekretninaKorisnikModel.Slika = "";
-                    var postNekretnina = await NekretninaKorisnikService.Post<NekretninaKorisnikInsertRequest>(nekretninaKorisnikModel);
-
-
-                    generisiUgovor(taskModel);
-                   await createUgovor(taskModel);
-                    AutoClosingMessageBox.Show("Rezervacija odobrena", "Rezervacija uspjesno odobrena.", 3000);
-                   await loadData();
-
+                        NekretninaKorisnikModel nekretninaKorisnikModel = new NekretninaKorisnikModel();
+                        nekretninaKorisnikModel.Nekretnina = taskModel.NekretninaId;
+                        nekretninaKorisnikModel.ImeKorisnika = parts[0];
+                        nekretninaKorisnikModel.PrezimeKorisnika = parts[1];
+                        nekretninaKorisnikModel.BrojTelefona = taskModel.BrojTelefona;
+                        nekretninaKorisnikModel.DatumUseljenja = taskModel.DatumPocetka;
+                        nekretninaKorisnikModel.DatumIseljenja = taskModel.DatumKraja;
+                        nekretninaKorisnikModel.IsActive = true;
+                        nekretninaKorisnikModel.Slika = "";
+                        var postNekretnina = await NekretninaKorisnikService.Post<NekretninaKorisnikInsertRequest>(nekretninaKorisnikModel);
+                        generisiUgovor(taskModel);
+                        await createUgovor(taskModel);
+                        AutoClosingMessageBox.Show("Rezervacija odobrena", "Rezervacija uspjesno odobrena.", 3000);
+                        //await loadData();
+                        await odobriRezervaiju();
+                    }
                 }
                 catch (Exception ex)
                 {
                     MessageBox.Show(ex.Message);
                 }
             }
-            if (e.ColumnIndex == 8)
+            if (e.ColumnIndex == 7)
             {
                 //Odbij rezervaciju
                 try
@@ -100,6 +144,7 @@ namespace eRent.UI
                     rezervacijaUpdateRequest.Otkazana = false;
                     rezervacijaUpdateRequest.Odbijena = true;
                     var list = await rezervacijeAPIService.Put<RezervacijaUpdateRequest>(taskModel.RezervacijaId, rezervacijaUpdateRequest);
+                    await odbijRezervaciju();
                 }
                 catch (Exception ex)
                 {
@@ -108,6 +153,9 @@ namespace eRent.UI
             }
         }
 
+
+
+        //Ugovor generation
         private async Task<UgovorUpsertRequest> createUgovor(RezervacijaModel rezervacija)
         {
             var ugovorUpsert = new UgovorUpsertRequest();
@@ -152,5 +200,22 @@ namespace eRent.UI
             // Close the document
             document.Close();
         }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+            goBack();
+        }
+        private void label7_Click(object sender, EventArgs e)
+        {
+            goBack();
+        }
+        private void goBack()
+        {
+            this.Hide();
+            var form2 = new frmNekretninaList(_username);
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
+        }
+
     }
 }

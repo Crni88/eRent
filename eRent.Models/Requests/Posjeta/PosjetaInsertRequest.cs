@@ -11,5 +11,7 @@ namespace eRent.Models.Requests.Posjeta
         public DateTime? DatumPosjete { get; set; }
 
         public string vrijemePosjete { get; set; }
+
+        public bool? Otkazana { get; set; }
     }
 }

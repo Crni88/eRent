@@ -13,11 +13,13 @@ namespace eRent.UI
         public APIService PaymentRequestService { get; set; } = new APIService("PaymentRequest");
         public APIService _korisnikService { get; set; } = new APIService("Korisnici");
 
-        public frmZahtjevZaPlacanje(int brojKorisnika, NekretninaModel nekretnina)
+        string _username ;
+        public frmZahtjevZaPlacanje(int brojKorisnika, NekretninaModel nekretnina, string _username)
         {
             InitializeComponent();
             BrojKorisnika = brojKorisnika;
             Nekretnina = nekretnina;
+            this._username = _username;
         }
 
         private void frmZahtjevZaPlacanje_Load(object sender, EventArgs e)
@@ -53,7 +55,10 @@ namespace eRent.UI
             if (postPaymentRequest != null)
             {
                 AutoClosingMessageBox.Show("Zahtjev za plaćanje je uspješno poslan.", "Zahtjev poslan!", 3000);
-                this.Close();
+                this.Hide();
+                var form2 = new frmNekretninaList(_username);
+                form2.Closed += (s, args) => this.Close();
+                form2.Show();
             }
         }
 
@@ -123,6 +128,24 @@ namespace eRent.UI
                 e.Cancel = false;
                 err.SetError(txtIznos, "");
             }
+        }
+
+        private void label8_Click(object sender, EventArgs e)
+        {
+            goBack();
+        }
+
+        private void goBack()
+        {
+            this.Hide();
+            var form2 = new frmKorisniciNekretnina(_username,Nekretnina);
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            goBack();
         }
     }
 }

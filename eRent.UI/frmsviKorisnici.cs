@@ -9,10 +9,13 @@ namespace eRent.UI
     {
         private readonly APIService korisnikService = new APIService("Korisnici");
         private readonly APIService ulogaService = new APIService("Uloge");
-        public frmSviKorisnici()
+
+        string _username { get; set; }
+        public frmSviKorisnici(string username1)
         {
             InitializeComponent();
             dgvKorisnici.AutoGenerateColumns = false;
+            _username = username1;
         }
 
         private async void btnUcitajKorisnike_Click(object sender, EventArgs e)
@@ -38,14 +41,26 @@ namespace eRent.UI
 
         private void btnDodajKorisnika_Click(object sender, EventArgs e)
         {
-            this.Close();
-            frmAddNovogKorisnika frmAddNovogKorisnika = new frmAddNovogKorisnika();
-            frmAddNovogKorisnika.ShowDialog();
+            openNovogKorisnika(2);
+        }
+
+        private void openNovogKorisnika(int v, KorisnikModel korisnikModel = null)
+        {
+            this.Hide();
+            var form2 = v == 2
+                ? new frmAddNovogKorisnika(_username, korisnikModel)
+                : new frmAddNovogKorisnika(_username);
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
         }
 
         private async void dgvKorisnici_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             KorisnikModel korisnik = (KorisnikModel)dgvKorisnici.SelectedRows[0].DataBoundItem;
+            if (e.ColumnIndex == 4)
+            {
+                openNovogKorisnika(2,korisnik);
+            }
             if (e.ColumnIndex == 5)
             {
                 KorisnikUpdateRequest korisnikSearchObject = new KorisnikUpdateRequest();
@@ -56,12 +71,6 @@ namespace eRent.UI
                 AutoClosingMessageBox.Show("Korisnik obrisan!", "Korisnik uspjesno obrisan.", 3000);
                 await loadKorisnike();
             }
-            if (e.ColumnIndex == 4)
-            {
-                this.Close();
-                frmAddNovogKorisnika frmAddNovogKorisnika = new frmAddNovogKorisnika(korisnik);
-                frmAddNovogKorisnika.ShowDialog();
-            }
         }
 
         private async void frmSviKorisnici_Load(object sender, EventArgs e)
@@ -70,12 +79,22 @@ namespace eRent.UI
             await loadKorisnike();
         }
 
-        //private async Task loadUloge()
-        //{
-        //    List<UlogaModel> ulogaModels = new List<UlogaModel>();
-        //    ulogaModels = await ulogaService.Get<List<UlogaModel>>(null);
-        //    cbUloge.Items.Add("Sve");
-        //    ulogaModels.ForEach(x => cbUloge.Items.Add(x.Naziv));
-        //}
+        private void label8_Click(object sender, EventArgs e)
+        {
+            goBack();
+        }
+
+        private void goBack()
+        {
+            this.Hide();
+            var form2 = new frmNekretninaList(_username);
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            goBack();
+        }
     }
 }

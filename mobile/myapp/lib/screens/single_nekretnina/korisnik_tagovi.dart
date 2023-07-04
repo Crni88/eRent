@@ -31,7 +31,7 @@ class _KorisnikTagoviScreenState extends State<KorisnikTagoviScreen> {
     var temp2 = await korisnikTagoviProvider.get(search);
     setState(() {
       korisnikTags = temp2;
-      id = tempId!;
+      id = tempId;
     });
   }
 

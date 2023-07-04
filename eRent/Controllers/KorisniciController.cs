@@ -16,8 +16,8 @@ namespace eRent.Controllers
         {
         }
 
-        //Dodavanje sa authorizacijom
-        [Authorize(Roles = "Admin")]
+        //Dodavanje bez authorizacije
+        [AllowAnonymous]
         public override KorisnikModel Insert([FromBody] KorisnikInsertRequest korisnikInsertRequest)
         {
             return base.Insert(korisnikInsertRequest);

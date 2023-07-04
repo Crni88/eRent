@@ -7,11 +7,13 @@ namespace eRent.UI
     {
         NekretninaModel _nekretnina { get; set; }
         APIService prosjetaAPIService { get; set; } = new APIService("Posjeta");
-        public frmPosjete(NekretninaModel nekretnina)
+        string _username;
+        public frmPosjete(string _username, NekretninaModel nekretnina)
         {
             InitializeComponent();
             dataGridView1.AutoGenerateColumns = false;
             this._nekretnina = nekretnina;
+            this._username = _username;
         }
 
         private async void btnUcitaj_Click(object sender, EventArgs e)
@@ -20,8 +22,41 @@ namespace eRent.UI
             posjetaSearchObject.NekretninaId = _nekretnina.NekretninaId;
             posjetaSearchObject.Otkazana = false;
             var list = await prosjetaAPIService.Get<List<PosjetaModel>>(posjetaSearchObject);
-            dataGridView1.DataSource = list;
+            if (list.Count > 0)
+            {
+
+                dataGridView1.DataSource = list;
+            }
+            else
+            {
+                dataGridView1.Visible = false;
+                btnUcitaj.Visible = false;
+                lblNemaPosjeta.Visible = true;
+                lblNemaPosjeta.Text = "Nema posjeta za ovu nekretninu.";
+            }
         }
 
+        private void label8_Click(object sender, EventArgs e)
+        {
+            goBack();
+        }
+
+        private void label7_Click(object sender, EventArgs e)
+        {
+            goBack();
+        }
+
+        private void goBack()
+        {
+            this.Hide();
+            var form2 = new frmNekretninaList(_username);
+            form2.Closed += (s, args) => this.Close();
+            form2.Show();
+        }
+
+        private void frmPosjete_Load(object sender, EventArgs e)
+        {
+            btnUcitaj_Click(sender, e);
+        }
     }
 }

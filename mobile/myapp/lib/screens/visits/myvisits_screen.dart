@@ -57,25 +57,29 @@ class _MyVisitsScreenState extends State<MyVisitsScreen> {
           const MyTitle("Moje Posjete"),
           const MySpacer(),
           Expanded(
-              child: ListView.builder(
-                  itemCount: posjete.length,
-                  itemBuilder: ((context, index) {
-                    return VisitRow(
-                      posjeta: posjete[index],
-                      id: posjete[index].posjetaId!,
-                      datumPosjete: posjete[index].datumPosjete!,
-                      nazivnekretnine: posjete[index].nazivNekretnine!,
-                      vrijemePosjete: posjete[index].vrijemePosjete!,
-                      onClicked: () {
-                        //print("Rezervacija odbijena");
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => const MyVisitsScreen()),
+              child: posjete.isEmpty
+                  ? const Center(
+                      child: Text('Nemate zakazanih posjeta.'),
+                    )
+                  : ListView.builder(
+                      itemCount: posjete.length,
+                      itemBuilder: ((context, index) {
+                        return VisitRow(
+                          posjeta: posjete[index],
+                          id: posjete[index].posjetaId!,
+                          datumPosjete: posjete[index].datumPosjete!,
+                          nazivnekretnine: posjete[index].nazivNekretnine!,
+                          vrijemePosjete: posjete[index].vrijemePosjete!,
+                          onClicked: () {
+                            //print("Rezervacija odbijena");
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const MyVisitsScreen()),
+                            );
+                          },
                         );
-                      },
-                    );
-                  }))),
+                      }))),
           MyBottomBar(
             currentIndex: _selectedIndex,
             onTap: _onItemTapped,

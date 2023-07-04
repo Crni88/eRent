@@ -58,32 +58,36 @@ class _MyReservationsScreenState extends State<MyReservationsScreen> {
           const MyTitle("Moje rezervacije"),
           const MySpacer(),
           Expanded(
-              child: ListView.builder(
-                  itemCount: rezervacije.length,
-                  itemBuilder: ((context, index) {
-                    return ReservationRow(
-                      rezervacije[index],
-                      id: rezervacije[index].rezervacijaId!,
-                      brojTelefona: rezervacije[index].brojTelefona!,
-                      datumKraja: rezervacije[index].datumKraja!,
-                      datumPocetka: rezervacije[index].datumPocetka!,
-                      imePrezime: rezervacije[index].imePrezime!,
-                      mjesecnaRezervacija:
-                          rezervacije[index].mjesecnaRezervacija!,
-                      nazivnekretnine: rezervacije[index].nazivnekretnine!,
-                      odobrena: rezervacije[index].odobrena!,
-                      odbijena: rezervacije[index].odbijena!,
-                      onClick: () {
-                        print("Rezervacija odbijena");
-                        Navigator.pushReplacement(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) =>
-                                  const MyReservationsScreen()),
+              child: rezervacije.isEmpty
+                  ? const Center(
+                      child: Text('Nemate zakazanih rezervacija.'),
+                    )
+                  : ListView.builder(
+                      itemCount: rezervacije.length,
+                      itemBuilder: ((context, index) {
+                        return ReservationRow(
+                          rezervacije[index],
+                          id: rezervacije[index].rezervacijaId!,
+                          brojTelefona: rezervacije[index].brojTelefona!,
+                          datumKraja: rezervacije[index].datumKraja!,
+                          datumPocetka: rezervacije[index].datumPocetka!,
+                          imePrezime: rezervacije[index].imePrezime!,
+                          mjesecnaRezervacija:
+                              rezervacije[index].mjesecnaRezervacija!,
+                          nazivnekretnine: rezervacije[index].nazivnekretnine!,
+                          odobrena: rezervacije[index].odobrena!,
+                          odbijena: rezervacije[index].odbijena!,
+                          onClick: () {
+                            print("Rezervacija odbijena");
+                            Navigator.pushReplacement(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                      const MyReservationsScreen()),
+                            );
+                          },
                         );
-                      },
-                    );
-                  }))),
+                      }))),
           MyBottomBar(
             currentIndex: _selectedIndex,
             onTap: _onItemTapped,

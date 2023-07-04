@@ -115,9 +115,9 @@ namespace eRent.UI
 
         private void saveDataAndLoadForm()
         {
-            this.Close();
-            frmKorisniciNekretnina frmKorisniciNekretnina = new frmKorisniciNekretnina(_nekretnina);
-            frmKorisniciNekretnina.ShowDialog();
+            //this.Close();
+            //frmKorisniciNekretnina frmKorisniciNekretnina = new frmKorisniciNekretnina(_nekretnina);
+            //frmKorisniciNekretnina.ShowDialog();
         }
 
         private NekretninaKorisnikUpdateRequest UpdateKorisnikNekretnina()
@@ -232,8 +232,8 @@ namespace eRent.UI
 
         private void frmAddKorisnikNekretnina_FormClosing(object sender, FormClosingEventArgs e)
         {
-            frmKorisniciNekretnina frmKorisniciNekretnina = new frmKorisniciNekretnina(_nekretnina);
-            frmKorisniciNekretnina.ShowDialog();   
+            //frmKorisniciNekretnina frmKorisniciNekretnina = new frmKorisniciNekretnina(_nekretnina);
+            //frmKorisniciNekretnina.ShowDialog();
         }
     }
 }

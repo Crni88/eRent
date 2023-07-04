@@ -34,7 +34,8 @@ class _SinglePaymentScreenState extends State<SinglePaymentScreen_Copy> {
   AllPaymentsProvider allPaymentsProvider = AllPaymentsProvider();
 
   Map<String, dynamic>? paymentIntentData;
-
+  var stripe_sk = const String.fromEnvironment("stripeSecretKey",
+      defaultValue: stripeSecretKey);
   @override
   void initState() {
     super.initState();
@@ -138,7 +139,7 @@ class _SinglePaymentScreenState extends State<SinglePaymentScreen_Copy> {
           Uri.parse('https://api.stripe.com/v1/payment_intents'),
           body: body,
           headers: {
-            'Authorization': 'Bearer $stripeSecretKey',
+            'Authorization': 'Bearer $stripe_sk',
             'Content-Type': 'application/x-www-form-urlencoded'
           });
       return jsonDecode(response.body);
