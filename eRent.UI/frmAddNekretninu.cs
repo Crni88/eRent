@@ -99,24 +99,31 @@ namespace eRent.UI
                 {
                     err.SetError(pbSlikaNekretnine, "");
                     err.Clear();
-                    if (_nekretninaModel == null)
+                    try
                     {
-                        NekretninaInsertRequest nekretninaInsertRequest = new NekretninaInsertRequest();
-                        CreateInsertObject(nekretninaInsertRequest);
-                        var postNekretnina = await NekretnineService.Post<NekretninaModel>(nekretninaInsertRequest);
-                        _nekretninaModel = postNekretnina;
-                        await UpdateTagsAsync();
-                        AutoClosingMessageBox.Show("Nekretnina dodana!", "Nekretnina uspjesno dodana!", 3000);
+                        if (_nekretninaModel == null)
+                        {
+                            NekretninaInsertRequest nekretninaInsertRequest = new NekretninaInsertRequest();
+                            CreateInsertObject(nekretninaInsertRequest);
+                            var postNekretnina = await NekretnineService.Post<NekretninaModel>(nekretninaInsertRequest);
+                            _nekretninaModel = postNekretnina;
+                            await UpdateTagsAsync();
+                            AutoClosingMessageBox.Show("Nekretnina dodana!", "Nekretnina uspjesno dodana!", 3000);
+                        }
+                        else
+                        {
+                            NekretninaUpdateRequest nekretninaUpdateRequest = CreateUpdateObject();
+                            var updateNekretnina =
+                                await NekretnineService.Put<NekretninaUpdateRequest>(_nekretninaModel.NekretninaId, nekretninaUpdateRequest);
+                            await UpdateTagsAsync();
+                            AutoClosingMessageBox.Show("Nekretnina azurirana!", "Nekretnina uspjesno azurirana!", 3000);
+                        }
+                        openNekretnineListForm();
                     }
-                    else
+                    catch (Exception ex)
                     {
-                        NekretninaUpdateRequest nekretninaUpdateRequest = CreateUpdateObject();
-                        var updateNekretnina =
-                            await NekretnineService.Put<NekretninaUpdateRequest>(_nekretninaModel.NekretninaId, nekretninaUpdateRequest);
-                        await UpdateTagsAsync();
-                        AutoClosingMessageBox.Show("Nekretnina azurirana!", "Nekretnina uspjesno azurirana!", 3000);
+                        MessageBox.Show(ex.Message);
                     }
-                    openNekretnineListForm();
                 }
                 else
                 {

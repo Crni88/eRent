@@ -340,7 +340,82 @@ namespace eRent.Services.DataDB
                     Nazivnekretnine = "Stan Sarajevo",
                     Odobrena = false,
                     Odbijena = false,
-                }
+                },
+                new Rezervacija
+                {
+                    RezervacijaId = 11,
+                    KorisnikId = 2,
+                    Otkazana = false,
+                    MjesecnaRezervacija = false,
+                    DatumPocetka = DateTime.Now,
+                    DatumKraja = DateTime.Now.AddDays(90),
+                    ImePrezime = "Mobile Mobile",
+                    BrojTelefona = "mobile@mobile.com",
+                    NekretninaId = 4,
+                    Nazivnekretnine = "Stan Sarajevo",
+                    Odobrena = false,
+                    Odbijena = false,
+                },
+                new Rezervacija
+                {
+                    RezervacijaId = 12,
+                    KorisnikId = 2,
+                    Otkazana = false,
+                    MjesecnaRezervacija = false,
+                    DatumPocetka = DateTime.Now,
+                    DatumKraja = DateTime.Now.AddDays(90),
+                    ImePrezime = "Mobile Mobile",
+                    BrojTelefona = "mobile@mobile.com",
+                    NekretninaId = 4,
+                    Nazivnekretnine = "Stan Sarajevo",
+                    Odobrena = false,
+                    Odbijena = false,
+                },
+                 new Rezervacija
+                 {
+                     RezervacijaId = 13,
+                     KorisnikId = 2,
+                     Otkazana = false,
+                     MjesecnaRezervacija = false,
+                     DatumPocetka = DateTime.Now.AddDays(-1),
+                     DatumKraja = DateTime.Now.AddDays(1),
+                     ImePrezime = "Mobile Mobile",
+                     BrojTelefona = "mobile@mobile.com",
+                     NekretninaId = 3,
+                     Nazivnekretnine = "Vikendica Mostar",
+                     Odobrena = false,
+                     Odbijena = false,
+                 },
+                 new Rezervacija
+                 {
+                     RezervacijaId = 14,
+                     KorisnikId = 2,
+                     Otkazana = false,
+                     MjesecnaRezervacija = false,
+                     DatumPocetka = DateTime.Now.AddDays(-3),
+                     DatumKraja = DateTime.Now.AddDays(5),
+                     ImePrezime = "Mobile Mobile",
+                     BrojTelefona = "mobile@mobile.com",
+                     NekretninaId = 3,
+                     Nazivnekretnine = "Vikendica Mostar",
+                     Odobrena = false,
+                     Odbijena = false,
+                 },
+                 new Rezervacija
+                 {
+                     RezervacijaId = 15,
+                     KorisnikId = 2,
+                     Otkazana = false,
+                     MjesecnaRezervacija = false,
+                     DatumPocetka = DateTime.Now.AddDays(-1),
+                     DatumKraja = DateTime.Now.AddDays(2),
+                     ImePrezime = "Mobile Mobile",
+                     BrojTelefona = "mobile@mobile.com",
+                     NekretninaId = 3,
+                     Nazivnekretnine = "Vikendica Mostar",
+                     Odobrena = false,
+                     Odbijena = false,
+                 }
             );
             modelBuilder.Entity<Task>().HasData(
                 new Task
