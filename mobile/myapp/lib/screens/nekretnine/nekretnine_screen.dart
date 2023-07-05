@@ -1,3 +1,4 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:myapp/components/mytext.dart';
@@ -52,6 +53,7 @@ class _NekretnineListScreenState extends State<NekretnineListScreen> {
       data = tempData!;
     });
     filterResults();
+    startAlgorithm(data);
   }
 
   Future<void> registerUserToken() async {
@@ -348,5 +350,16 @@ class _NekretnineListScreenState extends State<NekretnineListScreen> {
         .cast<Widget>()
         .toList();
     return list;
+  }
+
+  void startAlgorithm(List<Nekretnina> data) async {
+    try {
+      var tempData =
+          await _nekretnineProvider?.getRecommend(data[0].nekretninaId!);
+    } catch (e) {
+      if (kDebugMode) {
+        print(e.toString());
+      }
+    }
   }
 }
