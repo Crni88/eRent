@@ -37,9 +37,7 @@
             label1 = new Label();
             cbOcjene = new ComboBox();
             label2 = new Label();
-            lblNemaRejtinga = new Label();
-            label8 = new Label();
-            label7 = new Label();
+            btnNazad = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvRejting).BeginInit();
             SuspendLayout();
             // 
@@ -127,46 +125,22 @@
             label2.TabIndex = 5;
             label2.Text = "Ocjene";
             // 
-            // lblNemaRejtinga
+            // btnNazad
             // 
-            lblNemaRejtinga.AutoSize = true;
-            lblNemaRejtinga.Font = new Font("Segoe UI", 36F, FontStyle.Bold, GraphicsUnit.Point);
-            lblNemaRejtinga.Location = new Point(83, 208);
-            lblNemaRejtinga.Name = "lblNemaRejtinga";
-            lblNemaRejtinga.Size = new Size(634, 65);
-            lblNemaRejtinga.TabIndex = 7;
-            lblNemaRejtinga.Text = "Jos uvijek nemate rejtinge.";
-            // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(50, 9);
-            label8.Name = "label8";
-            label8.Size = new Size(59, 21);
-            label8.TabIndex = 29;
-            label8.Text = "Nazad";
-            label8.Click += label8_Click;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(16, 9);
-            label7.Name = "label7";
-            label7.Size = new Size(28, 21);
-            label7.TabIndex = 28;
-            label7.Text = "<-";
-            label7.Click += label7_Click;
+            btnNazad.Location = new Point(20, 12);
+            btnNazad.Name = "btnNazad";
+            btnNazad.Size = new Size(75, 23);
+            btnNazad.TabIndex = 30;
+            btnNazad.Text = "<- Nazad";
+            btnNazad.UseVisualStyleBackColor = true;
+            btnNazad.Click += btnNazad_Click;
             // 
             // frmRejting
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(label8);
-            Controls.Add(label7);
-            Controls.Add(lblNemaRejtinga);
+            Controls.Add(btnNazad);
             Controls.Add(label2);
             Controls.Add(cbOcjene);
             Controls.Add(label1);
@@ -192,8 +166,6 @@
         private Label label1;
         private ComboBox cbOcjene;
         private Label label2;
-        private Label lblNemaRejtinga;
-        private Label label8;
-        private Label label7;
+        private Button btnNazad;
     }
 }

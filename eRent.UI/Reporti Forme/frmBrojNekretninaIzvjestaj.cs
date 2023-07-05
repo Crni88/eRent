@@ -15,7 +15,7 @@ namespace eRent.UI.Reporti_Forme
 
         private void frmBrojNekretninaIzvjestaj_Load(object sender, EventArgs e)
         {
-            DataSet1.BrojNekretninaDataTable tblNekretnine =new DataSet1.BrojNekretninaDataTable();
+            DataSet1.BrojNekretninaDataTable tblNekretnine = new DataSet1.BrojNekretninaDataTable();
             foreach (var nekretnina in _nekretninaModels)
             {
                 var red = tblNekretnine.NewBrojNekretninaRow();

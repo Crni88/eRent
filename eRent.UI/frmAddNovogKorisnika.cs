@@ -14,7 +14,7 @@ namespace eRent.UI
         private APIService KorisnikTagoviService { get; set; } = new APIService("KorisnikTagovi");
         public KorisnikModel Korisnik { get; }
 
-        string _username { get; set; }  
+        string _username { get; set; }
 
         public frmAddNovogKorisnika(string _username, KorisnikModel korisnik = null)
         {
@@ -148,7 +148,6 @@ namespace eRent.UI
 
         private async void btnDodajNovogKorisnika_Click(object sender, EventArgs e)
         {
-
             try
             {
                 if (ValidateChildren())
@@ -242,23 +241,9 @@ namespace eRent.UI
             cbUloga.DataSource = Uloge;
         }
 
-
-        private void label8_Click(object sender, EventArgs e)
+        private void btnNazad_Click(object sender, EventArgs e)
         {
-            goBack();
-        }
-
-        private void goBack()
-        {
-            this.Hide();
-            var form2 = new frmSviKorisnici(_username);
-            form2.Closed += (s, args) => this.Close();
-            form2.Show();
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-            goBack();   
+          closeForm();
         }
     }
 }

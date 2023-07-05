@@ -334,15 +334,9 @@ namespace eRent.UI
             }
         }
 
-        private void label8_Click(object sender, EventArgs e)
+        private void button1_Click(object sender, EventArgs e)
         {
             openNekretnineListForm();
-
-        }
-        private void label7_Click(object sender, EventArgs e)
-        {
-            openNekretnineListForm();
-
         }
     }
 }

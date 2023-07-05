@@ -42,8 +42,7 @@
             label1 = new Label();
             label2 = new Label();
             cbStatus = new ComboBox();
-            label8 = new Label();
-            label7 = new Label();
+            btnNazad = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvAllTask).BeginInit();
             SuspendLayout();
             // 
@@ -188,35 +187,22 @@
             cbStatus.Size = new Size(121, 23);
             cbStatus.TabIndex = 6;
             // 
-            // label8
+            // btnNazad
             // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(49, 9);
-            label8.Name = "label8";
-            label8.Size = new Size(59, 21);
-            label8.TabIndex = 29;
-            label8.Text = "Nazad";
-            label8.Click += label8_Click;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(15, 9);
-            label7.Name = "label7";
-            label7.Size = new Size(28, 21);
-            label7.TabIndex = 28;
-            label7.Text = "<-";
-            label7.Click += label7_Click;
+            btnNazad.Location = new Point(12, 12);
+            btnNazad.Name = "btnNazad";
+            btnNazad.Size = new Size(75, 23);
+            btnNazad.TabIndex = 7;
+            btnNazad.Text = "<- Nazad";
+            btnNazad.UseVisualStyleBackColor = true;
+            btnNazad.Click += btnNazad_Click;
             // 
             // frmAllTasks
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(792, 338);
-            Controls.Add(label8);
-            Controls.Add(label7);
+            Controls.Add(btnNazad);
             Controls.Add(cbStatus);
             Controls.Add(label2);
             Controls.Add(label1);
@@ -250,7 +236,6 @@
         private DataGridViewTextBoxColumn Status;
         private DataGridViewButtonColumn Uredi;
         private DataGridViewButtonColumn Obrisi;
-        private Label label8;
-        private Label label7;
+        private Button btnNazad;
     }
 }

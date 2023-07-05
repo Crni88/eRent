@@ -17,7 +17,6 @@ namespace eRent.UI
             dgvRejting.AutoGenerateColumns = false;
             this._korisnikId = korisnikId;
             this.username = username;
-            lblNemaRejtinga.Visible = false;
         }
 
         private async void btnLoad_Click(object sender, EventArgs e)
@@ -35,23 +34,8 @@ namespace eRent.UI
                 {
                     rejtingSearchObject.Rejting = float.Parse(cbOcjene.Text);
                 }
-
                 var list = await rejtingAPIService.Get<List<RejtingModel>>(rejtingSearchObject);
-                if (list.Count > 0)
-                {
-
-                    dgvRejting.DataSource = list;
-                }
-                else
-                {
-                    dgvRejting.Visible = false;
-                    lblNemaRejtinga.Visible = true;
-                    cbOcjene.Visible = false;
-                    btnLoad.Visible = false;
-                    label1.Visible = false;
-                    label2.Visible = false;
-                }
-
+                dgvRejting.DataSource = list;
             }
             catch (Exception ex)
             {
@@ -77,22 +61,12 @@ namespace eRent.UI
             cbOcjene.DataSource = ocjene;
         }
 
-        private void label8_Click(object sender, EventArgs e)
-        {
-            goBack();
-        }
-
-        private void goBack()
+        private void btnNazad_Click(object sender, EventArgs e)
         {
             this.Hide();
             var form2 = new frmNekretninaList(username);
             form2.Closed += (s, args) => this.Close();
             form2.Show();
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-            goBack();
         }
     }
 }

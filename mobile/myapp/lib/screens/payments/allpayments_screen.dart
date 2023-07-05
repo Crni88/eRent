@@ -51,7 +51,7 @@ class _AllPaymentsScreenState extends State<AllPaymentsScreen> {
       body: SafeArea(
           child: Column(
         children: [
-          const MyTitle("All payments"),
+          const MyTitle("Sva plaćanja"),
           Expanded(
             child: ListView.builder(
                 itemCount: payments.length,

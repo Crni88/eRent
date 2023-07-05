@@ -59,7 +59,7 @@ namespace eRent.UI
             {
                 int brojKorisnika = dgvKorisniciNekretnina.RowCount;
                 this.Hide();
-                var form2 = new frmZahtjevZaPlacanje(brojKorisnika, _nekretnina,_username);
+                var form2 = new frmZahtjevZaPlacanje(brojKorisnika, _nekretnina, _username);
                 form2.Closed += (s, args) => this.Close();
                 form2.Show();
             }
@@ -75,17 +75,7 @@ namespace eRent.UI
             await loadData();
         }
 
-        private void label8_Click(object sender, EventArgs e)
-        {
-            goBack();
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-            goBack();
-        }
-
-        private void goBack()
+        private void btnNazad_Click(object sender, EventArgs e)
         {
             this.Hide();
             var form2 = new frmNekretninaList(_username);

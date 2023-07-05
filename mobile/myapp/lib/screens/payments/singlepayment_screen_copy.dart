@@ -85,7 +85,7 @@ class _SinglePaymentScreenState extends State<SinglePaymentScreen_Copy> {
                         builder: (_) => const AlertDialog(
                               content: Text("Ponistena transakcija"),
                             ));
-                    throw Exception("Payment declined");
+                    throw Exception("Plaćanje odbijeno");
                   });
                   if (kDebugMode) {
                     print("payment sheet created");

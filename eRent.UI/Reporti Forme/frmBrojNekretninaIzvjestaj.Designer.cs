@@ -44,9 +44,9 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            this.Controls.Add(reportViewer1);
+            Controls.Add(reportViewer1);
             Name = "frmBrojNekretninaIzvjestaj";
-            Text = "frmBrojNekretninaIzvjestaj";
+            Text = "Sve nekretnine";
             Load += frmBrojNekretninaIzvjestaj_Load;
             ResumeLayout(false);
         }

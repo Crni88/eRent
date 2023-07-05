@@ -13,7 +13,7 @@ namespace eRent.UI
         public APIService PaymentRequestService { get; set; } = new APIService("PaymentRequest");
         public APIService _korisnikService { get; set; } = new APIService("Korisnici");
 
-        string _username ;
+        string _username;
         public frmZahtjevZaPlacanje(int brojKorisnika, NekretninaModel nekretnina, string _username)
         {
             InitializeComponent();
@@ -130,22 +130,12 @@ namespace eRent.UI
             }
         }
 
-        private void label8_Click(object sender, EventArgs e)
-        {
-            goBack();
-        }
-
-        private void goBack()
+        private void btnNazad_Click(object sender, EventArgs e)
         {
             this.Hide();
-            var form2 = new frmKorisniciNekretnina(_username,Nekretnina);
+            var form2 = new frmKorisniciNekretnina(_username, Nekretnina);
             form2.Closed += (s, args) => this.Close();
             form2.Show();
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-            goBack();
         }
     }
 }

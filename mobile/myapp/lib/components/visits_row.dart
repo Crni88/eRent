@@ -59,7 +59,8 @@ class VisitRow extends StatelessWidget {
                     print(e);
                   }
                 },
-                child: const Text('Cancel', style: TextStyle(fontSize: 16)),
+                child: const Text('Otkaži posjetu',
+                    style: TextStyle(fontSize: 16)),
               ),
             ],
           )

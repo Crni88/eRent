@@ -51,8 +51,7 @@
             cbListaNekretnina = new ComboBox();
             btnMjesecniPrihodiUkupnoPDF = new Button();
             btnListaNekretninaPDF = new Button();
-            label10 = new Label();
-            label11 = new Label();
+            btnNazad = new Button();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -259,35 +258,20 @@
             btnListaNekretninaPDF.UseVisualStyleBackColor = true;
             btnListaNekretninaPDF.Click += btnListaNekretninaPDF_Click;
             // 
-            // label10
+            // btnNazad
             // 
-            label10.AutoSize = true;
-            label10.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label10.ForeColor = Color.Black;
-            label10.Location = new Point(37, 9);
-            label10.Name = "label10";
-            label10.Size = new Size(59, 21);
-            label10.TabIndex = 33;
-            label10.Text = "Nazad";
-            label10.Click += label10_Click;
-            // 
-            // label11
-            // 
-            label11.AutoSize = true;
-            label11.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label11.ForeColor = Color.Black;
-            label11.Location = new Point(16, 8);
-            label11.Name = "label11";
-            label11.Size = new Size(28, 21);
-            label11.TabIndex = 32;
-            label11.Text = "<-";
-            label11.Click += label11_Click;
+            btnNazad.Location = new Point(20, 12);
+            btnNazad.Name = "btnNazad";
+            btnNazad.Size = new Size(75, 23);
+            btnNazad.TabIndex = 34;
+            btnNazad.Text = "<- Nazad";
+            btnNazad.UseVisualStyleBackColor = true;
+            btnNazad.Click += btnNazad_Click;
             // 
             // frmOpcijeIzvjestaja
             // 
             ClientSize = new Size(508, 351);
-            Controls.Add(label10);
-            Controls.Add(label11);
+            Controls.Add(btnNazad);
             Controls.Add(btnListaNekretninaPDF);
             Controls.Add(btnMjesecniPrihodiUkupnoPDF);
             Controls.Add(groupBox1);
@@ -331,7 +315,6 @@
         private Button btnRezervacijeIzvjestaj;
         private Button btnMjesecniPrihodiUkupnoPDF;
         private Button btnListaNekretninaPDF;
-        private Label label10;
-        private Label label11;
+        private Button btnNazad;
     }
 }

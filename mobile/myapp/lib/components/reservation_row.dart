@@ -89,7 +89,7 @@ class ReservationRow extends StatelessWidget {
                       print(e);
                     }
                   },
-                  child: const Text('Cancel'),
+                  child: const Text('Otkaži rezervaciju'),
                 ),
               ),
             ],

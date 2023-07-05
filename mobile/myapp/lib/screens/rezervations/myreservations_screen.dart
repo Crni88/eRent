@@ -10,7 +10,7 @@ import '../../components/top_bar.dart';
 import '../../providers/rezervacija_provider.dart';
 
 class MyReservationsScreen extends StatefulWidget {
-  const MyReservationsScreen({super.key});
+  const MyReservationsScreen({Key? key}) : super(key: key);
 
   @override
   State<MyReservationsScreen> createState() => _MyReservationsScreenState();
@@ -20,6 +20,7 @@ class _MyReservationsScreenState extends State<MyReservationsScreen> {
   //Load rezervacije
   List<Rezervacija> rezervacije = [];
   RezervacijaProvider rezervacijaProvider = RezervacijaProvider();
+  bool isLoading = true;
 
   @override
   void initState() {
@@ -37,6 +38,7 @@ class _MyReservationsScreenState extends State<MyReservationsScreen> {
     var temp = await rezervacijaProvider.get(search);
     setState(() {
       rezervacije = temp;
+      isLoading = false;
     });
   }
 
@@ -52,48 +54,57 @@ class _MyReservationsScreenState extends State<MyReservationsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: Column(
-        children: [
-          TopBar(context: context),
-          const MyTitle("Moje rezervacije"),
-          const MySpacer(),
-          Expanded(
-              child: rezervacije.isEmpty
+        child: Column(
+          children: [
+            TopBar(context: context),
+            const MyTitle("Moje rezervacije"),
+            const MySpacer(),
+            Expanded(
+              child: isLoading
                   ? const Center(
-                      child: Text('Nemate zakazanih rezervacija.'),
+                      child: CircularProgressIndicator(),
                     )
-                  : ListView.builder(
-                      itemCount: rezervacije.length,
-                      itemBuilder: ((context, index) {
-                        return ReservationRow(
-                          rezervacije[index],
-                          id: rezervacije[index].rezervacijaId!,
-                          brojTelefona: rezervacije[index].brojTelefona!,
-                          datumKraja: rezervacije[index].datumKraja!,
-                          datumPocetka: rezervacije[index].datumPocetka!,
-                          imePrezime: rezervacije[index].imePrezime!,
-                          mjesecnaRezervacija:
-                              rezervacije[index].mjesecnaRezervacija!,
-                          nazivnekretnine: rezervacije[index].nazivnekretnine!,
-                          odobrena: rezervacije[index].odobrena!,
-                          odbijena: rezervacije[index].odbijena!,
-                          onClick: () {
-                            print("Rezervacija odbijena");
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                      const MyReservationsScreen()),
+                  : rezervacije.isEmpty
+                      ? const Center(
+                          child: Text('Nemate zakazanih rezervacija.'),
+                        )
+                      : ListView.builder(
+                          itemCount: rezervacije.length,
+                          itemBuilder: ((context, index) {
+                            return ReservationRow(
+                              rezervacije[index],
+                              id: rezervacije[index].rezervacijaId!,
+                              brojTelefona: rezervacije[index].brojTelefona!,
+                              datumKraja: rezervacije[index].datumKraja!,
+                              datumPocetka: rezervacije[index].datumPocetka!,
+                              imePrezime: rezervacije[index].imePrezime!,
+                              mjesecnaRezervacija:
+                                  rezervacije[index].mjesecnaRezervacija!,
+                              nazivnekretnine:
+                                  rezervacije[index].nazivnekretnine!,
+                              odobrena: rezervacije[index].odobrena!,
+                              odbijena: rezervacije[index].odbijena!,
+                              onClick: () {
+                                print("Rezervacija odbijena");
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const MyReservationsScreen(),
+                                  ),
+                                );
+                              },
                             );
-                          },
-                        );
-                      }))),
-          MyBottomBar(
-            currentIndex: _selectedIndex,
-            onTap: _onItemTapped,
-          ),
-        ],
-      )),
+                          }),
+                        ),
+            ),
+            MyBottomBar(
+              currentIndex: _selectedIndex,
+              onTap: _onItemTapped,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

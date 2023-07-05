@@ -82,7 +82,7 @@ namespace eRent.UI
             // close the document
             doc.Close();
             showMessage();
-            this.Close();
+            //this.Close();
         }
 
         private async Task<List<RezervacijaModel>> loadRezervacije()
@@ -181,7 +181,7 @@ namespace eRent.UI
             // close the document
             doc.Close();
             showMessage();
-            this.Close();
+           // this.Close();
         }
 
         private async void btnRezervacijeIzvjestaj_Click(object sender, EventArgs e)
@@ -236,25 +236,15 @@ namespace eRent.UI
             // close the document
             doc.Close();
             showMessage();
-            this.Close();
+            //this.Close();
         }
 
-        private void label10_Click(object sender, EventArgs e)
-        {
-            goBack();
-        }
-
-        private void goBack()
+        private void btnNazad_Click(object sender, EventArgs e)
         {
             this.Hide();
             var form2 = new frmNekretninaList(_username);
             form2.Closed += (s, args) => this.Close();
             form2.Show();
-        }
-
-        private void label11_Click(object sender, EventArgs e)
-        {
-            goBack();
         }
     }
 }

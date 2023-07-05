@@ -10,7 +10,7 @@ import '../../components/top_bar.dart';
 import '../../components/visits_row.dart';
 
 class MyVisitsScreen extends StatefulWidget {
-  const MyVisitsScreen({super.key});
+  const MyVisitsScreen({Key? key}) : super(key: key);
 
   @override
   State<MyVisitsScreen> createState() => _MyVisitsScreenState();
@@ -19,6 +19,7 @@ class MyVisitsScreen extends StatefulWidget {
 class _MyVisitsScreenState extends State<MyVisitsScreen> {
   PosjetaProvider posjetaProvider = PosjetaProvider();
   List<Posjeta> posjete = [];
+  bool isLoading = true;
 
   @override
   void initState() {
@@ -36,6 +37,7 @@ class _MyVisitsScreenState extends State<MyVisitsScreen> {
     var temp = await posjetaProvider.get(search);
     setState(() {
       posjete = temp;
+      isLoading = false;
     });
   }
 
@@ -51,41 +53,50 @@ class _MyVisitsScreenState extends State<MyVisitsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: SafeArea(
-          child: Column(
-        children: [
-          TopBar(context: context),
-          const MyTitle("Moje Posjete"),
-          const MySpacer(),
-          Expanded(
-              child: posjete.isEmpty
+        child: Column(
+          children: [
+            TopBar(context: context),
+            const MyTitle("Moje Posjete"),
+            const MySpacer(),
+            Expanded(
+              child: isLoading
                   ? const Center(
-                      child: Text('Nemate zakazanih posjeta.'),
+                      child: CircularProgressIndicator(),
                     )
-                  : ListView.builder(
-                      itemCount: posjete.length,
-                      itemBuilder: ((context, index) {
-                        return VisitRow(
-                          posjeta: posjete[index],
-                          id: posjete[index].posjetaId!,
-                          datumPosjete: posjete[index].datumPosjete!,
-                          nazivnekretnine: posjete[index].nazivNekretnine!,
-                          vrijemePosjete: posjete[index].vrijemePosjete!,
-                          onClicked: () {
-                            //print("Rezervacija odbijena");
-                            Navigator.pushReplacement(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) => const MyVisitsScreen()),
+                  : posjete.isEmpty
+                      ? const Center(
+                          child: Text('Nemate zakazanih posjeta.'),
+                        )
+                      : ListView.builder(
+                          itemCount: posjete.length,
+                          itemBuilder: ((context, index) {
+                            return VisitRow(
+                              posjeta: posjete[index],
+                              id: posjete[index].posjetaId!,
+                              datumPosjete: posjete[index].datumPosjete!,
+                              nazivnekretnine: posjete[index].nazivNekretnine!,
+                              vrijemePosjete: posjete[index].vrijemePosjete!,
+                              onClicked: () {
+                                //print("Rezervacija odbijena");
+                                Navigator.pushReplacement(
+                                  context,
+                                  MaterialPageRoute(
+                                    builder: (context) =>
+                                        const MyVisitsScreen(),
+                                  ),
+                                );
+                              },
                             );
-                          },
-                        );
-                      }))),
-          MyBottomBar(
-            currentIndex: _selectedIndex,
-            onTap: _onItemTapped,
-          ),
-        ],
-      )),
+                          }),
+                        ),
+            ),
+            MyBottomBar(
+              currentIndex: _selectedIndex,
+              onTap: _onItemTapped,
+            ),
+          ],
+        ),
+      ),
     );
   }
 }

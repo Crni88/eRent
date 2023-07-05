@@ -31,7 +31,7 @@
         <rd:DefaultName>Textbox1</rd:DefaultName>
         <Left>4.94453cm</Left>
         <Height>1.36729cm</Height>
-        <Width>6.75979cm</Width>
+        <Width>6.89208cm</Width>
         <Style>
           <Border>
             <Style>None</Style>
@@ -460,7 +460,7 @@
         <DataSetName>DataSet1</DataSetName>
         <Top>2.35479cm</Top>
         <Height>1.2cm</Height>
-        <Width>16.42875cm</Width>
+        <Width>16.42872cm</Width>
         <ZIndex>1</ZIndex>
         <Style>
           <Border>

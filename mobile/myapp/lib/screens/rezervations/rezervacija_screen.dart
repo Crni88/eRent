@@ -96,37 +96,39 @@ class _HomeScreenState extends State<HomeScreen> {
             MyTitle(nekretnina.nazivNekretnine!),
             const MySpacer(),
             _rezervacijaScreenBuild(_selectedDateRange, context),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              crossAxisAlignment: CrossAxisAlignment.center,
-              children: [
-                Checkbox(
-                  value: isMjesecna,
-                  onChanged: (newBool) {
-                    setState(() {
-                      if (isMjesecna == true) {
-                        _selectedDateRange = DateTimeRange(
-                          start: _selectedDateRange.start,
-                          end: _selectedDateRange.end
-                              .subtract(const Duration(days: 30)),
-                        );
-                      } else {
-                        _selectedDateRange = DateTimeRange(
-                          start: _selectedDateRange.start,
-                          end: _selectedDateRange.end
-                              .add(const Duration(days: 30)),
-                        );
-                      }
-                      isMjesecna = newBool!;
-                    });
-                  },
-                  activeColor: Colors.blueAccent,
-                ),
-                const MySpacer(),
-                const MyText("Mjesecna rezevacija", true),
-                const MySpacer(),
-              ],
-            ),
+            // const Row(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   crossAxisAlignment: CrossAxisAlignment.center,
+            //   children: [
+            //     // Checkbox(
+            //     //   value: isMjesecna,
+            //     //   onChanged: (newBool) {
+            //     //     setState(() {
+            //     //       if (isMjesecna == true) {
+            //     //         _selectedDateRange = DateTimeRange(
+            //     //           start: _selectedDateRange.start,
+            //     //           //.subtract(const Duration(days: 30)),
+            //     //           end: _selectedDateRange.end
+            //     //               .subtract(const Duration(days: 31)),
+            //     //         );
+            //     //       } else {
+            //     //         _selectedDateRange = DateTimeRange(
+            //     //           start: _selectedDateRange.start
+            //     //               .add(const Duration(days: 31)),
+            //     //           end: _selectedDateRange.start
+            //     //               .add(const Duration(days: 31)),
+            //     //         );
+            //     //       }
+            //     //       isMjesecna = newBool!;
+            //     //     });
+            //     //   },
+            //     //   activeColor: Colors.blueAccent,
+            //     // ),
+            //     MySpacer(),
+            //     MyText("Mjesecna rezevacija", true),
+            //     MySpacer(),
+            //   ],
+            // ),
             Container(
               height: 50,
               margin: const EdgeInsets.fromLTRB(40, 0, 40, 0),
@@ -140,16 +142,15 @@ class _HomeScreenState extends State<HomeScreen> {
               child: InkWell(
                 onTap: () async {
                   try {
-                    //TODO Add korisnik telefon
                     var rezervacijaObject = {
                       "nekretninaId": nekretnina.nekretninaId,
-                      "mjesecnaRezervacija": isMjesecna,
+                      "mjesecnaRezervacija": false,
                       "datumPocetka":
                           _selectedDateRange.start.toIso8601String(),
                       "datumKraja": _selectedDateRange.end.toIso8601String(),
                       "imePrezime":
                           "${korisnik!.korsnikIme} ${korisnik!.korisnikPrezime}",
-                      "brojTelefona": "064 4002 619",
+                      "brojTelefona": korisnik?.email,
                       "otkazana": false,
                       "korisnikId": korisnik!.korisnikId,
                     };
@@ -207,11 +208,13 @@ Widget _rezervacijaScreenBuild(
     mainAxisAlignment: MainAxisAlignment.center,
     children: [
       // Start date
-      MyText(
-          "Start date: ${dateTimeRange.start.toString().split(' ')[0]}", true),
+      MyText("Datum početka: ${dateTimeRange.start.toString().split(' ')[0]}",
+          true),
       const MySpacer(),
       // End date
-      MyText("End date: ${dateTimeRange.end.toString().split(' ')[0]}", true),
+      MyText(
+          "Datum kraja: ${dateTimeRange.end.toString().split(' ')[0]}", true),
+      const MySpacer(),
     ],
   );
 }

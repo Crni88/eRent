@@ -10,7 +10,7 @@ namespace eRent.UI
         public NekretninaModel Nekretnina { get; set; }
         public TaskModel TaskModel { get; set; } = null;
 
-        string _username; 
+        string _username;
 
         public frmAddTask(NekretninaModel nekretnina, string _username, TaskModel taskModel = null)
         {
@@ -73,7 +73,7 @@ namespace eRent.UI
         private void updateAndCloseForm()
         {
             this.Hide();
-            var form2 = new frmAllTasks(_username,Nekretnina);
+            var form2 = new frmAllTasks(_username, Nekretnina);
             form2.Closed += (s, args) => this.Close();
             form2.Show();
         }
@@ -176,12 +176,7 @@ namespace eRent.UI
             }
         }
 
-        private void label8_Click(object sender, EventArgs e)
-        {
-            updateAndCloseForm();
-        }
-
-        private void label7_Click(object sender, EventArgs e)
+        private void btnNazad_Click(object sender, EventArgs e)
         {
             updateAndCloseForm();
         }

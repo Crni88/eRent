@@ -41,8 +41,7 @@
             btnPosalji = new Button();
             cbMjesecno = new CheckBox();
             err = new ErrorProvider(components);
-            label8 = new Label();
-            label7 = new Label();
+            btnNazad = new Button();
             ((System.ComponentModel.ISupportInitialize)err).BeginInit();
             SuspendLayout();
             // 
@@ -153,29 +152,15 @@
             // 
             err.ContainerControl = this;
             // 
-            // label8
+            // btnNazad
             // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.ForeColor = Color.Black;
-            label8.Location = new Point(35, 9);
-            label8.Name = "label8";
-            label8.Size = new Size(59, 21);
-            label8.TabIndex = 33;
-            label8.Text = "Nazad";
-            label8.Click += label8_Click;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.ForeColor = Color.Black;
-            label7.Location = new Point(14, 8);
-            label7.Name = "label7";
-            label7.Size = new Size(28, 21);
-            label7.TabIndex = 32;
-            label7.Text = "<-";
-            label7.Click += label7_Click;
+            btnNazad.Location = new Point(15, 12);
+            btnNazad.Name = "btnNazad";
+            btnNazad.Size = new Size(79, 22);
+            btnNazad.TabIndex = 34;
+            btnNazad.Text = "<- Nazad";
+            btnNazad.UseVisualStyleBackColor = true;
+            btnNazad.Click += btnNazad_Click;
             // 
             // frmZahtjevZaPlacanje
             // 
@@ -183,8 +168,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             AutoValidate = AutoValidate.Disable;
             ClientSize = new Size(496, 350);
-            Controls.Add(label8);
-            Controls.Add(label7);
+            Controls.Add(btnNazad);
             Controls.Add(cbMjesecno);
             Controls.Add(btnPosalji);
             Controls.Add(txtIznos);
@@ -219,7 +203,6 @@
         private Button btnPosalji;
         private CheckBox cbMjesecno;
         private ErrorProvider err;
-        private Label label8;
-        private Label label7;
+        private Button btnNazad;
     }
 }

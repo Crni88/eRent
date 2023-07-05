@@ -274,64 +274,76 @@ class _NekretnineListScreenState extends State<NekretnineListScreen> {
     List<Widget> list = data
         .map(
           (x) => GestureDetector(
-              onTap: () => {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => SingleNekretninaScreen(
-                              arguments: x.nekretninaId)),
-                    )
-                  },
-              child: Container(
-                height: 250,
-                color: x.izdvojena!
-                    ? const Color(0xAAF4D06F)
-                    : const Color(0xAA9DD9D2),
-                padding: const EdgeInsets.all(20),
-                child: Row(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SizedBox(
-                        height: 125,
-                        width: 125,
-                        child: imageFromBase64String(x.slika!)),
-                    Row(
+            onTap: () => {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                    builder: (context) =>
+                        SingleNekretninaScreen(arguments: x.nekretninaId)),
+              )
+            },
+            child: Container(
+              height: 250,
+              color: x.izdvojena!
+                  ? const Color(0xAAF4D06F)
+                  : const Color(0xAA9DD9D2),
+              padding: const EdgeInsets.all(20),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    height: 125,
+                    width: 125,
+                    child: imageFromBase64String(x.slika!),
+                  ),
+                  const SizedBox(width: 20), // Add horizontal spacing here
+                  Expanded(
+                    child: Row(
                       children: [
                         Column(
                           mainAxisAlignment: MainAxisAlignment.spaceAround,
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            Text(x.nazivNekretnine ?? "",
-                                style: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 22,
-                                    fontWeight: FontWeight.bold)),
-                            Text(x.grad ?? "",
-                                style: const TextStyle(
-                                    color: Colors.black, fontSize: 16)),
-                            SizedBox(
-                              width: 150,
-                              child: Row(
-                                mainAxisAlignment:
-                                    MainAxisAlignment.spaceBetween,
-                                children: [
-                                  Text("Broj soba ${x.brojSoba.toString()}"),
-                                  Text("${x.cijena.toString()}KM",
-                                      style: const TextStyle(
-                                          color: Colors.redAccent,
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.bold))
-                                ],
+                            Text(
+                              x.nazivNekretnine != null &&
+                                      x.nazivNekretnine!.length > 18
+                                  ? '${x.nazivNekretnine!.substring(0, 18)}...'
+                                  : x.nazivNekretnine ?? "",
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 22,
+                                fontWeight: FontWeight.bold,
+                                overflow: TextOverflow.clip,
                               ),
-                            )
+                            ),
+                            Text(
+                              x.grad ?? "",
+                              style: const TextStyle(
+                                color: Colors.black,
+                                fontSize: 16,
+                              ),
+                            ),
+                            Text(
+                              "Broj soba ${x.brojSoba.toString()}",
+                            ),
+                            Text(
+                              "${x.cijena.toString()}KM",
+                              style: const TextStyle(
+                                color: Colors.redAccent,
+                                fontSize: 16,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            ),
                           ],
                         ),
                       ],
                     ),
-                  ],
-                ),
-              )),
+                  ),
+                ],
+              ),
+            ),
+          ),
         )
         .cast<Widget>()
         .toList();

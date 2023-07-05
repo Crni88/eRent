@@ -123,17 +123,7 @@ namespace eRent.UI
             await loadTasks();
         }
 
-        private void label8_Click(object sender, EventArgs e)
-        {
-            goBack();
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-            goBack();
-        }
-
-        private void goBack()
+        private void btnNazad_Click(object sender, EventArgs e)
         {
             this.Hide();
             var form2 = new frmNekretninaList(_username);

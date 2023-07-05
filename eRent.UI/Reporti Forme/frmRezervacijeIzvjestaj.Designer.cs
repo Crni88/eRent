@@ -44,11 +44,11 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(779, 541);
+            Controls.Add(reportViewer1);
             Name = "frmRezervacijeIzvjestaj";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "frmRezervacijeIzvjestaj";
+            Text = "Potvrđene rezervacije";
             Load += frmRezervacijeIzvjestaj_Load;
-            this.Controls.Add(this.reportViewer1);      
             ResumeLayout(false);
         }
 

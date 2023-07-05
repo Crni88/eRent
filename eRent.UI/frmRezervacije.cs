@@ -55,31 +55,12 @@ namespace eRent.UI
             }
         }
 
-        private void label8_Click(object sender, EventArgs e)
-        {
-            goBack();
-        }
-
-        private void goBack()
+        private void btnNazad_Click(object sender, EventArgs e)
         {
             this.Hide();
             var form2 = new frmNekretninaList(_username);
             form2.Closed += (s, args) => this.Close();
             form2.Show();
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-            goBack();
-        }
-
-        private void dgvRezervacije_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void lblNemaPlacanja_Click(object sender, EventArgs e)
-        {
         }
     }
 }

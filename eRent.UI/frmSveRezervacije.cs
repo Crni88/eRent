@@ -25,31 +25,26 @@ namespace eRent.UI
 
         private async void btnUcitaj_Click(object sender, EventArgs e)
         {
-            await loadData();
+            // await loadData();
         }
 
-        private async Task loadData()
+        private async Task loadData(RezervacijaSearchObject rezervacijaSearchObject = null)
         {
-            bool isVisible = true;
-
             if (cbStatus.Text == "Odobrena")
             {
                 dgvSveRezervacije.Columns[6].Visible = false;
-                isVisible = false;
+                dgvSveRezervacije.Columns[7].Visible = false;
             }
             else if (cbStatus.Text == "Odbijena")
             {
+                dgvSveRezervacije.Columns[6].Visible = false;
                 dgvSveRezervacije.Columns[7].Visible = false;
-                isVisible = false;
             }
-
-            dgvSveRezervacije.Columns[6].Visible = isVisible;
-            dgvSveRezervacije.Columns[7].Visible = isVisible;
-
-            RezervacijaSearchObject rezervacijaSearchObject = new RezervacijaSearchObject();
-            rezervacijaSearchObject.Otkazana = false;
-            rezervacijaSearchObject.Odobrena = cbStatus.Text == "Sve" ? null : (bool?)(cbStatus.Text == "Odobrena");
-            rezervacijaSearchObject.Odbijena = cbStatus.Text == "Sve" ? null : (bool?)(cbStatus.Text == "Odbijena");
+            else if (cbStatus.Text == "Sve")
+            {
+                dgvSveRezervacije.Columns[6].Visible = true;
+                dgvSveRezervacije.Columns[7].Visible = true;
+            }
             var list = await rezervacijeAPIService.Get<List<RezervacijaModel>>(rezervacijaSearchObject);
             dgvSveRezervacije.DataSource = list;
         }
@@ -153,8 +148,6 @@ namespace eRent.UI
             }
         }
 
-
-
         //Ugovor generation
         private async Task<UgovorUpsertRequest> createUgovor(RezervacijaModel rezervacija)
         {
@@ -201,15 +194,9 @@ namespace eRent.UI
             document.Close();
         }
 
-        private void label8_Click(object sender, EventArgs e)
-        {
-            goBack();
-        }
-        private void label7_Click(object sender, EventArgs e)
-        {
-            goBack();
-        }
-        private void goBack()
+
+        //Go back
+        private void btnNazad_Click(object sender, EventArgs e)
         {
             this.Hide();
             var form2 = new frmNekretninaList(_username);
@@ -217,5 +204,36 @@ namespace eRent.UI
             form2.Show();
         }
 
+        private async void cbStatus_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            RezervacijaSearchObject rezervacijaSearchObject = new RezervacijaSearchObject();
+            string selectedStatus = cbStatus.Text;
+
+            switch (selectedStatus)
+            {
+                case "Odobrena":
+                    rezervacijaSearchObject.Otkazana = false;
+                    rezervacijaSearchObject.Odobrena = true;
+                    rezervacijaSearchObject.Odbijena = null;
+                    break;
+
+                case "Odbijena":
+                    rezervacijaSearchObject.Otkazana = false;
+                    rezervacijaSearchObject.Odobrena = null;
+                    rezervacijaSearchObject.Odbijena = true;
+                    break;
+
+                case "Sve":
+                    rezervacijaSearchObject.Otkazana = false;
+                    rezervacijaSearchObject.Odobrena = null;
+                    rezervacijaSearchObject.Odbijena = null;
+                    break;
+
+                default:
+                    // Handle unrecognized status here (optional)
+                    break;
+            }
+            await loadData(rezervacijaSearchObject);
+        }
     }
 }

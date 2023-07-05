@@ -59,7 +59,7 @@ namespace eRent.UI
             KorisnikModel korisnik = (KorisnikModel)dgvKorisnici.SelectedRows[0].DataBoundItem;
             if (e.ColumnIndex == 4)
             {
-                openNovogKorisnika(2,korisnik);
+                openNovogKorisnika(2, korisnik);
             }
             if (e.ColumnIndex == 5)
             {
@@ -79,22 +79,12 @@ namespace eRent.UI
             await loadKorisnike();
         }
 
-        private void label8_Click(object sender, EventArgs e)
-        {
-            goBack();
-        }
-
-        private void goBack()
+        private void btnNazad_Click(object sender, EventArgs e)
         {
             this.Hide();
             var form2 = new frmNekretninaList(_username);
             form2.Closed += (s, args) => this.Close();
             form2.Show();
-        }
-
-        private void label7_Click(object sender, EventArgs e)
-        {
-            goBack();
         }
     }
 }

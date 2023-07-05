@@ -35,9 +35,8 @@
             VrijemePosjete = new DataGridViewTextBoxColumn();
             btnUcitaj = new Button();
             label1 = new Label();
-            label8 = new Label();
-            label7 = new Label();
             lblNemaPosjeta = new Label();
+            btnNazad = new Button();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
@@ -104,28 +103,6 @@
             label1.TabIndex = 2;
             label1.Text = "Posjete";
             // 
-            // label8
-            // 
-            label8.AutoSize = true;
-            label8.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label8.Location = new Point(36, 9);
-            label8.Name = "label8";
-            label8.Size = new Size(59, 21);
-            label8.TabIndex = 29;
-            label8.Text = "Nazad";
-            label8.Click += label8_Click;
-            // 
-            // label7
-            // 
-            label7.AutoSize = true;
-            label7.Font = new Font("Segoe UI Black", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(16, 9);
-            label7.Name = "label7";
-            label7.Size = new Size(28, 21);
-            label7.TabIndex = 28;
-            label7.Text = "<-";
-            label7.Click += label7_Click;
-            // 
             // lblNemaPosjeta
             // 
             lblNemaPosjeta.AutoSize = true;
@@ -135,14 +112,23 @@
             lblNemaPosjeta.Size = new Size(0, 32);
             lblNemaPosjeta.TabIndex = 30;
             // 
+            // btnNazad
+            // 
+            btnNazad.Location = new Point(12, 10);
+            btnNazad.Name = "btnNazad";
+            btnNazad.Size = new Size(75, 23);
+            btnNazad.TabIndex = 31;
+            btnNazad.Text = "<- Nazad";
+            btnNazad.UseVisualStyleBackColor = true;
+            btnNazad.Click += btnNazad_Click;
+            // 
             // frmPosjete
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnNazad);
             Controls.Add(lblNemaPosjeta);
-            Controls.Add(label8);
-            Controls.Add(label7);
             Controls.Add(label1);
             Controls.Add(btnUcitaj);
             Controls.Add(dataGridView1);
@@ -164,8 +150,7 @@
         private DataGridViewTextBoxColumn korisnikImePrezime;
         private DataGridViewTextBoxColumn DatumPosjete;
         private DataGridViewTextBoxColumn VrijemePosjete;
-        private Label label8;
-        private Label label7;
         private Label lblNemaPosjeta;
+        private Button btnNazad;
     }
 }
