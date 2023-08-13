@@ -48,5 +48,10 @@ namespace eRent.UI
             form2.Closed += (s, args) => this.Close();
             form2.Show();
         }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

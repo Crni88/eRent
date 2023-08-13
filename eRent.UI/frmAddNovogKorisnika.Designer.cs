@@ -121,7 +121,7 @@
             // 
             // btnDodajNovogKorisnika
             // 
-            btnDodajNovogKorisnika.Location = new Point(90, 350);
+            btnDodajNovogKorisnika.Location = new Point(93, 375);
             btnDodajNovogKorisnika.Margin = new Padding(3, 2, 3, 2);
             btnDodajNovogKorisnika.Name = "btnDodajNovogKorisnika";
             btnDodajNovogKorisnika.Size = new Size(82, 30);
@@ -139,6 +139,7 @@
             txtPassword.Location = new Point(57, 313);
             txtPassword.Margin = new Padding(3, 2, 3, 2);
             txtPassword.Name = "txtPassword";
+            txtPassword.PasswordChar = '*';
             txtPassword.Size = new Size(152, 23);
             txtPassword.TabIndex = 11;
             txtPassword.Validating += txtPassword_Validating;
@@ -175,7 +176,7 @@
             btnNazad.Name = "btnNazad";
             btnNazad.Size = new Size(75, 23);
             btnNazad.TabIndex = 14;
-            btnNazad.Text = "<- Nazad";
+            btnNazad.Text = "Nazad";
             btnNazad.UseVisualStyleBackColor = true;
             btnNazad.Click += btnNazad_Click;
             // 
@@ -184,7 +185,7 @@
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoValidate = AutoValidate.Disable;
-            ClientSize = new Size(264, 416);
+            ClientSize = new Size(260, 431);
             Controls.Add(btnNazad);
             Controls.Add(label4);
             Controls.Add(cbUloga);

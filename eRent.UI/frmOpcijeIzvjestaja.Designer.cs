@@ -37,22 +37,22 @@
             btnListaKorisnika = new Button();
             label5 = new Label();
             btnPrihodiZaNekretninu = new Button();
-            btnMjesecniPrihodiUkupnoIzvjestaj = new Button();
-            label6 = new Label();
             label7 = new Label();
             button2 = new Button();
             button3 = new Button();
             dtpFrom = new DateTimePicker();
             dtpUntil = new DateTimePicker();
             groupBox1 = new GroupBox();
+            label10 = new Label();
             btnRezervacijeIzvjestaj = new Button();
             label9 = new Label();
             label8 = new Label();
             cbListaNekretnina = new ComboBox();
-            btnMjesecniPrihodiUkupnoPDF = new Button();
             btnListaNekretninaPDF = new Button();
             btnNazad = new Button();
+            groupBox3 = new GroupBox();
             groupBox1.SuspendLayout();
+            groupBox3.SuspendLayout();
             SuspendLayout();
             // 
             // btnListaRezervacija
@@ -121,31 +121,11 @@
             btnPrihodiZaNekretninu.Size = new Size(75, 23);
             btnPrihodiZaNekretninu.TabIndex = 0;
             // 
-            // btnMjesecniPrihodiUkupnoIzvjestaj
-            // 
-            btnMjesecniPrihodiUkupnoIzvjestaj.Location = new Point(392, 53);
-            btnMjesecniPrihodiUkupnoIzvjestaj.Name = "btnMjesecniPrihodiUkupnoIzvjestaj";
-            btnMjesecniPrihodiUkupnoIzvjestaj.Size = new Size(75, 24);
-            btnMjesecniPrihodiUkupnoIzvjestaj.TabIndex = 0;
-            btnMjesecniPrihodiUkupnoIzvjestaj.Text = "Izvjestaj";
-            btnMjesecniPrihodiUkupnoIzvjestaj.UseVisualStyleBackColor = true;
-            btnMjesecniPrihodiUkupnoIzvjestaj.Click += btnMjesecniPrihodiUkupno_Click;
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(20, 56);
-            label6.Name = "label6";
-            label6.Size = new Size(192, 21);
-            label6.TabIndex = 1;
-            label6.Text = "Mjesecni Prihodi Ukupno";
-            // 
             // label7
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(20, 306);
+            label7.Location = new Point(6, 42);
             label7.Name = "label7";
             label7.Size = new Size(124, 21);
             label7.TabIndex = 3;
@@ -153,7 +133,8 @@
             // 
             // button2
             // 
-            button2.Location = new Point(200, 298);
+            button2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
+            button2.Location = new Point(329, 32);
             button2.Name = "button2";
             button2.Size = new Size(75, 41);
             button2.TabIndex = 2;
@@ -163,9 +144,9 @@
             // 
             // button3
             // 
-            button3.Location = new Point(342, 167);
+            button3.Location = new Point(410, 162);
             button3.Name = "button3";
-            button3.Size = new Size(99, 27);
+            button3.Size = new Size(99, 40);
             button3.TabIndex = 4;
             button3.Text = "PDF";
             button3.UseVisualStyleBackColor = true;
@@ -173,20 +154,21 @@
             // 
             // dtpFrom
             // 
-            dtpFrom.Location = new Point(17, 92);
+            dtpFrom.Location = new Point(16, 117);
             dtpFrom.Name = "dtpFrom";
             dtpFrom.Size = new Size(320, 29);
             dtpFrom.TabIndex = 6;
             // 
             // dtpUntil
             // 
-            dtpUntil.Location = new Point(19, 167);
+            dtpUntil.Location = new Point(16, 173);
             dtpUntil.Name = "dtpUntil";
             dtpUntil.Size = new Size(318, 29);
             dtpUntil.TabIndex = 7;
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(label10);
             groupBox1.Controls.Add(btnRezervacijeIzvjestaj);
             groupBox1.Controls.Add(label9);
             groupBox1.Controls.Add(label8);
@@ -195,16 +177,25 @@
             groupBox1.Controls.Add(dtpFrom);
             groupBox1.Controls.Add(button3);
             groupBox1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBox1.Location = new Point(20, 90);
+            groupBox1.Location = new Point(20, 54);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(447, 202);
+            groupBox1.Size = new Size(515, 231);
             groupBox1.TabIndex = 8;
             groupBox1.TabStop = false;
             groupBox1.Text = "Rezervacije";
             // 
+            // label10
+            // 
+            label10.AutoSize = true;
+            label10.Location = new Point(15, 32);
+            label10.Name = "label10";
+            label10.Size = new Size(90, 21);
+            label10.TabIndex = 12;
+            label10.Text = "Nekretnina";
+            // 
             // btnRezervacijeIzvjestaj
             // 
-            btnRezervacijeIzvjestaj.Location = new Point(342, 88);
+            btnRezervacijeIzvjestaj.Location = new Point(410, 56);
             btnRezervacijeIzvjestaj.Name = "btnRezervacijeIzvjestaj";
             btnRezervacijeIzvjestaj.Size = new Size(99, 40);
             btnRezervacijeIzvjestaj.TabIndex = 11;
@@ -215,7 +206,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(19, 143);
+            label9.Location = new Point(16, 149);
             label9.Name = "label9";
             label9.Size = new Size(31, 21);
             label9.TabIndex = 10;
@@ -224,7 +215,7 @@
             // label8
             // 
             label8.AutoSize = true;
-            label8.Location = new Point(19, 68);
+            label8.Location = new Point(15, 93);
             label8.Name = "label8";
             label8.Size = new Size(32, 21);
             label8.TabIndex = 9;
@@ -233,26 +224,16 @@
             // cbListaNekretnina
             // 
             cbListaNekretnina.FormattingEnabled = true;
-            cbListaNekretnina.Location = new Point(18, 22);
+            cbListaNekretnina.Location = new Point(16, 56);
             cbListaNekretnina.Name = "cbListaNekretnina";
             cbListaNekretnina.Size = new Size(318, 29);
             cbListaNekretnina.TabIndex = 8;
             // 
-            // btnMjesecniPrihodiUkupnoPDF
-            // 
-            btnMjesecniPrihodiUkupnoPDF.Location = new Point(311, 53);
-            btnMjesecniPrihodiUkupnoPDF.Name = "btnMjesecniPrihodiUkupnoPDF";
-            btnMjesecniPrihodiUkupnoPDF.Size = new Size(75, 23);
-            btnMjesecniPrihodiUkupnoPDF.TabIndex = 9;
-            btnMjesecniPrihodiUkupnoPDF.Text = "PDF";
-            btnMjesecniPrihodiUkupnoPDF.UseVisualStyleBackColor = true;
-            btnMjesecniPrihodiUkupnoPDF.Click += btnMjesecniPrihodiUkupnoPDF_Click;
-            // 
             // btnListaNekretninaPDF
             // 
-            btnListaNekretninaPDF.Location = new Point(302, 298);
+            btnListaNekretninaPDF.Location = new Point(410, 33);
             btnListaNekretninaPDF.Name = "btnListaNekretninaPDF";
-            btnListaNekretninaPDF.Size = new Size(141, 41);
+            btnListaNekretninaPDF.Size = new Size(99, 40);
             btnListaNekretninaPDF.TabIndex = 10;
             btnListaNekretninaPDF.Text = "PDF";
             btnListaNekretninaPDF.UseVisualStyleBackColor = true;
@@ -264,21 +245,29 @@
             btnNazad.Name = "btnNazad";
             btnNazad.Size = new Size(75, 23);
             btnNazad.TabIndex = 34;
-            btnNazad.Text = "<- Nazad";
+            btnNazad.Text = "Nazad";
             btnNazad.UseVisualStyleBackColor = true;
             btnNazad.Click += btnNazad_Click;
             // 
+            // groupBox3
+            // 
+            groupBox3.Controls.Add(btnListaNekretninaPDF);
+            groupBox3.Controls.Add(button2);
+            groupBox3.Controls.Add(label7);
+            groupBox3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            groupBox3.Location = new Point(20, 291);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Size = new Size(515, 86);
+            groupBox3.TabIndex = 13;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Nekretnine";
+            // 
             // frmOpcijeIzvjestaja
             // 
-            ClientSize = new Size(508, 351);
+            ClientSize = new Size(556, 389);
             Controls.Add(btnNazad);
-            Controls.Add(btnListaNekretninaPDF);
-            Controls.Add(btnMjesecniPrihodiUkupnoPDF);
             Controls.Add(groupBox1);
-            Controls.Add(label7);
-            Controls.Add(button2);
-            Controls.Add(label6);
-            Controls.Add(btnMjesecniPrihodiUkupnoIzvjestaj);
+            Controls.Add(groupBox3);
             Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             Name = "frmOpcijeIzvjestaja";
             StartPosition = FormStartPosition.CenterScreen;
@@ -286,8 +275,9 @@
             Load += frmOpcijeIzvjestaja_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
+            groupBox3.ResumeLayout(false);
+            groupBox3.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -301,8 +291,6 @@
         private Button btnListaKorisnika;
         private Label label5;
         private Button btnPrihodiZaNekretninu;
-        private Button btnMjesecniPrihodiUkupnoIzvjestaj;
-        private Label label6;
         private Label label7;
         private Button button2;
         private Button button3;
@@ -313,8 +301,9 @@
         private Label label8;
         private Label label9;
         private Button btnRezervacijeIzvjestaj;
-        private Button btnMjesecniPrihodiUkupnoPDF;
         private Button btnListaNekretninaPDF;
         private Button btnNazad;
+        private Label label10;
+        private GroupBox groupBox3;
     }
 }

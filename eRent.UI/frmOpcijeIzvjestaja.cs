@@ -181,7 +181,7 @@ namespace eRent.UI
             // close the document
             doc.Close();
             showMessage();
-           // this.Close();
+            // this.Close();
         }
 
         private async void btnRezervacijeIzvjestaj_Click(object sender, EventArgs e)

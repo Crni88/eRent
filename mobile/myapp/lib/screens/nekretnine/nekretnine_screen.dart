@@ -22,7 +22,7 @@ class NekretnineListScreen extends StatefulWidget {
 
 class _NekretnineListScreenState extends State<NekretnineListScreen> {
   NekretnineProvider? _nekretnineProvider;
-  UserProvider? _userProvider = UserProvider();
+  final UserProvider _userProvider = UserProvider();
   final TextEditingController _brojSobaController = TextEditingController();
   final TextEditingController _nameFTSController = TextEditingController();
   final TextEditingController _cijenaMinController = TextEditingController();
@@ -262,10 +262,10 @@ class _NekretnineListScreenState extends State<NekretnineListScreen> {
   List<Widget> _buildNekretnineCardList() {
     if (data.isEmpty) {
       return [
-        Column(
+        const Column(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           crossAxisAlignment: CrossAxisAlignment.center,
-          children: const <Widget>[
+          children: <Widget>[
             CircularProgressIndicator(),
             Text("Loading..."),
           ],
@@ -354,8 +354,7 @@ class _NekretnineListScreenState extends State<NekretnineListScreen> {
 
   void startAlgorithm(List<Nekretnina> data) async {
     try {
-      var tempData =
-          await _nekretnineProvider?.getRecommend(data[0].nekretninaId!);
+      await _nekretnineProvider?.getRecommend(data[0].nekretninaId!);
     } catch (e) {
       if (kDebugMode) {
         print(e.toString());

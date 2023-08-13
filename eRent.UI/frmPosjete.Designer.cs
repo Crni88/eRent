@@ -46,11 +46,11 @@
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Columns.AddRange(new DataGridViewColumn[] { NazivNekretnine, korisnikImePrezime, DatumPosjete, VrijemePosjete });
-            dataGridView1.Location = new Point(16, 73);
+            dataGridView1.Location = new Point(16, 93);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.ReadOnly = true;
             dataGridView1.RowTemplate.Height = 25;
-            dataGridView1.Size = new Size(772, 365);
+            dataGridView1.Size = new Size(772, 345);
             dataGridView1.TabIndex = 0;
             // 
             // NazivNekretnine
@@ -85,7 +85,7 @@
             // 
             // btnUcitaj
             // 
-            btnUcitaj.Location = new Point(713, 44);
+            btnUcitaj.Location = new Point(713, 60);
             btnUcitaj.Name = "btnUcitaj";
             btnUcitaj.Size = new Size(75, 23);
             btnUcitaj.TabIndex = 1;
@@ -97,11 +97,12 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(12, 36);
+            label1.Location = new Point(12, 60);
             label1.Name = "label1";
-            label1.Size = new Size(83, 30);
+            label1.Size = new Size(90, 30);
             label1.TabIndex = 2;
-            label1.Text = "Posjete";
+            label1.Text = "Obilasci";
+            label1.Click += label1_Click;
             // 
             // lblNemaPosjeta
             // 
@@ -118,7 +119,7 @@
             btnNazad.Name = "btnNazad";
             btnNazad.Size = new Size(75, 23);
             btnNazad.TabIndex = 31;
-            btnNazad.Text = "<- Nazad";
+            btnNazad.Text = "Nazad";
             btnNazad.UseVisualStyleBackColor = true;
             btnNazad.Click += btnNazad_Click;
             // 
@@ -134,7 +135,7 @@
             Controls.Add(dataGridView1);
             Name = "frmPosjete";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "Posjete";
+            Text = "Obilasci";
             Load += frmPosjete_Load;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ResumeLayout(false);

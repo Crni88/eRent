@@ -20,7 +20,6 @@ import '../../components/single_nekretnina_row.dart';
 import '../../components/spacer.dart';
 import '../../components/top_bar.dart';
 import '../../providers/nekretnine_provider.dart';
-import '../messages/poruke.dart';
 import '../nekretnine/nekretnine_screen.dart';
 import 'korisnik_tagovi.dart';
 
@@ -316,7 +315,6 @@ Widget _buildSingleNekretnina(
           children: [
             MyTitle(nekretnina.nazivNekretnine!),
             const MySpacer(),
-            //TODO Add Tip Nekretnine
             const SingleNekretinaRow("Tip nekretnine", "Stan", true),
             SingleNekretinaRow(
                 "Broj kvadrata", "${nekretnina.brojkvadrata}", false),

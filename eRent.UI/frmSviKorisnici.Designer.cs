@@ -158,7 +158,7 @@
             btnNazad.Name = "btnNazad";
             btnNazad.Size = new Size(81, 24);
             btnNazad.TabIndex = 32;
-            btnNazad.Text = "<- Nazad";
+            btnNazad.Text = "Nazad";
             btnNazad.UseVisualStyleBackColor = true;
             btnNazad.Click += btnNazad_Click;
             // 

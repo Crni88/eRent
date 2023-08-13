@@ -136,27 +136,28 @@ namespace eRent.UI
             }
         }
 
-        private void btnIzvjestaj_Click(object sender, EventArgs e)
-        {
-            closeThisFormAndOpenNext(11);
-        }
-
-        private void btnRejting_Click(object sender, EventArgs e)
-        {
-            closeThisFormAndOpenNext(10);
-        }
-
-        private void btnDodajKorisnika_Click(object sender, EventArgs e)
-        {
-            closeThisFormAndOpenNext(8);
-        }
 
         private async void frmNekretninaList_Load(object sender, EventArgs e)
         {
             await loadData();
         }
 
-        private void btnSveRezervacije_Click(object sender, EventArgs e)
+        private void btnIzvjestaj_Click_1(object sender, EventArgs e)
+        {
+            closeThisFormAndOpenNext(11);
+        }
+
+        private void btnRejting_Click_1(object sender, EventArgs e)
+        {
+            closeThisFormAndOpenNext(10);
+        }
+
+        private void btnDodajKorisnika_Click_1(object sender, EventArgs e)
+        {
+            closeThisFormAndOpenNext(8);
+        }
+
+        private void btnSveRezervacije_Click_1(object sender, EventArgs e)
         {
             closeThisFormAndOpenNext(9);
         }

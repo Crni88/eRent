@@ -84,7 +84,7 @@
             label2.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label2.Location = new Point(302, 27);
             label2.Name = "label2";
-            label2.Size = new Size(98, 20);
+            label2.Size = new Size(77, 15);
             label2.TabIndex = 4;
             label2.Text = "Unesi Naziv*";
             // 
@@ -92,15 +92,15 @@
             // 
             txtNaziv.Location = new Point(302, 45);
             txtNaziv.Name = "txtNaziv";
-            txtNaziv.Size = new Size(207, 27);
+            txtNaziv.Size = new Size(207, 23);
             txtNaziv.TabIndex = 5;
             txtNaziv.Validating += txtNaziv_Validating;
             // 
             // txtCijena
             // 
-            txtCijena.Location = new Point(592, 45);
+            txtCijena.Location = new Point(564, 45);
             txtCijena.Name = "txtCijena";
-            txtCijena.Size = new Size(196, 27);
+            txtCijena.Size = new Size(242, 23);
             txtCijena.TabIndex = 6;
             txtCijena.Validating += txtCijena_Validating;
             // 
@@ -110,7 +110,7 @@
             label3.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label3.Location = new Point(302, 90);
             label3.Name = "label3";
-            label3.Size = new Size(50, 20);
+            label3.Size = new Size(39, 15);
             label3.TabIndex = 7;
             label3.Text = "Grad*";
             // 
@@ -118,7 +118,7 @@
             // 
             txtGrad.Location = new Point(302, 108);
             txtGrad.Name = "txtGrad";
-            txtGrad.Size = new Size(207, 27);
+            txtGrad.Size = new Size(207, 23);
             txtGrad.TabIndex = 8;
             txtGrad.Validating += txtGrad_Validating;
             // 
@@ -126,7 +126,7 @@
             // 
             txtBrojKvadrata.Location = new Point(302, 166);
             txtBrojKvadrata.Name = "txtBrojKvadrata";
-            txtBrojKvadrata.Size = new Size(207, 27);
+            txtBrojKvadrata.Size = new Size(207, 23);
             txtBrojKvadrata.TabIndex = 9;
             txtBrojKvadrata.Validating += txtBrojKvadrata_Validating;
             // 
@@ -136,7 +136,7 @@
             label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label4.Location = new Point(302, 148);
             label4.Name = "label4";
-            label4.Size = new Size(110, 20);
+            label4.Size = new Size(87, 15);
             label4.TabIndex = 10;
             label4.Text = "Broj kvadrata*";
             // 
@@ -144,7 +144,7 @@
             // 
             txtBrojSoba.Location = new Point(302, 237);
             txtBrojSoba.Name = "txtBrojSoba";
-            txtBrojSoba.Size = new Size(207, 27);
+            txtBrojSoba.Size = new Size(207, 23);
             txtBrojSoba.TabIndex = 11;
             txtBrojSoba.Validating += txtBrojSoba_Validating;
             // 
@@ -154,7 +154,7 @@
             label5.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label5.Location = new Point(302, 219);
             label5.Name = "label5";
-            label5.Size = new Size(82, 20);
+            label5.Size = new Size(63, 15);
             label5.TabIndex = 12;
             label5.Text = "Broj soba*";
             // 
@@ -162,15 +162,15 @@
             // 
             Cijena.AutoSize = true;
             Cijena.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            Cijena.Location = new Point(592, 27);
+            Cijena.Location = new Point(564, 27);
             Cijena.Name = "Cijena";
-            Cijena.Size = new Size(99, 20);
+            Cijena.Size = new Size(45, 15);
             Cijena.TabIndex = 13;
-            Cijena.Text = "Cijena rente*";
+            Cijena.Text = "Cijena*";
             // 
             // txtOpis
             // 
-            txtOpis.Location = new Point(546, 237);
+            txtOpis.Location = new Point(564, 237);
             txtOpis.Name = "txtOpis";
             txtOpis.Size = new Size(242, 132);
             txtOpis.TabIndex = 14;
@@ -180,18 +180,19 @@
             // 
             label6.AutoSize = true;
             label6.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label6.Location = new Point(546, 219);
+            label6.Location = new Point(564, 219);
             label6.Name = "label6";
-            label6.Size = new Size(100, 20);
+            label6.Size = new Size(78, 15);
             label6.TabIndex = 15;
             label6.Text = "Detaljan opis";
             // 
             // cbPetFriendly
             // 
             cbPetFriendly.AutoSize = true;
-            cbPetFriendly.Location = new Point(592, 110);
+            cbPetFriendly.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            cbPetFriendly.Location = new Point(564, 100);
             cbPetFriendly.Name = "cbPetFriendly";
-            cbPetFriendly.Size = new Size(114, 24);
+            cbPetFriendly.Size = new Size(88, 19);
             cbPetFriendly.TabIndex = 16;
             cbPetFriendly.Text = "Pet Friendly";
             cbPetFriendly.UseVisualStyleBackColor = true;
@@ -199,9 +200,10 @@
             // cbNamjestena
             // 
             cbNamjestena.AutoSize = true;
+            cbNamjestena.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             cbNamjestena.Location = new Point(302, 277);
             cbNamjestena.Name = "cbNamjestena";
-            cbNamjestena.Size = new Size(115, 24);
+            cbNamjestena.Size = new Size(89, 19);
             cbNamjestena.TabIndex = 17;
             cbNamjestena.Text = "Namještena";
             cbNamjestena.UseVisualStyleBackColor = true;
@@ -209,9 +211,10 @@
             // cbMiran
             // 
             cbMiran.AutoSize = true;
-            cbMiran.Location = new Point(700, 110);
+            cbMiran.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            cbMiran.Location = new Point(700, 100);
             cbMiran.Name = "cbMiran";
-            cbMiran.Size = new Size(72, 24);
+            cbMiran.Size = new Size(57, 19);
             cbMiran.TabIndex = 18;
             cbMiran.Text = "Miran";
             cbMiran.UseVisualStyleBackColor = true;
@@ -219,16 +222,17 @@
             // cbNoSmoking
             // 
             cbNoSmoking.AutoSize = true;
-            cbNoSmoking.Location = new Point(700, 153);
+            cbNoSmoking.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            cbNoSmoking.Location = new Point(697, 134);
             cbNoSmoking.Name = "cbNoSmoking";
-            cbNoSmoking.Size = new Size(116, 24);
+            cbNoSmoking.Size = new Size(91, 19);
             cbNoSmoking.TabIndex = 19;
             cbNoSmoking.Text = "No smoking";
             cbNoSmoking.UseVisualStyleBackColor = true;
             // 
             // btnSpasi
             // 
-            btnSpasi.Location = new Point(713, 375);
+            btnSpasi.Location = new Point(731, 411);
             btnSpasi.Name = "btnSpasi";
             btnSpasi.Size = new Size(75, 37);
             btnSpasi.TabIndex = 21;
@@ -239,9 +243,10 @@
             // cbPopunjena
             // 
             cbPopunjena.AutoSize = true;
+            cbPopunjena.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             cbPopunjena.Location = new Point(302, 301);
             cbPopunjena.Name = "cbPopunjena";
-            cbPopunjena.Size = new Size(105, 24);
+            cbPopunjena.Size = new Size(83, 19);
             cbPopunjena.TabIndex = 22;
             cbPopunjena.Text = "Popunjena";
             cbPopunjena.UseVisualStyleBackColor = true;
@@ -249,9 +254,10 @@
             // cbIzdvojena
             // 
             cbIzdvojena.AutoSize = true;
+            cbIzdvojena.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             cbIzdvojena.Location = new Point(302, 325);
             cbIzdvojena.Name = "cbIzdvojena";
-            cbIzdvojena.Size = new Size(98, 24);
+            cbIzdvojena.Size = new Size(76, 19);
             cbIzdvojena.TabIndex = 23;
             cbIzdvojena.Text = "Izdvojena";
             cbIzdvojena.UseVisualStyleBackColor = true;
@@ -259,9 +265,10 @@
             // cbOsvjetljen
             // 
             cbOsvjetljen.AutoSize = true;
-            cbOsvjetljen.Location = new Point(592, 153);
+            cbOsvjetljen.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            cbOsvjetljen.Location = new Point(564, 134);
             cbOsvjetljen.Name = "cbOsvjetljen";
-            cbOsvjetljen.Size = new Size(100, 24);
+            cbOsvjetljen.Size = new Size(78, 19);
             cbOsvjetljen.TabIndex = 24;
             cbOsvjetljen.Text = "Osvjetljen";
             cbOsvjetljen.UseVisualStyleBackColor = true;
@@ -277,29 +284,31 @@
             // cbTihoNaselje
             // 
             cbTihoNaselje.AutoSize = true;
-            cbTihoNaselje.Location = new Point(592, 178);
+            cbTihoNaselje.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
+            cbTihoNaselje.Location = new Point(564, 168);
             cbTihoNaselje.Name = "cbTihoNaselje";
-            cbTihoNaselje.Size = new Size(117, 24);
+            cbTihoNaselje.Size = new Size(90, 19);
             cbTihoNaselje.TabIndex = 25;
             cbTihoNaselje.Text = "Tiho Naselje";
             cbTihoNaselje.UseVisualStyleBackColor = true;
             // 
             // button1
             // 
+            button1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             button1.Location = new Point(12, 12);
             button1.Name = "button1";
             button1.Size = new Size(126, 35);
             button1.TabIndex = 28;
-            button1.Text = "<- Nazad";
+            button1.Text = "Nazad";
             button1.UseVisualStyleBackColor = true;
             button1.Click += button1_Click;
             // 
             // frmAddNekretninu
             // 
-            AutoScaleDimensions = new SizeF(9F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             AutoValidate = AutoValidate.Disable;
-            ClientSize = new Size(802, 424);
+            ClientSize = new Size(818, 460);
             Controls.Add(button1);
             Controls.Add(cbTihoNaselje);
             Controls.Add(cbOsvjetljen);

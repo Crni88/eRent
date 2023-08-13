@@ -15,6 +15,7 @@ namespace eRent.UI
         public KorisnikModel Korisnik { get; }
 
         string _username { get; set; }
+        bool isPasswordVisible = false;
 
         public frmAddNovogKorisnika(string _username, KorisnikModel korisnik = null)
         {
@@ -243,7 +244,12 @@ namespace eRent.UI
 
         private void btnNazad_Click(object sender, EventArgs e)
         {
-          closeForm();
+            closeForm();
+        }
+
+        private void pbSeePassword_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

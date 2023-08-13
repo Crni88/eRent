@@ -29,11 +29,6 @@
         private void InitializeComponent()
         {
             dgvSveRezervacije = new DataGridView();
-            btnUcitaj = new Button();
-            cbStatus = new ComboBox();
-            label1 = new Label();
-            label2 = new Label();
-            btnNazad = new Button();
             ImePrezime = new DataGridViewTextBoxColumn();
             brojTelefona = new DataGridViewTextBoxColumn();
             Nazivnekretnine = new DataGridViewTextBoxColumn();
@@ -42,6 +37,11 @@
             Odobrena = new DataGridViewCheckBoxColumn();
             Odobri = new DataGridViewButtonColumn();
             Odbij = new DataGridViewButtonColumn();
+            btnUcitaj = new Button();
+            cbStatus = new ComboBox();
+            label1 = new Label();
+            label2 = new Label();
+            btnNazad = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvSveRezervacije).BeginInit();
             SuspendLayout();
             // 
@@ -59,54 +59,6 @@
             dgvSveRezervacije.Size = new Size(1108, 441);
             dgvSveRezervacije.TabIndex = 0;
             dgvSveRezervacije.CellContentClick += dgvSveRezervacije_CellContentClick;
-            // 
-            // btnUcitaj
-            // 
-            btnUcitaj.Location = new Point(1045, 44);
-            btnUcitaj.Name = "btnUcitaj";
-            btnUcitaj.Size = new Size(75, 23);
-            btnUcitaj.TabIndex = 1;
-            btnUcitaj.Text = "Ucitaj";
-            btnUcitaj.UseVisualStyleBackColor = true;
-            btnUcitaj.Click += btnUcitaj_Click;
-            // 
-            // cbStatus
-            // 
-            cbStatus.FormattingEnabled = true;
-            cbStatus.Location = new Point(797, 44);
-            cbStatus.Name = "cbStatus";
-            cbStatus.Size = new Size(121, 23);
-            cbStatus.TabIndex = 2;
-            cbStatus.SelectedIndexChanged += cbStatus_SelectedIndexChanged;
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(12, 35);
-            label1.Name = "label1";
-            label1.Size = new Size(184, 32);
-            label1.TabIndex = 3;
-            label1.Text = "Sve rezervacije";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(752, 48);
-            label2.Name = "label2";
-            label2.Size = new Size(39, 15);
-            label2.TabIndex = 4;
-            label2.Text = "Status";
-            // 
-            // btnNazad
-            // 
-            btnNazad.Location = new Point(12, 12);
-            btnNazad.Name = "btnNazad";
-            btnNazad.Size = new Size(75, 23);
-            btnNazad.TabIndex = 32;
-            btnNazad.Text = "<- Nazad";
-            btnNazad.UseVisualStyleBackColor = true;
-            btnNazad.Click += btnNazad_Click;
             // 
             // ImePrezime
             // 
@@ -172,6 +124,54 @@
             Odbij.ReadOnly = true;
             Odbij.Text = "Odbij";
             Odbij.UseColumnTextForButtonValue = true;
+            // 
+            // btnUcitaj
+            // 
+            btnUcitaj.Location = new Point(1045, 44);
+            btnUcitaj.Name = "btnUcitaj";
+            btnUcitaj.Size = new Size(75, 23);
+            btnUcitaj.TabIndex = 1;
+            btnUcitaj.Text = "Ucitaj";
+            btnUcitaj.UseVisualStyleBackColor = true;
+            btnUcitaj.Click += btnUcitaj_Click;
+            // 
+            // cbStatus
+            // 
+            cbStatus.FormattingEnabled = true;
+            cbStatus.Location = new Point(797, 44);
+            cbStatus.Name = "cbStatus";
+            cbStatus.Size = new Size(121, 23);
+            cbStatus.TabIndex = 2;
+            cbStatus.SelectedIndexChanged += cbStatus_SelectedIndexChanged;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 18F, FontStyle.Bold, GraphicsUnit.Point);
+            label1.Location = new Point(12, 35);
+            label1.Name = "label1";
+            label1.Size = new Size(184, 32);
+            label1.TabIndex = 3;
+            label1.Text = "Sve rezervacije";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(752, 48);
+            label2.Name = "label2";
+            label2.Size = new Size(39, 15);
+            label2.TabIndex = 4;
+            label2.Text = "Status";
+            // 
+            // btnNazad
+            // 
+            btnNazad.Location = new Point(12, 12);
+            btnNazad.Name = "btnNazad";
+            btnNazad.Size = new Size(75, 23);
+            btnNazad.TabIndex = 32;
+            btnNazad.Text = "Nazad";
+            btnNazad.UseVisualStyleBackColor = true;
+            btnNazad.Click += btnNazad_Click;
             // 
             // frmSveRezervacije
             // 
