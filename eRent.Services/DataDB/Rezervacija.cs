@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-
-namespace eRent.Services.DataDB;
+﻿namespace eRent.Services.DataDB;
 
 public partial class Rezervacija
 {

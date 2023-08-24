@@ -7,7 +7,7 @@ class StarRating extends StatefulWidget {
   final double size;
   final Function(double) onRatingUpdate;
 
-  StarRating({
+  const StarRating({super.key, 
     this.starCount = 5,
     this.rating = 0.0,
     required this.color,

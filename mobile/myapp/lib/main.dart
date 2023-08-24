@@ -69,11 +69,11 @@ Future<void> main() async {
   //   runApp(MyApp());
   // }
 
-  final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+  final FirebaseMessaging firebaseMessaging = FirebaseMessaging.instance;
   // Request permission to receive notifications (required on iOS)
-  await _firebaseMessaging.requestPermission();
+  await firebaseMessaging.requestPermission();
   // Get the token for this device
-  String? token = await _firebaseMessaging.getToken();
+  String? token = await firebaseMessaging.getToken();
   print('FCM Device Token: $token');
   SharedPreferences prefs = await SharedPreferences.getInstance();
   await prefs.setString('fcmToken', token!);

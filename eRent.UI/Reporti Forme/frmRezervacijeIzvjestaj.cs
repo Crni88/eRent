@@ -30,6 +30,9 @@ namespace eRent.UI.Reporti_Forme
                 string formatteddatumKraja = datumKraja.ToString("dd-MM-yyyy");
                 red.DatumKraja = formatteddatumKraja;
                 red.MjesecnaRezervacija = rezervacija.MjesecnaRezervacija ? "Da" : "Ne";
+                red.Cijena = rezervacija.Nekretnina.Cijena.ToString() + " KM";
+                TimeSpan duration = datumKraja - datumPocetka;
+                red.OstvareniIznos = (duration.Days * rezervacija.Nekretnina.Cijena).ToString() + " KM";
                 tblRezervacije.Rows.Add(red);
             }
             ReportDataSource rds = new ReportDataSource();
@@ -39,11 +42,7 @@ namespace eRent.UI.Reporti_Forme
             reportViewer1.LocalReport.DataSources.Add(rds);
             reportViewer1.ProcessingMode = Microsoft.Reporting.WinForms.ProcessingMode.Local;
             reportViewer1.LocalReport.ReportEmbeddedResource = "eRent.UI.reporti.Report2.rdlc";
-
-            // Refresh the report viewer control
             reportViewer1.RefreshReport();
-            //    reportViewer1.LocalReport.ReportEmbeddedResource = "eRent.UI.reporti.Report2.rdlc";
-            //reportViewer1.RefreshReport();
         }
     }
 }

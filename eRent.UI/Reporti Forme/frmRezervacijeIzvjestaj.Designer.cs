@@ -36,14 +36,14 @@
             reportViewer1.Location = new Point(0, 0);
             reportViewer1.Name = "ReportViewer";
             reportViewer1.ServerReport.BearerToken = null;
-            reportViewer1.Size = new Size(779, 541);
+            reportViewer1.Size = new Size(1179, 723);
             reportViewer1.TabIndex = 0;
             // 
             // frmRezervacijeIzvjestaj
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(779, 541);
+            ClientSize = new Size(1179, 723);
             Controls.Add(reportViewer1);
             Name = "frmRezervacijeIzvjestaj";
             StartPosition = FormStartPosition.CenterScreen;

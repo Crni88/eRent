@@ -297,7 +297,7 @@
             button1.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point);
             button1.Location = new Point(12, 12);
             button1.Name = "button1";
-            button1.Size = new Size(126, 35);
+            button1.Size = new Size(90, 30);
             button1.TabIndex = 28;
             button1.Text = "Nazad";
             button1.UseVisualStyleBackColor = true;

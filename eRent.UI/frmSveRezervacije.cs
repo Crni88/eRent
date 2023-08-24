@@ -1,12 +1,14 @@
 ﻿using eRent.Models;
 using eRent.Models.Requests;
 using eRent.Models.Requests.NekretninaKorisnik;
+using eRent.Models.Requests.Payment;
 using eRent.Models.Requests.Rezervacija;
 using eRent.Models.Search_Objects;
 using eRent.UI.Helpers;
 using iText.Kernel.Pdf;
 using iText.Layout;
 using iText.Layout.Element;
+using Newtonsoft.Json;
 
 namespace eRent.UI
 {
@@ -15,6 +17,11 @@ namespace eRent.UI
         APIService rezervacijeAPIService { get; set; } = new APIService("Rezervacija");
         public APIService NekretninaKorisnikService { get; set; } = new APIService("NekretninaKorisnik");
         APIService ugovorAPIService { get; set; } = new APIService("Ugovor");
+
+        private APIService korisnikAPIService { get; set; } = new APIService("Korisnici");
+
+        APIService paymentService { get; set; } = new APIService("PaymentRequest");
+
         string _username;
         public frmSveRezervacije(string _username)
         {
@@ -47,6 +54,79 @@ namespace eRent.UI
             }
             var list = await rezervacijeAPIService.Get<List<RezervacijaModel>>(rezervacijaSearchObject);
             dgvSveRezervacije.DataSource = list;
+        }
+
+
+        private async Task savePaymentRequestToDatabase(RezervacijaModel rezervacijaModel)
+        {
+
+            PaymentUpsertRequest paymentUpsertRequest = new PaymentUpsertRequest();
+            paymentUpsertRequest.NekretninaPayment = rezervacijaModel.NekretninaId;
+            paymentUpsertRequest.Komentar = "Rezervacija od " + rezervacijaModel.DatumPocetka.Value.Date + " do " + rezervacijaModel.DatumKraja.Value.Date;
+            TimeSpan duration = (TimeSpan)(rezervacijaModel.DatumKraja - rezervacijaModel.DatumPocetka);
+            paymentUpsertRequest.Iznos = duration.Days * rezervacijaModel.Nekretnina.Cijena;
+            paymentUpsertRequest.Mjesecno = rezervacijaModel.MjesecnaRezervacija;
+            paymentUpsertRequest.Naslov = "Rezervacija za " + rezervacijaModel.Nekretnina.NazivNekretnine;
+            paymentUpsertRequest.IsProcessed = false;
+            paymentUpsertRequest.KorisnikPaymentId = 2;
+            try
+            {
+                var postPaymentRequest = await paymentService.Post<PaymentUpsertRequest>(paymentUpsertRequest);
+                await posaljiNotifikacijuAsync(paymentUpsertRequest.Naslov, paymentUpsertRequest.Komentar, rezervacijaModel.KorisnikId);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private async Task posaljiNotifikacijuAsync(string komentar = "", string naslov = "", int? korisnikId = null)
+        {
+            KorisnikModel korisnik = await getKorisnik(korisnikId);
+            try
+            {
+                string fcmServerKey = "AAAAbOMTstM:APA91bFkF0lQHgpECturTYijOzuGRsduCjtvIGnCRH1AiSDuorCxNAuUmvdxhyJJ-MAXyatpfpsZrX8XQykh0ql_3i2-p9vVObo4gbdibGmsC9ah8qS2v9KQbaCQ0fdE1YlY4An9iV72";
+                string fcmEndpoint = "https://fcm.googleapis.com/fcm/send";
+
+                var httpClient = new HttpClient();
+                var fcmNotification = new FCMNotification
+                {
+                    to = korisnik.FcmDeviceToken,
+                    notification = new notification
+                    {
+                        title = naslov,
+                        body = komentar
+                    }
+                };
+
+                var json = JsonConvert.SerializeObject(fcmNotification);
+                var request = new HttpRequestMessage(HttpMethod.Post, fcmEndpoint);
+                request.Headers.TryAddWithoutValidation("Authorization", $"key={fcmServerKey}");
+                request.Content = new StringContent(json, System.Text.Encoding.UTF8, "application/json");
+
+                var response = await httpClient.SendAsync(request);
+                var responseContent = await response.Content.ReadAsStringAsync();
+
+                Console.WriteLine($"FCM Notification Response: {response.StatusCode} - {responseContent}");
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+
+        private async Task<KorisnikModel> getKorisnik(int? korisnikId = 2)
+        {
+            try
+            {
+                KorisnikModel korisnikModel = await korisnikAPIService.GetById<KorisnikModel>(korisnikId);
+                return korisnikModel;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return null;
         }
 
         private async Task odobriRezervaiju()
@@ -102,9 +182,7 @@ namespace eRent.UI
                         rezervacijaUpdateRequest.Otkazana = false;
                         rezervacijaUpdateRequest.Odbijena = false;
                         var list = await rezervacijeAPIService.Put<RezervacijaUpdateRequest>(taskModel.RezervacijaId, rezervacijaUpdateRequest);
-
                         string[] parts = taskModel.ImePrezime.Split(' ');
-
                         NekretninaKorisnikModel nekretninaKorisnikModel = new NekretninaKorisnikModel();
                         nekretninaKorisnikModel.Nekretnina = taskModel.NekretninaId;
                         nekretninaKorisnikModel.ImeKorisnika = parts[0];
@@ -117,9 +195,10 @@ namespace eRent.UI
                         var postNekretnina = await NekretninaKorisnikService.Post<NekretninaKorisnikInsertRequest>(nekretninaKorisnikModel);
                         generisiUgovor(taskModel);
                         await createUgovor(taskModel);
-                        AutoClosingMessageBox.Show("Rezervacija odobrena", "Rezervacija uspjesno odobrena.", 3000);
+                        AutoClosingMessageBox.Show("Rezervacija uspjesno odobrena.", "Rezervacija odobrena", 3000);
                         //await loadData();
                         await odobriRezervaiju();
+                        await savePaymentRequestToDatabase(taskModel);
                     }
                 }
                 catch (Exception ex)

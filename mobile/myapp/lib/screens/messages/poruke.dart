@@ -5,7 +5,7 @@ import 'message.dart';
 
 class chatpage extends StatefulWidget {
   String email;
-  chatpage({required this.email});
+  chatpage({super.key, required this.email});
   @override
   _chatpageState createState() => _chatpageState(email: email);
 }
@@ -16,7 +16,7 @@ class _chatpageState extends State<chatpage> {
 
   final fs = FirebaseFirestore.instance;
   final _auth = FirebaseAuth.instance;
-  final TextEditingController message = new TextEditingController();
+  final TextEditingController message = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +53,9 @@ class _chatpageState extends State<chatpage> {
                         borderRadius: BorderRadius.circular(10),
                       ),
                     ),
-                    validator: (value) {},
+                    validator: (value) {
+                      return null;
+                    },
                     onSaved: (value) {
                       message.text = value!;
                     },
@@ -71,7 +73,7 @@ class _chatpageState extends State<chatpage> {
                       message.clear();
                     }
                   },
-                  icon: Icon(Icons.send_sharp),
+                  icon: const Icon(Icons.send_sharp),
                 ),
               ],
             ),

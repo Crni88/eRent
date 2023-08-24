@@ -650,6 +650,10 @@ namespace eRent.UI {
             
             private global::System.Data.DataColumn columnMjesecnaRezervacija;
             
+            private global::System.Data.DataColumn columnOstvareniIznos;
+            
+            private global::System.Data.DataColumn columnCijena;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public BrojRezervacijaDataTable() {
@@ -733,6 +737,22 @@ namespace eRent.UI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn OstvareniIznosColumn {
+                get {
+                    return this.columnOstvareniIznos;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public global::System.Data.DataColumn CijenaColumn {
+                get {
+                    return this.columnCijena;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -768,7 +788,7 @@ namespace eRent.UI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
-            public BrojRezervacijaRow AddBrojRezervacijaRow(string Imeiprezime, string Brojtelefona, string NazivNekretnine, string DatumPocetka, string DatumKraja, string MjesecnaRezervacija) {
+            public BrojRezervacijaRow AddBrojRezervacijaRow(string Imeiprezime, string Brojtelefona, string NazivNekretnine, string DatumPocetka, string DatumKraja, string MjesecnaRezervacija, string OstvareniIznos, string Cijena) {
                 BrojRezervacijaRow rowBrojRezervacijaRow = ((BrojRezervacijaRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         Imeiprezime,
@@ -776,7 +796,9 @@ namespace eRent.UI {
                         NazivNekretnine,
                         DatumPocetka,
                         DatumKraja,
-                        MjesecnaRezervacija};
+                        MjesecnaRezervacija,
+                        OstvareniIznos,
+                        Cijena};
                 rowBrojRezervacijaRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowBrojRezervacijaRow);
                 return rowBrojRezervacijaRow;
@@ -805,6 +827,8 @@ namespace eRent.UI {
                 this.columnDatumPocetka = base.Columns["DatumPocetka"];
                 this.columnDatumKraja = base.Columns["DatumKraja"];
                 this.columnMjesecnaRezervacija = base.Columns["MjesecnaRezervacija"];
+                this.columnOstvareniIznos = base.Columns["OstvareniIznos"];
+                this.columnCijena = base.Columns["Cijena"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -822,6 +846,10 @@ namespace eRent.UI {
                 base.Columns.Add(this.columnDatumKraja);
                 this.columnMjesecnaRezervacija = new global::System.Data.DataColumn("MjesecnaRezervacija", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnMjesecnaRezervacija);
+                this.columnOstvareniIznos = new global::System.Data.DataColumn("OstvareniIznos", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnOstvareniIznos);
+                this.columnCijena = new global::System.Data.DataColumn("Cijena", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnCijena);
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1504,6 +1532,38 @@ namespace eRent.UI {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string OstvareniIznos {
+                get {
+                    try {
+                        return ((string)(this[this.tableBrojRezervacija.OstvareniIznosColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'OstvareniIznos\' in table \'BrojRezervacija\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBrojRezervacija.OstvareniIznosColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public string Cijena {
+                get {
+                    try {
+                        return ((string)(this[this.tableBrojRezervacija.CijenaColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("The value for column \'Cijena\' in table \'BrojRezervacija\' is DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableBrojRezervacija.CijenaColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public bool IsImeiprezimeNull() {
                 return this.IsNull(this.tableBrojRezervacija.ImeiprezimeColumn);
             }
@@ -1572,6 +1632,30 @@ namespace eRent.UI {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
             public void SetMjesecnaRezervacijaNull() {
                 this[this.tableBrojRezervacija.MjesecnaRezervacijaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsOstvareniIznosNull() {
+                return this.IsNull(this.tableBrojRezervacija.OstvareniIznosColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetOstvareniIznosNull() {
+                this[this.tableBrojRezervacija.OstvareniIznosColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public bool IsCijenaNull() {
+                return this.IsNull(this.tableBrojRezervacija.CijenaColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "17.0.0.0")]
+            public void SetCijenaNull() {
+                this[this.tableBrojRezervacija.CijenaColumn] = global::System.Convert.DBNull;
             }
         }
         

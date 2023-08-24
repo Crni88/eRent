@@ -32,7 +32,7 @@ class SingleNekretninaScreen extends StatefulWidget {
 
   @override
   State<SingleNekretninaScreen> createState() =>
-      _SingleNekretninaScreenState(this.arguments);
+      _SingleNekretninaScreenState(arguments);
 }
 
 class _SingleNekretninaScreenState extends State<SingleNekretninaScreen> {
@@ -474,10 +474,10 @@ Widget _buildRecenzijaBlock(
 List<Widget> _buildNekretnineCardList(data, context) {
   if (data.isEmpty) {
     return [
-      Column(
+      const Column(
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         crossAxisAlignment: CrossAxisAlignment.center,
-        children: const <Widget>[
+        children: <Widget>[
           CircularProgressIndicator(),
           Text("Loading..."),
         ],

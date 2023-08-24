@@ -125,7 +125,7 @@
             // 
             label7.AutoSize = true;
             label7.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            label7.Location = new Point(6, 42);
+            label7.Location = new Point(6, 52);
             label7.Name = "label7";
             label7.Size = new Size(124, 21);
             label7.TabIndex = 3;
@@ -133,10 +133,10 @@
             // 
             // button2
             // 
-            button2.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            button2.Location = new Point(329, 32);
+            button2.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
+            button2.Location = new Point(463, 42);
             button2.Name = "button2";
-            button2.Size = new Size(75, 41);
+            button2.Size = new Size(99, 41);
             button2.TabIndex = 2;
             button2.Text = "Izvjestaj";
             button2.UseVisualStyleBackColor = true;
@@ -144,7 +144,7 @@
             // 
             // button3
             // 
-            button3.Location = new Point(410, 162);
+            button3.Location = new Point(463, 172);
             button3.Name = "button3";
             button3.Size = new Size(99, 40);
             button3.TabIndex = 4;
@@ -156,14 +156,14 @@
             // 
             dtpFrom.Location = new Point(16, 117);
             dtpFrom.Name = "dtpFrom";
-            dtpFrom.Size = new Size(320, 29);
+            dtpFrom.Size = new Size(388, 29);
             dtpFrom.TabIndex = 6;
             // 
             // dtpUntil
             // 
-            dtpUntil.Location = new Point(16, 173);
+            dtpUntil.Location = new Point(16, 200);
             dtpUntil.Name = "dtpUntil";
-            dtpUntil.Size = new Size(318, 29);
+            dtpUntil.Size = new Size(388, 29);
             dtpUntil.TabIndex = 7;
             // 
             // groupBox1
@@ -179,7 +179,7 @@
             groupBox1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             groupBox1.Location = new Point(20, 54);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(515, 231);
+            groupBox1.Size = new Size(568, 245);
             groupBox1.TabIndex = 8;
             groupBox1.TabStop = false;
             groupBox1.Text = "Rezervacije";
@@ -195,7 +195,7 @@
             // 
             // btnRezervacijeIzvjestaj
             // 
-            btnRezervacijeIzvjestaj.Location = new Point(410, 56);
+            btnRezervacijeIzvjestaj.Location = new Point(463, 56);
             btnRezervacijeIzvjestaj.Name = "btnRezervacijeIzvjestaj";
             btnRezervacijeIzvjestaj.Size = new Size(99, 40);
             btnRezervacijeIzvjestaj.TabIndex = 11;
@@ -206,7 +206,7 @@
             // label9
             // 
             label9.AutoSize = true;
-            label9.Location = new Point(16, 149);
+            label9.Location = new Point(16, 172);
             label9.Name = "label9";
             label9.Size = new Size(31, 21);
             label9.TabIndex = 10;
@@ -226,12 +226,12 @@
             cbListaNekretnina.FormattingEnabled = true;
             cbListaNekretnina.Location = new Point(16, 56);
             cbListaNekretnina.Name = "cbListaNekretnina";
-            cbListaNekretnina.Size = new Size(318, 29);
+            cbListaNekretnina.Size = new Size(388, 29);
             cbListaNekretnina.TabIndex = 8;
             // 
             // btnListaNekretninaPDF
             // 
-            btnListaNekretninaPDF.Location = new Point(410, 33);
+            btnListaNekretninaPDF.Location = new Point(358, 42);
             btnListaNekretninaPDF.Name = "btnListaNekretninaPDF";
             btnListaNekretninaPDF.Size = new Size(99, 40);
             btnListaNekretninaPDF.TabIndex = 10;
@@ -255,16 +255,16 @@
             groupBox3.Controls.Add(button2);
             groupBox3.Controls.Add(label7);
             groupBox3.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
-            groupBox3.Location = new Point(20, 291);
+            groupBox3.Location = new Point(20, 305);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(515, 86);
+            groupBox3.Size = new Size(568, 120);
             groupBox3.TabIndex = 13;
             groupBox3.TabStop = false;
             groupBox3.Text = "Nekretnine";
             // 
             // frmOpcijeIzvjestaja
             // 
-            ClientSize = new Size(556, 389);
+            ClientSize = new Size(600, 437);
             Controls.Add(btnNazad);
             Controls.Add(groupBox1);
             Controls.Add(groupBox3);

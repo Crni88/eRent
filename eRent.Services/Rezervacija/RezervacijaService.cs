@@ -36,7 +36,7 @@ namespace eRent.Services.Rezervacija
             }
             if (search?.Odobrena != null)
             {
-                filteredQuery = filteredQuery.Where(x=>x.Odobrena == search.Odobrena);
+                filteredQuery = filteredQuery.Where(x => x.Odobrena == search.Odobrena);
             }
             if (search?.Odbijena != null)
             {
@@ -51,6 +51,32 @@ namespace eRent.Services.Rezervacija
                 Context.Nekretninas.Where(x => x.NekretninaId == insert.NekretninaId).Select(x => x.NazivNekretnine).FirstOrDefault();
             entity.Odobrena = false;
             base.BeforeInsert(insert, entity);
+        }
+
+        public override IEnumerable<RezervacijaModel> Get(RezervacijaSearchObject search = null)
+        {
+            var rezervacije = base.Get(search); // Get the list of reservations from the base method
+
+            var nekretninaIds = rezervacije
+                .Where(r => r.NekretninaId != 0)
+                .Select(r => r.NekretninaId)
+                .Distinct()
+                .ToList();
+
+            var nekretnine = Context.Nekretninas
+                .Where(n => nekretninaIds.Contains(n.NekretninaId))
+                .ToList();
+
+            var nekretnineDictionary = nekretnine.ToDictionary(n => n.NekretninaId);
+
+            foreach (var rezervacija in rezervacije)
+            {
+                if (rezervacija.NekretninaId != 0 && nekretnineDictionary.TryGetValue(rezervacija.NekretninaId, out var nekretnina))
+                {
+                    rezervacija.Nekretnina = Mapper.Map<NekretninaModel>(nekretnina);
+                }
+            }
+            return rezervacije;
         }
     }
 }

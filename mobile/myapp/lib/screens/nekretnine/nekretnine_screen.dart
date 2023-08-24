@@ -71,7 +71,7 @@ class _NekretnineListScreenState extends State<NekretnineListScreen> {
       'uloga': 'Korisnik',
       'isActive': true,
     };
-    _userProvider?.update(int.parse(id!), userUpdate);
+    _userProvider.update(int.parse(id!), userUpdate);
   }
 
   void filterResults() {

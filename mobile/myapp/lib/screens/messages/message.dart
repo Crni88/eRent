@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 
 class messages extends StatefulWidget {
   String email;
-  messages({required this.email});
+  messages({super.key, required this.email});
   @override
   _messagesState createState() => _messagesState(email: email);
 }
