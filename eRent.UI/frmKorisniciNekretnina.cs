@@ -19,7 +19,6 @@ namespace eRent.UI
             InitializeComponent();
             this._nekretnina = nekretnina;
             dgvKorisniciNekretnina.AutoGenerateColumns = false;
-            btnDodajNovogKorisnika.Visible = false;
             lblNemaKorisnika.Visible = false;
             this._username = _username;
         }
@@ -39,10 +38,8 @@ namespace eRent.UI
             if (list.Count == 0)
             {
                 lblNemaKorisnika.Visible = true;
-                btnDodajNovogKorisnika.Visible = false;
                 btnUcitajKorisnike.Visible = false;
                 dgvKorisniciNekretnina.Visible = false;
-                btnZahtjevZaPlacanje.Visible = false;
             }
         }
 

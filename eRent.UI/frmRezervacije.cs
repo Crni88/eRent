@@ -37,22 +37,36 @@ namespace eRent.UI
                 var list = await rezervacijeAPIService.Get<List<PaymentRequestModel>>(rezervacijaSearchObject);
                 if (list.Count > 0)
                 {
-                    dgvRezervacije.DataSource = list;
+                    // Remove items with KorisnikPaymentId equal to 3
+                    list.RemoveAll(item => item.KorisnikPaymentId == 3);
+
+                    if (list.Count > 0)
+                    {
+                        dgvRezervacije.DataSource = list;
+                    }
+                    else
+                    {
+                        ShowNoReservationsMessage();
+                    }
                 }
                 else
                 {
-                    MessageBox.Show("Nema rezervacija za ovu nekretninu");
-                    dgvRezervacije.Visible = false;
-                    btnLoadRezervacije.Visible = false;
-                    lblNemaPlacanja.Visible = true;
-                    lblNemaPlacanja.Text = "Nema rezervacija za ovu nekretninu";
+                    ShowNoReservationsMessage();
                 }
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show(ex.Message);
             }
+        }
+
+        private void ShowNoReservationsMessage()
+        {
+            MessageBox.Show("Nema odobrenih rezervacija za ovu nekretninu");
+            dgvRezervacije.Visible = false;
+            btnLoadRezervacije.Visible = false;
+            lblNemaPlacanja.Visible = true;
+            lblNemaPlacanja.Text = "Nema odobrenih rezervacija za ovu nekretninu";
         }
 
         private void btnNazad_Click(object sender, EventArgs e)

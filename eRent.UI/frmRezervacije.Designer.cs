@@ -46,7 +46,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(15, 31);
+            label1.Location = new Point(15, 41);
             label1.Name = "label1";
             label1.Size = new Size(149, 30);
             label1.TabIndex = 0;
@@ -58,12 +58,12 @@
             dgvRezervacije.AllowUserToDeleteRows = false;
             dgvRezervacije.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvRezervacije.Columns.AddRange(new DataGridViewColumn[] { Naslov, Komentar, PaymentId, Iznos, isProcessed });
-            dgvRezervacije.Location = new Point(15, 68);
+            dgvRezervacije.Location = new Point(15, 80);
             dgvRezervacije.Name = "dgvRezervacije";
             dgvRezervacije.ReadOnly = true;
             dgvRezervacije.RowTemplate.Height = 25;
             dgvRezervacije.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dgvRezervacije.Size = new Size(776, 370);
+            dgvRezervacije.Size = new Size(776, 358);
             dgvRezervacije.TabIndex = 1;
             // 
             // Naslov
@@ -108,7 +108,7 @@
             // 
             // btnLoadRezervacije
             // 
-            btnLoadRezervacije.Location = new Point(713, 35);
+            btnLoadRezervacije.Location = new Point(713, 51);
             btnLoadRezervacije.Name = "btnLoadRezervacije";
             btnLoadRezervacije.Size = new Size(75, 23);
             btnLoadRezervacije.TabIndex = 2;
@@ -120,7 +120,7 @@
             // 
             lblImeNekretnine.AutoSize = true;
             lblImeNekretnine.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblImeNekretnine.Location = new Point(238, 31);
+            lblImeNekretnine.Location = new Point(198, 41);
             lblImeNekretnine.Name = "lblImeNekretnine";
             lblImeNekretnine.Size = new Size(0, 30);
             lblImeNekretnine.TabIndex = 3;
@@ -138,7 +138,7 @@
             // 
             btnNazad.Location = new Point(12, 5);
             btnNazad.Name = "btnNazad";
-            btnNazad.Size = new Size(75, 23);
+            btnNazad.Size = new Size(75, 33);
             btnNazad.TabIndex = 31;
             btnNazad.Text = "Nazad";
             btnNazad.UseVisualStyleBackColor = true;

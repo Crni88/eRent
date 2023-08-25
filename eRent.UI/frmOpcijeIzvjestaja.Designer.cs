@@ -231,7 +231,7 @@
             // 
             btnNazad.Location = new Point(20, 12);
             btnNazad.Name = "btnNazad";
-            btnNazad.Size = new Size(75, 23);
+            btnNazad.Size = new Size(75, 36);
             btnNazad.TabIndex = 34;
             btnNazad.Text = "Nazad";
             btnNazad.UseVisualStyleBackColor = true;
