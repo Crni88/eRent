@@ -25,8 +25,8 @@ class _PosjetaScreenState extends State<PosjetaScreen> {
   Nekretnina nekretnina;
   Korisnik korisnik;
 
-  DateTime startDate = DateTime(2023, 1, 1, 12, 00);
-  String vrijemePosjete = "12:00";
+  DateTime startDate = DateTime.now();
+  String vrijemePosjete = TimeOfDay.now().toString().substring(10, 15);
   PosjetaProvider posjetaProvider = PosjetaProvider();
 
   @override
