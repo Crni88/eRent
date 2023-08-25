@@ -115,10 +115,10 @@
             // 
             // btnUcitajKorisnike
             // 
-            btnUcitajKorisnike.Location = new Point(509, 39);
+            btnUcitajKorisnike.Location = new Point(509, 33);
             btnUcitajKorisnike.Margin = new Padding(3, 2, 3, 2);
             btnUcitajKorisnike.Name = "btnUcitajKorisnike";
-            btnUcitajKorisnike.Size = new Size(91, 28);
+            btnUcitajKorisnike.Size = new Size(91, 35);
             btnUcitajKorisnike.TabIndex = 1;
             btnUcitajKorisnike.Text = "Ucitaj";
             btnUcitajKorisnike.UseVisualStyleBackColor = true;
@@ -126,7 +126,7 @@
             // 
             // btnDodajKorisnika
             // 
-            btnDodajKorisnika.Location = new Point(606, 36);
+            btnDodajKorisnika.Location = new Point(606, 33);
             btnDodajKorisnika.Margin = new Padding(3, 2, 3, 2);
             btnDodajKorisnika.Name = "btnDodajKorisnika";
             btnDodajKorisnika.Size = new Size(82, 35);
@@ -137,7 +137,7 @@
             // 
             // txtUsername
             // 
-            txtUsername.Location = new Point(335, 40);
+            txtUsername.Location = new Point(281, 42);
             txtUsername.Name = "txtUsername";
             txtUsername.Size = new Size(168, 23);
             txtUsername.TabIndex = 5;
@@ -146,7 +146,7 @@
             // 
             lblUsername.AutoSize = true;
             lblUsername.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point);
-            lblUsername.Location = new Point(293, 41);
+            lblUsername.Location = new Point(205, 44);
             lblUsername.Name = "lblUsername";
             lblUsername.Size = new Size(36, 21);
             lblUsername.TabIndex = 6;

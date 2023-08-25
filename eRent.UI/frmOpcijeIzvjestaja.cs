@@ -94,6 +94,7 @@ namespace eRent.UI
             }
             rezervacijaSearchObject.DatumPocetka = dtpFrom.Value;
             rezervacijaSearchObject.DatumKraja = dtpUntil.Value;
+            rezervacijaSearchObject.Odobrena = true;
             List<RezervacijaModel> rezervacijas = await rezervacijeAPIService.Get<List<RezervacijaModel>>(rezervacijaSearchObject);
             return rezervacijas;
         }

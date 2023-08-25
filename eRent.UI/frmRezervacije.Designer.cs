@@ -120,7 +120,7 @@
             // 
             lblImeNekretnine.AutoSize = true;
             lblImeNekretnine.Font = new Font("Segoe UI", 15.75F, FontStyle.Bold, GraphicsUnit.Point);
-            lblImeNekretnine.Location = new Point(238, 27);
+            lblImeNekretnine.Location = new Point(238, 31);
             lblImeNekretnine.Name = "lblImeNekretnine";
             lblImeNekretnine.Size = new Size(0, 30);
             lblImeNekretnine.TabIndex = 3;

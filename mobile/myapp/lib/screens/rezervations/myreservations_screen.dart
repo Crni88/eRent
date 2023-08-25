@@ -85,12 +85,17 @@ class _MyReservationsScreenState extends State<MyReservationsScreen> {
                               odobrena: rezervacije[index].odobrena!,
                               odbijena: rezervacije[index].odbijena!,
                               onClick: () {
-                                print("Rezervacija odbijena");
                                 Navigator.pushReplacement(
                                   context,
                                   MaterialPageRoute(
                                     builder: (context) =>
                                         const MyReservationsScreen(),
+                                  ),
+                                );
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text('Rezervacija otkazana!'),
+                                    duration: Duration(seconds: 3),
                                   ),
                                 );
                               },

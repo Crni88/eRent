@@ -49,8 +49,11 @@ class _SinglePaymentScreenState extends State<SinglePaymentScreen_Copy> {
         child: Column(
           children: [
             TopBar(context: context),
+            const MySpacer(),
             MyTitle(payment.naslov!),
+            const MySpacer(),
             MyText(payment.komentar!, false),
+            const MySpacer(),
             MyText(payment.iznos.toString(), true),
             const MySpacer(),
             Container(
@@ -98,7 +101,7 @@ class _SinglePaymentScreenState extends State<SinglePaymentScreen_Copy> {
                       print(e);
                     }
                   }
-
+                  Navigator.pop(context);
                   // hendlat saveanje u bazu
                   _saveToDatabase(paymentIntentData!['id'], payment);
                   showDialog(

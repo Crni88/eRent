@@ -30,15 +30,6 @@
         {
             Button btnShowNekretnine;
             dgvNekretnineList = new DataGridView();
-            Naziv = new DataGridViewTextBoxColumn();
-            Lokacija = new DataGridViewTextBoxColumn();
-            Popunjena = new DataGridViewCheckBoxColumn();
-            Placanja = new DataGridViewButtonColumn();
-            Detaljno = new DataGridViewButtonColumn();
-            Korisnici = new DataGridViewButtonColumn();
-            Posjete = new DataGridViewButtonColumn();
-            Odrzavanje = new DataGridViewButtonColumn();
-            Obrisi = new DataGridViewButtonColumn();
             label1 = new Label();
             txtSearch = new TextBox();
             btnDodajNovu = new Button();
@@ -48,6 +39,15 @@
             btnIzvjestaj = new Button();
             label2 = new Label();
             progressBar1 = new ProgressBar();
+            Naziv = new DataGridViewTextBoxColumn();
+            Lokacija = new DataGridViewTextBoxColumn();
+            Popunjena = new DataGridViewCheckBoxColumn();
+            Placanja = new DataGridViewButtonColumn();
+            Detaljno = new DataGridViewButtonColumn();
+            Korisnici = new DataGridViewButtonColumn();
+            Posjete = new DataGridViewButtonColumn();
+            Odrzavanje = new DataGridViewButtonColumn();
+            Obrisi = new DataGridViewButtonColumn();
             btnShowNekretnine = new Button();
             ((System.ComponentModel.ISupportInitialize)dgvNekretnineList).BeginInit();
             SuspendLayout();
@@ -55,7 +55,7 @@
             // btnShowNekretnine
             // 
             btnShowNekretnine.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            btnShowNekretnine.Location = new Point(622, 132);
+            btnShowNekretnine.Location = new Point(693, 131);
             btnShowNekretnine.Name = "btnShowNekretnine";
             btnShowNekretnine.Size = new Size(87, 25);
             btnShowNekretnine.TabIndex = 1;
@@ -81,99 +81,6 @@
             dgvNekretnineList.TabIndex = 0;
             dgvNekretnineList.CellContentClick += dgvNekretnineList_CellContentClick;
             // 
-            // Naziv
-            // 
-            Naziv.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Naziv.DataPropertyName = "NazivNekretnine";
-            Naziv.HeaderText = "Naziv";
-            Naziv.MinimumWidth = 6;
-            Naziv.Name = "Naziv";
-            Naziv.ReadOnly = true;
-            // 
-            // Lokacija
-            // 
-            Lokacija.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
-            Lokacija.DataPropertyName = "grad";
-            Lokacija.HeaderText = "Lokacija";
-            Lokacija.MinimumWidth = 6;
-            Lokacija.Name = "Lokacija";
-            Lokacija.ReadOnly = true;
-            // 
-            // Popunjena
-            // 
-            Popunjena.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Popunjena.DataPropertyName = "izdvojena";
-            Popunjena.HeaderText = "Izdvojena";
-            Popunjena.MinimumWidth = 6;
-            Popunjena.Name = "Popunjena";
-            Popunjena.ReadOnly = true;
-            Popunjena.Width = 65;
-            // 
-            // Placanja
-            // 
-            Placanja.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Placanja.HeaderText = "Placanja";
-            Placanja.Name = "Placanja";
-            Placanja.ReadOnly = true;
-            Placanja.Text = "Placanja";
-            Placanja.UseColumnTextForButtonValue = true;
-            Placanja.Width = 57;
-            // 
-            // Detaljno
-            // 
-            Detaljno.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Detaljno.HeaderText = "Detaljno";
-            Detaljno.MinimumWidth = 6;
-            Detaljno.Name = "Detaljno";
-            Detaljno.ReadOnly = true;
-            Detaljno.Text = "Detaljno";
-            Detaljno.UseColumnTextForButtonValue = true;
-            Detaljno.Width = 58;
-            // 
-            // Korisnici
-            // 
-            Korisnici.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Korisnici.HeaderText = "Korisnici";
-            Korisnici.MinimumWidth = 6;
-            Korisnici.Name = "Korisnici";
-            Korisnici.ReadOnly = true;
-            Korisnici.Text = "Korisnici";
-            Korisnici.UseColumnTextForButtonValue = true;
-            Korisnici.Width = 58;
-            // 
-            // Posjete
-            // 
-            Posjete.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Posjete.HeaderText = "Obilasci";
-            Posjete.MinimumWidth = 6;
-            Posjete.Name = "Posjete";
-            Posjete.ReadOnly = true;
-            Posjete.Text = "Obilasci";
-            Posjete.ToolTipText = "Obilasci";
-            Posjete.UseColumnTextForButtonValue = true;
-            Posjete.Width = 55;
-            // 
-            // Odrzavanje
-            // 
-            Odrzavanje.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Odrzavanje.HeaderText = "Odrzavanje";
-            Odrzavanje.MinimumWidth = 6;
-            Odrzavanje.Name = "Odrzavanje";
-            Odrzavanje.ReadOnly = true;
-            Odrzavanje.Text = "Odrzavanje";
-            Odrzavanje.UseColumnTextForButtonValue = true;
-            Odrzavanje.Width = 73;
-            // 
-            // Obrisi
-            // 
-            Obrisi.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
-            Obrisi.HeaderText = "Obrisi";
-            Obrisi.Name = "Obrisi";
-            Obrisi.ReadOnly = true;
-            Obrisi.Text = "Obrisi";
-            Obrisi.UseColumnTextForButtonValue = true;
-            Obrisi.Width = 44;
-            // 
             // label1
             // 
             label1.AutoSize = true;
@@ -186,7 +93,7 @@
             // 
             // txtSearch
             // 
-            txtSearch.Location = new Point(233, 133);
+            txtSearch.Location = new Point(304, 131);
             txtSearch.Margin = new Padding(3, 2, 3, 2);
             txtSearch.Name = "txtSearch";
             txtSearch.Size = new Size(383, 23);
@@ -270,6 +177,100 @@
             progressBar1.TabIndex = 14;
             progressBar1.Value = 100;
             // 
+            // Naziv
+            // 
+            Naziv.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Naziv.DataPropertyName = "NazivNekretnine";
+            Naziv.HeaderText = "Naziv";
+            Naziv.MinimumWidth = 6;
+            Naziv.Name = "Naziv";
+            Naziv.ReadOnly = true;
+            // 
+            // Lokacija
+            // 
+            Lokacija.AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            Lokacija.DataPropertyName = "grad";
+            Lokacija.HeaderText = "Lokacija";
+            Lokacija.MinimumWidth = 6;
+            Lokacija.Name = "Lokacija";
+            Lokacija.ReadOnly = true;
+            // 
+            // Popunjena
+            // 
+            Popunjena.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Popunjena.DataPropertyName = "izdvojena";
+            Popunjena.HeaderText = "Izdvojena";
+            Popunjena.MinimumWidth = 6;
+            Popunjena.Name = "Popunjena";
+            Popunjena.ReadOnly = true;
+            Popunjena.Width = 65;
+            // 
+            // Placanja
+            // 
+            Placanja.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Placanja.HeaderText = "Placanja";
+            Placanja.Name = "Placanja";
+            Placanja.ReadOnly = true;
+            Placanja.Text = "Placanja";
+            Placanja.UseColumnTextForButtonValue = true;
+            Placanja.Width = 57;
+            // 
+            // Detaljno
+            // 
+            Detaljno.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Detaljno.HeaderText = "Detaljno";
+            Detaljno.MinimumWidth = 6;
+            Detaljno.Name = "Detaljno";
+            Detaljno.ReadOnly = true;
+            Detaljno.Text = "Detaljno";
+            Detaljno.UseColumnTextForButtonValue = true;
+            Detaljno.Width = 58;
+            // 
+            // Korisnici
+            // 
+            Korisnici.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Korisnici.HeaderText = "Rezervacije";
+            Korisnici.MinimumWidth = 6;
+            Korisnici.Name = "Korisnici";
+            Korisnici.ReadOnly = true;
+            Korisnici.Text = "Rezervacije";
+            Korisnici.ToolTipText = "Rezervacije";
+            Korisnici.UseColumnTextForButtonValue = true;
+            Korisnici.Width = 72;
+            // 
+            // Posjete
+            // 
+            Posjete.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Posjete.HeaderText = "Obilasci";
+            Posjete.MinimumWidth = 6;
+            Posjete.Name = "Posjete";
+            Posjete.ReadOnly = true;
+            Posjete.Text = "Obilasci";
+            Posjete.ToolTipText = "Obilasci";
+            Posjete.UseColumnTextForButtonValue = true;
+            Posjete.Width = 55;
+            // 
+            // Odrzavanje
+            // 
+            Odrzavanje.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Odrzavanje.HeaderText = "Odrzavanje";
+            Odrzavanje.MinimumWidth = 6;
+            Odrzavanje.Name = "Odrzavanje";
+            Odrzavanje.ReadOnly = true;
+            Odrzavanje.Text = "Odrzavanje";
+            Odrzavanje.UseColumnTextForButtonValue = true;
+            Odrzavanje.Width = 73;
+            // 
+            // Obrisi
+            // 
+            Obrisi.AutoSizeMode = DataGridViewAutoSizeColumnMode.ColumnHeader;
+            Obrisi.HeaderText = "Obrisi";
+            Obrisi.Name = "Obrisi";
+            Obrisi.ReadOnly = true;
+            Obrisi.Text = "Obrisi";
+            Obrisi.UseColumnTextForButtonValue = true;
+            Obrisi.Width = 44;
+            // 
             // frmNekretninaList
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -308,6 +309,7 @@
         private Button btnRejting;
         private Button btnIzvjestaj;
         private Label label2;
+        private ProgressBar progressBar1;
         private DataGridViewTextBoxColumn Naziv;
         private DataGridViewTextBoxColumn Lokacija;
         private DataGridViewCheckBoxColumn Popunjena;
@@ -317,6 +319,5 @@
         private DataGridViewButtonColumn Posjete;
         private DataGridViewButtonColumn Odrzavanje;
         private DataGridViewButtonColumn Obrisi;
-        private ProgressBar progressBar1;
     }
 }

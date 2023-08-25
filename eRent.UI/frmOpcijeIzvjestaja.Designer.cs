@@ -39,7 +39,6 @@
             btnPrihodiZaNekretninu = new Button();
             label7 = new Label();
             button2 = new Button();
-            button3 = new Button();
             dtpFrom = new DateTimePicker();
             dtpUntil = new DateTimePicker();
             groupBox1 = new GroupBox();
@@ -142,16 +141,6 @@
             button2.UseVisualStyleBackColor = true;
             button2.Click += btnListaNekretninaReportGenerate;
             // 
-            // button3
-            // 
-            button3.Location = new Point(463, 172);
-            button3.Name = "button3";
-            button3.Size = new Size(99, 40);
-            button3.TabIndex = 4;
-            button3.Text = "PDF";
-            button3.UseVisualStyleBackColor = true;
-            button3.Click += btnListaRezervacija_Click;
-            // 
             // dtpFrom
             // 
             dtpFrom.Location = new Point(16, 117);
@@ -175,7 +164,6 @@
             groupBox1.Controls.Add(cbListaNekretnina);
             groupBox1.Controls.Add(dtpUntil);
             groupBox1.Controls.Add(dtpFrom);
-            groupBox1.Controls.Add(button3);
             groupBox1.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point);
             groupBox1.Location = new Point(20, 54);
             groupBox1.Name = "groupBox1";
@@ -195,7 +183,7 @@
             // 
             // btnRezervacijeIzvjestaj
             // 
-            btnRezervacijeIzvjestaj.Location = new Point(463, 56);
+            btnRezervacijeIzvjestaj.Location = new Point(463, 113);
             btnRezervacijeIzvjestaj.Name = "btnRezervacijeIzvjestaj";
             btnRezervacijeIzvjestaj.Size = new Size(99, 40);
             btnRezervacijeIzvjestaj.TabIndex = 11;
@@ -293,7 +281,6 @@
         private Button btnPrihodiZaNekretninu;
         private Label label7;
         private Button button2;
-        private Button button3;
         private DateTimePicker dtpFrom;
         private DateTimePicker dtpUntil;
         private GroupBox groupBox1;

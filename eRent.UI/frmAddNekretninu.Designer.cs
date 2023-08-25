@@ -61,6 +61,7 @@
             // 
             // pbSlikaNekretnine
             // 
+            pbSlikaNekretnine.BorderStyle = BorderStyle.Fixed3D;
             pbSlikaNekretnine.Location = new Point(12, 68);
             pbSlikaNekretnine.Name = "pbSlikaNekretnine";
             pbSlikaNekretnine.Size = new Size(250, 301);

@@ -63,13 +63,20 @@ namespace eRent.UI
             }
             if (e.ColumnIndex == 5)
             {
-                KorisnikUpdateRequest korisnikSearchObject = new KorisnikUpdateRequest();
-                korisnikSearchObject.IsActive = false;
-                korisnikSearchObject.KorisnikPrezime = "deleted";
-                korisnikSearchObject.KorsnikIme = "deleted";
-                var korisnikModels = await korisnikService.Put<KorisnikUpdateRequest>(korisnik.KorisnikId, korisnikSearchObject);
-                AutoClosingMessageBox.Show("Korisnik obrisan!", "Korisnik uspjesno obrisan.", 3000);
-                await loadKorisnike();
+                if (korisnik.Username == _username)
+                {
+                    MessageBox.Show("Nije moguce obrisati usera sa kojim ste trenutno prijavljeni!");
+                }
+                else
+                {
+                    KorisnikUpdateRequest korisnikSearchObject = new KorisnikUpdateRequest();
+                    korisnikSearchObject.IsActive = false;
+                    korisnikSearchObject.KorisnikPrezime = "deleted";
+                    korisnikSearchObject.KorsnikIme = "deleted";
+                    var korisnikModels = await korisnikService.Put<KorisnikUpdateRequest>(korisnik.KorisnikId, korisnikSearchObject);
+                    AutoClosingMessageBox.Show("Korisnik obrisan!", "Korisnik uspjesno obrisan.", 3000);
+                    await loadKorisnike();
+                }
             }
         }
 

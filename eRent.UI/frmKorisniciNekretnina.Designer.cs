@@ -43,16 +43,6 @@
             ((System.ComponentModel.ISupportInitialize)dgvKorisniciNekretnina).BeginInit();
             SuspendLayout();
             // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label1.Location = new Point(12, 47);
-            label1.Name = "label1";
-            label1.Size = new Size(97, 15);
-            label1.TabIndex = 0;
-            label1.Text = "Pregled korisnika";
-            // 
             // dgvKorisniciNekretnina
             // 
             dgvKorisniciNekretnina.AllowUserToAddRows = false;

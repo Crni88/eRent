@@ -57,22 +57,38 @@ namespace eRent.UI
         }
 
 
-        private async Task savePaymentRequestToDatabase(RezervacijaModel rezervacijaModel)
+        private async Task savePaymentRequestToDatabase(RezervacijaModel rezervacijaModel, bool? v = null)
         {
-
             PaymentUpsertRequest paymentUpsertRequest = new PaymentUpsertRequest();
             paymentUpsertRequest.NekretninaPayment = rezervacijaModel.NekretninaId;
-            paymentUpsertRequest.Komentar = "Rezervacija od " + rezervacijaModel.DatumPocetka.Value.Date + " do " + rezervacijaModel.DatumKraja.Value.Date;
+
+            if (v == null)
+            {
+                paymentUpsertRequest.Komentar = "Rezervacija od " + rezervacijaModel.DatumPocetka.Value.Date.ToString("dd-MM-yyyy").Substring(0, 10) + " do " + rezervacijaModel.DatumKraja.Value.Date.ToString("dd-MM-yyyy").Substring(0, 10);
+                paymentUpsertRequest.Naslov = "Rezervacija za " + rezervacijaModel.Nekretnina.NazivNekretnine;
+                paymentUpsertRequest.IsProcessed = false;
+                paymentUpsertRequest.KorisnikPaymentId = rezervacijaModel.KorisnikId;
+            }
+            else
+            {
+                paymentUpsertRequest.Komentar = "OTKAZANO";
+                paymentUpsertRequest.Naslov = "OTKAZANO";
+                paymentUpsertRequest.IsProcessed = true;
+                paymentUpsertRequest.KorisnikPaymentId = 3;
+            }
+
             TimeSpan duration = (TimeSpan)(rezervacijaModel.DatumKraja - rezervacijaModel.DatumPocetka);
             paymentUpsertRequest.Iznos = duration.Days * rezervacijaModel.Nekretnina.Cijena;
             paymentUpsertRequest.Mjesecno = rezervacijaModel.MjesecnaRezervacija;
-            paymentUpsertRequest.Naslov = "Rezervacija za " + rezervacijaModel.Nekretnina.NazivNekretnine;
-            paymentUpsertRequest.IsProcessed = false;
-            paymentUpsertRequest.KorisnikPaymentId = 2;
+
             try
             {
                 var postPaymentRequest = await paymentService.Post<PaymentUpsertRequest>(paymentUpsertRequest);
-                await posaljiNotifikacijuAsync(paymentUpsertRequest.Naslov, paymentUpsertRequest.Komentar, rezervacijaModel.KorisnikId);
+
+                if (v != null)
+                {
+                    await posaljiNotifikacijuAsync(paymentUpsertRequest.Naslov, paymentUpsertRequest.Komentar, rezervacijaModel.KorisnikId);
+                }
             }
             catch (Exception ex)
             {
@@ -219,6 +235,7 @@ namespace eRent.UI
                     rezervacijaUpdateRequest.Odbijena = true;
                     var list = await rezervacijeAPIService.Put<RezervacijaUpdateRequest>(taskModel.RezervacijaId, rezervacijaUpdateRequest);
                     await odbijRezervaciju();
+                    await savePaymentRequestToDatabase(taskModel,false);
                 }
                 catch (Exception ex)
                 {

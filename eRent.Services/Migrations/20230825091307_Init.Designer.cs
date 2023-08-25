@@ -12,7 +12,7 @@ using eRent.Services.DataDB;
 namespace eRent.Services.Migrations
 {
     [DbContext(typeof(ERentContext))]
-    [Migration("20230705113900_Init")]
+    [Migration("20230825091307_Init")]
     partial class Init
     {
         /// <inheritdoc />
@@ -121,6 +121,19 @@ namespace eRent.Services.Migrations
                             Rejting = 5.0,
                             Uloga = "Korisnik",
                             Username = "mobile"
+                        },
+                        new
+                        {
+                            KorisnikId = 3,
+                            Email = "deleted@deleted.com",
+                            IsActive = false,
+                            KorisnikPrezime = "deleted",
+                            KorsnikIme = "deleted",
+                            LozinkaHash = "ZDZZNeBsmej87Hhphj+7gDElCww=",
+                            LozinkaSalt = "K6vgSRZ2yzwCjPyOh9a7JA==",
+                            Rejting = 5.0,
+                            Uloga = "Korisnik",
+                            Username = "deleted"
                         });
                 });
 
@@ -276,7 +289,7 @@ namespace eRent.Services.Migrations
                             BrojSoba = 3,
                             Brojkvadrata = 45,
                             Cijena = 150,
-                            DatumObjave = new DateTime(2023, 7, 5, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8120),
+                            DatumObjave = new DateTime(2023, 8, 25, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5162),
                             Grad = "Sarajevo",
                             IsActive = true,
                             Izdvojena = true,
@@ -294,7 +307,7 @@ namespace eRent.Services.Migrations
                             BrojSoba = 4,
                             Brojkvadrata = 55,
                             Cijena = 250,
-                            DatumObjave = new DateTime(2023, 7, 5, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8180),
+                            DatumObjave = new DateTime(2023, 8, 25, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5194),
                             Grad = "Travnik",
                             IsActive = true,
                             Izdvojena = false,
@@ -312,7 +325,7 @@ namespace eRent.Services.Migrations
                             BrojSoba = 6,
                             Brojkvadrata = 155,
                             Cijena = 600,
-                            DatumObjave = new DateTime(2023, 7, 5, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8186),
+                            DatumObjave = new DateTime(2023, 8, 25, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5202),
                             Grad = "Mostar",
                             IsActive = true,
                             Izdvojena = true,
@@ -330,7 +343,7 @@ namespace eRent.Services.Migrations
                             BrojSoba = 3,
                             Brojkvadrata = 80,
                             Cijena = 800,
-                            DatumObjave = new DateTime(2023, 7, 5, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8191),
+                            DatumObjave = new DateTime(2023, 8, 25, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5209),
                             Grad = "Sarajevo",
                             IsActive = true,
                             Izdvojena = true,
@@ -348,7 +361,7 @@ namespace eRent.Services.Migrations
                             BrojSoba = 6,
                             Brojkvadrata = 200,
                             Cijena = 1200,
-                            DatumObjave = new DateTime(2023, 6, 25, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8196),
+                            DatumObjave = new DateTime(2023, 8, 15, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5215),
                             Grad = "Tuzla",
                             IsActive = true,
                             Izdvojena = false,
@@ -804,35 +817,35 @@ namespace eRent.Services.Migrations
                         new
                         {
                             PosjetaId = 1,
-                            DatumPosjete = new DateTime(2023, 7, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            DatumPosjete = new DateTime(2023, 8, 25, 0, 0, 0, 0, DateTimeKind.Local),
                             KorisnikId = 2,
                             KorisnikImePrezime = "Mobile Mobile",
                             NazivNekretnine = "Vikendica Travnik",
                             NekretninaId = 2,
                             Otkazana = false,
-                            VrijemePosjete = "13:39"
+                            VrijemePosjete = "11:13"
                         },
                         new
                         {
                             PosjetaId = 2,
-                            DatumPosjete = new DateTime(2023, 7, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            DatumPosjete = new DateTime(2023, 8, 25, 0, 0, 0, 0, DateTimeKind.Local),
                             KorisnikId = 2,
                             KorisnikImePrezime = "Mobile Mobile",
                             NazivNekretnine = "Vikendica Sarajevo",
                             NekretninaId = 1,
                             Otkazana = false,
-                            VrijemePosjete = "13:39"
+                            VrijemePosjete = "11:13"
                         },
                         new
                         {
                             PosjetaId = 3,
-                            DatumPosjete = new DateTime(2023, 7, 5, 0, 0, 0, 0, DateTimeKind.Local),
+                            DatumPosjete = new DateTime(2023, 8, 25, 0, 0, 0, 0, DateTimeKind.Local),
                             KorisnikId = 2,
                             KorisnikImePrezime = "Mobile Mobile",
                             NazivNekretnine = "Vikendica Mostar",
                             NekretninaId = 3,
                             Otkazana = false,
-                            VrijemePosjete = "13:39"
+                            VrijemePosjete = "11:13"
                         });
                 });
 
@@ -996,8 +1009,8 @@ namespace eRent.Services.Migrations
                         {
                             RezervacijaId = 1,
                             BrojTelefona = "mobile@mobile.com",
-                            DatumKraja = new DateTime(2023, 8, 4, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8450),
-                            DatumPocetka = new DateTime(2023, 7, 5, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8447),
+                            DatumKraja = new DateTime(2023, 9, 24, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5373),
+                            DatumPocetka = new DateTime(2023, 8, 25, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5371),
                             ImePrezime = "Mobile Mobile",
                             KorisnikId = 2,
                             MjesecnaRezervacija = false,
@@ -1011,8 +1024,8 @@ namespace eRent.Services.Migrations
                         {
                             RezervacijaId = 2,
                             BrojTelefona = "mobile@mobile.com",
-                            DatumKraja = new DateTime(2023, 8, 4, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8458),
-                            DatumPocetka = new DateTime(2023, 7, 5, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8456),
+                            DatumKraja = new DateTime(2023, 9, 24, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5379),
+                            DatumPocetka = new DateTime(2023, 8, 25, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5378),
                             ImePrezime = "Mobile Mobile",
                             KorisnikId = 2,
                             MjesecnaRezervacija = false,
@@ -1026,8 +1039,8 @@ namespace eRent.Services.Migrations
                         {
                             RezervacijaId = 3,
                             BrojTelefona = "mobile@mobile.com",
-                            DatumKraja = new DateTime(2023, 8, 4, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8464),
-                            DatumPocetka = new DateTime(2023, 7, 5, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8462),
+                            DatumKraja = new DateTime(2023, 9, 24, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5384),
+                            DatumPocetka = new DateTime(2023, 8, 25, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5382),
                             ImePrezime = "Mobile Mobile",
                             KorisnikId = 2,
                             MjesecnaRezervacija = false,
@@ -1041,8 +1054,8 @@ namespace eRent.Services.Migrations
                         {
                             RezervacijaId = 4,
                             BrojTelefona = "mobile@mobile.com",
-                            DatumKraja = new DateTime(2023, 8, 24, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8470),
-                            DatumPocetka = new DateTime(2023, 7, 5, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8468),
+                            DatumKraja = new DateTime(2023, 10, 14, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5388),
+                            DatumPocetka = new DateTime(2023, 8, 25, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5387),
                             ImePrezime = "Mobile Mobile",
                             KorisnikId = 2,
                             MjesecnaRezervacija = false,
@@ -1056,8 +1069,8 @@ namespace eRent.Services.Migrations
                         {
                             RezervacijaId = 5,
                             BrojTelefona = "mobile@mobile.com",
-                            DatumKraja = new DateTime(2023, 8, 4, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8476),
-                            DatumPocetka = new DateTime(2023, 7, 15, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8473),
+                            DatumKraja = new DateTime(2023, 9, 24, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5394),
+                            DatumPocetka = new DateTime(2023, 9, 4, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5392),
                             ImePrezime = "Mobile Mobile",
                             KorisnikId = 2,
                             MjesecnaRezervacija = false,
@@ -1071,8 +1084,8 @@ namespace eRent.Services.Migrations
                         {
                             RezervacijaId = 6,
                             BrojTelefona = "mobile@mobile.com",
-                            DatumKraja = new DateTime(2023, 8, 4, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8482),
-                            DatumPocetka = new DateTime(2023, 7, 17, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8480),
+                            DatumKraja = new DateTime(2023, 9, 24, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5399),
+                            DatumPocetka = new DateTime(2023, 9, 6, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5397),
                             ImePrezime = "Mobile Mobile",
                             KorisnikId = 2,
                             MjesecnaRezervacija = false,
@@ -1086,8 +1099,8 @@ namespace eRent.Services.Migrations
                         {
                             RezervacijaId = 8,
                             BrojTelefona = "mobile@mobile.com",
-                            DatumKraja = new DateTime(2023, 8, 4, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8488),
-                            DatumPocetka = new DateTime(2023, 7, 17, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8486),
+                            DatumKraja = new DateTime(2023, 9, 24, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5404),
+                            DatumPocetka = new DateTime(2023, 9, 6, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5402),
                             ImePrezime = "Mobile Mobile",
                             KorisnikId = 2,
                             MjesecnaRezervacija = false,
@@ -1101,8 +1114,8 @@ namespace eRent.Services.Migrations
                         {
                             RezervacijaId = 9,
                             BrojTelefona = "mobile@mobile.com",
-                            DatumKraja = new DateTime(2023, 8, 4, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8493),
-                            DatumPocetka = new DateTime(2023, 7, 17, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8491),
+                            DatumKraja = new DateTime(2023, 9, 24, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5408),
+                            DatumPocetka = new DateTime(2023, 9, 6, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5407),
                             ImePrezime = "Mobile Mobile",
                             KorisnikId = 2,
                             MjesecnaRezervacija = false,
@@ -1116,8 +1129,8 @@ namespace eRent.Services.Migrations
                         {
                             RezervacijaId = 7,
                             BrojTelefona = "mobile@mobile.com",
-                            DatumKraja = new DateTime(2023, 9, 3, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8498),
-                            DatumPocetka = new DateTime(2023, 7, 5, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8496),
+                            DatumKraja = new DateTime(2023, 10, 24, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5414),
+                            DatumPocetka = new DateTime(2023, 8, 25, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5412),
                             ImePrezime = "Mobile Mobile",
                             KorisnikId = 2,
                             MjesecnaRezervacija = false,
@@ -1131,8 +1144,8 @@ namespace eRent.Services.Migrations
                         {
                             RezervacijaId = 10,
                             BrojTelefona = "mobile@mobile.com",
-                            DatumKraja = new DateTime(2023, 10, 3, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8504),
-                            DatumPocetka = new DateTime(2023, 7, 5, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8502),
+                            DatumKraja = new DateTime(2023, 11, 23, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5419),
+                            DatumPocetka = new DateTime(2023, 8, 25, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5417),
                             ImePrezime = "Mobile Mobile",
                             KorisnikId = 2,
                             MjesecnaRezervacija = false,
@@ -1146,8 +1159,8 @@ namespace eRent.Services.Migrations
                         {
                             RezervacijaId = 11,
                             BrojTelefona = "mobile@mobile.com",
-                            DatumKraja = new DateTime(2023, 10, 3, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8510),
-                            DatumPocetka = new DateTime(2023, 7, 5, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8508),
+                            DatumKraja = new DateTime(2023, 11, 23, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5424),
+                            DatumPocetka = new DateTime(2023, 8, 25, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5422),
                             ImePrezime = "Mobile Mobile",
                             KorisnikId = 2,
                             MjesecnaRezervacija = false,
@@ -1161,8 +1174,8 @@ namespace eRent.Services.Migrations
                         {
                             RezervacijaId = 12,
                             BrojTelefona = "mobile@mobile.com",
-                            DatumKraja = new DateTime(2023, 10, 3, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8515),
-                            DatumPocetka = new DateTime(2023, 7, 5, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8513),
+                            DatumKraja = new DateTime(2023, 11, 23, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5428),
+                            DatumPocetka = new DateTime(2023, 8, 25, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5426),
                             ImePrezime = "Mobile Mobile",
                             KorisnikId = 2,
                             MjesecnaRezervacija = false,
@@ -1176,8 +1189,8 @@ namespace eRent.Services.Migrations
                         {
                             RezervacijaId = 13,
                             BrojTelefona = "mobile@mobile.com",
-                            DatumKraja = new DateTime(2023, 7, 6, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8520),
-                            DatumPocetka = new DateTime(2023, 7, 4, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8518),
+                            DatumKraja = new DateTime(2023, 8, 26, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5432),
+                            DatumPocetka = new DateTime(2023, 8, 24, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5430),
                             ImePrezime = "Mobile Mobile",
                             KorisnikId = 2,
                             MjesecnaRezervacija = false,
@@ -1191,8 +1204,8 @@ namespace eRent.Services.Migrations
                         {
                             RezervacijaId = 14,
                             BrojTelefona = "mobile@mobile.com",
-                            DatumKraja = new DateTime(2023, 7, 10, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8526),
-                            DatumPocetka = new DateTime(2023, 7, 2, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8524),
+                            DatumKraja = new DateTime(2023, 8, 30, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5437),
+                            DatumPocetka = new DateTime(2023, 8, 22, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5435),
                             ImePrezime = "Mobile Mobile",
                             KorisnikId = 2,
                             MjesecnaRezervacija = false,
@@ -1206,8 +1219,8 @@ namespace eRent.Services.Migrations
                         {
                             RezervacijaId = 15,
                             BrojTelefona = "mobile@mobile.com",
-                            DatumKraja = new DateTime(2023, 7, 7, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8531),
-                            DatumPocetka = new DateTime(2023, 7, 4, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8529),
+                            DatumKraja = new DateTime(2023, 8, 27, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5441),
+                            DatumPocetka = new DateTime(2023, 8, 24, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5440),
                             ImePrezime = "Mobile Mobile",
                             KorisnikId = 2,
                             MjesecnaRezervacija = false,
@@ -1215,6 +1228,231 @@ namespace eRent.Services.Migrations
                             NekretninaId = 3,
                             Odbijena = false,
                             Odobrena = false,
+                            Otkazana = false
+                        },
+                        new
+                        {
+                            RezervacijaId = 16,
+                            BrojTelefona = "mobile@mobile.com",
+                            DatumKraja = new DateTime(2023, 9, 24, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5446),
+                            DatumPocetka = new DateTime(2023, 8, 25, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5445),
+                            ImePrezime = "Mobile Mobile",
+                            KorisnikId = 2,
+                            MjesecnaRezervacija = false,
+                            Nazivnekretnine = "Vikendica Travnik",
+                            NekretninaId = 2,
+                            Odbijena = false,
+                            Odobrena = true,
+                            Otkazana = false
+                        },
+                        new
+                        {
+                            RezervacijaId = 17,
+                            BrojTelefona = "mobile@mobile.com",
+                            DatumKraja = new DateTime(2023, 10, 2, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5450),
+                            DatumPocetka = new DateTime(2023, 8, 25, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5449),
+                            ImePrezime = "Mobile Mobile",
+                            KorisnikId = 2,
+                            MjesecnaRezervacija = false,
+                            Nazivnekretnine = "Vikendica Mostar",
+                            NekretninaId = 3,
+                            Odbijena = false,
+                            Odobrena = true,
+                            Otkazana = false
+                        },
+                        new
+                        {
+                            RezervacijaId = 18,
+                            BrojTelefona = "mobile@mobile.com",
+                            DatumKraja = new DateTime(2023, 9, 17, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5454),
+                            DatumPocetka = new DateTime(2023, 8, 25, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5452),
+                            ImePrezime = "Mobile Mobile",
+                            KorisnikId = 2,
+                            MjesecnaRezervacija = false,
+                            Nazivnekretnine = "Vikendica Sarajevo",
+                            NekretninaId = 1,
+                            Odbijena = false,
+                            Odobrena = true,
+                            Otkazana = false
+                        },
+                        new
+                        {
+                            RezervacijaId = 19,
+                            BrojTelefona = "mobile@mobile.com",
+                            DatumKraja = new DateTime(2023, 10, 17, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5458),
+                            DatumPocetka = new DateTime(2023, 8, 25, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5456),
+                            ImePrezime = "Mobile Mobile",
+                            KorisnikId = 2,
+                            MjesecnaRezervacija = false,
+                            Nazivnekretnine = "Stan Sarajevo",
+                            NekretninaId = 4,
+                            Odbijena = false,
+                            Odobrena = true,
+                            Otkazana = false
+                        },
+                        new
+                        {
+                            RezervacijaId = 20,
+                            BrojTelefona = "mobile@mobile.com",
+                            DatumKraja = new DateTime(2023, 9, 27, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5462),
+                            DatumPocetka = new DateTime(2023, 9, 5, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5460),
+                            ImePrezime = "Mobile Mobile",
+                            KorisnikId = 2,
+                            MjesecnaRezervacija = false,
+                            Nazivnekretnine = "Stan Sarajevo",
+                            NekretninaId = 4,
+                            Odbijena = false,
+                            Odobrena = true,
+                            Otkazana = false
+                        },
+                        new
+                        {
+                            RezervacijaId = 21,
+                            BrojTelefona = "mobile@mobile.com",
+                            DatumKraja = new DateTime(2023, 9, 24, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5466),
+                            DatumPocetka = new DateTime(2023, 9, 6, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5464),
+                            ImePrezime = "Mobile Mobile",
+                            KorisnikId = 2,
+                            MjesecnaRezervacija = false,
+                            Nazivnekretnine = "Stan Sarajevo",
+                            NekretninaId = 4,
+                            Odbijena = false,
+                            Odobrena = true,
+                            Otkazana = false
+                        },
+                        new
+                        {
+                            RezervacijaId = 22,
+                            BrojTelefona = "mobile@mobile.com",
+                            DatumKraja = new DateTime(2023, 9, 24, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5471),
+                            DatumPocetka = new DateTime(2023, 9, 6, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5469),
+                            ImePrezime = "Mobile Mobile",
+                            KorisnikId = 2,
+                            MjesecnaRezervacija = false,
+                            Nazivnekretnine = "Stan Sarajevo",
+                            NekretninaId = 4,
+                            Odbijena = false,
+                            Odobrena = true,
+                            Otkazana = false
+                        },
+                        new
+                        {
+                            RezervacijaId = 23,
+                            BrojTelefona = "mobile@mobile.com",
+                            DatumKraja = new DateTime(2023, 9, 24, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5475),
+                            DatumPocetka = new DateTime(2023, 8, 13, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5473),
+                            ImePrezime = "Mobile Mobile",
+                            KorisnikId = 2,
+                            MjesecnaRezervacija = false,
+                            Nazivnekretnine = "Stan Sarajevo",
+                            NekretninaId = 4,
+                            Odbijena = false,
+                            Odobrena = true,
+                            Otkazana = false
+                        },
+                        new
+                        {
+                            RezervacijaId = 24,
+                            BrojTelefona = "mobile@mobile.com",
+                            DatumKraja = new DateTime(2023, 10, 24, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5479),
+                            DatumPocetka = new DateTime(2023, 8, 24, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5477),
+                            ImePrezime = "Mobile Mobile",
+                            KorisnikId = 2,
+                            MjesecnaRezervacija = false,
+                            Nazivnekretnine = "Kuca Tuzla",
+                            NekretninaId = 5,
+                            Odbijena = false,
+                            Odobrena = true,
+                            Otkazana = false
+                        },
+                        new
+                        {
+                            RezervacijaId = 25,
+                            BrojTelefona = "mobile@mobile.com",
+                            DatumKraja = new DateTime(2023, 11, 23, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5483),
+                            DatumPocetka = new DateTime(2023, 8, 24, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5481),
+                            ImePrezime = "Mobile Mobile",
+                            KorisnikId = 2,
+                            MjesecnaRezervacija = false,
+                            Nazivnekretnine = "Stan Sarajevo",
+                            NekretninaId = 4,
+                            Odbijena = false,
+                            Odobrena = true,
+                            Otkazana = false
+                        },
+                        new
+                        {
+                            RezervacijaId = 26,
+                            BrojTelefona = "mobile@mobile.com",
+                            DatumKraja = new DateTime(2023, 11, 23, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5487),
+                            DatumPocetka = new DateTime(2023, 8, 24, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5485),
+                            ImePrezime = "Mobile Mobile",
+                            KorisnikId = 2,
+                            MjesecnaRezervacija = false,
+                            Nazivnekretnine = "Stan Sarajevo",
+                            NekretninaId = 4,
+                            Odbijena = false,
+                            Odobrena = true,
+                            Otkazana = false
+                        },
+                        new
+                        {
+                            RezervacijaId = 27,
+                            BrojTelefona = "mobile@mobile.com",
+                            DatumKraja = new DateTime(2023, 11, 23, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5491),
+                            DatumPocetka = new DateTime(2023, 8, 24, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5490),
+                            ImePrezime = "Mobile Mobile",
+                            KorisnikId = 2,
+                            MjesecnaRezervacija = false,
+                            Nazivnekretnine = "Stan Sarajevo",
+                            NekretninaId = 4,
+                            Odbijena = false,
+                            Odobrena = true,
+                            Otkazana = false
+                        },
+                        new
+                        {
+                            RezervacijaId = 28,
+                            BrojTelefona = "mobile@mobile.com",
+                            DatumKraja = new DateTime(2023, 8, 27, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5495),
+                            DatumPocetka = new DateTime(2023, 8, 24, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5494),
+                            ImePrezime = "Mobile Mobile",
+                            KorisnikId = 2,
+                            MjesecnaRezervacija = false,
+                            Nazivnekretnine = "Vikendica Mostar",
+                            NekretninaId = 3,
+                            Odbijena = false,
+                            Odobrena = true,
+                            Otkazana = false
+                        },
+                        new
+                        {
+                            RezervacijaId = 29,
+                            BrojTelefona = "mobile@mobile.com",
+                            DatumKraja = new DateTime(2023, 8, 30, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5499),
+                            DatumPocetka = new DateTime(2023, 8, 22, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5498),
+                            ImePrezime = "Mobile Mobile",
+                            KorisnikId = 2,
+                            MjesecnaRezervacija = false,
+                            Nazivnekretnine = "Vikendica Mostar",
+                            NekretninaId = 3,
+                            Odbijena = false,
+                            Odobrena = true,
+                            Otkazana = false
+                        },
+                        new
+                        {
+                            RezervacijaId = 30,
+                            BrojTelefona = "mobile@mobile.com",
+                            DatumKraja = new DateTime(2023, 8, 28, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5503),
+                            DatumPocetka = new DateTime(2023, 8, 24, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5502),
+                            ImePrezime = "Mobile Mobile",
+                            KorisnikId = 2,
+                            MjesecnaRezervacija = false,
+                            Nazivnekretnine = "Vikendica Mostar",
+                            NekretninaId = 3,
+                            Odbijena = false,
+                            Odobrena = true,
                             Otkazana = false
                         });
                 });
@@ -1315,7 +1553,7 @@ namespace eRent.Services.Migrations
                         {
                             TaskId = 1,
                             Description = "Opis",
-                            DueDate = new DateTime(2023, 7, 8, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8554),
+                            DueDate = new DateTime(2023, 8, 28, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5525),
                             IsActive = true,
                             NekretninaTask = 2,
                             Priority = "Medium",
@@ -1326,7 +1564,7 @@ namespace eRent.Services.Migrations
                         {
                             TaskId = 2,
                             Description = "Opis 2",
-                            DueDate = new DateTime(2023, 7, 8, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8563),
+                            DueDate = new DateTime(2023, 8, 28, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5528),
                             IsActive = true,
                             NekretninaTask = 1,
                             Priority = "Medium",
@@ -1337,7 +1575,7 @@ namespace eRent.Services.Migrations
                         {
                             TaskId = 3,
                             Description = "Opis 3",
-                            DueDate = new DateTime(2023, 7, 8, 13, 39, 0, 12, DateTimeKind.Local).AddTicks(8566),
+                            DueDate = new DateTime(2023, 8, 28, 11, 13, 6, 577, DateTimeKind.Local).AddTicks(5531),
                             IsActive = true,
                             NekretninaTask = 3,
                             Priority = "Medium",

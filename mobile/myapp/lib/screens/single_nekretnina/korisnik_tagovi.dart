@@ -75,18 +75,12 @@ class _KorisnikTagoviScreenState extends State<KorisnikTagoviScreen> {
                             await korisnikTagoviProvider.update(
                                 element.ktId!, update);
                           });
+                          Navigator.pop(context);
                           showDialog(
                               context: context,
                               builder: (context) {
-                                Future.delayed(const Duration(seconds: 5), () {
-                                  Navigator.of(context).pop(true);
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const NekretnineListScreen()),
-                                  );
-                                });
+                                Future.delayed(
+                                    const Duration(seconds: 2), () {});
                                 return const AlertDialog(
                                   title: Text('Uspjesno spremljeno!'),
                                 );
@@ -115,39 +109,44 @@ class _KorisnikTagoviScreenState extends State<KorisnikTagoviScreen> {
   }
 
   Widget _buildCustomerChips(List<KorisnikTagovi> nekretninaTagovi) {
-    return SizedBox(
-      height: 150,
-      child: GridView.count(
-        crossAxisCount: 3,
-        childAspectRatio: 4 / 2,
-        mainAxisSpacing: 5,
-        children: [
-          for (var tag in nekretninaTagovi)
-            GestureDetector(
-              onTap: () {
-                setState(() {
-                  tag.isActive = !tag.isActive!;
-                });
-              },
-              child: Chip(
-                label: Text(
-                  tag.tagId == 1
-                      ? "Tiho naselje"
-                      : tag.tagId == 2
-                          ? "Miran"
-                          : tag.tagId == 3
-                              ? "No smoking"
-                              : tag.tagId == 4
-                                  ? "Osvijetljen"
-                                  : tag.tagId == 5
-                                      ? "Pet Friendly"
-                                      : "",
-                ),
-                backgroundColor: tag.isActive! ? Colors.blue : Colors.grey,
-              ),
+    return nekretninaTagovi.isEmpty
+        ? const Center(
+            child: CircularProgressIndicator(), // Circular loader
+          )
+        : SizedBox(
+            height: 150,
+            child: GridView.count(
+              crossAxisCount: 3,
+              childAspectRatio: 4 / 2,
+              mainAxisSpacing: 5,
+              children: [
+                for (var tag in nekretninaTagovi)
+                  GestureDetector(
+                    onTap: () {
+                      setState(() {
+                        tag.isActive = !tag.isActive!;
+                      });
+                    },
+                    child: Chip(
+                      label: Text(
+                        tag.tagId == 1
+                            ? "Tiho naselje"
+                            : tag.tagId == 2
+                                ? "Miran"
+                                : tag.tagId == 3
+                                    ? "No smoking"
+                                    : tag.tagId == 4
+                                        ? "Osvijetljen"
+                                        : tag.tagId == 5
+                                            ? "Pet Friendly"
+                                            : "",
+                      ),
+                      backgroundColor:
+                          tag.isActive! ? Colors.blue : Colors.grey,
+                    ),
+                  ),
+              ],
             ),
-        ],
-      ),
-    );
+          );
   }
 }
