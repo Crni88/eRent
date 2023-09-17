@@ -29,6 +29,8 @@ public partial class Korisnik
 
     public bool? IsActive { get; set; }
 
+    public virtual ICollection<FitPaso> FitPasos { get; } = new List<FitPaso>();
+
     public virtual ICollection<KorisnikTagovi> KorisnikTagovis { get; } = new List<KorisnikTagovi>();
 
     public virtual ICollection<Nekretnina> Nekretninas { get; } = new List<Nekretnina>();

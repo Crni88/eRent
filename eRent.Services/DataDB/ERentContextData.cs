@@ -14,6 +14,50 @@ namespace eRent.Services.DataDB
             modelBuilder.Entity<Uloga>().HasData(
                 new Uloga() { UlogaId = 1, Naziv = "Admin", Opis = "Primarni Korisnik" },
             new Uloga() { UlogaId = 2, Naziv = "Korisnik", Opis = "Primarni Korisnik" });
+
+            modelBuilder.Entity<FitPaso>().HasData(
+                new FitPaso()
+                {
+                    PasosId = 1,
+                    KorisnikId = 1,
+                    DatumIzdavanja = DateTime.Now,
+                    DatumIsteka = DateTime.Now.AddYears(10),
+                    IsValid = true
+                },
+                new FitPaso()
+                {
+                    PasosId = 2,
+                    KorisnikId = 1,
+                    DatumIzdavanja = DateTime.Now,
+                    DatumIsteka = DateTime.Now.AddYears(10),
+                    IsValid = false
+                },
+
+                new FitPaso()
+                {
+                    PasosId = 3,
+                    KorisnikId = 1,
+                    DatumIzdavanja = DateTime.Now,
+                    DatumIsteka = DateTime.Now.AddYears(10),
+                    IsValid = true
+                },
+                 new FitPaso()
+                 {
+                     PasosId = 4,
+                     KorisnikId = 2,
+                     DatumIzdavanja = DateTime.Now.AddDays(-5),
+                     DatumIsteka = DateTime.Now.AddYears(10),
+                     IsValid = false
+                 },
+                  new FitPaso()
+                  {
+                      PasosId = 5,
+                      KorisnikId = 2,
+                      DatumIzdavanja = DateTime.Now.AddDays(-3),
+                      DatumIsteka = DateTime.Now.AddYears(10),
+                      IsValid = false
+                  });
+
             modelBuilder.Entity<Korisnik>().HasData(new Korisnik
             {
                 KorisnikId = 1,
@@ -612,7 +656,7 @@ namespace eRent.Services.DataDB
                 },
                  new Rezervacija
                  {
-                     RezervacijaId =28,
+                     RezervacijaId = 28,
                      KorisnikId = 2,
                      Otkazana = false,
                      MjesecnaRezervacija = false,

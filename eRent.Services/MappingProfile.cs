@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using eRent.Models;
 using eRent.Models.Requests;
+using eRent.Models.Requests.FitPasos;
 using eRent.Models.Requests.Korisnik;
 using eRent.Models.Requests.KorisnikTag;
 using eRent.Models.Requests.NekretninaKorisnik;
@@ -23,7 +24,7 @@ namespace eRent.Services
             CreateMap<DataDB.Korisnik, KorisnikModel>();
             CreateMap<KorisnikInsertRequest, DataDB.Korisnik>();
             CreateMap<KorisnikUpdateRequest, DataDB.Korisnik>();
-            
+
             //Nekretnina
             CreateMap<DataDB.Nekretnina, NekretninaModel>();
             CreateMap<NekretninaUpdateRequest, DataDB.Nekretnina>();
@@ -64,6 +65,10 @@ namespace eRent.Services
             CreateMap<DataDB.Task, TaskModel>();
             CreateMap<TaskInsertRequest, DataDB.Task>();
             CreateMap<TaskUpdateRequest, DataDB.Task>();
+            //Mapper
+            CreateMap<DataDB.FitPaso, FitPasosModel>();
+            CreateMap<FitPasosInsertRequest, DataDB.FitPaso>();
+            CreateMap<FitPasosUpdateRequest, DataDB.FitPaso>();
         }
     }
 }

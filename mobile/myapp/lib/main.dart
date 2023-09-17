@@ -9,6 +9,7 @@ import 'package:myapp/providers/nekretnina_provider.dart';
 import 'package:myapp/providers/nekretnine_provider.dart';
 import 'package:myapp/providers/user_provider.dart';
 import 'package:myapp/screens/customer/register_customer_screen.dart';
+import 'package:myapp/screens/fitpasos/fitpasos_screen.dart';
 import 'package:myapp/screens/nekretnine/nekretnine_screen.dart';
 import 'package:myapp/utils/util.dart';
 import 'package:provider/provider.dart';
@@ -212,8 +213,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    const NekretnineListScreen()),
+                                builder: (context) => const FitPasosScreen()),
                           );
                         } catch (e) {
                           showDialog(
