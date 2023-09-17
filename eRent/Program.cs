@@ -1,5 +1,6 @@
 using eRent.Filters;
 using eRent.Services.DataDB;
+using eRent.Services.FITPasos;
 using eRent.Services.Korisnici;
 using eRent.Services.KorisnikTagovi;
 using eRent.Services.Nekretnina;
@@ -61,6 +62,7 @@ internal class Program
         builder.Services.AddTransient<IUgovorService, UgovorService>();
         builder.Services.AddTransient<IKorisnikTagoviService, KorisnikTagoviService>();
         builder.Services.AddTransient<ITaskService, TaskService>();
+        builder.Services.AddTransient<IFITPasos, FITPasosService>();
         builder.Services.AddAutoMapper(typeof(IKorisniciService));
 
         builder.Services.AddAuthentication("BasicAuthentication")

@@ -1,4 +1,6 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using System;
+using System.Collections.Generic;
+using Microsoft.EntityFrameworkCore;
 
 namespace eRent.Services.DataDB;
 
@@ -12,6 +14,8 @@ public partial class ERentContext : DbContext
         : base(options)
     {
     }
+
+    public virtual DbSet<Fitpaso> Fitpasos { get; set; }
 
     public virtual DbSet<Korisnik> Korisniks { get; set; }
 
@@ -47,6 +51,21 @@ public partial class ERentContext : DbContext
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
+        modelBuilder.Entity<Fitpaso>(entity =>
+        {
+            entity.HasKey(e => e.PasosId).HasName("PK__FITPasos__3C567C7C1566804D");
+
+            entity.ToTable("FITPasos");
+
+            entity.Property(e => e.DatumIzdavanja).HasColumnType("date");
+            entity.Property(e => e.IsValid).HasColumnName("isValid");
+
+            entity.HasOne(d => d.Korisnik).WithMany(p => p.Fitpasos)
+                .HasForeignKey(d => d.KorisnikId)
+                .OnDelete(DeleteBehavior.ClientSetNull)
+                .HasConstraintName("FK_korisnikPasos");
+        });
+
         modelBuilder.Entity<Korisnik>(entity =>
         {
             entity.HasKey(e => e.KorisnikId).HasName("PK_korisnikID");

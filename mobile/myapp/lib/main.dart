@@ -4,10 +4,13 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:myapp/components/spacer.dart';
+import 'package:myapp/model/fitpasos.dart';
 import 'package:myapp/model/korisnik.dart';
+import 'package:myapp/providers/fitpasosprovider.dart';
 import 'package:myapp/providers/nekretnina_provider.dart';
 import 'package:myapp/providers/nekretnine_provider.dart';
 import 'package:myapp/providers/user_provider.dart';
+import 'package:myapp/screens/FitPasos/fitpasosscreen.dart';
 import 'package:myapp/screens/customer/register_customer_screen.dart';
 import 'package:myapp/screens/nekretnine/nekretnine_screen.dart';
 import 'package:myapp/utils/util.dart';
@@ -83,7 +86,10 @@ Future<void> main() async {
     ChangeNotifierProvider(
       create: (_) => UserProvider(),
     ),
-    ChangeNotifierProvider(create: (_) => NekretninaProvider())
+    ChangeNotifierProvider(create: (_) => NekretninaProvider()),
+    ChangeNotifierProvider(
+      create: (_) => FITPasosProvider(),
+    ),
   ], child: const MyApp()));
 }
 
@@ -212,8 +218,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) =>
-                                    const NekretnineListScreen()),
+                                builder: (context) => const FitPassosScreen()),
                           );
                         } catch (e) {
                           showDialog(
